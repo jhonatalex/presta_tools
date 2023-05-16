@@ -1,0 +1,111 @@
+.product-image {
+    height: 200px;
+    overflow: hidden;
+}
+  
+
+.nav-link:hover {
+    background-color: #FFC400;
+    border-radius: 5px;
+    color: black;
+  }
+  
+  .nav-link {
+    color: white;
+  }
+  
+  .ovalo-buttons {
+    background-color: black;
+    border-radius: 20px;
+  }
+  
+  .btn {
+    color:white;
+    margin: 5px;
+  }
+  
+  .btn:hover {
+    background-color: #0050a9;
+    border-radius: 15px;
+  }
+  
+  .col {
+    color: white;
+  }
+  
+  .blue-h1 {
+    color: #329cfa; 
+  }
+  
+  .btn-register {
+    border-radius: 5px;
+    background-color:#329cfa;
+    color: white;
+    height: 40px;
+  }
+  
+  .icon {
+    width: 100px;
+  
+  }
+  
+  @media(max-width:992px){
+    .ovalo-buttons{
+      display: none;
+    }
+    
+    .logo{
+      display: block;
+      margin: auto;
+    }
+  
+    .fa {
+      color: white;
+    }
+    
+    .parrafo{
+      display: none;
+    }
+  
+    .parrafo1{
+      text-align: center;
+    }
+    
+    .banner{
+      text-align: center;
+    }
+  
+  }
+
+  .btn-2 {
+      background-color: #329cfa;
+  }
+
+  .text {
+    color: #329cfa;
+    margin-top: 50px;
+  }
+
+  .card {
+      border-radius: 10px;
+  }
+
+  .card-body1 {
+      display: contents;
+  }
+
+  .user {
+    color: black;
+  }
+
+  .imagen {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 5px;
+  }
+
+  .card-img-top {
+    border-radius: 10px;
+  }
