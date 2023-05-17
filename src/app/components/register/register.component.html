@@ -1,0 +1,49 @@
+<div class="bg-dark container-register">
+    <div class="row ">
+        <div class="col col-sm-12 col-md-8 col-lg-8 ">
+            <div class="global-container">
+                <div class="card resgister-form col-sm-12 col-md-4 col-lg-4 mx-auto my-5 rounded-bottom">
+                    <div class="title">
+                        <h6>Registro de usuario</h6>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Crea tu cuenta</h5>
+                        <div class="card-text mt-4">
+                            <form class="form" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm" name="nombre" [(ngModel)]="user.nombre" placeholder="Nombre" required>
+                                </div>
+                                <div class="form-group  mt-4">
+                                    <input type="text" class="form-control form-control-sm" name="apellido" [(ngModel)]="user.apellido" placeholder="Apellido"required>
+                                </div>
+                                <div class="form-group mt-4">
+                                    <input type="text" class="form-control form-control-sm" name="telefono" [(ngModel)]="user.telefono" placeholder="Telefono" required>
+                                </div>
+                                <div class="form-group mt-4">
+                                    <input type="email" class="form-control form-control-sm" name="email" [(ngModel)]="user.email" placeholder="Email" required>
+                                </div>
+                                <div class="form-group mt-4">
+                                    <input type="password" class="form-control form-control-sm" name="pasword" [(ngModel)]="user.password" placeholder="Contraseña" required>
+                                </div>
+                                <div class="form-group mt-4">
+                                    <input type="password" class="form-control form-control-sm" name="password" [(ngModel)]="user.repeatPasword" placeholder="Repetir Contraseña" required>
+                                </div>
+                                    <button type="submit" class="form-control btn-primary mt-3" [disabled]="registerForm.invalid">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col col-sm-12-col-md-4 col-lg-4 logo d-flex align-items-center justify-content-center">
+            <img src="assets/img/logo.png" alt="logo" class="img-fluid">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

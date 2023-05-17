@@ -1,0 +1,26 @@
+.title {
+    background-color: #329cfa;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+input {
+    border-radius: 7px;
+}
+
+.logo {
+    background-color: #2B2F4F;
+}
+
+.card {
+
+}
+
+.img-fluid{
+  width: 280px;
+}
+
+.container-register{
+  max-width: 99%;
+}
