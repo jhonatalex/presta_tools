@@ -1,27 +1,109 @@
-<div class="cantainer">  
-    <div class="col-sm-12 col-md-8 col-lg-8 py-3 mx-auto">   
-       <h2 class="text-center">Tool Service</h2>
-            <table class="table table-striped table-primary text-center">
-                <thead>
-                    <tr>
-                       <th>Id</th>
-                       <th>Nombre</th>
-                       <th>Precio $</th>
-                       <th>Peso Kg</th>
-                       <th>Descripcion</th>
-                       <th>Imagen</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{tool.id}}</td>
-                        <td>{{tool.nombre}}</td>
-                        <td>{{tool.valor}}</td>
-                        <td>{{tool.peso}}</td>
-                        <td>{{tool.descripcion}}</td>
-                        <td><img src="assets/img/taladro.png" alt="imagen" class="card-img-top"/></td>
-                    </tr>    
-                </tbody>
-            </table>
+<!--SECCION NAVBAR-->
+<app-header [flaglogo]="false"></app-header>
+
+<!--SECCION DETALLE TOOL-->
+<section id="detalle-herramienta" class="fondo">
+
+    <div class="cantainer fluid  width-max">  
+        <div class="row ms-5 py-5">   
+           <div class="col-sm-12 col-md-6 col-lg-6">
+            <h1 class="ms-2">{{tool.name}} {{tool.model}}</h1>
+            <small class="ms-5">0 veces reservado|Propietario:</small>
+           </div>
+            <div class="col-md-6 contenedor-buscar">
+                <button class="btn btn-light ms-5 border-0"><i class="fa fa-search" aria-hidden="true"></i></button>
+                <input type="text" placeholder="Buscar Producto" class="input-buscar fondo">
+            </div>   
+        </div>
     </div>
-</div>
+
+    <div class="container fluid width-max">
+        <div class="row pb-5  mx-auto">
+            <div class="col-sm-12 col-md-6 text-center px-0 mx-0">
+                <div class="card pb-4 card-big  d-flex justify-content-center align-items-center">
+                    <img src={{tool.url_image}} alt="foto" class="img-card-top">
+                </div>
+                
+                <div class="row text-center mt-2 pt-2 mx-5">
+                    <div class="col card shadow imageSmall mx-2 mt-5  d-flex justify-content-center align-items-center">
+                        <img src={{tool.url_image}} alt="imagen1" class="card-img image">
+                    </div>
+                    <div class="col card shadow imageSmall mx-2 mt-5  d-flex justify-content-center align-items-center">
+                        <img src={{tool.url_image_2}} alt="imagen2" class="card-img image">
+                    </div>
+                    <div class="col card shadow imageSmall mx-2 mt-5  d-flex justify-content-center align-items-center">
+                        <img src={{tool.url_image_3}} alt="imagen3" class="card-img image">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6 card card-small">
+                <h1 class="mt-2 text-center">{{tool.name}} {{tool.model}}</h1>
+                <hr class="bg-dark">
+
+                <div class="row">
+                    <div class="col d-flex">
+                        <strong>SKU:</strong>
+                        <p>122331</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col d-flex">
+                        <strong>Categoria:</strong>
+                        <p>{{tool.id_category}}</p>
+                    </div>
+                </div>
+
+                <p>DESCRIPCIÓN:</p>
+                <p>{{tool.description}}</p>
+                <p>CARACTERÍSTICAS:</p>
+
+                <div class="row">
+                    <div class="col d-flex">
+                        <strong>Marca:</strong>
+                        <p class="me-2">{{tool.model}}</p>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col d-flex">
+                        <strong>Rentado:</strong>
+                        <p>0 veces</p>
+                    </div>
+                </div>
+                <strong>Aún no se han encontrado</strong>
+                <strong>valoraciones</strong>
+                <div class="row">
+                    <div class="col d-flex">
+                        <p>DISPONIBILIDAD:</p>
+                        <p style="color: blue;">Disponible</p>
+                    </div>
+                </div>
+                <a routerLink="/" class="btn-blue-grad mb-4 px-5 py-2 border-0 col-md-8 mx-auto">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!--SECCIÓN INFORMACIÓN PROPIETARIO-->
+<section id="informacion-propietario" class="fondo pb-5 seccion-propietario">
+    <div class="container fluid px-0  width-max">
+            <div class="card shadow content-propietario  mx-auto">
+                <strong class="card titulo">Información del Propietario</strong>
+            </div>
+    </div>
+</section>
+
+<section id="productos-relacionados" class="fondo pb-5">
+     <!---SLIDER PRODUCTOS RELACIONADOS-->
+     <div class="card shadow content-procucts mx-auto">
+        <strong class="px-2 pb-0 titulo">Productos relacionados</strong>
+        <app-related-featured-products></app-related-featured-products>
+    </div>
+</section>
+
+<!--SECCION FOOTER-->
+<app-footer></app-footer>
+

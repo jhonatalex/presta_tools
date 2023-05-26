@@ -1,8 +1,15 @@
+
+.fondo{
+  background-color:#ebebebdb;
+}
+
+.widthMax{
+  width: 99%;
+}
 .product-image {
     height: 200px;
     overflow: hidden;
 }
-
 
 .nav-link:hover {
     background-color: #FFC400;
@@ -51,43 +58,16 @@
   }
 
 
-  .btn-register {
-    border-radius: 5px;
+  .btn-blue-grad {
+    border-radius: 8px;
     background-image: linear-gradient(to right, #0794b3 0%,  #0050a9  100%);
     color: white;
     height: 40px;
+    text-decoration: none;
   }
 
   .icon {
     width: 100px;
-
-  }
-
-  @media(max-width:992px){
-    .ovalo-buttons{
-      display: none;
-    }
-
-    .logo{
-      display: block;
-      margin: auto;
-    }
-
-    .fa {
-      color: white;
-    }
-
-    .parrafo{
-      display: none;
-    }
-
-    .parrafo1{
-      text-align: center;
-    }
-
-    .banner{
-      text-align: center;
-    }
 
   }
 
@@ -161,3 +141,90 @@
     display: block;
     z-index: 2;
   }
+
+  .boton-link {
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    padding: 12px;
+    
+  }
+
+  #testimonios {
+    background-color: #0794b3;
+  }
+
+  .img-testimonio {
+    border-radius: 12px;
+    width: 600px;
+    height: 300px;
+  }
+
+  @media(max-width:992px){
+    .ovalo-buttons{
+      display: none;
+    }
+
+    .logo{
+      display: block;
+      margin: auto;
+    }
+
+    .fa {
+      color: white;
+    }
+
+    .parrafo{
+      display: none;
+    }
+
+    .parrafo1{
+      text-align: center;
+    }
+
+    .banner{
+      text-align: center;
+    }
+
+    .content-image{
+      display: flex;
+      justify-content: center;
+    }
+
+    .content-image-preguntas{
+      display: flex;
+      justify-content: center;
+    }
+
+    .content-testimonio{
+      display: grid;
+      justify-items: center;
+      align-items: center;
+      justify-content: center;
+      align-content: center;
+    }
+
+    .content-preguntas{
+      display: grid;
+      justify-items: center;
+      align-items: center;
+      justify-content: center;
+      align-content: center;
+    }
+
+    .img-fluid{
+      width: 225px;
+    }
+
+    .boton-registrar{
+      width: 160px;
+    }
+
+    .content-banner{
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    
+
+  }
+

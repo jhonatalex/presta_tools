@@ -1,58 +1,28 @@
-
 <!--SECCION HEADER-->
-<section id="header">
+<section id="header" class="fondo">
   <div class="container-fluid bg-dark">
       <br>
         <header>
-          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid mt-2">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="logo">
-                <img src="assets/img/logo.png" alt="logo" class="img-fluid ms-2 logo-main">
-              </div>
-              <div class="collapse navbar-collapse  mt-5 mb-0 ms-5" id="navbarTogglerDemo01">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/">Inicio</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" routerLink="/">Productos</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" routerLink="/">Alquila Tu Herramienta</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" routerLink="/">Contacto</a>
-                  </li>
-                </ul>
-                <div class="d-flex float-right nav-item">
-                  <a class="nav-link active" routerLink="/acceso">Inicia Sesión</a>
-                  <a class="nav-link active" routerLink="/registro">Regístrate gratis</a>
-                </div>
-              </div>
-                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          <!--SECCIÓN NAVBAR-->
+          <app-header></app-header>
 
-            </div>
-          </nav>
-
-          <div class="container-fluid">
+          <div class="container-fluid content-banner">
             <div class="row">
               <div class="col col-sm-12 col-md-6 col-6-lg bg-dark">
                 <div class="ovalo-buttons col-md-9 mt-5 ms-5">
-                  <input type="button" class="btn btn-ligth px-5" value="Categorias">
-                  <input type="button" class="btn btn-ligth ms-0 px-5" value="Conoce más>">
+                  <a routerLink="/categoria" type="button" class="btn btn-ligth px-5">Categorías</a>
+                  <a  routerLink="#" type="button" class="btn btn-ligth ms-0 px-5">Conoce más</a>
                 </div>
-                <div class="parrafo1">
-                  <h1 class="mt-2 ms-5">Todas las herramientas</h1>
-                  <h1 class="blue-h1 mt-2 ms-5">en un solo lugar</h1>
-                </div>
+                    <div class="parrafo1">
+                      <h1 class="mt-2 ms-5">Todas las herramientas</h1>
+                      <h1 class="blue-h1 mt-2 ms-5">en un solo lugar</h1>
+                    </div>
+
                   <p class="parrafo mt-2 ms-5">Encuentra las herramientas que necesitas para tus proyectos, ahorra dinero evitando comprar equipos que solo usarás una vez y únete a una red de emprendedores que valoran la colaboración.</p>
-                  <input type="button" class="btn-register mt-2 ms-5 px-3 border-0" value="Regístrate Gratis">
+                  <a class="boton-registrar btn-blue-grad mt-2 ms-5 ps-4 border-0 col-md-3 nav-link active" routerLink="/registro">Regístrate gratis</a>
                   <p class="parrafo mt-2 ms-5"><span class="subtitle">Comparte, Ahorra y Emprende</span><br> La Economía Colaborativa ya esta aqui.</p>
 
-                </div>
+              </div>
 
               <div class="banner col col-sm-12 col-md-6 col-lg-6 bg-dark">
                 <img src="assets/img/banner.png" alt="banner" class="img-fluid mb-5">
@@ -63,28 +33,38 @@
   </div>
 </section>
 
-<!--SECCION PRODUCTOS-->
-<section id="productos-destacados">
+<!--SECCION PRODUCTOS-DESTACADOS-->
+<section id="productos-destacados" class="fondo">
   <div class="container-fluid text-center col-md-6 mb-5">
 
-      <h3 class="mt-50"> <strong> Productos destacados</strong></h3>
+      <h3 class="py-5"> <strong> Productos destacados</strong></h3>
       <h5 class="text">Conecta con una comunidad de usuarios dispuestos a compartir</h5>
       <p> ¡Descubre una forma <strong>inteligente</strong> y sostenible de acceder a las herramientas que necesitas en nuestro sitio web de economía colaborativa!</p>
   </div>
 
-  <div class="loading" *ngIf="!tools">
-      Cargando...
-  </div>
   <br/>
-  <div class="container mx-auto" *ngIf="tools">
+  <!--SECCION SLIDER PRODUCTOS DESTACADOS-->
+  <app-related-featured-products></app-related-featured-products>
+</section>
+
+<!--SECCION CATEGORIA-->
+<section id="categorias" class="fondo py-5">
+  <div class="container-fluid text-center col-md-6 mt-5">
+      <h3> <strong>Categorías</strong></h3>
+      <p>Explora nuestras categorías de herramientas especializadas. Sea cual sea tu proyecto, estamos seguros de que encontrarás la herramienta adecuada. Simplifica tu vida, ahorra dinero uniéndote a nuestra comunidad hoy mismo.</p>
+  </div>
+  <div class="container mx-auto">
       <div class="row mt-2">
-          <div class="col-sm-12 col-md-4 col-lg-4 py-3"  *ngFor="let tool of tools">
-              <div class="card shadow border">
-                  <a [routerLink]="['/detalle/',tool.id]"><img src="assets/img/taladro.png" alt="imagen" class="card-img-top"/></a>
-                  <div class="card-body text-center">
-                      <strong>{{tool.nombre}}</strong>
-                      <p>Precio Alquiler: {{tool.valor}} CLP</p>
-                      <a [routerLink]="['/detalle/',tool.id]" class="btn-blue-grad col-sm-8 col-md-8 col-lg-4">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
+            <!--REPLAZAR POR MODELO CATEGORIAS Y HACER RENDER CON CICLO -->
+            <!---SECCION SLIDER CATEGORIAS-->
+            <div class="row mt-2 categories">
+              <div class="col-md-4 py-3"  *ngFor="let category of categories">
+                  <div class="card shadow border mx-3">
+                      <img src="assets/img/idustria.png" alt="imagen" class="card-img-top"/>
+                      <div class="card-body text-center">
+                          <strong>{{category.title_cat}}</strong>
+                          <p>{{category.descrip_cat}}</p>
+                      </div>
                   </div>
               </div>
           </div>
@@ -92,108 +72,42 @@
   </div>
 </section>
 
-<!--SECCION CATEGORIA-->
-<section id="categoria">
-  <div class="container-fluid text-center col-md-6 mt-5">
-      <h3> <strong>Categorías</strong></h3>
-      <p>Explora nuestras categorías de herramientas especializadas. Sea cual sea tu proyecto, estamos seguros de que encontrarás la herramienta adecuada. Simplifica tu vida, ahorra dinero uniéndote a nuestra comunidad hoy mismo.</p>
-  </div>
-
-  <div class="container mx-auto">
-      <div class="row mt-2">
-
-            <!--REPLAZAR POR MODELO CATEGORIAS Y HACER RENDER CON CICLO -->
-            <div class="col-md-4">
-              <div class="card shadow border ">
-                  <a href="#"><img src="assets/img/herramientas.png" alt="imagen" class="card-img-top"/></a>
-                  <div class="card-body1">
-                      <strong class="mt-2 ms-2">Herramientas</strong>
-                      <p class="mt-2 ms-2 text-justify text-size-12">
-                        la categoría de herramientas es un verdadero tesoro para todos los entusiastas
-                        del bricolaje, profesionales y aficionados por igual.nuestra amplia gama de
-                        herramientas manuales y eléctricas te brinda opciones para cada proyecto y tarea.</p>
-
-                      <div class="row mt-5">
-                        <div class="col">
-
-                          <strong class="user">Alexander Luis</strong>
-
-                        </div>
-                      </div>
-
-                  </div>
+<!--SECCION PREGUNTAS FRECUENTES-->
+<section id="preguntas-frecuentes" class="fondo pb-3">
+  <div class="py-5">
+      <div class="row mt-2 widthMax">
+            <div class="content-image-preguntas col-md-6">
+              <div class="image-container">
+                <img class="img-preguntas img-fluid"src="assets/img/frecuentes.jpg" alt="preguntas">
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="card shadow border">
-                <a href="#"><img src="assets/img/eventos.png" alt="imagen" class="card-img-top"/></a>
-                <div class="card-body1">
-                    <strong class="mt-2 ms-2">Equipos para Eventos</strong>
-                    <p class="mt-2 ms-2 text-justify text-size-12">
-                    aca encontrara todo lo que necesitas para crear experiencias inolvidables.
-                    Desde altavoces potentes y mesas de mezclas hasta micrófonos
-                    profesionales y luces espectaculares, lo necesario para dar vida a tus eventos.
-
-                    </p>
-
-                    <div class="row mt-5">
-                      <div class="col">
-
-                        <strong class="user">Alexander Luis</strong>
-
-                      </div>
-                    </div>
-
-                </div>
-              </div>
+            <div class="content-preguntas col-md-6 color-primary-dark p-5">
+              <h4 class="text-color-white-theme mt-50">Guia prectica de como generar ingresos</h4>
+              <h1 class="text-color-white-theme">Preguntas frecuentes</h1>
+              <p class="text-color-white-theme">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea cupiditate debitis blanditiis repellendus suscipit explicabo unde, distinctio dolore praesentium commodi, ab perferendis assumenda quaerat est, recusandae hic maiores mollitia saepe.
+              Alias ullam libero eligendi maiores? Delectus, non aut. Molestiae repellat eligendi, non, delectus nulla totam</p>
+            <button class="boton-link border-0 me-5">Visit the help center<i class="fa fa-external-link ms-5" aria-hidden="true"></i></button>
             </div>
-            <div class="col-md-4">
-              <div class="card shadow border">
-                <a href="#"><img src="assets/img/idustria.png" alt="imagen" class="card-img-top"/></a>
-                <div class="card-body1">
-                    <strong class="mt-2 ms-2">Equipos Industria</strong>
-                    <p class="mt-2 ms-2 text-justify text-size-12">
-                      destino perfecto para aquellos que buscan
-                      maximizar su eficiencia en proyectos industriales. Ofrecemos una amplia variedad de
-                      equipos de calidad, desde maquinaria pesada y herramientas especializadas como equipos
-                      de medición y seguridad.
-                    </p>
-
-                    <div class="row mt-5">
-                      <div class="col">
-
-                        <strong class="user">Alexander Luis</strong>
-
-                      </div>
-                    </div>
-
-                </div>
-              </div>
-            </div>
-
       </div>
-
   </div>
 </section>
 
-<!--SECCION PREGUNTAS-->
-<section id="preguntas-frecuentes">
-  <div class="mb-50 mt-50">
-      <div class="row mt-2">
-
-            <div class="col-md-6 ">
-              <div class="image-container">
-                <img class="img-preguntas "src="assets/img/frecuentes.jpg" alt="preguntas">
-              </div>
-            </div>
-            <div class="col-md-6 color-primary-dark ">
-              <h4 class="text-color-white-theme mt-50">Guia prectica de como generar ingresos</h4>
-              <h1 class="text-color-white-theme">Preguntas frecuentes</h1>
-            </div>
-
-
+<!--SECCIÓN TESTIMONIOS-->
+<section id="testimonios" class="fondo px-3">
+  <div class="container-fluid widthMax">
+    <div class="row py-5 mb-50">
+      <div class="content-image col-md-6 py-4">
+        <img src="assets/img/testimonio.png" alt="testimonio" class="img-testimonio">
       </div>
-
+      <div class="content-testimonio col-md-6 py-4">
+        <h1 class="text-center text-color-white-theme">Testimonios</h1> 
+        <p class="text-color-white-theme mt-4">&#34;Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic voluptate tempora asperiores, sapiente deserunt labore ea aliquam ullam doloribus, possimus illum laborum. Velit neque beatae nemo! Esse dicta nesciunt aut.
+        Consequatur hic, voluptas nam ipsam similique placeat sit? &#34;</p>
+        
+        <p class="text-color-white-theme">Alexander Luis</p>
+        <p class="text-color-white-theme">CEO, Brandz</p>
+      </div>
+    </div>
   </div>
 </section>
 

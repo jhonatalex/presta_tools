@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute,Params } from '@angular/router';
 import { ToolService } from '../../services/tool.service';
 import { Tool } from '../../models/tool.model';
@@ -19,8 +19,8 @@ export class ToolDetailComponent implements OnInit {
     private toolService: ToolService  
   ){
     this.id = 0;
-    this.tool = new Tool (0,'','',0,0,'');//instancia vacia para guardar tool por id
-    }
+    this.tool = new Tool (0,'','','','','','',0,0,0,0,0,0,'','','','','',0,0,0,0,new Date);//instancia vacia para guardar tool por id 
+  }
 
   ngOnInit(): void {
     this.getId();//saca el id de la URL

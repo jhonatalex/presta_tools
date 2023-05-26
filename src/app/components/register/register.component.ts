@@ -1,5 +1,7 @@
 import { formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { timestamp } from 'rxjs';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 
@@ -18,13 +20,13 @@ export class RegisterComponent implements OnInit {
     private userService: UserService
   ) {
     this.titulo = 'Register'
-    this.user = new User(0,'','','','','','');//instancia de usuario vacía para el formulario
+    this.user = new User(0,'','','','','','','',new Date,true);//instancia de usuario vacía para el formulario
    }
 
   ngOnInit(): void {
   }
 
-  onSubmit(form:any):void{
+  onSubmit(form:NgForm):void{
     this.userService.registerUser(this.user);//llama funcion register dentro del servicio
     form.reset();//limpia el formulario de registro
   }

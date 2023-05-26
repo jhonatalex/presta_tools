@@ -1,0 +1,34 @@
+<!--SECCION NAVBAR-->
+<app-header [flaglogo]="false"></app-header>
+
+<!--SECCION CATEGORIAS-->
+<section id="categoria">
+    <div class="container-fluid fondo pt-5">
+        <div class="container  card shadow pt-5">
+            <h1 class="mx-2">Categoría: {{categories[0].title_cat}}</h1>
+            <div class="mx-2">
+                <img src="assets/img/herramientas.png" alt="img-card" class="mt-2">
+                <p class="text-center mt-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, facere. Eveniet soluta vel sed exercitationem recusandae provident hic, tenetur neque, obcaecati dolorem pariatur voluptates quis minima? Officiis, dolorem quis? Sequi.
+                Quia, porro. Sit labore atque accusamus repellendus ducimus quidem est, beatae adipisci cupiditate, quas nostrum dolore blanditiis nobis unde velit magni minima voluptate earum molestias, impedit quisquam iste eius corporis!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!---SECCION GRILLA-->
+<section id="paginacion" class="fondo py-5">
+    <div class="container-fluid py-5 content-grilla">
+        <div class="container card shadow">
+            <strong>Mostrando 12 de 24 resultados</strong>
+            <p>ordenar por</p>
+        </div>
+    </div>
+    <!---SECCION SLIDER PRODUCTOS-->
+    <app-related-featured-products></app-related-featured-products>
+
+</section>
+
+
+<!--SECCION FOOTER-->
+<app-footer></app-footer>
+

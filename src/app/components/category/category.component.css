@@ -1,0 +1,17 @@
+
+.container{
+    background-color:white;
+    border-radius: 25px;
+}
+
+.fondo{
+    background-color: #ebebebdb;
+}
+
+.widthMax{
+    width: 99%
+}
+
+.content-grilla{
+    padding: 30px;
+}

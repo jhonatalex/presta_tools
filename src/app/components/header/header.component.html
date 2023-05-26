@@ -1,0 +1,36 @@
+<!--SECCIÓN NAVBAR-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid mt-2">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="logo" *ngIf="flaglogo"><!--CONDICION PARA EL TAMAÑO DEL LOGO NORMAL-->
+        <img src="assets/img/logo.png" alt="logo" class="img-logo ms-2">
+      </div>
+      <div class="logo" *ngIf="!flaglogo"><!---CONDICION PARA EL TAMAÑO DEL LOGO PEQUEÑO-->
+        <img src="assets/img/logo.png" alt="logo" class="img-logo ms-2 logoSmall">
+      </div>
+      <div class="collapse navbar-collapse  mt-5 mb-0 ms-5" id="navbarTogglerDemo01">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/">Alquila Tu Herramienta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/">Contacto</a>
+          </li>
+        </ul>
+        <div class="d-flex float-right nav-item">
+          <a class="nav-link active" routerLink="/acceso">Inicia Sesión</a>
+          <a class="nav-link active" routerLink="/registro">Regístrate gratis</a>
+        </div>
+      </div>
+        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+
+    </div>
+  </nav>

@@ -22,8 +22,13 @@
     "bootstrap": "5.0.0",
     "font-awesome": "4.7.0",
     "jquery": "3.6.4",
+    "jquery-validation": "^1.19.5",
+    "ng-image-slider": "^7.0.0",
+    "ngx-pagination": "^6.0.3",
+    "ngx-slick-carousel": "^15.0.0",
     "package-typescript": "^1.0.2",
     "rxjs": "~7.5.0",
+    "slick-carousel": "^1.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
