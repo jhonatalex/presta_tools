@@ -1,0 +1,135 @@
+<!--SECCION HEADER-->
+<section id="header" class="fondo">
+  <div class="container-fluid bg-dark">
+      <br>
+        <header>
+          <!--SECCIÓN NAVBAR-->
+          <app-header></app-header>
+
+          <div class="container-fluid content-banner">
+            <div class="row">
+              <div class="col col-sm-12 col-md-6 col-6-lg bg-dark">
+                <div class="ovalo-buttons col-md-9 mt-5 ms-5">
+                  <a routerLink="/categoria" type="button" class="btn btn-ligth px-5">Categorías</a>
+                  <a  routerLink="#" type="button" class="btn btn-ligth ms-0 px-5">Conoce más</a>
+                </div>
+                    <div class="parrafo1">
+                      <h1 class="mt-2 ms-5">Todas las herramientas</h1>
+                      <h1 class="blue-h1 mt-2 ms-5">en un solo lugar</h1>
+                    </div>
+
+                  <p class="parrafo mt-2 ms-5">Encuentra las herramientas que necesitas para tus proyectos, ahorra dinero evitando comprar equipos que solo usarás una vez y únete a una red de emprendedores que valoran la colaboración.</p>
+                  <a class="boton-registrar btn-blue-grad mt-2 ms-5 ps-4 border-0 col-md-3 nav-link active" routerLink="/registro">Regístrate gratis</a>
+                  <p class="parrafo mt-2 ms-5"><span class="subtitle">Comparte, Ahorra y Emprende</span><br> La Economía Colaborativa ya esta aqui.</p>
+
+              </div>
+
+              <div class="banner col col-sm-12 col-md-6 col-lg-6 bg-dark">
+                <img src="assets/img/banner.png" alt="banner" class="img-fluid mb-5">
+              </div>
+            </div>
+          </div>
+        </header>
+  </div>
+</section>
+
+
+<ngx-slick-carousel class="carousel"
+  #slickModal="slick-carousel"
+  [config]="slideConfig"
+  (init)="slickInit($event)"
+  (breakpoint)="breakpoint($event)"
+  (afterChange)="afterChange($event)"
+  (beforeChange)="beforeChange($event)">
+<div ngxSlickItem *ngFor="let slide of slides" class="slide">
+<img src="{{ slide.img }}" alt="" width="100%">
+</div>
+</ngx-slick-carousel>
+<button (click)="addSlide()">Add</button>
+<button (click)="removeSlide()">Remove</button>
+<button (click)="slickModal.slickGoTo(2)">slickGoto 2</button>
+<button (click)="slickModal.unslick()">unslick</button>
+
+
+
+
+<!--SECCION PRODUCTOS-DESTACADOS-->
+<section id="productos-destacados" class="fondo">
+  <div class="container-fluid text-center col-md-6 mb-5">
+
+      <h3 class="py-5"> <strong> Productos destacados</strong></h3>
+      <h5 class="text">Conecta con una comunidad de usuarios dispuestos a compartir</h5>
+      <p> ¡Descubre una forma <strong>inteligente</strong> y sostenible de acceder a las herramientas que necesitas en nuestro sitio web de economía colaborativa!</p>
+  </div>
+
+  <br/>
+  <!--SECCION SLIDER PRODUCTOS DESTACADOS-->
+  <app-related-featured-products></app-related-featured-products>
+</section>
+
+<!--SECCION CATEGORIA-->
+<section id="categorias" class="fondo py-5">
+  <div class="container-fluid text-center col-md-6 mt-5">
+      <h3> <strong>Categorías</strong></h3>
+      <p>Explora nuestras categorías de herramientas especializadas. Sea cual sea tu proyecto, estamos seguros de que encontrarás la herramienta adecuada. Simplifica tu vida, ahorra dinero uniéndote a nuestra comunidad hoy mismo.</p>
+  </div>
+  <div class="container mx-auto">
+      <div class="row mt-2">
+            <!--REPLAZAR POR MODELO CATEGORIAS Y HACER RENDER CON CICLO -->
+            <!---SECCION SLIDER CATEGORIAS-->
+            <div class="row mt-2 categories">
+              <div class="col-md-4 py-3"  *ngFor="let category of categories">
+                  <div class="card shadow border mx-3">
+                      <img src="assets/img/idustria.png" alt="imagen" class="card-img-top"/>
+                      <div class="card-body text-center">
+                          <strong>{{category.title_cat}}</strong>
+                          <p>{{category.descrip_cat}}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!--SECCION PREGUNTAS FRECUENTES-->
+<section id="preguntas-frecuentes" class="fondo pb-3">
+  <div class="py-5">
+      <div class="row mt-2 widthMax">
+            <div class="content-image-preguntas col-md-6">
+              <div class="image-container">
+                <img class="img-preguntas img-fluid"src="assets/img/frecuentes.jpg" alt="preguntas">
+              </div>
+            </div>
+            <div class="content-preguntas col-md-6 color-primary-dark p-5">
+              <h4 class="text-color-white-theme mt-50">Guia prectica de como generar ingresos</h4>
+              <h1 class="text-color-white-theme">Preguntas frecuentes</h1>
+              <p class="text-color-white-theme">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea cupiditate debitis blanditiis repellendus suscipit explicabo unde, distinctio dolore praesentium commodi, ab perferendis assumenda quaerat est, recusandae hic maiores mollitia saepe.
+              Alias ullam libero eligendi maiores? Delectus, non aut. Molestiae repellat eligendi, non, delectus nulla totam</p>
+            <button class="boton-link border-0 me-5">Visit the help center<i class="fa fa-external-link ms-5" aria-hidden="true"></i></button>
+            </div>
+      </div>
+  </div>
+</section>
+
+<!--SECCIÓN TESTIMONIOS-->
+<section id="testimonios" class="fondo px-3">
+  <div class="container-fluid widthMax">
+    <div class="row py-5 mb-50">
+      <div class="content-image col-md-6 py-4">
+        <img src="assets/img/testimonio.png" alt="testimonio" class="img-testimonio">
+      </div>
+      <div class="content-testimonio col-md-6 py-4">
+        <h1 class="text-center text-color-white-theme">Testimonios</h1>
+        <p class="text-color-white-theme mt-4">&#34;Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic voluptate tempora asperiores, sapiente deserunt labore ea aliquam ullam doloribus, possimus illum laborum. Velit neque beatae nemo! Esse dicta nesciunt aut.
+        Consequatur hic, voluptas nam ipsam similique placeat sit? &#34;</p>
+
+        <p class="text-color-white-theme">Alexander Luis</p>
+        <p class="text-color-white-theme">CEO, Brandz</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--SECCION FOOTER-->
+<app-footer></app-footer>

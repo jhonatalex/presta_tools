@@ -1,0 +1,32 @@
+.btn-blue-grad {
+    border-radius: 8px;
+    background-image: linear-gradient(to right, #0794b3 0%,  #0050a9  100%);
+    color: white;
+    height: 40px;
+    text-decoration: none;
+  }
+
+  .card {
+    border-radius: 12px;
+    margin: 10px;
+    background-color: inherit;
+  }
+
+  .div-card{
+    padding: 20px;
+  }
+
+  .card-body{
+    border-radius: 12px;
+  }
+
+  .img-card{
+    width: 22rem; 
+    height: 17rem;
+    padding: 2px;
+  }
+
+  .fondo{
+    background-color:#aca8a8db
+  }
+
