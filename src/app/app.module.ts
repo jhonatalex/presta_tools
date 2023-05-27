@@ -16,7 +16,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CategoryComponent } from './components/category/category.component';
 import { RelatedFeaturedProductsComponent } from './components/related-featured-products/related-featured-products.component';
 
-
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
 @NgModule({
@@ -40,6 +40,8 @@ import { RelatedFeaturedProductsComponent } from './components/related-featured-
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
+    SlickCarouselModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

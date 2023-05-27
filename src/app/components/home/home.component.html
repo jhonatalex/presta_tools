@@ -33,6 +33,26 @@
   </div>
 </section>
 
+
+<ngx-slick-carousel class="carousel"
+  #slickModal="slick-carousel"
+  [config]="slideConfig"
+  (init)="slickInit($event)"
+  (breakpoint)="breakpoint($event)"
+  (afterChange)="afterChange($event)"
+  (beforeChange)="beforeChange($event)">
+<div ngxSlickItem *ngFor="let slide of slides" class="slide">
+<img src="{{ slide.img }}" alt="" width="100%">
+</div>
+</ngx-slick-carousel>
+<button (click)="addSlide()">Add</button>
+<button (click)="removeSlide()">Remove</button>
+<button (click)="slickModal.slickGoTo(2)">slickGoto 2</button>
+<button (click)="slickModal.unslick()">unslick</button>
+
+
+
+
 <!--SECCION PRODUCTOS-DESTACADOS-->
 <section id="productos-destacados" class="fondo">
   <div class="container-fluid text-center col-md-6 mb-5">
@@ -100,10 +120,10 @@
         <img src="assets/img/testimonio.png" alt="testimonio" class="img-testimonio">
       </div>
       <div class="content-testimonio col-md-6 py-4">
-        <h1 class="text-center text-color-white-theme">Testimonios</h1> 
+        <h1 class="text-center text-color-white-theme">Testimonios</h1>
         <p class="text-color-white-theme mt-4">&#34;Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic voluptate tempora asperiores, sapiente deserunt labore ea aliquam ullam doloribus, possimus illum laborum. Velit neque beatae nemo! Esse dicta nesciunt aut.
         Consequatur hic, voluptas nam ipsam similique placeat sit? &#34;</p>
-        
+
         <p class="text-color-white-theme">Alexander Luis</p>
         <p class="text-color-white-theme">CEO, Brandz</p>
       </div>
