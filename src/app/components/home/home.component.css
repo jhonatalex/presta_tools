@@ -1,6 +1,7 @@
 
 .fondo{
   background-color:#ebebebdb;
+
 }
 
 .widthMax{
@@ -33,6 +34,7 @@
   .ovalo-buttons {
     background-color: black;
     border-radius: 20px;
+    width: 378px;
   }
 
   .btn {
@@ -90,7 +92,9 @@
   }
 
   .card {
-      border-radius: 10px;
+      border-radius: 18px;
+      width: 80%;
+      height: 80%;
   }
 
   .card-body1 {
@@ -109,12 +113,16 @@
     padding: 5px;
   }
 
-  .card-img-top {
-    border-radius: 10px;
+  .img-card-top {
+    width: 22rem; 
+    height: 15rem;
+    padding: 1px;
+    border-radius: 18px 18px 0px 0px;
   }
 
   .img-preguntas{
     width: 102%;
+    height: 100%;
   }
   .mb-50{
     margin-bottom: 50px;
@@ -130,7 +138,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 102%;
     height: 100%;
 
     background-image: linear-gradient(to right, #0793b371 0%,  #004fa96b  100%);
@@ -160,7 +168,13 @@
     height: 300px;
   }
 
-  @media(max-width:992px){
+  .girarImagen{
+    transform: rotate(180deg);
+  }
+
+
+
+  @media(max-width:900px){
     .ovalo-buttons{
       display: none;
     }
@@ -210,7 +224,9 @@
       align-items: center;
       justify-content: center;
       align-content: center;
+      padding: 20px !important;
     }
+
 
     .img-fluid{
       width: 225px;

@@ -1,15 +1,22 @@
 <div class="container fluid mx-auto">
-    <div class="row mt-2 tools">
-        <div class="col-md-4 py-3"  *ngFor="let tool of tools; let i=index"> <!--VARIABLE index DE PRUEBA; LUEGO SE SUSTITUYE POR EL id DE tool-->
-            <div class="card shadow border div-card d-flex justify-content-center align-items-center">
-                <img src={{tool.url_image}} alt="imagen" class="img-card img-fluid"/>
-                <div class="card-body text-center">
-                    <strong>{{tool.name}} {{tool.model}}</strong>
-                    <p>Precio Alquiler: {{tool.value_rent}} CLP</p>
-                    <a [routerLink]="['/detalle/',i]" class="btn-blue-grad mb-4 px-5 py-2 border-0 col-sm-12 col-md-8">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
+    <ngx-slick-carousel class="carousel"
+                        #slickModal="slick-carousel"
+                        [config]="slideConfig"
+                        responsive="breakpoints"
+                        (init)="slickInit($event)"
+                        (breakpoint)="breakpoint($event)"
+                        (afterChange)="afterChange($event)"
+                        (beforeChange)="beforeChange($event)">
+
+            <div ngxSlickItem *ngFor="let tool of tools" class="slide d-flex justify-content-center align-items-center"> <!--VARIABLE index DE PRUEBA; LUEGO SE SUSTITUYE POR EL id DE tool-->
+                <div class="card shadow div-card d-flex justify-content-center align-items-center">
+                    <img src={{tool.url_image}} alt="imagen" class="img-card img-fluid" width=500px height=200px/>
+                    <div class="card-body text-center">
+                        <strong>{{tool.name}} {{tool.model}}</strong>
+                        <p>Precio Alquiler: {{tool.value_rent}} CLP</p>
+                        <a [routerLink]="['/herramienta/',tool.id]" class="btn-blue-grad mb-4 px-5 py-2 border-0 col-sm-12 col-md-8">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+    </ngx-slick-carousel>
 </div>
-

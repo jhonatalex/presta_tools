@@ -10,8 +10,8 @@
             <div class="row">
               <div class="col col-sm-12 col-md-6 col-6-lg bg-dark">
                 <div class="ovalo-buttons col-md-9 mt-5 ms-5">
-                  <a routerLink="/categoria" type="button" class="btn btn-ligth px-5">Categorías</a>
-                  <a  routerLink="#" type="button" class="btn btn-ligth ms-0 px-5">Conoce más</a>
+                  <a href="/#categorias" type="button" class="btn btn-ligth px-5">Categorías</a>
+                  <a  routerLink="#" type="button" class="btn btn-ligth px-5">Conoce más</a>
                 </div>
                     <div class="parrafo1">
                       <h1 class="mt-2 ms-5">Todas las herramientas</h1>
@@ -19,7 +19,7 @@
                     </div>
 
                   <p class="parrafo mt-2 ms-5">Encuentra las herramientas que necesitas para tus proyectos, ahorra dinero evitando comprar equipos que solo usarás una vez y únete a una red de emprendedores que valoran la colaboración.</p>
-                  <a class="boton-registrar btn-blue-grad mt-2 ms-5 ps-4 border-0 col-md-3 nav-link active" routerLink="/registro">Regístrate gratis</a>
+                  <a class="boton-registrar btn-blue-grad mt-2 ms-5 ps-4 border-0 col-md-3 nav-link active" [routerLink]="['/registro']">Regístrate gratis</a>
                   <p class="parrafo mt-2 ms-5"><span class="subtitle">Comparte, Ahorra y Emprende</span><br> La Economía Colaborativa ya esta aqui.</p>
 
               </div>
@@ -33,31 +33,10 @@
   </div>
 </section>
 
-
-<ngx-slick-carousel class="carousel"
-  #slickModal="slick-carousel"
-  [config]="slideConfig"
-  (init)="slickInit($event)"
-  (breakpoint)="breakpoint($event)"
-  (afterChange)="afterChange($event)"
-  (beforeChange)="beforeChange($event)">
-<div ngxSlickItem *ngFor="let slide of slides" class="slide">
-<img src="{{ slide.img }}" alt="" width="100%">
-</div>
-</ngx-slick-carousel>
-<button (click)="addSlide()">Add</button>
-<button (click)="removeSlide()">Remove</button>
-<button (click)="slickModal.slickGoTo(2)">slickGoto 2</button>
-<button (click)="slickModal.unslick()">unslick</button>
-
-
-
-
 <!--SECCION PRODUCTOS-DESTACADOS-->
-<section id="productos-destacados" class="fondo">
-  <div class="container-fluid text-center col-md-6 mb-5">
-
-      <h3 class="py-5"> <strong> Productos destacados</strong></h3>
+<section id="productos-destacados" class="fondo py-5">
+  <div class="container-fluid text-center col-md-6 mb-3">
+      <h3 class="py-2"> <strong> Productos destacados</strong></h3>
       <h5 class="text">Conecta con una comunidad de usuarios dispuestos a compartir</h5>
       <p> ¡Descubre una forma <strong>inteligente</strong> y sostenible de acceder a las herramientas que necesitas en nuestro sitio web de economía colaborativa!</p>
   </div>
@@ -68,41 +47,48 @@
 </section>
 
 <!--SECCION CATEGORIA-->
-<section id="categorias" class="fondo py-5">
-  <div class="container-fluid text-center col-md-6 mt-5">
+<section id="categorias" class="fondo py-2">
+  <div class="container-fluid text-center col-md-6">
       <h3> <strong>Categorías</strong></h3>
       <p>Explora nuestras categorías de herramientas especializadas. Sea cual sea tu proyecto, estamos seguros de que encontrarás la herramienta adecuada. Simplifica tu vida, ahorra dinero uniéndote a nuestra comunidad hoy mismo.</p>
   </div>
-  <div class="container mx-auto">
-      <div class="row mt-2">
-            <!--REPLAZAR POR MODELO CATEGORIAS Y HACER RENDER CON CICLO -->
+
+  <div class="container fluid mx-auto">
             <!---SECCION SLIDER CATEGORIAS-->
-            <div class="row mt-2 categories">
-              <div class="col-md-4 py-3"  *ngFor="let category of categories">
-                  <div class="card shadow border mx-3">
-                      <img src="assets/img/idustria.png" alt="imagen" class="card-img-top"/>
-                      <div class="card-body text-center">
-                          <strong>{{category.title_cat}}</strong>
-                          <p>{{category.descrip_cat}}</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+              <ngx-slick-carousel class="carousel"
+                          #slickModal="slick-carousel"
+                          [config]="slideConfig"
+                          responsive="breakpoints"
+                          (init)="slickInit($event)"
+                          (breakpoint)="breakpoint($event)"
+                          (afterChange)="afterChange($event)"
+                          (beforeChange)="beforeChange($event)">
+
+                                <div ngxSlickItem *ngFor="let category of categories; let i=index" class="slide d-flex justify-content-center align-items-center"> <!--VARIABLE index DE PRUEBA; LUEGO SE SUSTITUYE POR EL id DE tool-->
+                                    <div class="card shadow">
+                                       <a [routerLink]="['/categoria/',i]"><img src="{{category.url_imagen}}" alt="imagen" class="img-card-top img-fluid" width=500px height=200px/></a> 
+                                        <div class="card-body text-center">
+                                            <strong>{{category.title_cat}}</strong>
+                                            <p>{{category.descrip_cat}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+              </ngx-slick-carousel>     
   </div>
 </section>
 
 <!--SECCION PREGUNTAS FRECUENTES-->
 <section id="preguntas-frecuentes" class="fondo pb-3">
   <div class="py-5">
-      <div class="row mt-2 widthMax">
-            <div class="content-image-preguntas col-md-6">
+      <div class="row mt-2 bg-primary">
+            <div class="col-md-6 content-image-preguntas">
               <div class="image-container">
                 <img class="img-preguntas img-fluid"src="assets/img/frecuentes.jpg" alt="preguntas">
               </div>
             </div>
-            <div class="content-preguntas col-md-6 color-primary-dark p-5">
-              <h4 class="text-color-white-theme mt-50">Guia prectica de como generar ingresos</h4>
+            <div class="col-md-6 color-primary-dark py-5 content-preguntas" style="padding: 20px;">
+              <h4 class="text-color-white-theme mt-50">Guia práctica de como generar ingresos</h4>
               <h1 class="text-color-white-theme">Preguntas frecuentes</h1>
               <p class="text-color-white-theme">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea cupiditate debitis blanditiis repellendus suscipit explicabo unde, distinctio dolore praesentium commodi, ab perferendis assumenda quaerat est, recusandae hic maiores mollitia saepe.
               Alias ullam libero eligendi maiores? Delectus, non aut. Molestiae repellat eligendi, non, delectus nulla totam</p>
@@ -121,8 +107,10 @@
       </div>
       <div class="content-testimonio col-md-6 py-4">
         <h1 class="text-center text-color-white-theme">Testimonios</h1>
-        <p class="text-color-white-theme mt-4">&#34;Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic voluptate tempora asperiores, sapiente deserunt labore ea aliquam ullam doloribus, possimus illum laborum. Velit neque beatae nemo! Esse dicta nesciunt aut.
-        Consequatur hic, voluptas nam ipsam similique placeat sit? &#34;</p>
+        <img src="assets/img/comillaDoble.png" alt="comillas" style="width: 30px;"> 
+        <p class="text-color-white-theme mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic voluptate tempora asperiores, sapiente deserunt labore ea aliquam ullam doloribus, possimus illum laborum. Velit neque beatae nemo! Esse dicta nesciunt aut.
+        Consequatur hic, voluptas nam ipsam similique placeat sit?</p>
+        <img src="assets/img/comillaDoble.png" alt="comillas" style="width: 30px;" class="girarImagen">
 
         <p class="text-color-white-theme">Alexander Luis</p>
         <p class="text-color-white-theme">CEO, Brandz</p>
