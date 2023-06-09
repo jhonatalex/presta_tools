@@ -10,8 +10,17 @@ input {
     border-radius: 7px;
 }
 
+.negrita{
+    font-weight:bold;
+}
+
 .div-formulario{
-    height: 630px;
+    height: 606px;
+    width: 700px;
+}
+
+.div-titulo{
+    width: 700px;
 }
 
 .btn-blue-grad {
@@ -28,4 +37,8 @@ input {
 
 .margin-botom{
     margin-bottom: 235px;
+}
+
+.maxWidth{
+    max-width: 100%;
 }

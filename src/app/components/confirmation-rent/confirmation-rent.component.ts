@@ -18,7 +18,7 @@ export class ConfirmationRentComponent implements OnInit {
     private route: ActivatedRoute,
     private toolService: ToolService
   ) {this.id = 0;
-    this.tool = new Tool (0,'','','','','','',0,0,0,0,0,0,'','','','','',0,0,0,0,new Date);//instancia vacia para guardar tool por id
+    this.tool = new Tool (0,'','','','','','',0,0,0,0,0,0,'','','','','',0,0,0,0,new Date,[],null,null);//instancia vacia para guardar tool por id
     }
 
   ngOnInit(): void {

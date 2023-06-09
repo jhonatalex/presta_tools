@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
                  autoplaySpeed: 2500,
                  infinite: true,
                  speed: 300,
-                 dots: true,
+                 dots: false,
                  responsive: [
                 {
                   breakpoint: 1024,

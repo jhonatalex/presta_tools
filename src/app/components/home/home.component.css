@@ -4,9 +4,15 @@
 
 }
 
-.widthMax{
-  width: 99%;
+
+.heighthMax{
+  max-height: 210px;
 }
+
+.widthMax{
+  max-width: 99%;
+}
+
 .product-image {
     height: 200px;
     overflow: hidden;
@@ -34,7 +40,7 @@
   .ovalo-buttons {
     background-color: black;
     border-radius: 20px;
-    width: 378px;
+    width: 410px;
   }
 
   .btn {
@@ -66,6 +72,7 @@
     color: white;
     height: 40px;
     text-decoration: none;
+    width: 160px;
   }
 
   .icon {
@@ -93,12 +100,13 @@
 
   .card {
       border-radius: 18px;
-      width: 80%;
-      height: 80%;
+     max-width: 80%;
+     max-height: 80%;
   }
 
   .card-body1 {
       display: contents;
+
   }
 
   .user {
@@ -121,29 +129,15 @@
   }
 
   .img-preguntas{
-    width: 102%;
+    width: 727px;
     height: 100%;
   }
   .mb-50{
     margin-bottom: 50px;
   }
 
-  .image-container {
-    position: relative;
-    display: inline-block;
-  }
+ 
 
-  .image-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 102%;
-    height: 100%;
-
-    background-image: linear-gradient(to right, #0793b371 0%,  #004fa96b  100%);
-    z-index: 1;
-  }
 
   .image-container img {
     display: block;
@@ -225,11 +219,6 @@
       justify-content: center;
       align-content: center;
       padding: 20px !important;
-    }
-
-
-    .img-fluid{
-      width: 225px;
     }
 
     .boton-registrar{

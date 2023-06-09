@@ -4,11 +4,11 @@
 <!--SECCION CATEGORIAS-->
 <section id="categoria">
     <div class="container-fluid fondo pt-5">
-        <div class="container  card shadow pt-5">
-            <h1 class="mx-5">Categoría: {{category.title_cat}}</h1>
+        <div class="container  card shadow pt-5 content-imagen">
+            <h1 class="mx-5"><strong>Categoría:</strong> {{category.title_cat}}</h1>
             <div class="card-body">
-                <img src="{{category.url_imagen}}" alt="imagen-categoria" class=" img-fluid mt-2 mx-4" style="width: 96%; height: 50%;">
-                <p class="text-center mt-5">{{category.descrip_cat}}</p>
+                <img src="{{category.url_imagen}}" alt="imagen-categoria" class=" img-fluid mt-2 mx-4" style="width: 96%; height: 25%;">
+                <p class="text-center mt-5 m-2">{{category.descrip_cat}}</p>
             </div>
         </div>
     </div>
@@ -16,7 +16,7 @@
 
 <!--SECCION PAGINACION PRODUCTOS-->
 <section id="paginacion-productos" class="fondo py-5">
-    <div class="card shadow container">
+    <div class="card shadow container content-products">
         <div class="products">
             
 
