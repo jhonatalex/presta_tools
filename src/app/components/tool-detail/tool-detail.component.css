@@ -1,0 +1,105 @@
+.fondo{
+    background-color:#ebebebdb;
+}
+
+.card {
+    border-radius: 30px;
+    border:none;
+    width: 640px;
+    height: 550px;
+
+}
+
+
+.contenedor-buscar{
+    border-radius: 20px;
+    background: whitesmoke;
+    width: 550px;
+    height: 50px;
+    padding: 5px;
+    margin-left: 80px;
+}
+
+.input-buscar{
+    width: 365px;
+    height: 40px;
+    border: none;
+    padding: 15px;
+}
+
+.card-small{
+    width: 450px;
+    height: 700px;
+    margin-left: 198px;
+}
+
+.card-big{
+    display: flex;
+    align-items: center;
+    width: 750px;
+    height: 650px;
+    margin-right: 60px;
+}
+
+.fa{
+    margin-right: 25px;
+    
+}
+
+.btn{
+    background: border-box;
+    padding-top: 1px;
+}
+
+.btn-blue-grad {
+    border-radius: 8px;
+    background-image: linear-gradient(to right, #0794b3 0%,  #0050a9  100%);
+    color: white;
+    height: 50px;
+    text-decoration: none;
+    font-size: 25px;
+    margin:50px;
+    padding: 10px;
+}
+
+.content-propietario{
+      width: 100%;
+      height: 350px;
+}
+
+.content-procucts{
+      width: 93%;
+      height: 525px;
+}
+
+.titulo{
+    padding: 18px;
+    margin-left: 10px;
+}
+
+.width-max{
+    
+    width: 99%;
+}
+
+.imageSmall{
+    height: 190px;
+}
+
+.image{
+      border-radius: 18px;
+      padding: 15px;
+}
+
+.img-card-top{
+    border-radius: 50px;
+    width: 500px;
+    height: 500px;
+    padding: 40px;
+}
+
+.card-products {
+    border-radius: 12px;
+    margin: 10px;
+    background-color: inherit;
+  }

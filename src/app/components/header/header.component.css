@@ -1,0 +1,42 @@
+.nav-link:hover {
+    background-color: #FFC400;
+    border-radius: 5px;
+    color: black;
+  }
+
+  .nav-link {
+    color: white;
+
+  }
+
+  .nav-item{
+    padding-left: 15px;
+  }
+
+  .logoSmall{
+    width: 240px;
+    height: 100px;
+    margin-right: 50px;
+  }
+
+  @media(max-width:992px){
+    .ovalo-buttons{
+      display: none;
+    }
+
+    .logo{
+      display: block;
+      margin: auto;
+    }
+
+    .fa {
+      color: white;
+    }
+
+    @media(max-width:992px){
+      .img-logo{
+        width: 220px;
+      }
+    }
+
+  }
