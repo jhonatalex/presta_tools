@@ -1,109 +1,106 @@
 <!--SECCION NAVBAR-->
 <app-header [flaglogo]="false"></app-header>
 
-<!--SECCION DETALLE TOOL-->
+<!--SECCION NOMBRE-MODELO BUSCAR TOOL-->
 <section id="detalle-herramienta" class="fondo">
 
-    <div class="cantainer fluid  width-max">  
-        <div class="row ms-5 py-5">   
-           <div class="col-sm-12 col-md-6 col-lg-6">
-            <h1 class="ms-2">{{tool.name}} {{tool.model}}</h1>
-            <small class="ms-5">0 veces reservado|Propietario:</small>
+    <div class="container col-md-10 widthMax pt-5">  
+        <div class="row pt-5">   
+           <div class="col-sm-10 col-md-6 col-lg-6">
+                <h1 class="margin-title"><strong>{{tool.name}} {{tool.model}}</strong></h1>
+                <div class="row">
+                    <div class="col margin-title"><ngx-star-rating [id]="'rating1'" class="d-flex"></ngx-star-rating><!--ESTRELLAS VALORACION--></div>
+                    <div class="col"><small class="marginSmall">0 veces reservado|Propietario:</small></div>
+                </div>
            </div>
-            <div class="col-md-6 contenedor-buscar">
-                <button class="btn btn-light ms-5 border-0"><i class="fa fa-search" aria-hidden="true"></i></button>
+            <div class="col-md-6 contenedor-buscar mt-2">
+                <button class="btn btn-light border-0"><i class="fa fa-search" aria-hidden="true"></i></button>
                 <input type="text" placeholder="Buscar Producto" class="input-buscar fondo">
             </div>   
         </div>
     </div>
 
-    <div class="container fluid width-max">
-        <div class="row pb-5  mx-auto">
-            <div class="col-sm-12 col-md-6 text-center px-0 mx-0">
-                <div class="card pb-4 card-big  d-flex justify-content-center align-items-center">
-                    <img src={{tool.url_image}} alt="foto" class="img-card-top">
-                </div>
-                
-                <div class="row text-center mt-2 pt-2 mx-5">
-                    <div class="col card shadow imageSmall mx-2 mt-5  d-flex justify-content-center align-items-center">
-                        <img src={{tool.url_image}} alt="imagen1" class="card-img image">
-                    </div>
-                    <div class="col card shadow imageSmall mx-2 mt-5  d-flex justify-content-center align-items-center">
-                        <img src={{tool.url_image_2}} alt="imagen2" class="card-img image">
-                    </div>
-                    <div class="col card shadow imageSmall mx-2 mt-5  d-flex justify-content-center align-items-center">
-                        <img src={{tool.url_image_3}} alt="imagen3" class="card-img image">
-                    </div>
-                </div>
+    <div class="container  col-md-10 div-content-tool">
+        <div class="row py-2 div-cards">
 
-            </div>
-            <div class="col-md-6 card card-small">
-                <h1 class="mt-2 text-center">{{tool.name}} {{tool.model}}</h1>
+                <!---GALERIA IMAGENES HERRAMIENTA-->
+               <div class="container fluid col-md-6">    
+                    <div class="img-container">
+                            <img src="{{tool.urlImage1}}" alt="image" id="preview" class="img-fluid card shadow imagen-big">
+                        <div class="img-prev text-center card-body">
+                            <div class="img-slide active">
+                                <img src="{{tool.urlImage1}}" alt="image1" class="img-fluid card shadow imagen-small" appImageGallery>
+                            </div>
+                            <div class="img-slide">
+                                <img src="{{tool.urlImage2}}" alt="image2" class="img-fluid card shadow imagen-small" appImageGallery>
+                            </div>
+                            <div class="img-slide">
+                                <img src="{{tool.urlImage3}}" alt="image3" class="img-fluid card shadow imagen-small" appImageGallery>
+                            </div>
+                        </div>
+                    </div>
+               </div>    
+            
+
+            <!--DESCRIPCION HERRAMIENTA-->
+            <div class="card shadow col-md-6 div-card-small">
+                <h1 class="mt-2 text-center"><strong>{{tool.name}} {{tool.model}}</strong></h1>
                 <hr class="bg-dark">
-
-                <div class="row">
-                    <div class="col d-flex">
-                        <strong>SKU:</strong>
-                        <p>122331</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col d-flex">
-                        <strong>Categoria:</strong>
-                        <p>{{tool.id_category}}</p>
-                    </div>
-                </div>
-
-                <p>DESCRIPCIÓN:</p>
-                <p>{{tool.description}}</p>
-                <p>CARACTERÍSTICAS:</p>
-
-                <div class="row">
-                    <div class="col d-flex">
-                        <strong>Marca:</strong>
-                        <p class="me-2">{{tool.model}}</p>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col d-flex">
-                        <strong>Rentado:</strong>
-                        <p>0 veces</p>
-                    </div>
-                </div>
-                <strong>Aún no se han encontrado</strong>
-                <strong>valoraciones</strong>
-                <div class="row">
-                    <div class="col d-flex">
-                        <p>DISPONIBILIDAD:</p>
-                        <p style="color: blue;">Disponible</p>
-                    </div>
-                </div>
-                <a routerLink="/" class="btn-blue-grad mb-4 px-5 py-2 border-0 col-md-8 mx-auto">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
+                <p class="margin"><strong>SKU:</strong></p>    
+                <p> <strong>Categoria: </strong>{{tool.idCategory}}</p>
+                <p>DESCRIPCIÓN: <br> {{tool.description}}</p>
+                <p>CARACTERÍSTICAS:</p>            
+                <h6 class="margin"><strong> Marca:</strong>{{tool.model}}</h6>    
+                <p class="negrita">Rentado:</p>
+                <p class="negrita margin">¡Aún no se han encontrado</p>
+                <p class="negrita">valoraciones!</p>    
+                <p>DISPONIBILIDAD:</p>
+                <a [routerLink]="['/confirma-renta',this.id]" class="btn-blue-grad mb-2 px-5 py-2 border-0 col-md-8 mx-auto">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
             </div>
-        </div>
-    </div>
 
+        </div>
+    </div> 
 </section>
 
 <!--SECCIÓN INFORMACIÓN PROPIETARIO-->
-<section id="informacion-propietario" class="fondo pb-5 seccion-propietario">
-    <div class="container fluid px-0  width-max">
-            <div class="card shadow content-propietario  mx-auto">
-                <strong class="card titulo">Información del Propietario</strong>
+<section id="informacion-propietario" class="fondo py-5 seccion-propietario">
+     <div class="card shadow content-propietario mx-auto"> 
+        <div class="row">
+            
+            <div class="col d-grid padding">
+                <strong class="titulo-negrita py-2">Información del Propietario</strong>
+                <strong class="margin">Nombre:</strong>
+                <strong class="margin">Direción:</strong>
+                <strong class="margin">Código postal:</strong>
+                <strong class="py-2">Aún no se han encontrado valoraciones</strong>
+             </div>
+             <div class="col d-flex flex-column justify-content-center align-items-center pt-2">
+                 <div class="div-logo-simple">
+                    <img src="assets/img/LogoSimple.png" alt="logoSimple" class="img-fluid logo-simple">
+                 </div>
+                 <div class="valoracion">
+                    <p class="negrita text-center margin">Propietario</p>
+                    <ngx-star-rating [id]="'rating2'"></ngx-star-rating><!--ESTRELLAS VALORACION-->
+                 </div>
             </div>
+
+        </div>
     </div>
 </section>
 
 <section id="productos-relacionados" class="fondo pb-5">
      <!---SLIDER PRODUCTOS RELACIONADOS-->
-     <div class="card shadow content-procucts mx-auto">
-        <strong class="px-2 pb-0 titulo">Productos relacionados</strong>
+     <div class="card shadow content-procucts padding mx-auto">
+        <strong class="px-2 pb-0 titulo-negrita">Productos relacionados</strong>
         <app-related-featured-products></app-related-featured-products>
     </div>
 </section>
 
 <!--SECCION FOOTER-->
 <app-footer></app-footer>
+
+
+
+
+
 

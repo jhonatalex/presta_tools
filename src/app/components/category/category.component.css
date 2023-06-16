@@ -8,10 +8,29 @@
     background-color: #ebebebdb;
 }
 
+.content-imagen{
+    width: 90%;
+}
+
 .widthMax{
-    width: 99%
+    width: 100%
 }
 
 .content-grilla{
     padding: 30px;
+    width: 92%;
+}
+
+.titulo-negrita{
+    font-size: x-large;
+    font-weight:bold;
+    margin-left: 12px;
+    padding: 5px;
+}
+
+.content-procucts{
+    width: 88%;
+    height: 470px;
+    border-radius: 18px;
+    padding: 5px;
 }

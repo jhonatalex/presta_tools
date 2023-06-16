@@ -19,7 +19,7 @@ export class ToolDetailComponent implements OnInit {
     private toolService: ToolService  
   ){
     this.id = 0;
-    this.tool = new Tool (0,'','','','','','',0,0,0,0,0,0,'','','','','',0,0,0,0,new Date);//instancia vacia para guardar tool por id 
+    this.tool = new Tool (0,'','','','','','',0,0,0,0,0,0,'','','','','',0,0,0,0,new Date,[],null,null);//instancia vacia para guardar tool por id 
   }
 
   ngOnInit(): void {
@@ -27,16 +27,15 @@ export class ToolDetailComponent implements OnInit {
     this.getToolDetail()//saca detalle de Tool por su ID
   }
 
-    getId(){
+    getId(): void{
       //obtener el  id de la URL  
       this.route.params.subscribe(params =>{
       this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
       console.log(this.id);
-      
       });
     }
 
-    getToolDetail(){
+    getToolDetail(): void{
       this.toolService.createTools();//Obtiene array de herramientas del servicio
       this.tool = this.toolService.getDetailTool(this.id);//obtiene la herramienta por su ID
       console.log(this.tool);

@@ -50,11 +50,19 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+
+  font-family: 'Merriweather', serif;
+font-family: 'Poppins', sans-serif;
 }
 
-.slick-next{
 
+.slick-prev:before{
   color: #0050a9 !important;
+  font-size: 30px !important;
+}
 
+.slick-next:before{
+  color: #0050a9 !important;
+  font-size: 30px !important;
 }
 

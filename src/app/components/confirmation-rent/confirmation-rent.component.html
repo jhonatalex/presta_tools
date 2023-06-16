@@ -1,0 +1,91 @@
+<!--SECCION NAVBAR-->
+<app-header [flaglogo]="false"></app-header>
+
+<section id="seccion confirma renta py-5 fondo">
+    <div class="container col-md-15">
+        <div class="row  maxWidth">
+            <div class="col-md-7 py-5">
+                <div class="card shadow borderRadius ms-4 p-2 div-titulo">
+                    <h3 class="text-center"><strong>Confirmación de renta</strong></h3>
+                </div>
+                <div class="card shadow borderRadius ms-4 p-2 mt-5 div-formulario">
+                    <h5 class="ms-4 mt-2"><strong>Datos de Facturación</strong></h5>
+                        <form class="form-group" #confirmForm="ngForm" (ngSubmit)="onSubmit(confirmForm)">
+                            <div class="row">
+                                    <div class="col">
+                                        <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                            <label for="nombre" class="form-label mb-0">Nombre</label>
+                                            <input type="text" class="form-control-sm border" name="nombre" id="nombre">
+                                        </div>
+                                        <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                            <label for="telefono" class="form-label mb-0">Teléfono</label>
+                                            <input type="text" class="form-control-sm border" name="telefono" id="telefono">
+                                        </div>
+                                        <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                            <label for="region" class="form-label mb-0">Región/Provincia</label>
+                                            <input type="text" class="form-control-sm border" name="region" id="region">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                            <label for="apellido" class="form-label mb-0">Apellido</label>
+                                            <input type="text" class="form-control-sm border" name="apellido" id="apellido">
+                                        </div>
+                                        <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                            <label for="email" class="form-label mb-0">Dirección de correo electrónico</label>
+                                            <input type="email" class="form-control-sm border" name="email" id="email">
+                                        </div>
+                                        <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                            <label for="codigo postal" class="form-label mb-0">Código postal</label>
+                                            <input type="text" class="form-control-sm border" name="codigo postal" id="codigo Postal">
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
+                                        <label for="email" class="form-label mb-0">Dirección</label>
+                                        <input type="email" class="form-control-sm border" name="email" id="email">
+                                    </div>
+                                    <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4 pb-5">
+                                        <label for="notas" class="form-label mb-0">Notas adicionales(Opcional)</label>
+                                        <textarea type="text" class="form-control-sm border pb-5" name="notas" id="notas"></textarea>
+                                    </div>
+                            </div>
+                        </form>
+                </div>
+            </div>
+            
+            <div class="col-md-5 py-5">
+                <div class="card shadow borderRadius ms-4 me-4 p-2">
+                    <h5 class="text-center py-2"><strong>Tu orden</strong></h5>
+                        <div class="d-flex justify-content-between px-5 mt-4">
+                            <h5><strong>Producto</strong></h5>
+                            <h5><strong> Precio</strong></h5>
+                        </div>
+                        <div class="d-flex justify-content-between px-5 my-5">
+                            <img src="{{tool.urlImage1}}" alt="image tool" class="img-card w-25 h-25">
+                            <div>
+                                <h5><strong>{{tool.name}} {{tool.model}}</strong></h5>
+                                <h5><strong> Propietario:</strong> {{tool.idUser}}</h5>
+                            </div>
+                            <p>{{tool.valueRent}} CLP</p>
+                        </div>
+                        <div class="d-flex justify-content-between px-5 mt-4">
+                            <h5><strong>Subtotal</strong></h5>
+                            <h5>{{tool.valueRent}} CLP</h5>
+                        </div>
+                        <div class="d-flex justify-content-between px-5 mt-4 margin-botom">
+                            <h5><strong>Total</strong></h5>
+                            <h5>{{tool.valueRent}} CLP</h5>
+                        </div>
+                    <input type="submit" class="btn-blue-grad mt-1 px-5 border-0  mx-auto" [disabled]="confirmForm.invalid" value="Realizar Pago">
+                </div>
+    
+            </div>
+        </div>
+    
+    </div>
+</section>
+
+
+<!--SECCION FOOTER-->
+<app-footer></app-footer>

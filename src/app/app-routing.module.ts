@@ -6,14 +6,19 @@ import { RegisterComponent } from './components/register/register.component';
 import { ToolDetailComponent } from './components/tool-detail/tool-detail.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 import { CategoryComponent } from './components/category/category.component';
+import { ConfirmationRentComponent } from './components/confirmation-rent/confirmation-rent.component';
+import { ThanksRentComponent } from './components/thanks-rent/thanks-rent.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'acceso', component: LoginComponent},
   {path: 'registro', component: RegisterComponent},
-  {path: 'detalle/:id', component: ToolDetailComponent},
+  {path: 'herramienta/:id', component: ToolDetailComponent},
   {path: 'recupera-clave', component: RecoverPasswordComponent},
-  {path: 'categoria', component: CategoryComponent}
+  {path: 'categoria/:id', component: CategoryComponent},
+  {path: 'confirma-renta/:id', component: ConfirmationRentComponent},
+  {path: 'thanks-rent', component: ThanksRentComponent},
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({

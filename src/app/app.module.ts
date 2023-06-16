@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxStarRatingModule } from 'ngx-star-rating';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +19,9 @@ import { CategoryComponent } from './components/category/category.component';
 import { RelatedFeaturedProductsComponent } from './components/related-featured-products/related-featured-products.component';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { ImageGalleryDirective } from './directives/image-gallery.directive';
+import { ConfirmationRentComponent } from './components/confirmation-rent/confirmation-rent.component';
+import { ThanksRentComponent } from './components/thanks-rent/thanks-rent.component';
 
 
 @NgModule({
@@ -31,6 +36,9 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     HeaderComponent,
     CategoryComponent,
     RelatedFeaturedProductsComponent,
+    ImageGalleryDirective,
+    ConfirmationRentComponent,
+    ThanksRentComponent,
 
 
   ],
@@ -40,7 +48,9 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    NgxStarRatingModule,
+    ReactiveFormsModule
 
   ],
   providers: [],

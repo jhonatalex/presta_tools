@@ -8,7 +8,7 @@
         <img src="assets/img/logo.png" alt="logo" class="img-logo ms-2">
       </div>
       <div class="logo" *ngIf="!flaglogo"><!---CONDICION PARA EL TAMAÑO DEL LOGO PEQUEÑO-->
-        <img src="assets/img/logo.png" alt="logo" class="img-logo ms-2 logoSmall">
+        <img src="assets/img/logo.png" alt="logo" class="img-logo ms-5 logoSmall">
       </div>
       <div class="collapse navbar-collapse  mt-5 mb-0 ms-5" id="navbarTogglerDemo01">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -16,18 +16,18 @@
             <a class="nav-link active" aria-current="page" routerLink="/">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" routerLink="/">Productos</a>
+            <a class="nav-link active" href="/#productos-destacados">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" routerLink="/">Alquila Tu Herramienta</a>
+            <a class="nav-link active" [routerLink]="['/']">Alquila Tu Herramienta</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" routerLink="/">Contacto</a>
+            <a class="nav-link active" [routerLink]="['/']">Contacto</a>
           </li>
         </ul>
         <div class="d-flex float-right nav-item">
-          <a class="nav-link active" routerLink="/acceso">Inicia Sesión</a>
-          <a class="nav-link active" routerLink="/registro">Regístrate gratis</a>
+          <a class="nav-link active" [routerLink]="['/acceso']">Inicia Sesión</a>
+          <a class="nav-link active" [routerLink]="['/registro']">Regístrate gratis</a>
         </div>
       </div>
         <i class="fa fa-user-circle-o" aria-hidden="true"></i>
