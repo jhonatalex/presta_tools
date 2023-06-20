@@ -7,6 +7,7 @@ import { ToolDetailComponent } from './components/tool-detail/tool-detail.compon
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 import { CategoryComponent } from './components/category/category.component';
 import { ConfirmationRentComponent } from './components/confirmation-rent/confirmation-rent.component';
+import { ThanksRentComponent } from './components/thanks-rent/thanks-rent.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'recupera-clave', component: RecoverPasswordComponent},
   {path: 'categoria/:id', component: CategoryComponent},
   {path: 'confirma-renta/:id', component: ConfirmationRentComponent},
+  {path: 'thanks-rent', component: ThanksRentComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

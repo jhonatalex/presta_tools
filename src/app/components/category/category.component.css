@@ -8,12 +8,17 @@
     background-color: #ebebebdb;
 }
 
+.content-imagen{
+    width: 90%;
+}
+
 .widthMax{
     width: 100%
 }
 
 .content-grilla{
     padding: 30px;
+    width: 92%;
 }
 
 .titulo-negrita{
@@ -24,7 +29,7 @@
 }
 
 .content-procucts{
-    width: 93%;
+    width: 88%;
     height: 470px;
     border-radius: 18px;
     padding: 5px;

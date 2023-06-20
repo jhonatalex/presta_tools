@@ -4,40 +4,38 @@
 <!--SECCION NOMBRE-MODELO BUSCAR TOOL-->
 <section id="detalle-herramienta" class="fondo">
 
-    <div class="cantainer fluid">  
-        <div class="row ms-2 py-4">   
-           <div class="col-sm-12 col-md-6 col-lg-6">
-                <h1 class="ms-4">{{tool.name}} {{tool.model}}</h1>
+    <div class="container col-md-10 widthMax pt-5">  
+        <div class="row pt-5">   
+           <div class="col-sm-10 col-md-6 col-lg-6">
+                <h1 class="margin-title"><strong>{{tool.name}} {{tool.model}}</strong></h1>
                 <div class="row">
-                    <div class="col"><ngx-star-rating [id]="'rating1'" class="d-flex ms-4"></ngx-star-rating><!--ESTRELLAS VALORACION--></div>
+                    <div class="col margin-title"><ngx-star-rating [id]="'rating1'" class="d-flex"></ngx-star-rating><!--ESTRELLAS VALORACION--></div>
                     <div class="col"><small class="marginSmall">0 veces reservado|Propietario:</small></div>
                 </div>
-                
-                
            </div>
             <div class="col-md-6 contenedor-buscar mt-2">
-                <button class="btn btn-light ms-5 border-0"><i class="fa fa-search" aria-hidden="true"></i></button>
+                <button class="btn btn-light border-0"><i class="fa fa-search" aria-hidden="true"></i></button>
                 <input type="text" placeholder="Buscar Producto" class="input-buscar fondo">
             </div>   
         </div>
     </div>
 
-    <div class="container fluid div-content-tool">
+    <div class="container  col-md-10 div-content-tool">
         <div class="row py-2 div-cards">
 
                 <!---GALERIA IMAGENES HERRAMIENTA-->
                <div class="container fluid col-md-6">    
-                    <div class="img-container pt-2">
-                            <img src="{{tool.url_image}}" alt="image" id="preview" class="img-fluid card shadow imagen-big">
+                    <div class="img-container">
+                            <img src="{{tool.urlImage1}}" alt="image" id="preview" class="img-fluid card shadow imagen-big">
                         <div class="img-prev text-center card-body">
-                            <div class="img-slide active mx-2">
-                                <img src="{{tool.url_image}}" alt="image1" class="img-fluid card shadow imagen-small" appImageGallery>
+                            <div class="img-slide active">
+                                <img src="{{tool.urlImage1}}" alt="image1" class="img-fluid card shadow imagen-small" appImageGallery>
                             </div>
-                            <div class="img-slide mx-2">
-                                <img src="{{tool.url_image_2}}" alt="image2" class="img-fluid card shadow imagen-small" appImageGallery>
+                            <div class="img-slide">
+                                <img src="{{tool.urlImage2}}" alt="image2" class="img-fluid card shadow imagen-small" appImageGallery>
                             </div>
-                            <div class="img-slide mx-2">
-                                <img src="{{tool.url_image_3}}" alt="image3" class="img-fluid card shadow imagen-small" appImageGallery>
+                            <div class="img-slide">
+                                <img src="{{tool.urlImage3}}" alt="image3" class="img-fluid card shadow imagen-small" appImageGallery>
                             </div>
                         </div>
                     </div>
@@ -46,18 +44,18 @@
 
             <!--DESCRIPCION HERRAMIENTA-->
             <div class="card shadow col-md-6 div-card-small">
-                <h1 class="mt-2 text-center">{{tool.name}} {{tool.model}}</h1>
+                <h1 class="mt-2 text-center"><strong>{{tool.name}} {{tool.model}}</strong></h1>
                 <hr class="bg-dark">
-                <p class="negrita margin">SKU:</p>    
-                <p class="negrita">Categoria: {{tool.id_category}}</p>
+                <p class="margin"><strong>SKU:</strong></p>    
+                <p> <strong>Categoria: </strong>{{tool.idCategory}}</p>
                 <p>DESCRIPCIÓN: <br> {{tool.description}}</p>
                 <p>CARACTERÍSTICAS:</p>            
-                <h6 class="negrita margin">Marca: {{tool.model}}</h6>    
+                <h6 class="margin"><strong> Marca:</strong>{{tool.model}}</h6>    
                 <p class="negrita">Rentado:</p>
-                <p class="negrita margin">Aún no se han encontrado</p>
-                <p class="negrita">valoraciones</p>    
+                <p class="negrita margin">¡Aún no se han encontrado</p>
+                <p class="negrita">valoraciones!</p>    
                 <p>DISPONIBILIDAD:</p>
-                <a [routerLink]="['/confirma-renta',id]" class="btn-blue-grad mb-4 px-5 py-2 border-0 col-md-8 mx-auto">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
+                <a [routerLink]="['/confirma-renta',this.id]" class="btn-blue-grad mb-2 px-5 py-2 border-0 col-md-8 mx-auto">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
             </div>
 
         </div>
