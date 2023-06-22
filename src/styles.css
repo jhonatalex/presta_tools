@@ -66,3 +66,14 @@ font-family: 'Poppins', sans-serif;
   font-size: 30px !important;
 }
 
+.text-justify{
+  text-align: justify;
+}
+
+.pb-20{
+  padding-bottom: 20px;
+}
+
+.pt-20{
+  padding-top: 20px;
+}

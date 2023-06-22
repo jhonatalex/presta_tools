@@ -36,7 +36,7 @@
 <!--SECCION PRODUCTOS-DESTACADOS-->
 <section id="productos-destacados" class="fondo py-5">
   <div class="container-fluid text-center col-md-6 mb-3">
-      <h3 class="py-2"> <strong> Productos destacados</strong></h3>
+      <h1 class="py-2"> <strong> Productos destacados</strong></h1>
       <h5 class="text">Conecta con una comunidad de usuarios dispuestos a compartir</h5>
       <p> ¡Descubre una forma <strong>inteligente</strong> y sostenible de acceder a las herramientas que necesitas en nuestro sitio web de economía colaborativa!</p>
   </div>
@@ -44,16 +44,16 @@
   <br/>
   <!--SECCION SLIDER PRODUCTOS DESTACADOS-->
   <app-related-featured-products></app-related-featured-products>
-</section> 
+</section>
 
 <!--SECCION CATEGORIA-->
-<section id="categorias" class="fondo py-2">
+<section id="categorias" class="fondo py-2" style="padding-top: 10%">
   <div class="container-fluid text-center col-md-6">
-      <h3> <strong>Categorías</strong></h3>
+      <h1> <strong>Categorías</strong></h1>
       <p>Explora nuestras categorías de herramientas especializadas. Sea cual sea tu proyecto, estamos seguros de que encontrarás la herramienta adecuada. Simplifica tu vida, ahorra dinero uniéndote a nuestra comunidad hoy mismo.</p>
   </div>
 
-  <div class="container fluid mx-auto">
+  <div class="container fluid mx-auto pt-20">
             <!---SECCION SLIDER CATEGORIAS-->
               <ngx-slick-carousel class="carousel"
                           #slickModal="slick-carousel"
@@ -65,16 +65,16 @@
                           (beforeChange)="beforeChange($event)">
 
                                 <div ngxSlickItem *ngFor="let category of categories; let i=index" class="slide d-flex justify-content-center align-items-center"> <!--VARIABLE index DE PRUEBA; LUEGO SE SUSTITUYE POR EL id DE tool-->
-                                    <div class="card shadow">
-                                       <a [routerLink]="['/categoria/',i]"><img src="{{category.url_imagen}}" alt="imagen" class="img-card-top img-fluid" width=500px height=200px/></a> 
+                                    <div class="card shadow pb-20">
+                                       <a [routerLink]="['/categoria/',i]"><img src="{{category.url_imagen}}" alt="imagen" class="img-card-top img-fluid" width=500px height=200px/></a>
                                         <div class="card-body text-center heighthMax">
                                             <strong>{{category.title_cat}}</strong>
-                                            <p>{{category.descrip_cat}}</p>
+                                            <p class="text-justify ">{{category.descrip_cat}}</p>
                                         </div>
                                     </div>
                                 </div>
 
-              </ngx-slick-carousel>     
+              </ngx-slick-carousel>
   </div>
 </section>
 
@@ -87,12 +87,12 @@
                 <img class="img-preguntas img-fluid"src="assets/img/frecuentes.jpg" alt="preguntas">
               </div>
             </div>
-            <div class="col-md-6 color-primary-dark py-5 content-preguntas" style="padding: 20px;">
+            <div class="col-md-6 color-primary-dark py-5 content-preguntas" style="padding:60px;">
               <h4 class="text-color-white-theme mt-50">Guia práctica de como generar ingresos</h4>
               <h1 class="text-color-white-theme">Preguntas frecuentes</h1>
-              <p class="text-color-white-theme">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea cupiditate debitis blanditiis repellendus suscipit explicabo unde, distinctio dolore praesentium commodi, ab perferendis assumenda quaerat est, recusandae hic maiores mollitia saepe.
-              Alias ullam libero eligendi maiores? Delectus, non aut. Molestiae repellat eligendi, non, delectus nulla totam</p>
-            <button class="boton-link border-0 me-5">Visit the help center<i class="fa fa-external-link ms-5" aria-hidden="true"></i></button>
+              <p class="text-color-white-theme text-justify"> Prestatool te permite alquilar herramientas y una amplia variedad de artículos de manera sencilla y segura. A continuación, encontrarás
+                 respuestas a las preguntas más frecuentes que nuestros usuarios suelen plantear. Si tienes alguna otra duda o consulta, no dudes en contactarnos.</p>
+            <button class="boton-link border-0 me-5 mt-30 text-center">Visita FAQ<i class="fa fa-external-link ms-5" aria-hidden="true"></i></button>
             </div>
       </div>
   </div>
@@ -103,17 +103,18 @@
   <div class="container-fluid widthMax">
     <div class="row py-5 mb-50">
       <div class="content-image col-md-6 py-4">
-        <img src="assets/img/testimonio.png" alt="testimonio" class="img-testimonio">
+        <img src="assets/img/alquiler-de-herramientas.jpg" alt="testimonio" class="img-testimonio">
       </div>
-      <div class="content-testimonio col-md-6 py-4">
+      <div class="content-testimonio col-md-6 py-4" style="padding:60px;">
         <h1 class="text-center text-color-white-theme">Testimonios</h1>
-        <img src="assets/img/comillaDoble.png" alt="comillas" style="width: 30px;"> 
-        <p class="text-color-white-theme mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic voluptate tempora asperiores, sapiente deserunt labore ea aliquam ullam doloribus, possimus illum laborum. Velit neque beatae nemo! Esse dicta nesciunt aut.
-        Consequatur hic, voluptas nam ipsam similique placeat sit?</p>
+        <img src="assets/img/comillaDoble.png" alt="comillas" style="width: 30px;">
+        <p class="text-color-white-theme mb-0 text-justify">¡Increíble experiencia con PrestaTool!  Necesitaba una máquina de soldar para un proyecto en casa,
+           pero no quería invertir mucho dinero en comprar una nueva. Fue entonces cuando descubrí esta plataforma de economía colaborativa
+           y decidí probarla. Me sorprendió lo fácil que fue encontrar la herramienta que necesitaba.</p>
         <img src="assets/img/comillaDoble.png" alt="comillas" style="width: 30px;" class="girarImagen">
+          <br>
+        <p class="text-color-white-theme text-right ">Humberto Barzarte</p>
 
-        <p class="text-color-white-theme">Alexander Luis</p>
-        <p class="text-color-white-theme">CEO, Brandz</p>
       </div>
     </div>
   </div>
