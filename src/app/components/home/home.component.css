@@ -40,7 +40,10 @@
   .ovalo-buttons {
     background-color: black;
     border-radius: 20px;
-    width: 410px;
+    justify-content: space-around;
+    display: flex;/* 
+    
+    width: 410px; */
   }
 
   .btn {
@@ -67,6 +70,9 @@
 
 
   .btn-blue-grad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 8px;
     background-image: linear-gradient(to right, #0794b3 0%,  #0050a9  100%);
     color: white;
@@ -168,11 +174,11 @@
 
 
 
-  @media(max-width:900px){
+  @media(max-width:900px){/* 
     .ovalo-buttons{
       display: none;
     }
-
+ */
     .logo{
       display: block;
       margin: auto;
@@ -182,13 +188,13 @@
       color: white;
     }
 
-    .parrafo{
+    /* .parrafo{
       display: none;
     }
 
     .parrafo1{
       text-align: center;
-    }
+    } */
 
     .banner{
       text-align: center;
@@ -221,9 +227,9 @@
       padding: 20px !important;
     }
 
-    .boton-registrar{
+    /* .boton-registrar{
       width: 160px;
-    }
+    } */
 
     .content-banner{
       display: flex;
