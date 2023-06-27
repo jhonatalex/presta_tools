@@ -53,7 +53,7 @@
       <p>Explora nuestras categorías de herramientas especializadas. Sea cual sea tu proyecto, estamos seguros de que encontrarás la herramienta adecuada. Simplifica tu vida, ahorra dinero uniéndote a nuestra comunidad hoy mismo.</p>
   </div>
 
-  <div class="container fluid mx-auto pt-20">
+  <div class="container fluid ">
             <!---SECCION SLIDER CATEGORIAS-->
               <ngx-slick-carousel class="carousel"
                           #slickModal="slick-carousel"
@@ -67,9 +67,9 @@
                                 <div ngxSlickItem *ngFor="let category of categories; let i=index" class="slide d-flex justify-content-center align-items-center"> <!--VARIABLE index DE PRUEBA; LUEGO SE SUSTITUYE POR EL id DE tool-->
                                     <div class="card shadow pb-20">
                                        <a [routerLink]="['/categoria/',i]"><img src="{{category.url_imagen}}" alt="imagen" class="img-card-top img-fluid" width=500px height=200px/></a>
-                                        <div class="card-body text-center heighthMax">
+                                        <div class="card-body text-center">
                                             <strong>{{category.title_cat}}</strong>
-                                            <p class="text-justify ">{{category.descrip_cat}}</p>
+                                            <p  class="text-justify  ">{{category.descrip_cat}}</p>
                                         </div>
                                     </div>
                                 </div>
