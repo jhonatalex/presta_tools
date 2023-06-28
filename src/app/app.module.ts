@@ -23,6 +23,22 @@ import { ImageGalleryDirective } from './directives/image-gallery.directive';
 import { ConfirmationRentComponent } from './components/confirmation-rent/confirmation-rent.component';
 import { ThanksRentComponent } from './components/thanks-rent/thanks-rent.component';
 
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+
+import { environment } from 'src/environments/environment';
+import { AddToolComponent } from './components/add-tool/add-tool.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgxSpinnerModule } from "ngx-spinner";
+
+
 
 @NgModule({
   declarations: [
@@ -39,6 +55,8 @@ import { ThanksRentComponent } from './components/thanks-rent/thanks-rent.compon
     ImageGalleryDirective,
     ConfirmationRentComponent,
     ThanksRentComponent,
+    AddToolComponent,
+    UploadFileComponent,
 
 
   ],
@@ -50,9 +68,18 @@ import { ThanksRentComponent } from './components/thanks-rent/thanks-rent.compon
     NgxPaginationModule,
     SlickCarouselModule,
    // NgxStarRatingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideStorage(() => getStorage()),
+
+    BrowserAnimationsModule,
+    NgxSpinnerModule,
 
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })
