@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   public user:User;
 
   constructor(private userService:UserService) { 
-    this.user = new User(0,'','','','','','','',new Date(),true);
+    this.user = new User(0,'','','','','','','',new Date(),true,'');
   }
 
   ngOnInit(): void {
@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   onSubmit(form:NgForm){
     this.userService.signup(this.user).subscribe(response=>{
       console.log(response);
-      this.userService.getIdentity();//saca indentidad de usuario logeado
     });
   }
 

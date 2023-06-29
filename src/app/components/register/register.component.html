@@ -18,8 +18,8 @@
                                     <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">El nombre no es válido</small>
                                 </div>
                                 <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                    <input type="text" class="form-control-sm border"  placeholder="Apellido" name="last_name" #last_name="ngModel" [(ngModel)]="user.last_name" required pattern="[a-zA-Z]+">
-                                    <small *ngIf="!last_name.valid && last_name.touched" class="invalid-feedback d-block">El apellido no es válido</small>
+                                    <input type="text" class="form-control-sm border"  placeholder="Apellido" name="lastName" #lastName="ngModel" [(ngModel)]="user.lastName" required pattern="[a-zA-Z]+">
+                                    <small *ngIf="!lastName.valid && lastName.touched" class="invalid-feedback d-block">El apellido no es válido</small>
                                 </div>
                                 <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                     <input type="text" class="form-control-sm border" placeholder="Telefono" name="telephone" #telephone="ngModel" [(ngModel)]="user.telephone" required>
@@ -34,7 +34,8 @@
                                     <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">Su contraseña no es válida; mínimo 6 caracteres al menos 1 número, al menos 1 letra mayúscula</small>
                                 </div>
                                 <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                    <input type="password" class="form-control-sm border" name="password" [(ngModel)]="user.password" placeholder="Repetir Contraseña" required>
+                                    <input type="password" class="form-control-sm border" name="ConfirmPassword" [(ngModel)]="ConfirmPassword" placeholder="Repetir Contraseña" required>
+                                    <small *ngIf="user.password != ConfirmPassword" class="invalid-feedback d-block">Confirme su contraseña</small>
                                 </div>
                                 <div class="form-group mt-3 pt-1">
                                     <input type="submit" class="btn-blue-grad mb-4 px-5 border-0" [disabled]="registerForm.invalid" value="Enviar">

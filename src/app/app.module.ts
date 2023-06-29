@@ -22,6 +22,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ImageGalleryDirective } from './directives/image-gallery.directive';
 import { ConfirmationRentComponent } from './components/confirmation-rent/confirmation-rent.component';
 import { ThanksRentComponent } from './components/thanks-rent/thanks-rent.component';
+import { FrequentQuestionsComponent } from './components/frequent-questions/frequent-questions.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ThanksRentComponent } from './components/thanks-rent/thanks-rent.compon
     ImageGalleryDirective,
     ConfirmationRentComponent,
     ThanksRentComponent,
+    FrequentQuestionsComponent,
 
 
   ],

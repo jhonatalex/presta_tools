@@ -10,7 +10,7 @@
 
             <div ngxSlickItem *ngFor="let tool of tools" class="slide d-flex justify-content-center align-items-center"> <!--VARIABLE index DE PRUEBA; LUEGO SE SUSTITUYE POR EL id DE tool-->
                 <div class="card shadow div-card d-flex justify-content-center align-items-center">
-                    <img src={{tool.urlImage1}} alt="imagen" class="img-card img-fluid" width=500px height=200px/>
+                    <img src={{tool.urlImage}} alt="imagen" class="img-card img-fluid" width=500px height=200px/>
                     <div class="card-body text-center heighthMax">
                         <strong>{{tool.name}} {{tool.model}}</strong>
                         <p>Precio Alquiler: {{tool.valueRent}} CLP</p>

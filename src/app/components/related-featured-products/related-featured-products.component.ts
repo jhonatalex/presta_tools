@@ -10,7 +10,7 @@ import { ActivatedRoute,Params } from '@angular/router';
   providers:[ToolService ]
 })
 export class RelatedFeaturedProductsComponent implements OnInit {
-  public tools:Tool[];
+  public tools:any;
   
 
   slideConfig = { slidesToShow:3,
@@ -66,17 +66,17 @@ export class RelatedFeaturedProductsComponent implements OnInit {
   constructor(
     private toolService: ToolService,
     private route: ActivatedRoute) 
-    {
-    this.tools = [];
-    
-    }
+    {}
 
   ngOnInit(): void {
     this.getTools();//ejecuta funcion de obtener herramientas al inicio de componente
   }
 
   getTools(): void{
-    this.tools = this.toolService.createTools();//funcion que obtiene el array de herramientas desde el servicio
+    this.toolService.getTools().subscribe((response: Tool[])=>{
+      let data = Object.values(response);//convierte objeto a arreglo
+      this.tools = data[1];
+    });
   }
 
 

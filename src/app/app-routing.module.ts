@@ -8,6 +8,7 @@ import { RecoverPasswordComponent } from './components/recover-password/recover-
 import { CategoryComponent } from './components/category/category.component';
 import { ConfirmationRentComponent } from './components/confirmation-rent/confirmation-rent.component';
 import { ThanksRentComponent } from './components/thanks-rent/thanks-rent.component';
+import { FrequentQuestionsComponent } from './components/frequent-questions/frequent-questions.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'categoria/:id', component: CategoryComponent},
   {path: 'confirma-renta/:id', component: ConfirmationRentComponent},
   {path: 'thanks-rent', component: ThanksRentComponent},
+  {path: 'frequents-questions', component: FrequentQuestionsComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
