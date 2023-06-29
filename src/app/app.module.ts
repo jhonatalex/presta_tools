@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { NgxStarRatingModule } from 'ngx-star-rating';
+//import { NgxStarRatingModule } from 'ngx-star-rating';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -51,7 +51,7 @@ import { FrequentQuestionsComponent } from './components/frequent-questions/freq
     HttpClientModule,
     NgxPaginationModule,
     SlickCarouselModule,
-    NgxStarRatingModule,
+   // NgxStarRatingModule,
     ReactiveFormsModule
 
   ],
