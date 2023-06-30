@@ -27,6 +27,7 @@
     "jquery-validation": "^1.19.5",
     "ngx-pagination": "^6.0.3",
     "ngx-slick-carousel": "^0.6.0",
+    "ngx-spinner": "^14.0.0",
     "package-typescript": "^1.0.2",
     "rxjs": "~7.5.0",
     "slick-carousel": "^1.8.1",

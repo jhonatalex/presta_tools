@@ -23,10 +23,10 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form:NgForm):void{
-    this.userService.registerUser(this.user).subscribe(response=>{
+    let response = this.userService.post('/api/user/insert',this.user).subscribe(response=>{
       console.log(response);
-    });
-    form.reset();//limpia el formulario de registro
+    })
+    
   }
 
 }
