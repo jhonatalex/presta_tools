@@ -5,7 +5,7 @@ import { User } from "../models/user.model";
 
 @Injectable()
 export class UserService{
-    public urlApi:string;//url de la API; aun sin definir 
+    public urlApi:string;//url de la API; aun sin definir
     public identity:string;
 
     constructor(
