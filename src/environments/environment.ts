@@ -2,6 +2,8 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { Constants } from "src/app/shared/constants/settings.class";
+
 export const environment = {
   production: false,
   firebaseConfig : {
@@ -12,7 +14,11 @@ export const environment = {
     messagingSenderId: "218432434957",
     appId: "1:218432434957:web:4f0ae3ac846cb2debaf644",
     measurementId: "G-H2VVQGELFY"
-  }
+  },
+
+  baseUrl: new Constants().getProdApiURL(),
+
+
 };
 
 /*

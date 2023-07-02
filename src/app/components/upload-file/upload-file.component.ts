@@ -39,8 +39,12 @@ export class UploadFileComponent implements OnInit {
 
           if (snapshot?.state === 'success') {
             // La carga se completó con éxito
+
             //DESACTIVA EL LOADER
             this.spinner.hide()
+
+
+
             fileRef.getDownloadURL().subscribe(
               (url) => {
                 console.log('URL de descarga:', url);
