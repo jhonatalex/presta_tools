@@ -17,6 +17,8 @@ export class loginResponse {
   message: string = '';
 }
 
+
+
 export class tokensDelUsuarioDto {
   idToken?: string;
   descripcion?: string;

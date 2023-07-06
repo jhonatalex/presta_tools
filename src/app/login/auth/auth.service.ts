@@ -71,21 +71,29 @@ export class AuthService {
 
       console.log(loginData);
 
-     // if(loginData.success){
+      if(loginData.success){
 
-        if (loginData!=null) {
+
+        this.sweetUIService
+        .alertConfirm("Bienvenido", loginData.message, 'success')
+        .then(() => {
+          this.utSV.navigateToPath('/');
+        })
+        .catch(console.warn);
 
           // Navegar al HOME
-          this.utSV.navigateToPath('/');
+          //this.utSV.navigateToPath('/');
 
 
         } else {
-          this.endSession(
-            'El usuario no tiene permisos suficientes para utilizar esta aplicacion Web',
-            'Atención'
-          );
+
+          this.endSession(loginData.message);
+
+
+
+
         }
-     // }
+
 
 
 
