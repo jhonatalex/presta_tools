@@ -1,0 +1,785 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>Operation7</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<link rel="Shortcut Icon" href="//www.softnyx.com/favicon.ico"/>
+<link rel="stylesheet" href="//web.softnyx.com/css/global.css"/>
+<link rel="stylesheet" href="/css/main_2011.css"/>
+<link rel="stylesheet" href="/css/common.css"/>
+<script type="text/javascript" src="//web.softnyx.com/js/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="//web.softnyx.com/js/Softnyx/NYXMSG.js?v=0.0.0.1"></script>
+<script type="text/javascript" src="//web.softnyx.com/js/Softnyx/MSG_LAT.js?v=0.0.0.1"></script>
+<script type="text/javascript" src="//web.softnyx.com/js/Softnyx/softnyx.common_min.js?v=0.0.0.1"></script>
+<script type="text/javascript" src="js/op_default.js?v=0.0.0.1"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="js/html5.js"></script>
+<script type="text/javascript" src="js/respond.min.js"></script>
+<![endif ]-->
+<link href="https://commonweb.softnyx.com/LT/Site/css?v=202307051313" rel="stylesheet">
+    <script src="https://commonweb.softnyx.com/common/site/js?v=202307051313"></script>
+    <script>
+        $(document).ready(function () {
+            var dt = new Date();
+            var time = dt.getHours() + dt.getMinutes();
+
+            $.getJSON("/Iframe/banner.json?ver=" + time, function (data) {
+                $.each(data, function (key, val) {
+                    if (val.url === "") {
+                        $("#ulBanner").append('<li><img src="' + '//img.softnyx.com/3/OP7/main/' + val.img + '" /></li>');
+                    }
+                    else {
+                        $("#ulBanner").append('<li><a href="' + val.url + '" ' + (val.target ? ' target="_blank"' : ' target="_self"') + ' ""' + '><img src="' + '//img.softnyx.com/3/OP7/main/' + val.img + '" /></a></li>');
+                    }
+                });
+                fnSlideMake('slides');
+            });
+        });
+        function fnSlideMake(slideid) {
+            var startSlide = 1;
+            $('#' + slideid).slides({
+                container: 'slide',
+                pagination: true,
+                generateNextPrev: true,
+                next: 'next',
+                prev: 'prev',
+                generatePagination: true,
+                paginationClass: 'page',
+                start: 1,
+                effect: 'slide',
+                slideSpeed: 350,
+                play: 5000,
+                pause: 1000,
+                start: startSlide
+            });
+        }
+    </script>
+</html>
+</head>
+<body>
+<script type="text/javascript" src="//web.softnyx.com/js/Softnyx/softnyx.top.htmlmaker_min.js?v=0.0.0.1"></script>
+<form name="form1" method="post" action="./" id="form1">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNjc4MzA3NDg3ZGRL6Zuni7h2CWW6VMZL41G3OXhSkg==" />
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" />
+</div>
+  <!-- common top -->
+  <div style="display:none;">
+  <script language="javascript" type="text/javascript" src="//web.softnyx.com/Top/SoftnyxTop_LS_min.js?v=0.0.0.20"></script>
+  </div>
+  
+
+
+<header id="head_wrap">
+
+    <h1><a href="https://www.softnyx.com"><img src="https://img.softnyx.com/resources/www/esp/common/softnyx_logo_light.svg" alt="Go to softnyx home"></a></h1>
+
+    <!-- Header top menu -->
+    <div class="hd_top">
+
+        <div class="member">
+            <ul class="menu">
+                
+                <li class="login_false"><a href="javascript:fnSetLogin();">INGRESA</a></li>
+                <li class="login_false"><a href="https://www.softnyx.com/member/join">¡REGÍSTRATE!</a></li>
+                
+
+                
+                <li class="login_true" style="display:none;"><a href="javascript:fnSetLogOut();"><span style="background:none;">SALIR</span></a></li>
+                <li class="login_true" style="display:none;"><a href="https://www.softnyx.com/member/mypage"><span class="login">MI INFO</span></a></li>
+                
+            </ul>
+        </div>
+
+        <div class="lang">
+            <ul class="menu">
+                <li><a href="https://www.softnyx.com/">Español</a></li>
+                <li><a href="https://www.softnyxbrasil.com/">Português (Portuguese)</a></li>
+                <li><a href="https://www.softnyx.net/">English(SEA)</a></li>
+                <li><a href="https://www.softnyx-us.net/">English(US)</a></li>
+            </ul>
+        </div>
+
+        <div class="all_menu">
+            <button type="button" class="btn_top_allmenu">All menu</button>
+        </div>
+
+    </div>
+    <!-- //Header top menu -->
+    <!-- GNB All -->
+    <div class="nav_area">
+
+        <div class="nav_btn_area">
+            
+            <a href="javascript:fnSetLogin();" class="login_false_m" style="color: #222; border: 1px solid black; background: white;">INGRESA</a>
+            <a href="https://www.softnyx.com/member/join" class="login_false_m" style="color: #222; border: 1px solid black; background: white;">¡REGÍSTRATE!</a>
+            
+
+            
+            <a href="javascript:fnSetLogOut();" class="btn_top_member login_true_m" style="display:none;">SALIR</a>
+            <a href="https://www.softnyx.com/member/mypage" class="btn_top_member login_true_m" style="display:none;">MI INFO</a>
+            
+            <a href="https://billing.softnyx.com/" class="btn_top_cash">cash</a>
+            <button type="button" class="btn_nav_close">close navigation</button>
+        </div>
+
+        <!-- softnyx GNB -->
+        <nav class="softnyx_allMenu">
+            <h1><a href="https://www.softnyx.com"><img src="https://img.softnyx.com/resources/www/esp/common/softnyx_logo.svg" alt="Go to softnyx home"></a></h1>
+            <ul class="softnyx_menu">
+                <li>
+                    <span class="menu_1th">JUEGOS MÓVIL</span>
+                    <ul class="sub">
+                        <li>
+                            <a href="https://www.bluestacks.com" target="_blank">
+                                <img src="https://img.softnyx.com/resources/www/esp/common/img_gnb_bs.jpg" alt="BlueStacks home">
+                                <span class="menu_2th">BlueStacks</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="menu_1th">Juegos PC</span>
+                    <ul class="sub">
+                        <li>
+                            <a href="http://wolfteam.softnyx.com/">
+                                <img src="https://img.softnyx.com/resources/www/esp/common/img_gnb_wt.jpg" alt="Go to Wolf Team home">
+                                <span class="menu_2th">Wolf Team</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://rakion.softnyx.com/">
+                                <img src="https://img.softnyx.com/resources/www/esp/common/img_gnb_rk.jpg" alt="Go to Rakion home">
+                                <span class="menu_2th">Rakion</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://operation7.softnyx.com/">
+                                <img src="https://img.softnyx.com/resources/www/esp/common/img_gnb_op.jpg" alt="Go to Operation7 home">
+                                <span class="menu_2th">Operation7</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="mb_none">
+                    <span class="menu_1th">Cash</span>
+                    <ul class="sub">
+                        <li>
+                            <a href="https://billing.softnyx.com"><span class="menu_2th">Recargar Cash</span></a>
+                        </li>
+                        <li>
+                            <a href="https://billing.softnyx.com/howto/"><span class="menu_2th">Como Recargar</span></a>
+                        </li>
+                        <li>
+                            <a href="https://billing.softnyx.com/history/"><span class="menu_2th">Historial de Recarga</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="https://www.softnyx.com/support/launcherguide"><span class="menu_1th limenu">GUÍA DE LANZAMIENTO</span></a></li>
+                <li><a href="https://forum.softnyx.com"><span class="menu_1th limenu" style="color: rgb(255, 255, 255);">Foro</span></a></li>
+                
+            </ul>
+        </nav>
+        <!-- //softnyx GNB -->
+    </div>
+    <!-- //GNB All -->
+</header>
+
+
+<script>
+    var loginids = ['SoftnyxID', ''];
+    var _global_url = "https://www.softnyx.com";
+    var _logout_url = _global_url + "/member/logout";
+
+    $(document).ready(function () { //문서가 준비되면 매개변수로 넣은 콜백함수를 실행하라는 의미
+        loginids[1] = getCookie("SoftnyxLatin");
+
+        if (loginids[1] !== "") {
+            fnLoginDisplay(true);
+        } else {
+            fnLoginDisplay(false);
+        }
+    });
+</script>
+  <div id="op_wrap">
+    <!-- 구글 search 구글 써치에 OP7 생성해야 함 -->
+    <div id="modalbg" onClick="searchPopClose();"></div>
+    <div id="search_result">
+      <div style="padding-bottom:10px;background-color:#898989;height:50px">
+        <h2 style="float:left;padding-top:17px;color:#FFF">Resultados de b&uacute;squeda de <span id="spSearchValue" style="color:#d2181c"></span></h2>
+        <p style="float:right;padding-top:11px;vertical-align:top"><a onClick="goSearchResult('hide');" style="cursor:pointer;display:block;width:32px;height:32px;color:#FFF;font-size:24px;text-align:center;padding-top:6px" >X</a></p>
+      </div>
+    </div>
+    <div class="op_mainArea01">
+      
+      
+<!--웹런처-->
+
+<div id="hidIELauncher" style="width:0px; height:0px"></div>
+<script type="text/javascript" src="//web.softnyx.com/js/Softnyx/softnyx.weblauncher_min.js?v=0.0.0.1"></script>
+<script type="text/javascript">
+
+    var gameName = 'Operation7';      //게임명
+
+    //게임 스타트 체크
+    function Check_Login() {
+
+        if (isEdge) {
+            if (!window.confirm('Esto es un aviso para los usuarios que utilizan el navegador Edge.\r\nLanzador se ejecutará si hace clic en el botón Aceptar.\r\nSi Launcher no estaba funcionando, Haga clic en el botón Cancelar y volver a instalar Launcher primero.')) {
+                window.location.href = getLauncherUrl();
+                return;
+            }
+        }
+        if (isWinDesktop()) {
+            if (goWebLauncherStart()) {
+                golaunchStart();
+            }
+            else
+                document.getElementById("notice_launcher").style.display = "block";
+        }
+        else {
+            alert(getMsg(COM_AllowOS));
+            return false;
+        }
+    }
+    function golaunchStart() {
+        // $("#ifLauncherStart").attr("src", getWebLauncherUrl(gameName));
+        window.location.href = getWebLauncherUrl(gameName); 
+    }
+
+</script>
+<!--웹런처 끝-->
+<!-- web start layer -->
+<style type="text/css">
+#notice_launcher {
+	position:absolute;left:50%;
+	width:640px;
+	height:320px;
+	margin-left:-320px;
+	margin-top:260px;
+	z-index:10000;
+	border:#4a4a4a dashed 2px;
+    display:none}
+
+</style>
+<div id="notice_launcher"><img src="http://img.softnyx.com/3/sn/notice_launcher_lat.gif" border="0" usemap="#ggMap" /></div>
+<map name="ggMap" id="ggMap">
+	<area shape="rect" coords="40,245,303,295" href="http://www.softnyx.com/launcher/LauncherGuide.aspx" />
+	<area shape="rect" coords="337,244,600,295" href="javascript:window.location.reload(true);" />
+	<area shape="rect" coords="604,6,636,40" onclick="document.getElementById('notice_launcher').style.display = 'none';" />
+</map>
+<!-- web start layer end-->
+<div id="op_nav">
+	<div class="op_gnb">
+		<h1><a href="/"></a></h1>
+		
+		<p class="op_cash"><a href="https://billing.softnyx.com/exchange/operation7.aspx" target="_blank"><img src="http://img.softnyx.com/3/OP7/main/1708010_cash.gif" alt="Exchange Cash"></a></p>	
+		<p class="op_serverTime" id="pTime"></p>		
+		<button type="button">Men&uacute; <span class="triangle"></span></button>
+		<ul class="op_main_menu">
+			<li><a href="http://forum.softnyx.com/default.aspx?g=topics&f=189" target="_blank">Noticias</a></li>
+			<li><a href="http://forum.softnyx.com/default.aspx?g=forum&c=21" target="_blank">Comunidad</a>
+				<ul class="op_sub_menu">
+					<li><a href="http://forum.softnyx.com/default.aspx?g=forum&c=21" target="_blank">Foro</a></li>
+					<!-- <li><a href="/Community/StreamerList.aspx">Softnyx Streaming!</a></li> -->
+					<li><a href="/Community/TournamentH.aspx">Lo mejor del Torneo</a></li>
+				</ul>
+			</li>
+			<li><a href="/Guide/GameGuide.aspx">GU&Iacute;A</a>
+				<ul class="op_sub_menu">
+					<li><a href="/Guide/GameGuide.aspx">Guia de juego</a></li>
+					<li><a href="/Guide/AboutOp7.aspx">Acerca de Operation7</a></li>
+					<li><a href="/Guide/Sinopsis.aspx">Sinopsis</a></li>
+                    <li><a href="/Guide/VoiceChat.aspx">Gu&iacute;a De Chat de Voz</a></li>
+					<li><a href="/Guide/Levels.aspx">Gu&iacute;a De NIVELES</a></li>
+                    <li><a href="/Guide/Maps.aspx">Gu&iacute;a De MAPAS</a></li>
+					
+				</ul>
+			</li>
+			<li><a href="/Ranking/Personal.aspx">Ranking</a>
+            	<ul class="op_sub_menu">
+					<li><a href="/Ranking/Personal.aspx">Personal</a></li>
+					<li><a href="/Ranking/Clan.aspx">Clan</a></li>
+					<li><a href="/Ranking/OnlineTournament.aspx">Online Torneo</a></li>
+				</ul>
+            </li>
+			<li><a href="/DownLoads/GameDownload.aspx">Descarga</a></li>
+			<li><a href="https://www.softnyx.com/support" target="_blank">Ayuda</a></li>
+			
+			<li class="top_main_menu_gameStart"><a onclick="Check_Login();">Iniciar juego</a> </li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+
+    function addZero2(n, digits) {
+        var zero = '';
+        n = n.toString();
+
+        if (n.length < digits) {
+            for (i = 0; i < digits - n.length; i++)
+                zero += '0';
+        }
+        return zero + n;
+    }
+
+    //상단의 현재 시간 view
+    function getWorldTimeTop() {
+        var now = new Date();
+        var tz = now.getTime() + (now.getTimezoneOffset() * 60000) + (-5 * 3600000);
+        now.setTime(tz);
+
+        var ttt = addZero2(now.getHours(), 2) + ":" + addZero2(now.getMinutes(), 2) + ":" + addZero2(now.getSeconds(), 2);
+        $("#pTime").html(ttt + ' GMT-5');
+
+        setTimeout(getWorldTimeTop, 1000);
+    }
+    getWorldTimeTop();
+
+
+//    //Dday 시간 view
+//    function getDdayTime() {
+
+//        var currDay = 1000;
+
+//        //현재 시간
+//        var now = new Date();
+//        var tz = now.getTime() + (now.getTimezoneOffset() * 60000) + (-5 * 3600000);
+//        now.setTime(tz);
+
+//        //Day 시간
+//        var dday = new Date(2017, 0, 15, 13, 30);
+
+//        var diffDay = dday.getTime() - now.getTime();
+//        var sectime = parseInt(diffDay / currDay, 10);
+
+//        var diviser = 60 * 60;
+//        var hour = parseInt(sectime / diviser);
+//        var num = sectime - diviser * hour;
+//        var min = parseInt(num / 60);
+//        var sec = parseInt(num - min * 60);
+
+//        $("#spDday").html(hour + ":" + addZero2(min, 2) + ":" + addZero2(sec,2));
+//        setTimeout(getDdayTime, 1000);
+//    }
+//    getDdayTime();
+</script>
+
+    </div>
+    <div class="op_mainArea02">
+      <div class="op_mainArea02_contents">
+        <!-- slide -->
+        <div id="slides" class="slides">
+          <ul id="ulBanner" class="slide">
+	</ul>
+        </div>
+        <!-- //slide -->
+        <div class="op_rank_area">
+          <p class="rank_title">ranking top 5</p>
+          
+          <div id="divRanktop5">
+            <script language="javascript" type="text/javascript">
+                function setRankingTop5(jsondata) {
+                    var hdata = '';
+                    var i = 0;
+                    var retcode = jsondata.returninfo;
+
+                    if (retcode.code != 'S000') {
+                        $("#divRanktop5").html('<p class="rank_notice">' + fnSetMessage(retcode.code) + '</p>');
+                    }
+                    else {
+                        var datas = jsondata.datainfo;
+                        $.each(datas, function (key) {
+                            i++;
+                            hdata += '<ul class="rank_table01">';
+                            hdata += '<li class="rank_table_num">' + datas[key].d3 + '</li>';
+                            hdata += '<li class="rank_table_info"><span><img src="http://img.softnyx.com/3/OP7/Country/' + datas[key].d5 + '.gif"></span> ' + datas[key].d1 + '</li>';
+                            hdata += '</ul>';
+                        });
+
+                        $("#divRanktop5").html(hdata);
+                    }
+                }
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="op_mainArea06">
+      <div class="op_mainArea06_contents">
+        <!-- Responsive Carousel -->
+        <script type="text/javascript" src="/js/jquery.jcarousel.min.js"></script>
+        <script type="text/javascript" src="/js/jcarousel.responsive.js"></script>
+        <div class="jcarousel-wrapper">
+          <div class="jcarousel">
+            <ul>
+              <li><a href="http://forum.softnyx.com/default.aspx?g=posts&t=30424#post88370" target="_blank"><img src="http://img.softnyx.com/3/OP7/main/170928_miniBN.jpg"  alt="Image 1"></a></li>
+              <li><a href="http://forum.softnyx.com/default.aspx?g=posts&t=37264#post109507" target="_blank"><img src="http://img.softnyx.com/3/OP7/main/190403_miniBN2.jpg" alt="Image 2"></a></li>
+              <li><a href="http://forum.softnyx.com/default.aspx?g=posts&t=30979#post90001" target="_blank"><img src="http://img.softnyx.com/3/OP7/main/170928_miniBN3.jpg" alt="Image 3"></a></li>
+              <li><a href="http://forum.softnyx.com/default.aspx?g=posts&t=38813#post115368" target="_blank"><img src="http://img.softnyx.com/3/OP7/main/170928_miniBN4.jpg" alt="Image 4"></a></li>
+            </ul>
+          </div>
+          <a href="#!" class="jcarousel-control-prev">&lsaquo;</a><a href="#!" class="jcarousel-control-next">&rsaquo;</a>
+        </div>
+        <!-- Responsive Carousel -->
+      </div>
+    </div>
+    <div class="op_mainArea03">
+      <div class="op_mainArea03_contents">
+        <div class="op_notice">
+          <div>
+            <h3><a href="http://forum.softnyx.com/default.aspx?g=topics&f=189">Noticias</a></h3>
+            <div id="divNotice">
+              <script language="javascript" type="text/javascript">
+                  function setForumNotice(jsondata) {
+                      var hdata = '';
+                      var i = 0;
+
+                      var retcode = jsondata.returninfo;
+
+                      if (retcode.code != 'S000') {
+                          $("#divNotice").html('<p>' + fnSetMessage(retcode.code) + '</p>');
+                      }
+                      else {
+                          var datas = jsondata.datainfo;
+                          $.each(datas, function (key) {
+                              i++;
+                              //hdata += '<div class="box"><p class="lr_notice_title"><a href="http://forum.softnyx.com/?g=posts&t=' + datas[key].d0 + '">' + fnCutString(datas[key].d1, 30) + '</a></p>' + datas[key].d8 + ', ' + datas[key].d9 + '</div>';
+                              hdata += '<p class="op_notice_title"><strong><a href="http://forum.softnyx.com/?g=posts&t=' + datas[key].d0 + '">' + fnCutString(datas[key].d1, 50) + '</a></strong></p>';
+                              hdata += '<p>' + fnCutString(fnHtmlTagRemove(datas[key].d5), 250) + '</p>';
+                          });
+
+                          $("#divNotice").html(hdata);
+                      }
+                  }
+              </script>
+              
+            </div>
+          </div>
+        </div>
+        <div class="op_community">
+          <div>
+            <h3><a href="http://forum.softnyx.com/default.aspx?g=topics&f=190">Eventos</a></h3>
+            <div id="divCommunity">
+              <script language="javascript" type="text/javascript">
+                  function setForumCommunity(jsondata) {
+                      var hdata = '';
+                      var i = 0;
+
+                      var retcode = jsondata.returninfo;
+
+                      if (retcode.code != 'S000') {
+                          $("#divCommunity").html('<p>' + fnSetMessage(retcode.code) + '</p>');
+                      }
+                      else {
+                          var datas = jsondata.datainfo;
+                          $.each(datas, function (key) {
+                              i++;
+                              //hdata += '<div class="box"><p class="lr_notice_title"><a href="http://forum.softnyx.com/?g=posts&t=' + datas[key].d0 + '">' + fnCutString(datas[key].d1, 30) + '</a></p>' + datas[key].d8 + ', ' + datas[key].d9 + '</div>';
+                              hdata += '<p class="op_notice_title"><strong><a href="http://forum.softnyx.com/?g=posts&t=' + datas[key].d0 + '">' + fnCutString(datas[key].d1, 50) + '</a></strong></p>';
+                              hdata += '<p>' + fnCutString(fnHtmlTagRemove(datas[key].d5), 250) + '</p>';
+                          });
+
+                          $("#divCommunity").html(hdata);
+                      }
+                  }
+              </script>
+              
+            </div>
+          </div>
+        </div>
+        <div id="googleSerach">
+          <span class="search_border"><input type="text" id="txtSearchValue" class="keyword" onFocus="this.className='keyword01'" onBlur="if (this.value.length==0) {this.className='keyword';}else {this.className='keyword01';}" onKeyPress="fnSiteSerarhEnterKey(event);"/></span>
+          <input type="text" style="display:none"/>
+          <span class="search_btn01"> <a onClick="goSearchResult('show'); ">Buscar</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="op_mainArea04">
+      <div class="op_mainArea04_contents">
+        <div class="op_video_area">
+          <p><a href="https://www.youtube.com/watch?v=n2SYIuUiWRw&feature=youtu.be" target="_blank"><img src="http://img.softnyx.com/3/OP7/main/youtube_icon.png"></a></p>
+          <div class="video_coverBg"></div>
+          <video autoplay="autoplay" muted="muted" loop="loop" poster="http://img.softnyx.com/3/OP7/main/op_video.jpg">
+            <source src="image/main/op7_video.webm" type="video/webm"/>
+            <source src="image/main/op7_video.mp4" type="video/mp4"/>
+            <source src="image/main/op7_video.ogv" type="video/ogg"/>
+            <object>
+              <embed src="image/main/op7_video.mp4" type="application/x-shockwave-flash" allowfullscreen="false" allowscriptaccess="always"/>
+            </object>
+          </video>
+        </div>
+        <div class="fb_area">
+          <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FOp7oficial%2F%3Ffref%3Dts&tabs=timeline&width=450&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        </div>
+      </div>
+    </div>
+    
+    
+
+<div class="op_mainArea05">
+	<div class="op_sitemap">
+		<ul>
+			<li>
+				<ul>
+					<li class="upperMenu"><a href="http://forum.softnyx.com/default.aspx?g=topics&f=189" target="_blank">noticias</a></li>
+				</ul>
+			</li>
+			<li>
+				<ul>
+					<li class="upperMenu"><a href="http://forum.softnyx.com/default.aspx?g=topics&f=190" target="_blank">comunidad</a></li>
+					<li><a href="http://forum.softnyx.com/default.aspx?g=topics&f=190" target="_blank">Foro</a></li>
+					<li><a href="/Community/StreamerList.aspx">Softnyx Official Streamming!</a></li>					
+					<li><a href="/Community/TournamentH.aspx">Lo mejor del Torneo</a></li>
+				</ul>
+			</li>
+			<li>
+				<ul>
+					<li class="upperMenu">guia</li>
+					<li><a href="/Guide/GameGuide.aspx">Guia de juego</a></li>
+					<li><a href="/Guide/AboutOp7.aspx">Acerca de Operation7</a></li>
+					<li><a href="/Guide/Sinopsis.aspx">Sinopsis</a></li>
+                    <li><a href="/Guide/VoiceChat.aspx">Gu&iacute;a De Chat de Voz</a></li>					
+					<li><a href="/Guide/Levels.aspx">Gu&iacute;a De NIVELES</a></li>
+                    <li><a href="/Guide/Maps.aspx">Gu&iacute;a De MAPAS</a></li>
+				</ul>
+			</li>
+			<li>
+				<ul>
+					<li class="upperMenu">Ranking</li>
+                    <li><a href="/Ranking/Personal.aspx">Personal</a></li>
+                    <li><a href="/Ranking/Clan.aspx">Clan</a></li>
+                    <li><a href="/Ranking/OnlineTournament.aspx">Online Torneo</a></li>
+				</ul>
+			</li>
+			<li>
+				<ul>
+					<li class="upperMenu"><a href="/DownLoads/GameDownload.aspx">descarga</a></li>
+				</ul>
+			</li>
+			<li>
+				<ul>
+					<li class="upperMenu"><a href="https://www.softnyx.com/support">ayuda</a></li>
+				</ul>
+			</li>
+			<li class="upperMenu_last">
+				<ul>
+					<li class="upperMenu"><a href="javascript:Check_Login();">iniciar juego</a> </li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+
+  </div>
+  <!-- common bottom -->
+  <div style="display:none;">
+  <script language="javascript" type="text/javascript" src="//web.softnyx.com/Bottom/SoftnyxBottom_LS_min.js?v=0.0.0.4"></script>
+  </div>
+         
+
+<footer id="footWrap" class="foot_softnyx">
+    <div class="inner">
+        <div class="footer_wrap">
+            <div class="top_btn">
+                <a href="javascript:void(moveContent());">top</a>
+            </div>
+            <div class="company">
+                <a class="ci" href="http://www.softnyx.co.kr/" target="_blank" rel="noopener noreferrer"><img src="https://img.softnyx.com/resources/www/esp/main/logo_softnyx.png" alt="Softnyx logo" /></a>
+                <ul>
+                    
+                    <li><a class="yt_btn" href="javascript:void(goyoutube())" rel="noopener noreferrer">youtube</a></li>
+                    <li><a class="fb_btn" href="https://www.facebook.com/SoftnyxLatino.Oficial" target="_blank" rel="noopener noreferrer">facebook</a></li>
+                </ul>
+            </div>
+            <div class="info">
+                <ul class="social">
+                    <li class="time">Hora del servidor: 05. 07. 2023 13:13</li>
+                    <li class="global">
+                        <a href="javascript:void(showGlobalMenu());">Idioma : Español (Spanish)</a>
+                        <ul id="globalMenuList" style="display: none;">
+                            <li><a href="javascript:void(hideGlobalMenu());">X</a></li>
+                            <li><a href="https://www.softnyx.com/">Español</a></li>
+                            <li><a href="https://www.softnyxbrasil.com/">Português (Portuguese)</a></li>
+                            <li><a href="https://www.softnyx.net/">English(SEA)</a></li>
+                            <li><a href="https://www.softnyx-us.net/">English(US)</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav">
+                    <li><a href="http://corp.softnyx.com/" target="_blank" rel="noopener noreferrer">Introducción de la empresa</a></li>
+                    <li><a href="https://www.softnyx.com/member/termsofservice" target="_blank" rel="noopener noreferrer">Estipulación de uso</a></li>
+                    <li><a href="https://www.softnyx.com/member/privacypolicy" target="_blank" rel="noopener noreferrer">Política de privacidad</a></li>
+                    <li><a href="https://www.softnyx.com/member/gameip" target="_blank" rel="noopener noreferrer">Términos de uso de IP y UGC</a></li>
+                    <li><a href="https://www.softnyx.com/support" target="_blank" rel="noopener noreferrer">Contáctanos</a></li>
+                </ul>
+                <p class="copyright">&copy;softnyx. todos los derechos reservados. <a href="mailto:softnyxweb@softnyxmail.com">softnyxweb&commat;softnyxmail.com</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+  
+</form>
+<script type="text/javascript">
+    //엔터키
+    function fnSiteSerarhEnterKey(evnt) {
+        if (IsEnter(evnt)) {
+            goSearchResult('show');
+        }
+    }
+    //검색 결과 팝업 관리
+    function goSearchResult(flag) {
+        if (flag == 'show') {
+            //검색어
+            var searchValue = $("#txtSearchValue");
+
+            //1. Iframe 이 없을 경우 태그 생성 한다.
+            if ($("#fmSearchPopUp").length <= 0) {
+                $("#search_result").append('<iframe id="fmSearchPopUp" frameborder="0" scrolling="auto" src=""></iframe>');
+            }
+
+            //2. 빈 문자열 체크
+            if (searchValue.val() == '') {
+                alert(getMsg(TypeSearchData));
+                searchValue.focus();
+                return false;
+            }
+
+            //3. 팝업 띄어준다.
+            $("#fmSearchPopUp").attr("src", "/TotalSearch/SiteSearch.htm?q=" + searchValue.val());
+            $('#spSearchValue').text('"' + searchValue.val() + '"');
+
+            //4. 검색어로 결과 리스트 가져온다.
+            $("#search_result").show();
+            wrapWindowByMask();
+
+        } else {
+            //검색창 닫는다.
+            searchPopClose();
+        }
+    }
+
+    function wrapWindowByMask() {
+        //화면의 높이와 너비를 구한다.
+        var maskHeight = $(document).height();
+
+        //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
+        $('#modalbg').css({ 'height': maskHeight });   //'width': maskWidth,
+
+        //애니메이션 효과
+        $('#modalbg').fadeIn(1000);
+        $('#modalbg').fadeTo("slow", 0.8);
+    }
+
+    //검색창 닫기
+    function searchPopClose() {
+        $("#search_result").hide();
+        $("#modalbg").hide();
+        $("#fmSearchPopUp").remove();
+    }
+
+    $(function () {
+        //  Open message box
+        //popMessage('Title', 'Message', 'http://www.softnyx.com/Member/Login.aspx');
+    });
+</script>
+
+<script language="javascript" type="text/javascript">
+
+    //Notice 정보 가져온다.
+    function goRankingTop5() {
+        $.ajax({
+            url: "/Iframe/Ranking/WPersonalGeneral_Main.aspx"
+            //, data: { intid: intid }
+            , dataType: "json"
+            , type: "post"
+            , async: true
+            , error: function (r) {
+                alert("Response Fail");
+            }
+            , success: setRankingTop5
+        });
+    }
+    goRankingTop5();
+</script>
+
+<script language="javascript" type="text/javascript">
+    //Notice 정보 가져온다.
+    function goForumNotice() {
+        $.ajax({
+            url: "/Iframe/Main/notice.aspx"
+            //, data: { intid: intid }
+            , dataType: "json"
+            , type: "post"
+            , async: false
+            , error: function (r) {
+                alert("Response Fail");
+            }
+            , success: setForumNotice
+        });
+    }
+
+    //Update 정보 가져온다.
+    function goForumCommunity() {
+        $.ajax({
+            url: "/Iframe/Main/event.aspx"
+            //, data: { intid: intid }
+            , dataType: "json"
+            , type: "post"
+            , async: false
+            , error: function (r) {
+                alert("Response Fail");
+            }
+            , success: setForumCommunity
+        });
+    }
+
+    goForumNotice();
+    goForumCommunity();
+</script>
+
+<script type="text/javascript" src="/js/slides.min.jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var startSlide = 1;
+        $('#slides').slides({
+            container: 'slide',
+            pagination: true,
+            generateNextPrev: true,
+            next: 'next',
+            prev: 'prev',
+            generatePagination: true,
+            paginationClass: 'page',
+            start: 1,
+            effect: 'slide',
+            slideSpeed: 350,
+            play: 5000,
+            pause: 1000,
+            start: startSlide
+        });
+    });
+</script>
+<!-- 구글 스크립트 -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-9969726-29', 'auto');
+    ga('require', 'displayfeatures');
+    ga('require', 'linkid', 'linkid.js')
+    ga('send', 'pageview');
+</script>
+</body>
+</html>
