@@ -62,21 +62,30 @@ export class HomeComponent implements OnInit {
   }
 
 
-  public categories:Category[];
+  public categories:any;
 
   constructor(
     private categoryService:CategoryService
-  ){this.categories = [];
-    }
+  ){}
 
   ngOnInit(): void {
     this.getCategories();//ejecuta funcion al iniciar y obtiene las categorias
+
+    /*this.categoryService.editTool().subscribe(response=>{
+      console.log(response);
+    });*/
   }
 
 
-    getCategories(){
-      this.categories = this.categoryService.createCategories()//obtiene categorias desde el servicio
+    getCategories() : void {
+      this.categoryService.getCategories().subscribe((response: Category[])=>{
+        let data = Object.values(response);//convierte objeto a arreglo
+        this.categories = data[1];
+        console.log(this.categories);
+      });
     }
+
+
 
 
 

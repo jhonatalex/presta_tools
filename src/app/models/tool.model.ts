@@ -15,18 +15,15 @@ export class Tool{
         public weigt:number,
         public mesuare:number,
         public numberPiece:number,
-        public urlImage1:string,
+        public urlImage:string,
         public urlImage2:string,
         public urlImage3:string,
         public termsUse:string,
         public breakDowns:string,
         public timeUse:number,
-        public idCategory:number,
-        public idUser:number,
+        public idCategory:number, 
         public idLenders:number,
         public dateUp: Date,
-        public detalleVenta:[],
-        public idLendersNavigation: null,
-        public idUserNavigation: null
+        public rate:number
     ){}
 }

@@ -18,7 +18,7 @@ export class ConfirmationRentComponent implements OnInit {
     private route: ActivatedRoute,
     private toolService: ToolService
   ) {this.id = 0;
-    this.tool = new Tool (0,'','','','','','',0,0,0,0,0,0,'','','','','',0,0,0,0,new Date,[],null,null);//instancia vacia para guardar tool por id
+    this.tool = new Tool (0,'','','','','','',0,0,0,0,0,0,'','','','','',0,0,0,new Date,0);//instancia vacia para guardar tool por id
     }
 
   ngOnInit(): void {
@@ -36,10 +36,17 @@ export class ConfirmationRentComponent implements OnInit {
   }
 
   getToolDetail(): void{
-    this.toolService.createTools();//Obtiene array de herramientas del servicio
-    this.tool = this.toolService.getDetailTool(this.id);//obtiene la herramienta por su ID
-    console.log(this.tool);
-  }
+    //obtener el  id de la URL  
+    this.route.params.subscribe(params =>{
+    this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
+
+    this.toolService.getDetailTool(this.id).subscribe((response:Tool)=>{
+    let data = Object.values(response);
+    this.tool = data[1];
+    })
+
+    });
+  }  
 
   onSubmit(Form:NgForm){
     
