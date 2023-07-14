@@ -14,14 +14,20 @@ export class HeaderComponent implements OnInit {
     environment.production ? '' : 'D3V'
   }`;
   @Input() flaglogo:boolean = true; //recibe bandera para reducir el tamaño del logo; inicializado en true para tamaño normal
-  
+
   public user: User = new User();
   constructor(
     private utilService: UtilService,
   ) {}
 
   ngOnInit(): void {
-    this.user = this.utilService.getFromLocalStorage(this.loginKey);
+    if( this.user!=null){
+      this.user = this.utilService.getFromLocalStorage('RTACD3V');
+      console.log( this.user)
+    }
+
+
+
   }
 
 }

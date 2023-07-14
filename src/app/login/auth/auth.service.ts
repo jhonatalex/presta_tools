@@ -16,7 +16,7 @@ import { LoginService } from '../providers/login.service';
 export class AuthService {
 
 
- 
+
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
     environment.production ? '' : 'D3V'
   }`;

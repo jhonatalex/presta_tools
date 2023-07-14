@@ -27,14 +27,19 @@
         </ul>
         <div class="d-flex float-right nav-item">
           <div>
-            <a class="nav-link active" [routerLink]="['/acceso']">{{user}}</a>
-          </div>
-          <div>
-            <a class="nav-link active" [routerLink]="['/acceso']">Inicia Sesión</a>
-          </div>
-          
 
-          <a class="nav-link active" [routerLink]="['/registro']">Regístrate gratis</a>
+          </div>
+          <div *ngIf="user">
+            <p class="text-color-white-theme ">{{user.name}}</p>
+            <a class="nav-link active" [routerLink]="['/login']">Cerrar Seccion</a>
+
+          </div>
+          <div *ngIf="user!">
+            <a class="nav-link active" [routerLink]="['/registro']">Regístrate gratis</a>
+          </div>
+
+
+
         </div>
       </div>
         <i class="fa fa-user-circle-o" aria-hidden="true"></i>

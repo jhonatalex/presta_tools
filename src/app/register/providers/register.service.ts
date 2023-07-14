@@ -24,6 +24,7 @@ export class RegisterService {
     const url = `${environment.baseUrl}${PathUser.saveUser}`;
     this.callManSV.postData(url, payload)
     .then((response:any)=>{
+      console.log(response);
       this.manageResponse(response);
     })
     .catch((error:any)=>{
@@ -34,11 +35,14 @@ export class RegisterService {
 
   private manageResponse(registerRS:RegisterRS){
     if(registerRS.success){
-      this.sweetUIService.alertConfirm('Bienveido',registerRS.message,'success')
+      this.sweetUIService.alertConfirm('Bienvenido',registerRS.message,'success')
       .then(()=>{
         this.utilService.navigateToPath('/acceso')
       })
       .catch((e:any)=>{console.log(e);})
+    }else{
+      this.sweetUIService.alertConfirm('Alerta',registerRS.message ,'error')
+      console.log(registerRS.Error?.message)
     }
   }
 
