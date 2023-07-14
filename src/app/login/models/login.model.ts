@@ -1,5 +1,5 @@
 
-import { User } from 'src/app/models/user.model';
+import { User } from 'src/app/register/models/user.model';
 import { ErrorRes } from 'src/app/shared/models/error.model';
 
 
@@ -11,7 +11,7 @@ export class loginPayload {
 
 export class loginResponse {
   token: string = '';
-  user: User | null = null;
+  response: User | null = null;
   success: boolean | null = null;
   Error: ErrorRes | null = null;
   message: string = '';

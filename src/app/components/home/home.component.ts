@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/app/models/category.model';
+import { UtilService } from 'src/app/shared/services/util.service';
+import { Constants } from 'src/app/shared/constants/settings.class';
+import { environment } from 'src/environments/environment.prod';
+import { User } from 'src/app/register/models/user.model';
 
 
 @Component({
@@ -10,7 +14,9 @@ import { Category } from 'src/app/models/category.model';
   providers:[CategoryService]
 })
 export class HomeComponent implements OnInit {
-
+  private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
+    environment.production ? '' : 'D3V'
+  }`;
   slideConfig = {slidesToShow:3,
                  slidesToScroll:1,
                  autoplay: false,
@@ -63,9 +69,10 @@ export class HomeComponent implements OnInit {
 
 
   public categories:any;
-
+  public user: User = new User();
   constructor(
-    private categoryService:CategoryService
+    private categoryService:CategoryService,
+    private utilService: UtilService,
   ){}
 
   ngOnInit(): void {
@@ -74,6 +81,7 @@ export class HomeComponent implements OnInit {
     /*this.categoryService.editTool().subscribe(response=>{
       console.log(response);
     });*/
+    this.user = this.utilService.getFromLocalStorage(this.loginKey);
   }
 
 

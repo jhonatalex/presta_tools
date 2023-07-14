@@ -26,7 +26,14 @@
           </li>
         </ul>
         <div class="d-flex float-right nav-item">
-          <a class="nav-link active" [routerLink]="['/acceso']">Inicia Sesión</a>
+          <div>
+            <a class="nav-link active" [routerLink]="['/acceso']">{{user}}</a>
+          </div>
+          <div>
+            <a class="nav-link active" [routerLink]="['/acceso']">Inicia Sesión</a>
+          </div>
+          
+
           <a class="nav-link active" [routerLink]="['/registro']">Regístrate gratis</a>
         </div>
       </div>

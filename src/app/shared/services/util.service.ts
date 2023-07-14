@@ -17,7 +17,7 @@ export class UtilService {
    */
   public navigateToPath(path: string): Promise<boolean> {
     if (path === '') {
-      path = '/404';
+      //path = '/404';
     }
     return this.router.navigate([path]);
   }
@@ -44,10 +44,12 @@ export class UtilService {
    */
   public getFromLocalStorage(key: string): any {
     const item = localStorage.getItem(key);
+    console.log(item);
     if (!item) {
       return null;
     }
     const value = JSON.parse(item);
+
     return value || null;
   }
 

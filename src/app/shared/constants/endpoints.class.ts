@@ -20,7 +20,7 @@ export const loginEndpoint = {
   loginDominios: 'login/dominios',
 };
 
-export const user = {
+export const PathUser = {
   /**
    * GET
    */
