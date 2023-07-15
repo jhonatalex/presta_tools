@@ -9,4 +9,5 @@ export class User {
     dIdentidad: string = '';
     date: Date = new Date();
     state: boolean = false;
+    typeUser: string=''
   }
