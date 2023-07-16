@@ -94,13 +94,26 @@ export class AuthService {
   public logout(): void {
     /*
     this.utSV.removeFromCookies(this.tokenKEY);
-    
+
     this.utSV.removeFromLocalStorage(this.tokenPermKEY);
     this.utSV.removeFromSessionStorage(this.tokenUsrCntrsKey);
     this.utSV.removeFromSessionStorage(this.tokenSelCntrsKey);
     */
     this.utilService.removeFromLocalStorage(this.loginKey);
   }
+
+
+  public verifyLogged():boolean{
+
+    var user = this.utilService.getFromLocalStorage(this.loginKey);
+
+    return user ? true : false;
+  }
+
+
+
+
+
 
   /**
    * Finaliza la sesion del usuario actual,

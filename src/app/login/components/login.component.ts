@@ -6,20 +6,28 @@ import { loginPayload } from '../models/login.model';
 import { AuthService } from '../auth/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SweetUIService } from 'src/app/shared/services/gui.service';
+import { UtilService } from 'src/app/shared/services/util.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers:[UserService]
+  providers:[UserService, UtilService]
 })
+
+
+
 export class LoginComponent implements OnInit {
-  
+
 
   private payload: loginPayload = new loginPayload();
 
 
   constructor(
+        /**
+     * Servicio de Utilidades
+     */
+        private utilService: UtilService,
       /**
      * Servicio de Proveedor de Data de Login
      */
@@ -35,11 +43,17 @@ export class LoginComponent implements OnInit {
       /**
        * Auth Service
        */
-      private authService: AuthService
+      private authService: AuthService,
 
     ) {}
 
   ngOnInit(): void {
+
+    if(this.authService.verifyLogged()){
+
+      this.utilService.navigateToPath('/')
+
+    }
 
   }
 

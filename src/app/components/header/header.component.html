@@ -1,64 +1,28 @@
 <!--SECCIÓN NAVBAR-->
-<nav class=" container-fluid text-center bg-dark">
-
-
-
-  <div class="row align-items-center justify-content-center navbar  navbar-dark">
-    <div class="col-2 d-md-none ">
-      <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
-        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid mt-2">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    </div>
-    <div class="col-8 col-md-3" >
       <div class="logo" *ngIf="flaglogo"><!--CONDICION PARA EL TAMAÑO DEL LOGO NORMAL-->
-        <img src="assets/img/logo.png" alt="logo" class="img-logo">
+        <img src="assets/img/logo.png" alt="logo" class="img-logo ms-2">
       </div>
-      <!-- -CONDICION PARA EL TAMAÑO DEL LOGO PEQUEÑO
-      <div class="logo" *ngIf="!flaglogo">
+      <div class="logo" *ngIf="!flaglogo"><!---CONDICION PARA EL TAMAÑO DEL LOGO PEQUEÑO-->
         <img src="assets/img/logo.png" alt="logo" class="img-logo ms-5 logoSmall">
-      </div> -->
-    </div>
-
-    <div class="col-2 d-md-none align-content-center" >
-
-      <div class="dropdown">
-        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <a id="accountIcon"><i class="fa fa-user-circle-o" aria-hidden="true"></i> </a>
-        </button>
-        <ul class="dropdown-menu">
-          <!-- <li><a class="dropdown-item" href="#">Action</a></li> -->
-          <li><a class="dropdown-item" [routerLink]="['/acceso']">Inicia Sesión</a></li>
-          <li><a class="dropdown-item" [routerLink]="['/registro']">Regístrate gratis</a></li>
-        </ul>
       </div>
-      <!--
-        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-
-        <div class="d-flex float-right nav-item">
-          <a class="nav-link active" [routerLink]="['/acceso']">Inicia Sesión</a>
-          <a class="nav-link active" [routerLink]="['/registro']">Regístrate gratis</a>
-        </div>
-        -->
-
-
-    </div>
-
-    <div class="col-12 col-md-9 " >
-      <div class="collapse navbar-collapse d-md-flex" id="navbarTogglerDemo01">
-
-        <ul class="navbar-nav container-fluid justify-content-end">
+      <div class="collapse navbar-collapse  mt-5 mb-0 ms-5" id="navbarTogglerDemo01">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" routerLink="/">Inicio</a>
+            <a class="nav-link active" aria-current="page" routerLink="/">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="/#productos-destacados">Productos</a>
+            <a class="nav-link active" href="/#productos-destacados">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active"  [routerLink] ="['/agregar-producto']" [routerLinkActive]="['active-item']">Alquila Tu Herramienta</a>
+            <a class="nav-link active" [routerLink]="['/agregar-producto']">Alquila Tu Herramienta</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" [routerLink]="['/contacto']" [routerLinkActive]="['active-item']">Contacto</a>
+            <a class="nav-link active" [routerLink]="['/contacto']">Contacto</a>
           </li>
         </ul>
         <div>
@@ -77,10 +41,7 @@
             <a class="nav-link active" [routerLink]="['/registro']">Regístrate gratis</a>
           </div>
         </div>
+
       </div>
     </div>
-  </div>
-
-
-
-</nav>
+  </nav>

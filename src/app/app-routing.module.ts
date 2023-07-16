@@ -9,8 +9,10 @@ import { CategoryComponent } from './components/category/category.component';
 import { ConfirmationRentComponent } from './components/confirmation-rent/confirmation-rent.component';
 import { ThanksRentComponent } from './components/thanks-rent/thanks-rent.component';
 import { FrequentQuestionsComponent } from './components/frequent-questions/frequent-questions.component';
-import { AddToolComponent } from './components/add-tool/add-tool.component';
+
 import { ContactComponent } from './contact/contact.component';
+import { AuthGuard } from './login/auth/auth.guard';
+import { AddToolComponent } from './add-tool/components/add-tool.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,12 +21,26 @@ const routes: Routes = [
   {path: 'herramienta/:id', component: ToolDetailComponent},
   {path: 'recupera-clave', component: RecoverPasswordComponent},
   {path: 'categoria/:id', component: CategoryComponent},
-  {path: 'confirma-renta/:id', component: ConfirmationRentComponent},
   {path: 'preguntas-frecuentes', component: FrequentQuestionsComponent},
-  {path: 'gracias', component: ThanksRentComponent},
-  {path: 'agregar-producto', component: AddToolComponent},
   {path: 'contacto', component: ContactComponent},
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+
+
+
+  //RUTAS PRIVADAS
+  {
+    path: 'confirma-renta/:id', component: ConfirmationRentComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'gracias', component: ThanksRentComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'agregar-producto', component: AddToolComponent,
+    canActivate:[AuthGuard]
+  },
+  {path: '**', redirectTo: '', pathMatch: 'full' },
+
 ];
 
 @NgModule({
