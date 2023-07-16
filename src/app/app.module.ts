@@ -39,6 +39,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     FrequentQuestionsComponent,
     AddToolComponent,
     UploadFileComponent,
+    ContactComponent,
 
 
   ],

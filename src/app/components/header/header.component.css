@@ -4,6 +4,13 @@
     color: black;
   }
 
+  .active-item {
+    background-color: #FFC400;
+    border-radius: 5px;
+    color: black;
+  }
+
+
   .nav-link {
     color: white;
 
