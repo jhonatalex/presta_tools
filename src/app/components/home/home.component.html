@@ -1,100 +1,115 @@
 <!--SECCION HEADER-->
 <section id="header" class="fondo">
   <div class="container-fluid bg-dark">
-      <br>
-        <header>
-          <!--SECCIÓN NAVBAR-->
-          <app-header></app-header>
+    <br>
+    <header>
+      <!--SECCIÓN NAVBAR-->
+      <app-header></app-header>
 
-          <div class="container-fluid content-banner">
-            <div class="row">
-              <div class="col col-sm-12 col-md-6 col-6-lg bg-dark">
-                <div class="ovalo-buttons col-md-9 mt-5 ms-5">
-                  <a href="/#categorias" type="button" class="btn btn-ligth px-5">Categorías</a>
-                  <a  href="/#preguntas-frecuentes" type="button" class="btn btn-ligth px-5">Conoce más</a>
-                </div>
-                    <div class="parrafo1">
-                      <h1 class="mt-2 ms-5">Todas las herramientas</h1>
-                      <h1 class="blue-h1 mt-2 ms-5">en un solo lugar</h1>
-                    </div>
-
-                  <p class="parrafo mt-2 ms-5">Encuentra las herramientas que necesitas para tus proyectos, ahorra dinero evitando comprar equipos que solo usarás una vez y únete a una red de emprendedores que valoran la colaboración.</p>
-                  <a class="boton-registrar btn-blue-grad mt-2 ms-5 p-2 border-0 col-md-4 nav-link active text-center" [routerLink]="['/registro']">Regístrate gratis</a>
-                  <p class="parrafo mt-2 ms-5"><span class="subtitle">Comparte, Ahorra y Emprende</span><br> La Economía Colaborativa ya esta aqui.</p>
-
-              </div>
-
-              <div class="banner col col-sm-12 col-md-6 col-lg-6 bg-dark">
-                <img src="assets/img/banner.png" alt="banner" class="img-fluid mb-5">
-              </div>
+      <div class="container-fluid content-banner text-center text-md-start ">
+        <div class="row flex-column-reverse flex-md-row justify-content-center  align-items-center my-3">
+          <div
+            class="col col-12 col-md-7 col-lg-6 bg-dark d-flex flex-column justify-content-around align-items-center align-items-md-around">
+            <div class="text-center ovalo-buttons col-10 col-md-8">
+              <a href="/#categorias" type="button" class="btn btn-blue-grad ">Categorías</a>
+              <a href="/#preguntas-frecuentes" type="button" class="btn">Conoce más</a>
             </div>
+            <div class="col-12">
+              <h1 class="fw-bold my-3">Todas las herramientas</h1>
+              <h1 class="blue-h1 fw-bold my-3">en un solo lugar</h1>
+            </div>
+
+            <p class="col-12 d-none d-md-block">Encuentra las herramientas que necesitas para tus proyectos, ahorra
+              dinero
+              evitando comprar equipos que solo usarás una vez y únete a una red de emprendedores que valoran la
+              colaboración.</p>
+            <div class="col-12 d-flex justify-content-center justify-content-md-start  my-3">
+
+              <a class="btn-blue-grad nav-link text-center" [routerLink]="['/registro']">Regístrate gratis</a>
+            </div>
+            <p class="col-12  d-none d-md-block"><span class="subtitle">Comparte, Ahorra y Emprende</span>
+              <br>
+              La Economía colaborativa ya esta aqui.
+            </p>
+
           </div>
-        </header>
+
+          <div class="col col-8 col-md-5 bg-dark justify-content-center align-items-center">
+            <img src="assets/img/banner.png" alt="banner" class="img-fluid mb-5">
+          </div>
+        </div>
+      </div>
+    </header>
   </div>
 </section>
 
 <!--SECCION PRODUCTOS-DESTACADOS-->
-<section id="productos-destacados" class="fondo py-5">
+<section id="productos-destacados" class="container-fluid fondo py-5">
   <div class="container-fluid text-center col-md-6 mb-3">
-      <h1 class="py-2"> <strong> Productos destacados</strong></h1>
-      <h5 class="text">Conecta con una comunidad de usuarios dispuestos a compartir</h5>
-      <p> ¡Descubre una forma <strong>inteligente</strong> y sostenible de acceder a las herramientas que necesitas en nuestro sitio web de economía colaborativa!</p>
+    <h3 class="py-2"> <strong> Productos destacados</strong></h3>
+    <h5 class="text  my-3">Conecta con una comunidad de usuarios dispuestos a compartir</h5>
+    <p> ¡Descubre una forma <strong>inteligente</strong> y sostenible de acceder a las herramientas que necesitas en
+      nuestro sitio web de economía colaborativa!</p>
   </div>
 
-  <br/>
+  <br />
   <!--SECCION SLIDER PRODUCTOS DESTACADOS-->
   <app-related-featured-products></app-related-featured-products>
 </section>
 
 <!--SECCION CATEGORIA-->
-<section id="categorias" class="fondo py-2" style="padding-top: 10%">
+<section id="categorias" class=" container-fluid fondo py-2">
   <div class="container-fluid text-center col-md-6">
-      <h1> <strong>Categorías</strong></h1>
-      <p>Explora nuestras categorías de herramientas especializadas. Sea cual sea tu proyecto, estamos seguros de que encontrarás la herramienta adecuada. Simplifica tu vida, ahorra dinero uniéndote a nuestra comunidad hoy mismo.</p>
+    <h3> <strong>Categorías</strong></h3>
+    <p>Explora nuestras categorías de herramientas especializadas. Sea cual sea tu proyecto, estamos seguros de que
+      encontrarás la herramienta adecuada. Simplifica tu vida, ahorra dinero uniéndote a nuestra comunidad hoy mismo.
+    </p>
   </div>
 
-  <div class="container fluid ">
-            <!---SECCION SLIDER CATEGORIAS-->
-              <ngx-slick-carousel class="carousel"
-                          #slickModal="slick-carousel"
-                          [config]="slideConfig"
-                          responsive="breakpoints"
-                          (init)="slickInit($event)"
-                          (breakpoint)="breakpoint($event)"
-                          (afterChange)="afterChange($event)"
-                          (beforeChange)="beforeChange($event)">
+  <div class="container-fluid mx-auto h-100">
+    <!---SECCION SLIDER CATEGORIAS-->
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" responsive="breakpoints"
+      (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+      (beforeChange)="beforeChange($event)">
 
-                                <div ngxSlickItem *ngFor="let category of categories" class="slide d-flex justify-content-center align-items-center"> 
-                                    <div class="card shadow">
-                                       <a [routerLink]="['/categoria/', category.idCat]"><img src="{{category.urlImagen}}" alt="imagenCategory" class="img-card-top img-fluid" width=500px height=200px/></a> 
-                                        <div class="card-body text-center heighthMax">
-                                            <strong>{{category.titleCat}}</strong>
-                                            <p>{{category.descripCat}}</p>
-                                        </div>
-                                    </div>
-                                </div>
+      <div ngxSlickItem *ngFor="let category of categories; let i=index"
+        class="slide d-flex justify-content-center align-items-center">
+        <!--VARIABLE index DE PRUEBA; LUEGO SE SUSTITUYE POR EL id DE tool-->
+        <div class="card shadow  my-4"><!-- heightmax -->
+          <a [routerLink]="['/categoria/',i]"><img src="{{category.url_imagen}}" alt="imagen"
+              class="img-card-top img-fluid bg-dark" /></a>
+          <div class="card-body text-center  h-100">
+            <strong>{{category.title_cat}}</strong>
+            <p>{{category.descrip_cat}}</p>
+          </div>
+        </div>
+      </div>
 
-              </ngx-slick-carousel>
+    </ngx-slick-carousel>
   </div>
 </section>
 
 <!--SECCION PREGUNTAS FRECUENTES-->
-<section id="preguntas-frecuentes" class="fondo pb-3">
-  <div class="py-5 widthMax">
-      <div class="row mt-2 bg-primary">
-            <div class="col-md-6 content-image-preguntas">
-              <div class="image-container">
-                <img class="img-preguntas img-fluid"src="assets/img/frecuentes.jpg" alt="preguntas">
-              </div>
-            </div>
-            <div class="col-md-6 color-primary-dark py-5 content-preguntas" style="padding:60px;">
-              <h4 class="text-color-white-theme mt-50">Guia práctica de como generar ingresos</h4>
-              <h1 class="text-color-white-theme">Preguntas frecuentes</h1>
-              <p class="text-color-white-theme text-justify"> Prestatool te permite alquilar herramientas y una amplia variedad de artículos de manera sencilla y segura. A continuación, encontrarás
-                 respuestas a las preguntas más frecuentes que nuestros usuarios suelen plantear. Si tienes alguna otra duda o consulta, no dudes en contactarnos.</p>
-            <button class="boton-link border-0 me-5 mt-30 text-center">Visita FAQ<i class="fa fa-external-link ms-5" aria-hidden="true"></i></button>
-            </div>
+<section id="preguntas-frecuentes" class="fondo">
+  <div class="py-5 ">
+    <div class="row g-0 bg-primary">
+      <div class="col-md-5  ">
+        <div class="image-container">
+          <img class="img-preguntas" src="assets/img/frecuentes.jpg" alt="preguntas">
+        </div>
       </div>
+      <div class="col-md-7 g-0 color-primary-dark p-5 p-md-3 d-flex flex-column justify-content-center  align-items-center align-items-md-start text-center text-md-start">
+        <h4 class="text-color-white-theme ">Guia práctica de como generar ingresos</h4>
+        <h1 class="text-color-white-theme">Preguntas frecuentes</h1>
+        <p class="text-color-white-theme">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea cupiditate
+          debitis blanditiis repellendus suscipit explicabo unde, distinctio dolore praesentium commodi, ab perferendis
+          assumenda quaerat est, recusandae hic maiores mollitia saepe.
+          Alias ullam libero eligendi maiores? Delectus, non aut. Molestiae repellat eligendi, non, delectus nulla totam
+        </p>
+        <button class="boton-link border-0">Visit the help center<i class="fa fa-external-link ms-5"
+            aria-hidden="true"></i></button>
+      </div>
+    </div>
   </div>
 </section>
 

@@ -13,20 +13,33 @@
 
   .nav-link {
     color: white;
-
   }
 
   .nav-item{
     padding-left: 15px;
   }
-
-  .logoSmall{
-    width: 240px;
-    height: 100px;
-    margin-right: 50px;
+  .img-logo{
+    width: 150px;
   }
-
-  @media(max-width:992px){
+  #accountIcon{
+    color: white;
+    font-size: 25px;
+  }
+  .dropdown button{
+    color: white;
+  }
+  .headerFixed{
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0;
+    z-index: 999999;
+  }
+  /*
+nav a {
+  color: #FFC400!important;
+} */
+ /*  @media(max-width:992px){
     .ovalo-buttons{
       display: none;
     }
@@ -35,15 +48,19 @@
       display: block;
       margin: auto;
     }
-
-    .fa {
+ .fa {
       color: white;
-    }
+    }*/
 
-    @media(max-width:992px){
+
+
+    @media(min-width:768px){
       .img-logo{
-        width: 220px;
+        width: 200px;
       }
-    }
+      .navbar-nav{
+        flex-direction: row;
+      }
+
 
   }
