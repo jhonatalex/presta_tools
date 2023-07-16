@@ -2,3 +2,9 @@
   padding: 5px 5px;
   color: white;
 }
+
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

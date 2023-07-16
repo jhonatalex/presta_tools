@@ -19,8 +19,7 @@
 }
 
 .nav-link:hover {
-    background-color: #FFC400;
-    border-radius: 5px;
+    background: #FFC400;
     color: black;
   }
 
@@ -40,6 +39,7 @@
   .ovalo-buttons {
     background-color: black;
     border-radius: 20px;
+    align-items: center;
     justify-content: space-around;
     display: flex;/* 
     
@@ -53,7 +53,6 @@
 
   .btn:hover {
     background-color: #0050a9;
-    border-radius: 15px;
   }
 
   .col {
@@ -78,7 +77,9 @@
     color: white;
     height: 40px;
     text-decoration: none;
-    width: 160px;
+    width: fit-content;
+    min-width: 160px;
+
   }
 
   .icon {
@@ -145,6 +146,8 @@
     width: 727px;
     height: 100%;
     max-width: 100%;
+    background-image: url("../../../assets/img/frecuentes.jpg");
+    background-size: cover;
   }
   .mb-50{
     margin-bottom: 50px;
@@ -168,8 +171,8 @@
 
   }
 
-  #testimonios {
-    background-color: #0794b3;
+  #testimonios {background: rgb(7,148,179);
+    background: linear-gradient(45deg, rgba(7,148,179,1) 20%, rgba(33,37,41,1) 20%, rgba(33,37,41,1) 30%, rgba(7,148,179,1) 30%);
   }
 
   .img-testimonio {
@@ -186,7 +189,13 @@
     margin-bottom: 20px;
   }
 
-
+.content-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;}
+  .content-image img{
+    width: 100%;
+    max-width: 600px;}
   @media(max-width:992px){
     
     .heightmax{
@@ -228,6 +237,12 @@
       justify-content: center;
       align-content: center;
     }
+    .content-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      }
+    
 /* 
     .content-preguntas{
       display: grid;
