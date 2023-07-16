@@ -6,3 +6,25 @@
     height: 500px;
     opacity: 0.5;
 }
+.input-buscar{
+    width: 365px;
+    height: 40px;
+    border: none;
+    padding: 15px;
+}
+.fondo{
+    background-color:#ebebebdb;
+}
+.fa{
+    margin-right: 25px;
+    padding-left: 10px; 
+}
+.contenedor-buscar{
+    border-radius: 20px;
+    background: whitesmoke;
+    width: 550px;
+    height: 50px;
+    padding: 5px;
+    position: relative;
+    left: 87px;
+}

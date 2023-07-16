@@ -61,21 +61,21 @@
             <a class="nav-link active" [routerLink]="['/contacto']" [routerLinkActive]="['active-item']">Contacto</a>
           </li>
         </ul>
-        <div class="d-flex float-right nav-item">
-          <div>
+        <div>
 
+          <div *ngIf="user" class="d-flex float-right nav-item">
+                <img src="assets/img/userLogin.png" alt="icono" style="width: 30px; height: 30px;" class="fa">
+                <div class="col text-center mx-2">
+                  <div class="col"><a class="name-user p-0">{{user.name}} {{user.lastName}}</a></div>
+                  <div class="col"><small class="name-user p-0" style="font-size: small;">{{user.email}}</small></div>
+                </div>
+                <button class="btn btn-link nav-link cerrar ms-4" (click)='signOut()'>Cerrar Sesión</button>
           </div>
-          <div *ngIf="user">
-            <p class="text-color-white-theme ">{{user.name}}</p>
-            <a class="nav-link active" [routerLink]="['/login']">Cerrar Seccion</a>
 
-          </div>
-          <div *ngIf="user!">
+          <div *ngIf="!user" class="d-flex float-right nav-item">
+            <a class="nav-link active" [routerLink]="['/acceso']">Iniciar Sesión</a>
             <a class="nav-link active" [routerLink]="['/registro']">Regístrate gratis</a>
           </div>
-
-
-
         </div>
       </div>
     </div>
