@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute,Params } from '@angular/router';
-import { Tool } from 'src/app/models/tool.model';
+import { Tool } from 'src/app/add-tool/models/tool.model';
 import { ToolService } from 'src/app/services/tool.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class ConfirmationRentComponent implements OnInit {
 
 
   getId(): void{
-    //obtener el  id de la URL  
+    //obtener el  id de la URL
     this.route.params.subscribe(params =>{
     this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
     console.log(this.id);
@@ -36,7 +36,7 @@ export class ConfirmationRentComponent implements OnInit {
   }
 
   getToolDetail(): void{
-    //obtener el  id de la URL  
+    //obtener el  id de la URL
     this.route.params.subscribe(params =>{
     this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
 
@@ -46,10 +46,10 @@ export class ConfirmationRentComponent implements OnInit {
     })
 
     });
-  }  
+  }
 
   onSubmit(Form:NgForm){
-    
+
   }
 
 }

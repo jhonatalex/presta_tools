@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute,Params } from '@angular/router';
 import { ToolService } from '../../services/tool.service';
-import { Tool } from '../../models/tool.model';
+import { Tool } from '../../add-tool/models/tool.model';
 import { FormControl } from '@angular/forms';
 
 
@@ -20,27 +20,27 @@ export class ToolDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private toolService: ToolService  
+    private toolService: ToolService
   ){
     this.id = 0;
-    this.tool = new Tool (0,'','','','','','',0,0,0,0,0,0,'','','','','',0,0,0,new Date,0);//instancia vacia para guardar tool por id 
+    this.tool = new Tool (0,'','','','','','',0,0,0,0,0,0,'','','','','',0,0,0,new Date,0);//instancia vacia para guardar tool por id
   }
 
   ngOnInit(): void {
     this.getToolDetail()//saca detalle de Tool por su ID
   }
 
-  
+
 
     getRating(){
       this.tool.rate = this.rating.value;
       console.log(this.tool.rate);
     }
 
-  
+
 
     getToolDetail(): void{
-        //obtener el  id de la URL  
+        //obtener el  id de la URL
         this.route.params.subscribe(params =>{
         this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
         //obtiene la herramienta por id
@@ -53,9 +53,9 @@ export class ToolDetailComponent implements OnInit {
         this.category = this.toolCat[24].titleCat;
         console.log(this.category);
       })
-  
+
       });
-    }       
+    }
 
 
 }

@@ -32,13 +32,16 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { environment } from 'src/environments/environment';
-import { AddToolComponent } from './components/add-tool/add-tool.component';
+
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ContactComponent } from './contact/contact.component';
+import { AddToolComponent } from './add-tool/components/add-tool.component';
+
 
 
 @NgModule({
@@ -59,6 +62,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     FrequentQuestionsComponent,
     AddToolComponent,
     UploadFileComponent,
+    ContactComponent,
 
 
   ],

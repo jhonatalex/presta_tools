@@ -1,7 +1,7 @@
 import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Tool } from "../models/tool.model";
+import { Tool } from "../add-tool/models/tool.model";
 
 @Injectable()
 export class ToolService{
@@ -11,7 +11,7 @@ export class ToolService{
     constructor(
         private http:HttpClient
     ){
-        this.tools = [];  
+        this.tools = [];
     }
 
     getTools():Observable<Tool[]>{

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToolService } from '../../services/tool.service';
-import { Tool } from '../../models/tool.model';
+
 import { ActivatedRoute,Params } from '@angular/router';
+import { Tool } from 'src/app/add-tool/models/tool.model';
 
 @Component({
   selector: 'app-related-featured-products',
@@ -11,7 +12,7 @@ import { ActivatedRoute,Params } from '@angular/router';
 })
 export class RelatedFeaturedProductsComponent implements OnInit {
   public tools:any;
-  
+
 
   slideConfig = { slidesToShow:3,
                   slidesToScroll:1,
@@ -65,7 +66,7 @@ export class RelatedFeaturedProductsComponent implements OnInit {
 
   constructor(
     private toolService: ToolService,
-    private route: ActivatedRoute) 
+    private route: ActivatedRoute)
     {}
 
   ngOnInit(): void {
