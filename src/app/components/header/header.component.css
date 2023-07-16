@@ -1,38 +1,43 @@
 .nav-link:hover {
-    background-color: #FFC400;
-    border-radius: 5px;
-    color: black;
-  }
+  background-color: #FFC400;
+  border-radius: 5px;
+  color: black;
+}
 
-  .nav-link {
-    color: white;
-  }
+.nav-link {
+  color: white;
+}
 
-  .nav-item{
-    padding-left: 15px;
-  }
-  .img-logo{
-    width: 150px;
-  }
-  #accountIcon{
-    color: white;
-    font-size: 25px;
-  }
-  .dropdown button{
-    color: white;
-  }
-  .headerFixed{
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 0;
-    z-index: 999999;
-  }
-  /* 
+.nav-item {
+  padding-left: 15px;
+}
+
+.img-logo {
+  width: 150px;
+}
+
+#accountIcon {
+  color: white;
+  font-size: 25px;
+}
+
+.dropdown button {
+  color: white;
+}
+
+.headerFixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0;
+  z-index: 999999;
+}
+
+/* 
 nav a {
   color: #FFC400!important;
 } */
- /*  @media(max-width:992px){
+/*  @media(max-width:992px){
     .ovalo-buttons{
       display: none;
     }
@@ -45,15 +50,18 @@ nav a {
       color: white;
     }*/
 
-    
- 
-    @media(min-width:768px){
-      .img-logo{
-        width: 200px;
-      }
-      .navbar-nav{
-        flex-direction: row;
-      }
-    
 
-  } 
+
+@media(min-width:768px) {
+  .img-logo {
+    width: 200px;
+  }
+
+ 
+
+  
+.nav-link {
+  padding: 5px;
+}
+
+}

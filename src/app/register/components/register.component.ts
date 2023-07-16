@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
-import { User } from '../../models/user.model';
+
 import { UserService } from '../../services/user.service';
+import { User } from '../models/user.model';
+import { RegisterService } from '../providers/register.service';
+//import { v4 as uuidv4} from 'uuid';
 
 @Component({
   selector: 'app-register',
@@ -14,18 +17,21 @@ export class RegisterComponent implements OnInit {
   public ConfirmPassword:string='';
   
 
-  constructor(private userService: UserService) 
+  constructor(private userService: UserService,
+              private resgisterService: RegisterService) 
   {
-    this.user = new User(0,'','','','','','','',new Date,true,'');//instancia de usuario vacía para el formulario
+   // const uniqueId:number = uuidv4();
+    this.user = new User();//instancia de usuario vacía para el formulario
    }
 
   ngOnInit(): void {
   }
 
   onSubmit(form:NgForm):void{
-    let response = this.userService.post('/api/user/insert',this.user).subscribe(response=>{
-      console.log(response);
-    })
+    //let response = this.userService.post('/api/user/insert',this.user).subscribe(response=>{
+     // console.log(response);
+    //
+    this.resgisterService.register(this.user);
     
   }
 

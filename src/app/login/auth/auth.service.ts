@@ -16,10 +16,10 @@ import { LoginService } from '../providers/login.service';
 export class AuthService {
 
 
- /*
-  private tokenSelCntrsKey = `${new Constants().getStorageKeys().selCntrs}${
+ 
+  private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
     environment.production ? '' : 'D3V'
-  }`;*/
+  }`;
 
 
   constructor(
@@ -34,7 +34,7 @@ export class AuthService {
     /**
      * Servicio de Utilidades
      */
-    private utSV: UtilService,
+    private utilService: UtilService,
     /**
      * Loading Spinner
      */
@@ -59,33 +59,29 @@ export class AuthService {
    * @param authResponse Respuesta del Login
    */
   private manageAuthResponse(loginData: loginResponse) {
-    const tokenString = loginData.token;
+      if(loginData.success){
+        const tokenString = loginData.token;
       //const jwtHelper = new JwtHelperService();
       //const decodedToken: decodedTkn = jwtHelper.decodeToken(tokenString);
       // const expirationDate = jwtHelper.getTokenExpirationDate(tokenString);
       //const isExpired = jwtHelper.isTokenExpired(tokenString);
-      // SET USER A LOCAL SOTORAGE
-      //this.utSV.setToSessionStorage(this.tokenUsrCntrsKey, loginData.centros);
-
-
-
-      console.log(loginData);
-
-     // if(loginData.success){
-
-        if (loginData!=null) {
+      //SET USER A LOCAL SOTORAGE
+      this.utilService.setToLocalStorage(this.loginKey, loginData.response);
+        this.sweetUIService
+        .alertConfirm("Bienvenido", loginData.message, 'success')
+        .then(() => {
+          this.utilService.navigateToPath('/');
+        })
+        .catch(console.warn);
 
           // Navegar al HOME
-          this.utSV.navigateToPath('/');
-
+          //this.utSV.navigateToPath('/');
 
         } else {
-          this.endSession(
-            'El usuario no tiene permisos suficientes para utilizar esta aplicacion Web',
-            'Atención'
-          );
+
+          this.endSession(loginData.message);
         }
-     // }
+
 
 
 
@@ -119,7 +115,7 @@ export class AuthService {
     this.sweetUIService
       .alertConfirm(title, message, 'warning')
       .then(() => {
-        this.utSV.navigateToPath('/acceso');
+        this.utilService.navigateToPath('/acceso');
       })
       .catch(console.warn);
   }

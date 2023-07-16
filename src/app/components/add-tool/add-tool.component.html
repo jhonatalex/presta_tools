@@ -7,64 +7,59 @@
     <div class="row">
       <div class="col-md-6">
 
-        <div class="form-group">
-          <label for="name">Nombre:</label>
-          <input type="text" class="form-control" id="name" name="name">
+        <div class="form-group mt-4 mxauto mt-4 mxauto">
+          <label class="hide" for="name">Nombre:</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Nombre">
         </div>
-        <div class="form-group">
-          <label for="reference">Referencia:</label>
-          <input type="text" class="form-control" id="reference" name="reference">
-        </div>
-
-        <div class="form-group">
-          <label for="model">Modelo:</label>
-          <input type="text" class="form-control" id="model" name="model">
+        <div class="form-group mt-4 mxauto">
+          <label class="hide" for="reference">Referencia:</label>
+          <input placeholder="Referencia" type="text" class="form-control" id="reference" name="reference">
         </div>
 
-        <div class="form-group">
-          <label for="valueComercial">Valor Comercial:</label>
-          <input type="number" class="form-control" id="valueComercial" name="valueComercial">
-        </div>
-        <div class="form-group">
-          <label for="valueRent">Valor de Renta:</label>
-          <input type="number" class="form-control" id="valueRent" name="valueRent">
-        </div>
-        <div class="form-group">
-          <label for="yearBuy">Año de Compra:</label>
-          <input type="number" class="form-control" id="yearBuy" name="yearBuy">
+        <div class="form-group mt-4 mxauto">
+          <label class="hide" for="model">Modelo:</label>
+          <input placeholder="Modelo" type="text" class="form-control" id="model" name="model">
         </div>
 
-        <div class="form-group">
-          <label for="description">Descripción:</label>
-          <textarea class="form-control" id="description" name="description"></textarea>
+        <div class="form-group mt-4 mxauto">
+          <label class="hide" for="valueComercial">Valor Comercial:</label>
+          <input placeholder="Valor Comercial" type="number" class="form-control" id="valueComercial" name="valueComercial">
+        </div>
+        <div class="form-group mt-4 mxauto">
+          <label class="hide" for="valueRent">Valor de Renta:</label>
+          <input placeholder="Valor de renta" type="number" class="form-control" id="valueRent" name="valueRent">
+        </div>
+        <div class="form-group mt-4 mxauto">
+          <label class="hide" for="yearBuy">Año de Compra:</label>
+          <input placeholder="Año de compra" type="number" class="form-control" id="yearBuy" name="yearBuy">
         </div>
 
+        <div class="form-group mt-4 mxauto">
+          <label class="hide" for="description">Descripción:</label>
+          <textarea placeholder="Descripción" class="form-control" id="description" name="description"></textarea>
+        </div>
 
-      </div>
-
-
-      <div class="col-md-6">
 
         <div class="row">
           <div class="col-md-4">
-              <div class="form-group">
-                <label for="weigt">Peso:</label>
-                <input type="number" class="form-control" id="weigt" name="weigt">
+              <div class="form-group mt-4 ">
+                <label class="hide" for="weigt">Peso:</label>
+                <input placeholder="Peso" type="number" class="form-control" id="weigt" name="weigt">
               </div>
 
           </div>
 
           <div class="col-md-4">
-            <div class="form-group">
-              <label for="mesuare">Medida:</label>
-              <input type="number" class="form-control" id="mesuare" name="mesuare">
+            <div class="form-group mt-4 ">
+              <label class="hide" for="mesuare">Medida:</label>
+              <input placeholder="Medida" type="number" class="form-control" id="mesuare" name="mesuare">
             </div>
           </div>
 
         <div class="col-md-4">
-          <div class="form-group">
-            <label for="numberPiece">Número de Piezas:</label>
-            <input type="number" class="form-control" id="numberPiece" name="numberPiece">
+          <div class="form-group mt-4 ">
+            <label class="hide" for="numberPiece">Número de Piezas:</label>
+            <input placeholder="Piezas" type="number" class="form-control" id="numberPiece" name="numberPiece">
           </div>
         </div>
 
@@ -74,14 +69,14 @@
 
 
       <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-6 mt-4">
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="nuevo" name="nuevo">
               <label class="form-check-label" for="nuevo">Nuevo</label>
             </div>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-6 mt-4">
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="widgets" name="widgets">
               <label class="form-check-label" for="widgets">Widgets</label>
@@ -90,8 +85,13 @@
       </div>
 
 
+      </div>
 
-        <div class="form-group">
+
+      <div class="col-md-6">
+
+
+        <div class="form-group mt-4 mxauto">
           <label for="urlImage1">URL de la Imagen 1:</label>
           <app-upload-file></app-upload-file>
 
@@ -100,27 +100,27 @@
 
 
 
-        <div class="form-group">
+        <div class="form-group mt-4 mxauto">
           <label for="urlImage2">URL de la Imagen 2:</label>
           <app-upload-file></app-upload-file>
         </div>
-        <div class="form-group">
+        <div class="form-group mt-4 mxauto">
           <label for="urlImage3">URL de la Imagen 3:</label>
           <app-upload-file></app-upload-file>
         </div>
 
-        <div class="form-group">
-          <label for="timeUse">Tiempo de Uso:</label>
-          <input type="number" class="form-control" id="timeUse" name="timeUse">
+        <div class="form-group mt-4 mxauto">
+          <label  class="hide" for="timeUse">Tiempo de Uso:</label>
+          <input placeholder="Tiempo de uso" type="number" class="form-control" id="timeUse" name="timeUse">
         </div>
 
-        <div class="form-group">
-          <label for="termsUse">Términos de Uso:</label>
-          <textarea class="form-control" id="termsUse" name="termsUse"></textarea>
+        <div class="form-group mt-4 mxauto">
+          <label class="hide" for="termsUse">Términos de Uso:</label>
+          <textarea placeholder="Terminos de uso" class="form-control" id="termsUse" name="termsUse"></textarea>
         </div>
-        <div class="form-group">
-          <label for="breakDowns">Detalles Técnicos:</label>
-          <textarea class="form-control" id="breakDowns" name="breakDowns"></textarea>
+        <div class="form-group mt-4 mxauto">
+          <label class="hide" for="breakDowns">Detalles Técnicos:</label>
+          <textarea placeholder="Detalles técnicos" class="form-control" id="breakDowns" name="breakDowns"></textarea>
         </div>
 
 
@@ -128,8 +128,8 @@
       </div>
     </div>
     <!-- Agrega los demás campos aquí -->
-    <div class="row">
-      <button type="submit" class="btn btn-primary">Enviar</button>
+    <div class="row mt-3">
+      <button type="submit" class="btn-blue-grad">Enviar</button>
     </div>
   </form>
 </div>

@@ -36,7 +36,14 @@
         <i class="fa fa-user-circle-o" aria-hidden="true"></i> 
       
         <div class="d-flex float-right nav-item">
-          <a class="nav-link active" [routerLink]="['/acceso']">Inicia Sesión</a>
+          <div>
+            <a class="nav-link active" [routerLink]="['/acceso']">{{user}}</a>
+          </div>
+          <div>
+            <a class="nav-link active" [routerLink]="['/acceso']">Inicia Sesión</a>
+          </div>
+          
+
           <a class="nav-link active" [routerLink]="['/registro']">Regístrate gratis</a>
         </div>
         -->
@@ -47,7 +54,7 @@
     <div class="col-12 col-md-9 " >
       <div class="collapse navbar-collapse d-md-flex" id="navbarTogglerDemo01">
         
-        <ul class="navbar-nav container-fluid justify-content-end">
+        <ul class="navbar-nav container-fluid justify-content-end d-md-flex flex-md-row align-items-md-center">
           <li class="nav-item">
             <a class="nav-link " aria-current="page" routerLink="/">Inicio</a>
           </li>
