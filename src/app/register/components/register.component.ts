@@ -15,13 +15,15 @@ import { RegisterService } from '../providers/register.service';
 export class RegisterComponent implements OnInit {
   public user: User;
   public ConfirmPassword:string='';
-  
+
 
   constructor(private userService: UserService,
-              private resgisterService: RegisterService) 
+              private resgisterService: RegisterService)
   {
    // const uniqueId:number = uuidv4();
     this.user = new User();//instancia de usuario vacía para el formulario
+    this.user.id = 434;
+
    }
 
   ngOnInit(): void {
@@ -32,7 +34,19 @@ export class RegisterComponent implements OnInit {
      // console.log(response);
     //
     this.resgisterService.register(this.user);
-    
+
+  }
+
+
+  public generarIdUnicoNumerico(): number {
+    const timestamp = new Date().getTime();
+    const randomNum = Math.floor(Math.random() * 10000);
+    const id = parseInt(timestamp.toString() + randomNum.toString());
+    return id;
+  }
+
+  private getRandomArbitrary(min:number , max:number) {
+    return Math.random() * (max - min) + min;
   }
 
 }

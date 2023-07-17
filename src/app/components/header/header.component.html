@@ -31,6 +31,7 @@
           <li><a class="dropdown-item" [routerLink]="['/acceso']">Inicia Sesión</a></li>
           <li><a class="dropdown-item" [routerLink]="['/registro']">Regístrate gratis</a></li>
         </ul>
+<<<<<<< HEAD
       </div>
       <!--
         <i class="fa fa-user-circle-o" aria-hidden="true"></i> 
@@ -42,13 +43,32 @@
           <div>
             <a class="nav-link active" [routerLink]="['/acceso']">Inicia Sesión</a>
           </div>
+=======
+        <div>
+>>>>>>> 43186250f0d072434b6979c994574fb39d3590c7
           
+          <div *ngIf="user" class="d-flex float-right nav-item">
+                <img src="assets/img/userLogin.png" alt="icono" style="width: 30px; height: 30px;" class="fa">
+                <div class="col text-center mx-2">
+                  <div class="col"><a class="name-user p-0">{{user.name}} {{user.lastName}}</a></div>
+                  <div class="col"><small class="name-user p-0" style="font-size: small;">{{user.email}}</small></div>
+                </div>
+                <button class="btn btn-link nav-link cerrar ms-4" (click)='signOut()'>Cerrar Sesión</button>
+          </div>
 
-          <a class="nav-link active" [routerLink]="['/registro']">Regístrate gratis</a>
+          <div *ngIf="!user" class="d-flex float-right nav-item">
+            <a class="nav-link active" [routerLink]="['/acceso']">Iniciar Sesión</a>
+            <a class="nav-link active" [routerLink]="['/registro']">Regístrate gratis</a>
+          </div>
         </div>
+<<<<<<< HEAD
         -->
         
      
+=======
+
+      </div>
+>>>>>>> 43186250f0d072434b6979c994574fb39d3590c7
     </div>
 
     <div class="col-12 col-md-9 " >

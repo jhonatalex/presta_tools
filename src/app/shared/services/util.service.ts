@@ -44,7 +44,6 @@ export class UtilService {
    */
   public getFromLocalStorage(key: string): any {
     const item = localStorage.getItem(key);
-    console.log(item);
     if (!item) {
       return null;
     }

@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 .resaltado{
   
   border-radius: 8px;
@@ -24,14 +25,49 @@
   
   border-radius: 5px;
 }
+=======
+  .cerrar{
+    background-color: #FFC400;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .name-user{
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+  }
+
+  .nav-link {
+    color: white;
+  }
+>>>>>>> 43186250f0d072434b6979c994574fb39d3590c7
 
 .nav-item {
   padding-left: 15px;
 }
 
+<<<<<<< HEAD
 .img-logo {
   width: 150px;
 }
+=======
+  .logoSmall{
+    width: 240px;
+    height: 100px;
+    margin-right: 50px;
+  }
+  .fa {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 10px;
+    right: 2px;
+    width: 20px;
+
+  }
+>>>>>>> 43186250f0d072434b6979c994574fb39d3590c7
 
 #accountIcon {
   color: white;
@@ -58,11 +94,11 @@ nav a {
     .ovalo-buttons{
       display: none;
     }
-
     .logo{
       display: block;
       margin: auto;
     }
+<<<<<<< HEAD
  .fa {
       color: white;
     }*/
@@ -82,3 +118,10 @@ nav a {
 }
 
 }
+=======
+    .img-logo{
+     width: 220px;
+    }
+    
+  }
+>>>>>>> 43186250f0d072434b6979c994574fb39d3590c7

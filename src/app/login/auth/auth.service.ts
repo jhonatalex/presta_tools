@@ -15,8 +15,6 @@ import { LoginService } from '../providers/login.service';
 })
 export class AuthService {
 
-
- 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
     environment.production ? '' : 'D3V'
   }`;
@@ -61,6 +59,7 @@ export class AuthService {
   private manageAuthResponse(loginData: loginResponse) {
       if(loginData.success){
         const tokenString = loginData.token;
+        console.log(tokenString);
       //const jwtHelper = new JwtHelperService();
       //const decodedToken: decodedTkn = jwtHelper.decodeToken(tokenString);
       // const expirationDate = jwtHelper.getTokenExpirationDate(tokenString);
@@ -95,11 +94,12 @@ export class AuthService {
   public logout(): void {
     /*
     this.utSV.removeFromCookies(this.tokenKEY);
-    this.utSV.removeFromLocalStorage(this.tokenDataKEY);
+    
     this.utSV.removeFromLocalStorage(this.tokenPermKEY);
     this.utSV.removeFromSessionStorage(this.tokenUsrCntrsKey);
     this.utSV.removeFromSessionStorage(this.tokenSelCntrsKey);
     */
+    this.utilService.removeFromLocalStorage(this.loginKey);
   }
 
   /**
@@ -108,7 +108,7 @@ export class AuthService {
    */
 
   public endSession(
-    message: string = 'Su sesion se ha cerrado',
+    message: string = 'Su sesión se ha cerrado',
     title: string = 'Atención'
   ) {
     this.logout();

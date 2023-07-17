@@ -89,7 +89,6 @@ export class HomeComponent implements OnInit {
       this.categoryService.getCategories().subscribe((response: Category[])=>{
         let data = Object.values(response);//convierte objeto a arreglo
         this.categories = data[1];
-        console.log(this.categories);
       });
     }
 
