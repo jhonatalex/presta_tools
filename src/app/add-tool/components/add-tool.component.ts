@@ -11,6 +11,7 @@ import { Tool } from '../models/tool.model';
   selector: 'add-tool',
   templateUrl: './add-tool.component.html',
   styleUrls: ['./add-tool.component.css'],
+  providers:[ToolService],
 
   template: `
   <h1>Storage</h1>
