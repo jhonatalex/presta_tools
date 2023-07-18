@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { UserService } from 'src/app/services/user.service';
 import { loginPayload } from '../models/login.model';
 import { AuthService } from '../auth/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -12,7 +11,7 @@ import { UtilService } from 'src/app/shared/services/util.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers:[UserService, UtilService]
+  providers:[ UtilService]
 })
 
 
@@ -30,8 +29,7 @@ export class LoginComponent implements OnInit {
         private utilService: UtilService,
       /**
      * Servicio de Proveedor de Data de Login
-     */
-      private userService: UserService,
+
       /**
        * Servicio de Alertas Graficas.
        */
@@ -68,14 +66,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  /*
-  onSubmit(form:NgForm){
-    this.userService.signup(this.user).subscribe(response=>{
-      console.log(response);
-      this.userService.getIdentity();//saca indentidad de usuario logeado
-    });
-  }
-  */
+
 
   public userLogin(): void {
     const val = this.validatePayload()

@@ -1,29 +1,27 @@
 import { DecimalPipe } from "@angular/common";
 
-export class Tool{
-    constructor(
-        public id:number,
-        public name:string,
-        public reference:string,
-        public nuevo:string,
-        public model:string,
-        public description:string,
-        public widgets:string,
-        public valueComercial:number,
-        public valueRent:number,
-        public yearBuy:number,
-        public weigt:number,
-        public mesuare:number,
-        public numberPiece:number,
-        public urlImage:string,
-        public urlImage2:string,
-        public urlImage3:string,
-        public termsUse:string,
-        public breakDowns:string,
-        public timeUse:number,
-        public idCategory:number, 
-        public idLenders:number,
-        public dateUp: Date,
-        public rate:number
-    ){}
+export class Tool {
+  id: number = 0;
+  name: string = '';
+  reference: string = '';
+  nuevo: string = '';
+  model: string = '';
+  description: string = '';
+  widgets: string = '';
+  valueComercial: number = 0;
+  valueRent: number = 0;
+  yearBuy: number = 0;
+  weigt: number = 0;
+  mesuare: number = 0;
+  numberPiece: number = 0;
+  urlImage: string = '';
+  urlImage2: string = '';
+  urlImage3: string = '';
+  termsUse: string = '';
+  breakDowns: string = '';
+  timeUse: number = 0;
+  idCategory: number = 0;
+  idLenders: number = 0;
+  dateUp: Date = new Date();
+  rate: number = 0;
 }

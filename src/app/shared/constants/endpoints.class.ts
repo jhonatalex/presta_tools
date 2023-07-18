@@ -48,3 +48,16 @@ export const PathCategory = {
 
 };
 
+export const PathTool = {
+  /**
+   * GET
+   */
+  getListTool: 'api/tool/list',
+  /**
+
+  /**
+   * POST
+   */
+  saveTool: 'api/tool/insert',
+
+};
