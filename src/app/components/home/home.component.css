@@ -238,3 +238,15 @@
 
   }
 
+
+  .content-image-preguntas {
+    background-image: url("../../../assets/img/frecuentes.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .img-testimonio {
+    
+    max-width: 600px;
+    width: 100%;
+}
