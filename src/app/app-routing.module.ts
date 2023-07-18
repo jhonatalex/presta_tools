@@ -29,8 +29,6 @@ const routes: Routes = [
 
 
 
-
-
   //RUTAS PRIVADAS
   {path: 'listar-categoria', component: ListCategoryComponent,
   canActivate:[AuthGuard]

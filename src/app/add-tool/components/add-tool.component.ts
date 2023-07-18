@@ -7,24 +7,20 @@ import { NgForm } from '@angular/forms';
 import { ToolService } from 'src/app/services/tool.service';
 import { Tool } from '../models/tool.model';
 
+
+
+
 @Component({
   selector: 'add-tool',
   templateUrl: './add-tool.component.html',
   styleUrls: ['./add-tool.component.css'],
-
-  template: `
-  <h1>Storage</h1>
-  <label for="fileUpload">Choose a File</label>
-  <input id="fileUpload" type="file" #upload>
-  <button (click)="uploadFile(upload)">Upload</button>
-`,
-
+  providers:[ToolService],
 
 })
 
 export class AddToolComponent implements OnInit {
 
-  //public tool: Tool;
+  public tool!: Tool;
   constructor(private toolServisce:ToolService) { }
 
   ngOnInit(): void {
