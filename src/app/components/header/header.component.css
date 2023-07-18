@@ -24,11 +24,14 @@
 
   border-radius: 5px;
 }
-  .cerrar{
+  .btn-logout{
     background-color: #FFC400;
     border-radius: 5px;
     color: white;
     text-decoration: none;
+    padding: 10px;
+    height: 45px;
+
   }
 
   .name-user{
@@ -72,4 +75,12 @@
      width: 220px;
     }
 
+  }
+
+  .mt-neg-5{
+    margin-top: -5px;
+  }
+
+  .mt-5px{
+    margin-top: 5px;
   }

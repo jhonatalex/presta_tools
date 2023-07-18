@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { PathUser } from 'src/app/shared/constants/endpoints.class';
+import { PathTool, PathUser } from 'src/app/shared/constants/endpoints.class';
 import { CallerManagerService } from 'src/app/shared/helpers/caller-manager.service';
 import { SweetUIService } from 'src/app/shared/services/gui.service';
 import { UtilService } from 'src/app/shared/services/util.service';
@@ -11,7 +11,7 @@ import { CallerService } from '../../shared/helpers/caller.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterService {
+export class ToolServiceNew {
 
   constructor(private callManSV: CallerManagerService,
               private spinner: NgxSpinnerService,
@@ -25,11 +25,8 @@ export class RegisterService {
 
 
 
-
-
-    const url = `${environment.baseUrl}${PathUser.saveUser}`;
+    const url = `${environment.baseUrl}${PathTool.saveTool}`;
     this.callManSV.postData(url, payload)
-
 
 
     .then((response:any)=>{
