@@ -1,0 +1,50 @@
+<!--SECCION NAVBAR-->
+<app-header [flaglogo]="false"></app-header>
+
+
+
+<div class="container">
+  <h2>Dashboard Aministracion</h2>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>Lista de Categorias</h4>
+    <a routerLink="/agregar-categoria" class="btn btn-blue-grad btn-primary">
+      <i class="fas fa-plus"></i> Categoria
+    </a>
+  </div>
+
+  <div class="mb-3">
+    <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm">
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th sortable="idCat" (sort)="onSort($event)">ID</th>
+        <th sortable="titleCat" (sort)="onSort($event)">Titulo</th>
+        <th sortable="descripCat" (sort)="onSort($event)">Descripcion</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of pagedCategories">
+        <td>{{ category.idCat }}</td>
+        <td>{{ category.titleCat }}</td>
+        <td class="description-cell">{{ category.descripCat }}</td>
+        <td>
+          <a routerLink="/view-category/{{ category.idCat }}" class="btn btn-sm btn-warning me-1">
+            <i class="far fa-eye"></i> Ver
+          </a>
+          <a routerLink="/edit-category/{{ category.idCat }}" class="btn btn-sm btn-primary me-1">
+            <i class="far fa-edit"></i> Editar
+          </a>
+          <button class="btn btn-sm btn-danger" (click)="deleteCategory(category.idCat)">
+            <i class="far fa-trash-alt"></i> Borrar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!--<pagination [collectionSize]="categories.length" [(ngModel)]="currentPage" [boundaryLinks]="true" [maxSize]="5" [pageSize]="pageSize"></pagination>-->
+</div>

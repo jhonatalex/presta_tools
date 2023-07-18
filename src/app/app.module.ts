@@ -6,6 +6,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 //import { NgxStarRatingModule } from 'ngx-star-rating';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/components/login.component';
@@ -15,7 +16,7 @@ import { ToolDetailComponent } from './components/tool-detail/tool-detail.compon
 import { FooterComponent } from './components/footer/footer.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 import { HeaderComponent } from './components/header/header.component';
-import { CategoryComponent } from './components/category/category.component';
+
 import { RelatedFeaturedProductsComponent } from './components/related-featured-products/related-featured-products.component';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
@@ -41,6 +42,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ContactComponent } from './contact/contact.component';
 import { AddToolComponent } from './add-tool/components/add-tool.component';
+import { AddCategoryComponent } from './category/components/add-category/add-category.component';
+import { CategoryComponent } from './category/components/category/category.component';
+import { ListCategoryComponent } from './category/components/list-category/list-category.component';
 
 
 
@@ -63,6 +67,9 @@ import { AddToolComponent } from './add-tool/components/add-tool.component';
     AddToolComponent,
     UploadFileComponent,
     ContactComponent,
+    AddCategoryComponent,
+    ListCategoryComponent,
+
 
 
   ],
@@ -71,7 +78,7 @@ import { AddToolComponent } from './add-tool/components/add-tool.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule,
+
     SlickCarouselModule,
    // NgxStarRatingModule,
     ReactiveFormsModule,

@@ -34,3 +34,17 @@ export const PathUser = {
 
 };
 
+export const PathCategory = {
+  /**
+   * GET
+   */
+  getListUser: 'api/categoria/list',
+  /**
+
+  /**
+   * POST
+   */
+  saveUser: 'api/categoria/insert',
+
+};
+

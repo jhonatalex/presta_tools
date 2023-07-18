@@ -23,7 +23,7 @@ export class UploadFileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  uploadFile() {
+  uploadFile():String {
     if (this.selectedFile) {
       const filePath = `imagenes/tool/${this.selectedFile.name}`;
       const fileRef = this.storage.ref(filePath);
@@ -35,18 +35,14 @@ export class UploadFileComponent implements OnInit {
       task.snapshotChanges().subscribe(
         (snapshot) => {
 
-
-
           if (snapshot?.state === 'success') {
             // La carga se completó con éxito
 
             //DESACTIVA EL LOADER
             this.spinner.hide()
-
-
-
             fileRef.getDownloadURL().subscribe(
               (url) => {
+                return url;
                 console.log('URL de descarga:', url);
                 // Realiza las acciones necesarias con la URL, como guardarla en la base de datos, etc.
               },
@@ -62,6 +58,8 @@ export class UploadFileComponent implements OnInit {
         }
       );
     }
+
+    return '';
   }
 
 

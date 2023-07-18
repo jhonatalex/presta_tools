@@ -19,8 +19,7 @@
 }
 
 .nav-link:hover {
-    background-color: #FFC400;
-    border-radius: 5px;
+    background: #FFC400;
     color: black;
   }
 
@@ -50,7 +49,6 @@
 
   .btn:hover {
     background-color: #0050a9;
-    border-radius: 15px;
   }
 
   .col {
@@ -72,7 +70,9 @@
     color: white;
     height: 40px;
     text-decoration: none;
-    width: 160px;
+    width: fit-content;
+    min-width: 160px;
+
   }
 
   .icon {
@@ -145,7 +145,6 @@
 
 
 
-
   .image-container img {
     display: block;
     z-index: 2;
@@ -159,8 +158,8 @@
 
   }
 
-  #testimonios {
-    background-color: #0794b3;
+  #testimonios {background: rgb(7,148,179);
+    background: linear-gradient(45deg, rgba(7,148,179,1) 20%, rgba(33,37,41,1) 20%, rgba(33,37,41,1) 30%, rgba(7,148,179,1) 30%);
   }
 
   .img-testimonio {
@@ -218,7 +217,6 @@
       justify-content: center;
       align-content: center;
     }
-
     .content-preguntas{
       display: grid;
       justify-items: center;
