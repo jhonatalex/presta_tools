@@ -5,7 +5,7 @@ import { LoginComponent } from './login/components/login.component';
 import { RegisterComponent } from './register/components/register.component';
 import { ToolDetailComponent } from './components/tool-detail/tool-detail.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
-import { CategoryComponent } from './components/category/category.component';
+
 import { ConfirmationRentComponent } from './components/confirmation-rent/confirmation-rent.component';
 import { ThanksRentComponent } from './components/thanks-rent/thanks-rent.component';
 import { FrequentQuestionsComponent } from './components/frequent-questions/frequent-questions.component';
@@ -13,6 +13,9 @@ import { FrequentQuestionsComponent } from './components/frequent-questions/freq
 import { ContactComponent } from './contact/contact.component';
 import { AuthGuard } from './login/auth/auth.guard';
 import { AddToolComponent } from './add-tool/components/add-tool.component';
+import { CategoryComponent } from './category/components/category/category.component';
+import { AddCategoryComponent } from './category/components/add-category/add-category.component';
+import { ListCategoryComponent } from './category/components/list-category/list-category.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -26,7 +29,17 @@ const routes: Routes = [
 
 
 
+
+
   //RUTAS PRIVADAS
+  {path: 'listar-categoria', component: ListCategoryComponent,
+  canActivate:[AuthGuard]
+  },
+
+  {path: 'agregar-categoria', component: AddCategoryComponent,
+  canActivate:[AuthGuard]
+  },
+
   {
     path: 'confirma-renta/:id', component: ConfirmationRentComponent,
     canActivate:[AuthGuard]
