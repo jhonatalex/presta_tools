@@ -76,6 +76,9 @@
 }
 
 
+.fondo{
+  background-color: #ebebebdb;
+}
 .slick-prev:before {
   color: #0050a9 !important;
   font-size: 30px !important;

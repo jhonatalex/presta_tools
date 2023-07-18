@@ -1,1 +1,32 @@
-<p>contact works!</p>
+<div id="add-tool" class="container-fluid fondo pt-5 pb-100">
+    <div class="container bg-white card shadow " style="padding:5%">
+        <h2>Comunícate con nosotros</h2>
+        <form class="form-wrapper" id="form" method="POST" action="php/enviar.php">
+            <div class="form-card">
+              <input class="form-input" type="text" name="full_name" required="required" id="full_name" />
+              <label class="form-label" for="full_name">Nombre y apellido</label>
+            </div>
+
+            <div class="form-card">
+              <input class="form-input" type="email" name="email" required="required" id="email" />
+              <label class="form-label" for="email">Direción de correo</label>
+            </div>
+
+            <div class="form-card">
+              <input class="form-input" type="number" name="phone_number" required="required" id="phone_number" />
+              <label class="form-label" for="phone_number">Número de Teléfono</label>
+            </div>
+
+            <div class="form-card">
+              <textarea class="form-textarea" maxlength="420" rows="3" name="coments" required="required"
+                id="coments"></textarea>
+              <label class="form-textarea-label" for="coments">Comentarios</label>
+            </div>
+            <div class="btn-wrap">
+              <input type="submit" value="Enviar" class="button">
+              <!-- <a  type="submit">Enviar </a> -->
+            </div>
+          </form>
+
+    </div>
+</div>

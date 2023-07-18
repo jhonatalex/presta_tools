@@ -30,10 +30,10 @@
           <div *ngIf="user" class="d-flex float-right nav-item">
                 <img src="assets/img/userLogin.png" alt="icono" style="width: 30px; height: 30px;" class="fa">
                 <div class="col text-center mx-2">
-                  <div class="col"><a class="name-user p-0">{{user.name}} {{user.lastName}}</a></div>
-                  <div class="col"><small class="name-user p-0" style="font-size: small;">{{user.email}}</small></div>
+                  <div class="col mt-5px"><a class="name-user p-0">{{user.name}} {{user.lastName}}</a></div>
+                  <div class="col mt-neg-5"><small class="name-user p-0" style="font-size: small;">{{user.email}}</small></div>
                 </div>
-                <button class="btn btn-link nav-link cerrar ms-4" (click)='signOut()'>Cerrar Sesión</button>
+                <button class="btn btn-link nav-link btn-logout  ms-4" (click)='signOut()'>Cerrar Sesión</button>
           </div>
 
           <div *ngIf="!user" class="d-flex float-right nav-item">
@@ -44,6 +44,16 @@
 
       </div>
     </div>
+  </nav>
 
-</nav>
->>>>>>>>> Temporary merge branch 2
+
+  <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="large"
+  type="ball-spin-reverse-rotate"
+>
+  <div style="color: #64d6e2" class="la-ball-clip-rotate-multiple la-3x">
+    <div></div>
+    <div></div>
+</div>
+</ngx-spinner>
