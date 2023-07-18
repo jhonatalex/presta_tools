@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/app/models/category.model';
 import { ActivatedRoute,Params } from '@angular/router';
-import { Tool } from 'src/app/models/tool.model';
+import { Tool } from 'src/app/add-tool/models/tool.model';
 import { ToolService } from 'src/app/services/tool.service';
 
 @Component({
@@ -16,8 +16,8 @@ export class CategoryComponent implements OnInit {
   public id:number;
   tools: any;
   toolCat: any[]=[];
-  
-  
+
+
 
   constructor(
     private categoryService:CategoryService,
@@ -44,13 +44,13 @@ export class CategoryComponent implements OnInit {
         let dato = this.tools[i].objetoCategoria.titleCat;
         console.log(dato);
       }
-      
-      
+
+
     });
   }
 
   getCategoryDetail(){
-      //obtener el  id de la URL  
+      //obtener el  id de la URL
       this.route.params.subscribe(params =>{
       this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
 
@@ -63,7 +63,7 @@ export class CategoryComponent implements OnInit {
     });
   }
 
- 
+
 
 
 }

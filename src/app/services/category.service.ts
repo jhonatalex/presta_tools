@@ -2,7 +2,7 @@ import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Category } from "../models/category.model";
-import { Tool } from "../models/tool.model";
+import { Tool } from "../add-tool/models/tool.model";
 
 @Injectable()
 export class CategoryService{
@@ -13,7 +13,7 @@ export class CategoryService{
         private http:HttpClient
     ){this.categories = [];}
 
-    
+
 
     getCategories():Observable<Category[]>{
         return this.http.get<Category[]>(this.urlApi + '/api/Categoria/list')
@@ -22,8 +22,7 @@ export class CategoryService{
         return this.http.get<Category>(this.urlApi + '/api/Categoria/get/'+ id);
     }
     editTool():Observable<Tool>{
-        return this.http.put<Tool>(this.urlApi + '/api/tool/edit',{"id":1,
-                                                                    "urlImagen":"assets/img/taladro.png"});
+        return this.http.put<Tool>(this.urlApi + '/api/tool/edit',{"id":1,"urlImagen":"assets/img/taladro.png"});
     }
 
-}    
+}

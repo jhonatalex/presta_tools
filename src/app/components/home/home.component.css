@@ -5,13 +5,13 @@
 }
 
 
-.heightmax{
-  height: 460px;
+.heighthMax{
+  max-height: 210px;
 }
 
-/* .widthMax{
+.widthMax{
   max-width: 99%;
-} */
+}
 
 .product-image {
     height: 200px;
@@ -44,6 +44,7 @@
     display: flex;/* 
     
     width: 410px; */
+    width: 410px;
   }
 
   .btn {
@@ -69,9 +70,6 @@
 
 
   .btn-blue-grad {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 8px;
     background-image: linear-gradient(to right, #0794b3 0%,  #0050a9  100%);
     color: white;
@@ -158,9 +156,10 @@
  }
 
 
-  .image-container {
-    max-width: 100%;
-    height: 100%;
+
+  .image-container img {
+    display: block;
+    z-index: 2;
   }
 
   .boton-link {
@@ -177,17 +176,14 @@
 
   .img-testimonio {
     border-radius: 12px;
-    /* height: 100%; */
+    width: 600px;
+    height: 300px;
   }
 
   .girarImagen{
     transform: rotate(180deg);
   }
 
-  .slick-list{
-    background-color: brown;
-    margin-bottom: 20px;
-  }
 
 .content-image{
   display: flex;
@@ -202,11 +198,11 @@
       height: 420px;
     }
     
-    /* 
+    
     .ovalo-buttons{
       display: none;
     }
- */
+
     .logo{
       display: block;
       margin: auto;
@@ -216,20 +212,28 @@
       color: white;
     }
 
-    /* .parrafo{
+    .parrafo{
     .parrafo{
       display: none;
     }
 
     .parrafo1{
       text-align: center;
-    } */
+    }
 
     .banner{
       text-align: center;
     }
 
+    .content-image{
+      display: flex;
+      justify-content: center;
+    }
 
+    .content-image-preguntas{
+      display: flex;
+      justify-content: center;
+    }
 
     .content-testimonio{
       display: grid;
@@ -244,7 +248,7 @@
       justify-content: center;
       }
     
-/* 
+
     .content-preguntas{
       display: grid;
       justify-items: center;
@@ -252,11 +256,11 @@
       justify-content: center;
       align-content: center;
       padding: 20px !important;
-    } */
+    }
 
-    /* .boton-registrar{
+    .boton-registrar{
       width: 160px;
-    } */
+    }
 
     .content-banner{
       display: flex;
@@ -264,18 +268,5 @@
     }
 
 
-  }
+  }}
 
-@media (max-width:768px) {
-  .heightmax{
-    height: 520px;
-  }
-  
-}
-@media (max-width:576px) {
-  .heightmax{
-    height: 460px;
-  }
-
-}
-  
