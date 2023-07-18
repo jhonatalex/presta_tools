@@ -39,11 +39,6 @@
   .ovalo-buttons {
     background-color: black;
     border-radius: 20px;
-    align-items: center;
-    justify-content: space-around;
-    display: flex;/* 
-    
-    width: 410px; */
     width: 410px;
   }
 
@@ -133,9 +128,9 @@
     padding: 5px;
   }
 
-  .img-card-top {/* 
-    width: 22rem; 
-    height: 15rem; */
+  .img-card-top {
+    width: 22rem;
+    height: 15rem;
     padding: 1px;
     border-radius: 18px 18px 0px 0px;
   }
@@ -143,17 +138,10 @@
   .img-preguntas{
     width: 727px;
     height: 100%;
-    max-width: 100%;
-    background-image: url("../../../assets/img/frecuentes.jpg");
-    background-size: cover;
   }
   .mb-50{
     margin-bottom: 50px;
   }
-
- .height500{
-  height: 500px;
- }
 
 
 
@@ -185,20 +173,12 @@
   }
 
 
-.content-image{
-  display: flex;
-  justify-content: center;
-  align-items: center;}
-  .content-image img{
-    width: 100%;
-    max-width: 600px;}
-  @media(max-width:992px){
-    
-    .heightmax{
-      height: 420px;
-    }
-    
-    
+  .text-justify{
+    text-align: justify;
+  }
+
+
+  @media(max-width:900px){
     .ovalo-buttons{
       display: none;
     }
@@ -208,11 +188,6 @@
       margin: auto;
     }
 
-    .fa {
-      color: white;
-    }
-
-    .parrafo{
     .parrafo{
       display: none;
     }
@@ -242,13 +217,6 @@
       justify-content: center;
       align-content: center;
     }
-    .content-image {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      }
-    
-
     .content-preguntas{
       display: grid;
       justify-items: center;
@@ -268,5 +236,5 @@
     }
 
 
-  }}
+  }
 

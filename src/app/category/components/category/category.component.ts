@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from 'src/app/services/category.service';
-import { Category } from 'src/app/models/category.model';
+import {  CategoryServiceOld } from 'src/app/services/category.service';
+import { Category } from 'src/app/category/models/category.model';
 import { ActivatedRoute,Params } from '@angular/router';
 import { Tool } from 'src/app/add-tool/models/tool.model';
 import { ToolService } from 'src/app/services/tool.service';
@@ -9,7 +9,7 @@ import { ToolService } from 'src/app/services/tool.service';
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css'],
-  providers:[CategoryService,ToolService]
+  providers:[CategoryServiceOld,ToolService]
 })
 export class CategoryComponent implements OnInit {
   public category:Category;
@@ -20,7 +20,7 @@ export class CategoryComponent implements OnInit {
 
 
   constructor(
-    private categoryService:CategoryService,
+    private categoryService:CategoryServiceOld,
     private route: ActivatedRoute,
     private toolService: ToolService,
 

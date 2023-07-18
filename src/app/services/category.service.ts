@@ -1,11 +1,11 @@
 import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Category } from "../models/category.model";
+import { Category } from "../category/models/category.model";
 import { Tool } from "../add-tool/models/tool.model";
 
 @Injectable()
-export class CategoryService{
+export class CategoryServiceOld{
     public categories: Category[];
     public urlApi: string = 'https://www.prestatools.somee.com';
 
