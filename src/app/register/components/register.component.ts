@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   {
    // const uniqueId:number = uuidv4();
     this.user = new User();//instancia de usuario vacía para el formulario
-    this.user.id = 434;
+    this.user.id = this.generarIdUnicoNumerico();
 
    }
 
