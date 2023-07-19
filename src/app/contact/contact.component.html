@@ -1,36 +1,69 @@
-
 <app-header [flaglogo]="false"></app-header>
-<div id="add-tool" class="container-fluid fondo pt-5 pb-100">
-    <div class="container bg-white card shadow " style="padding:5%">
-        <h2>Comunícate con nosotros</h2>
-        <form class="form-wrapper" id="form" method="POST" action="php/enviar.php">
-            <div class="form-card">
-              <input class="form-input" type="text" name="full_name" required="required" id="full_name" />
-              <label class="form-label" for="full_name">Nombre y apellido</label>
-            </div>
+<div id="add-tool" class="container-fluid fondo py-5 ">
+  <div class="container bg-white card shadow " style="padding:5%">
+    <div class="d-flex align-items-center justify-content-center">
+      
+      <div class="col-md-6">
+      <h2>Comunícate con nosotros</h2>
+      <p>Si tienes alguna pregunta, sugerencia o necesitas más información sobre nuestros servicios, no dudes en contactarnos. Estamos aquí para ayudarte.
 
-            <div class="form-card">
-              <input class="form-input" type="email" name="email" required="required" id="email" />
-              <label class="form-label" for="email">Direción de correo</label>
-            </div>
-
-            <div class="form-card">
-              <input class="form-input" type="number" name="phone_number" required="required" id="phone_number" />
-              <label class="form-label" for="phone_number">Número de Teléfono</label>
-            </div>
-
-            <div class="form-card">
-              <textarea class="form-textarea" maxlength="420" rows="3" name="coments" required="required"
-                id="coments"></textarea>
-              <label class="form-textarea-label" for="coments">Comentarios</label>
-            </div>
-            <div class="btn-wrap">
-              <input type="submit" value="Enviar" class="button">
-              <!-- <a  type="submit">Enviar </a> -->
-            </div>
-          </form>
-
+        Por favor, completa el siguiente formulario y nos pondremos en contacto contigo lo antes posible:</p>
     </div>
+    <div class="content-image  col-md-6 text-center">
+      <img src="../../assets/img/logo.png" alt="" class="w-20">
+    </div>
+    </div>
+    <div class="row bg-contact  p-4">
+      <div class="col-md-6 d d-flex flex-column justify-content-center align-items-center">
+        <div class="content-image ">
+          <img src="assets/img/alquiler-de-herramientas-02.webp" alt="" class="w-100">
+        </div>
+        <div class="my-4  text-center">
+          <h5 class="pb-1">Visita nuestras redes Sociales</h5>
+           <!-- Facebook -->
+           <a type="" class=""><i class="fa fa-facebook-official rsss-icons fa-2x"> </i></a>
+           <!-- youtube-->
+           <a type="" class=""><i class="fa fa-youtube-play rsss-icons fa-2x"></i></a>
+           <!-- Twitter -->
+           <a type="" class=" "><i class="fa fa-twitter-square rsss-icons fa-2x"></i></a>
+           <!-- Google -->
+           <a type="" class=""><i class="fa fa-google-plus-square rsss-icons fa-2x"></i></a>
+           <!-- Linkedin -->
+         </div>
+         <p>¡Gracias por tu interés en nuestro sitio web! Esperamos poder atender tus consultas y brindarte la mejor experiencia posible.
+          <br> 
+          <br> 
+          Saludos cordiales,
+          <br>
+          El equipo de PrestaTools</p>
+      </div>
+      <div class="col-md-6 ">
+        <h3 class="text-center">Queremos saber de ti.</h3>
+        <p>Escribenos a través del siguiente formulario</p>
+        <div class="form-group mt-4 mxauto mt-4 mxauto">
+          <input type="text" class="form-control" id="names" name="names" placeholder="Nombre y apellido" name="names">
+        </div>
+       
+        <div class="form-group mt-4 mxauto">
+          <input placeholder="Correo electrónico" type="email" class="form-control" id="email" name="email">
+        </div>
+
+        <div class="form-group mt-4 mxauto">
+          <input placeholder="Número de teléfono" type="tel" class="form-control" id="phonenumber"
+            name="phonenumber">
+        </div>
+ <div class="form-group mt-4 mxauto">
+          <input type="text" class="form-control" id="asunto" name="asunto" placeholder="Asunto" name="asunto">
+        </div>
+        <div class="form-group mt-4 mxauto">
+          <textarea placeholder="Mensaje" class="form-control" id="message" name="message"></textarea>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
 </div>
 
 
