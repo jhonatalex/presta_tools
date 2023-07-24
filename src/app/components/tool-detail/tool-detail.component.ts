@@ -49,8 +49,7 @@ export class ToolDetailComponent implements OnInit {
         this.tool = data[1];
         console.log(this.tool);
         //obtiene la categoria de la herramienta
-        this.toolCat = Object.values(data[1]);
-        this.category = this.toolCat[24].titleCat;
+        this.category = data[1].objetoCategoria.titleCat;
         console.log(this.category);
       })
 

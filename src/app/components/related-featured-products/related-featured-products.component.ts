@@ -76,7 +76,7 @@ export class RelatedFeaturedProductsComponent implements OnInit {
   getTools(): void{
     this.toolService.getTools().subscribe((response: Tool[])=>{
       let data = Object.values(response);//convierte objeto a arreglo
-      this.tools = data[1];
+      this.tools = data[0];
     });
   }
 

@@ -22,12 +22,8 @@ export class ToolServiceNew {
   public saveTool(payload: any):void{
 
     this.spinner.show();
-
-
-
     const url = `${environment.baseUrl}${PathTool.saveTool}`;
     this.callManSV.postData(url, payload)
-
 
     .then((response:any)=>{
       console.log(response);
@@ -37,10 +33,7 @@ export class ToolServiceNew {
       this.manageError(error);
     })
     .finally(()=>this.spinner.hide())
-
-
-
-
+    
   }
 
   /*
