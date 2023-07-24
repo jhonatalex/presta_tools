@@ -65,7 +65,7 @@ export class AuthService {
       // const expirationDate = jwtHelper.getTokenExpirationDate(tokenString);
       //const isExpired = jwtHelper.isTokenExpired(tokenString);
       //SET USER A LOCAL SOTORAGE
-      this.utilService.setToLocalStorage(this.loginKey, loginData.response);
+      this.utilService.setToLocalStorage(this.loginKey, loginData.data);
         this.sweetUIService
         .alertConfirm("Bienvenido", loginData.message, 'success')
         .then(() => {

@@ -34,7 +34,6 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { environment } from 'src/environments/environment';
 
-import { UploadFileComponent } from './components/upload-file/upload-file.component';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -65,7 +64,7 @@ import { ListCategoryComponent } from './category/components/list-category/list-
     ThanksRentComponent,
     FrequentQuestionsComponent,
     AddToolComponent,
-    UploadFileComponent,
+
     ContactComponent,
     AddCategoryComponent,
     ListCategoryComponent,

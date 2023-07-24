@@ -11,7 +11,7 @@ export class loginPayload {
 
 export class loginResponse {
   token: string = '';
-  response: User | null = null;
+  data: User | null = null;
   success: boolean | null = null;
   Error: ErrorRes | null = null;
   message: string = '';
