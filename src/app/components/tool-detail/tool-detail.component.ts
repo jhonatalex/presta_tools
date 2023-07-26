@@ -46,11 +46,8 @@ export class ToolDetailComponent implements OnInit {
         //obtiene la herramienta por id
         this.toolService.getDetailTool(this.id).subscribe((response:Tool)=>{
         let data = Object.values(response);
-        this.tool = data[1];
+        this.tool = data[0];
         console.log(this.tool);
-        //obtiene la categoria de la herramienta
-        this.category = data[1].objetoCategoria.titleCat;
-        console.log(this.category);
       })
 
       });

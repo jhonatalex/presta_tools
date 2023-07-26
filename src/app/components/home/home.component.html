@@ -22,7 +22,7 @@
                   <a class="boton-registrar btn-blue-grad mt-2 ms-5 p-2 border-0 col-md-4 nav-link active text-center" [routerLink]="['/registro']">Regístrate gratis</a>
                   <p class="parrafo mt-2 ms-5"><span class="subtitle">Comparte, Ahorra y Emprende</span><br> La Economía Colaborativa ya esta aqui.</p>
 
-              </div>
+          </div>
 
               <div class="banner col col-sm-12 col-md-6 col-lg-6 bg-dark">
                 <img src="assets/img/banner.png" alt="banner" class="img-fluid mb-5">
@@ -65,7 +65,7 @@
                           (beforeChange)="beforeChange($event)">
 
                                 <div ngxSlickItem *ngFor="let category of categories" class="slide d-flex justify-content-center align-items-center">
-                                    <div class="card shadow">
+                                    <div class="card shadow mb-4">
                                        <a [routerLink]="['/categoria/', category.idCat]"><img src="{{category.urlImagen}}" alt="imagenCategory" class="img-card-top img-fluid" width=500px height=200px/></a>
                                         <div class="card-body text-center heighthMax">
                                             <strong>{{category.titleCat}}</strong>
@@ -84,7 +84,7 @@
       <div class="row mt-2 bg-primary">
             <div class="col-md-6 content-image-preguntas">
               <div class="image-container">
-                <img class="img-preguntas img-fluid"src="assets/img/frecuentes.jpg" alt="preguntas">
+        <!--         <img class="img-preguntas img-fluid"src="assets/img/frecuentes.jpg" alt="preguntas"> -->
               </div>
             </div>
             <div class="col-md-6 color-primary-dark py-5 content-preguntas" style="padding:60px;">
@@ -92,7 +92,7 @@
               <h1 class="text-color-white-theme">Preguntas frecuentes</h1>
               <p class="text-color-white-theme text-justify"> Prestatool te permite alquilar herramientas y una amplia variedad de artículos de manera sencilla y segura. A continuación, encontrarás
                  respuestas a las preguntas más frecuentes que nuestros usuarios suelen plantear. Si tienes alguna otra duda o consulta, no dudes en contactarnos.</p>
-            <button class="boton-link border-0 me-5 mt-30 text-center">Visita FAQ <a [routerLink]="['/preguntas-frecuentes']"><i class="fa fa-external-link ms-5" aria-hidden="true"></i></a></button>
+            <button class="btn-blue-grad border-0 me-5 mt-30 text-center">Visita FAQ <a [routerLink]="['/preguntas-frecuentes']"><i class="fa fa-external-link ms-5" aria-hidden="true"></i></a></button>
             </div>
       </div>
   </div>
@@ -117,7 +117,7 @@
           <img src="assets/img/comillaDoble.png" alt="comillas" style="width: 30px;" class="girarImagen">
         </i></p>
         <br>
-        <p class="text-color-white-theme text-right fw-bold">Humberto Barzarte</p>
+        <p class="text-color-white-theme text-right fw-bold">Humberto Barazarte</p>
 
       </div>
     </div>

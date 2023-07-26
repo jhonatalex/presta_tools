@@ -19,6 +19,6 @@ export class ToolService{
     }
 
     getDetailTool(id:number):Observable<Tool>{
-        return this.http.get<Tool>(this.urlApi + '/api/tool/get/'+ id);
+        return this.http.get<Tool>(this.urlApi + '/api/tool/get/tool/'+ id);
     }
 }

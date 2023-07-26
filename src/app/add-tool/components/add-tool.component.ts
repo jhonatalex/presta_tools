@@ -16,6 +16,7 @@ import { ToolServiceNew } from '../providers/tool.service';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { environment } from 'src/environments/environment.prod';
 import { Constants } from 'src/app/shared/constants/settings.class';
+import { User } from 'src/app/register/models/user.model';
 
 
 
@@ -38,6 +39,8 @@ export class AddToolComponent implements OnInit {
   public url_image_1:string='';
   public  url_image_2:string='';
   public  url_image_3:string='';
+
+  public user: User = new User();
 
 
   public tool!: Tool;
@@ -88,24 +91,44 @@ export class AddToolComponent implements OnInit {
 
 
 
-  onSubmit(form:NgForm):void{
-    this.tool.id= this.utilService.getFromLocalStorage(this.loginKey + 'D3V').email;
-    console.log(this.tool.id);
-    
-    if (this.selectedFile1 && this.selectedFile2 && this.selectedFile3 ) {
+  async onSubmit(form:NgForm):Promise<void>{
 
-      this.url_image_1 = this.uploadFile(this.selectedFile1);
-      this.url_image_2 = this.uploadFile(this.selectedFile2);
-      this.url_image_3 = this.uploadFile(this.selectedFile2);
+    if (this.selectedFile1 && this.selectedFile2 && this.selectedFile3) {
+      const promises = [
+        this.uploadFile(this.selectedFile1),
+        this.uploadFile(this.selectedFile2),
+        this.uploadFile(this.selectedFile3)
+      ];
 
-    }
+      try {
+        // Esperar a que se completen todas las promesas de carga de imágenes
+        const [url1, url2, url3] = await Promise.all(promises);
 
-    if (this.url_image_1 && this.url_image_2 && this.url_image_3 ) {
+        // Asignar las URLs a las variables
+        this.tool.urlImage = url1;
+        this.tool.urlImage2 = url2;
+        this.tool.urlImage3 = url3;
 
-      this.tool.urlImage = this.url_image_1;
-      this.tool.urlImage2 = this.url_image_2;
-      this.tool.urlImage3 = this.url_image_3;
 
+
+        if( this.user!=null){
+          this.user = this.utilService.getFromLocalStorage(this.loginKey + 'D3V');
+          this.tool.idLenders=this.user.email;
+        }
+
+
+        this.tool.id= this.generarIdUnicoNumerico();
+
+        // Llamar al siguiente método para consumir el servicio
+        console.log('SE FUE AL API');
+        console.log(this.tool);
+        this.toolService.saveTool(this.tool);
+
+      } catch (error) {
+        // Manejar cualquier error que ocurra durante la carga de imágenes
+        console.error("Error al cargar las imágenes:", error);
+        // Puedes agregar alguna lógica de manejo de errores adicional si es necesario
+      }
     }
     console.log(this.tool)
       this.toolService.saveTool(this.tool);
@@ -138,49 +161,48 @@ export class AddToolComponent implements OnInit {
 
 
 
-  uploadFile(selectedFile:File):string {
-
+  async uploadFile(selectedFile: File): Promise<string> {
     if (selectedFile) {
-
       const filePath = `imagenes/tool/${selectedFile.name}`;
       const fileRef = this.storage.ref(filePath);
-      const task = this.storage.upload(filePath,selectedFile);
+      const task = this.storage.upload(filePath, selectedFile);
 
-      //ACTIVA EL LOADER
+      // ACTIVA EL LOADER
       this.spinner.show();
 
-      task.snapshotChanges().subscribe(
-        (snapshot) => {
+      try {
+        // Esperar a que se complete la carga del archivo
+        const snapshot = await task.snapshotChanges().toPromise();
 
-          if (snapshot?.state === 'success') {
-            // La carga se completó con éxito
+        if (snapshot?.state === 'success') {
+          // La carga se completó con éxito
 
-            //DESACTIVA EL LOADER
-            this.spinner.hide()
-            fileRef.getDownloadURL().subscribe(
-              (url) => {
-                console.log('URL de descarga:', url);
-                return url;
-                console.log('URL de descarga:', url);
-                // Realiza las acciones necesarias con la URL, como guardarla en la base de datos, etc.
-              },
-              (error) => {
-                console.log('Error al obtener la URL de descarga', error);
-              }
-            );
-          }
-        },
-        (error:any) => {
+          // DESACTIVA EL LOADER
+          this.spinner.hide();
+
+          // Obtener la URL de descarga
+          const url = await fileRef.getDownloadURL().toPromise();
+          console.log('URL de descarga:', url);
+          return url;
+        } else {
           // Ocurrió un error durante la carga
-          console.log('Error al cargar el archivo', error);
+          throw new Error('La carga del archivo falló');
         }
-      );
+      } catch (error) {
+        // Ocurrió un error durante la carga
+        console.log('Error al cargar el archivo', error);
+        throw error;
+      }
     }
 
     return '';
   }
 
-
+  public generarIdUnicoNumerico(): number {
+    const timestamp = new Date().getTime();
+    const sixDigitId = parseInt(timestamp.toString().slice(-6));
+    return sixDigitId;
+  }
 
 
 

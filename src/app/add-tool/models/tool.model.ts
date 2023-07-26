@@ -1,10 +1,10 @@
 import { DecimalPipe } from "@angular/common";
 
 export class Tool {
-  id: number = 0;
+  id:number=0;
   name: string = '';
   reference: string = '';
-  nuevo: string = '';
+  newItem: string = '';
   model: string = '';
   description: string = '';
   widgets: string = '';
@@ -21,7 +21,7 @@ export class Tool {
   breakDowns: string = '';
   timeUse: number = 0;
   idCategory: number = 0;
-  idLenders: number = 0;
+  idLenders: string = '';
   dateUp: Date = new Date();
   rate: number = 0;
 }
