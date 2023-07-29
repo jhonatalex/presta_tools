@@ -25,7 +25,6 @@ export class ToolServiceNew {
 
     this.spinner.show();
 
-
     const url = `${environment.baseUrl}${PathTool.saveTool}`;
     this.callManSV.postData(url, payload)
 

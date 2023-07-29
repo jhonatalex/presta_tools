@@ -117,7 +117,7 @@ export class AddToolComponent implements OnInit {
         }
 
 
-        this.tool.id= this.generarIdUnicoNumerico();
+        //this.tool.id= this.generarIdUnicoNumerico();
 
         // Llamar al siguiente método para consumir el servicio
         console.log('SE FUE AL API');
@@ -130,8 +130,6 @@ export class AddToolComponent implements OnInit {
         // Puedes agregar alguna lógica de manejo de errores adicional si es necesario
       }
     }
-    console.log(this.tool)
-      this.toolService.saveTool(this.tool);
 
 
   }

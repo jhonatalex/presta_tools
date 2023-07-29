@@ -1,7 +1,6 @@
 import { DecimalPipe } from "@angular/common";
 
 export class Tool {
-  id:number=0;
   name: string = '';
   reference: string = '';
   newItem: string = '';
