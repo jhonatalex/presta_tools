@@ -116,7 +116,7 @@ public getListCategoryProviders(): Observable<Category[]> {
       this.sweetUIService.alertConfirm('Mensaje',responseApi.message,'success')
       .then(()=>{
 
-        this.utilService.navigateToPath('/list-category')
+        this.utilService.navigateToPath('/listar-categoria')
 
       })
       .catch((e:any)=>{console.log(e);})
