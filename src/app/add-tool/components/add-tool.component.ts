@@ -89,7 +89,9 @@ export class AddToolComponent implements OnInit {
 
 
   onSubmit(form:NgForm):void{
-
+    this.tool.id= this.utilService.getFromLocalStorage(this.loginKey + 'D3V').email;
+    console.log(this.tool.id);
+    
     if (this.selectedFile1 && this.selectedFile2 && this.selectedFile3 ) {
 
       this.url_image_1 = this.uploadFile(this.selectedFile1);
@@ -98,25 +100,15 @@ export class AddToolComponent implements OnInit {
 
     }
 
-    this.tool.idLenders = this.utilService.getFromLocalStorage(this.loginKey + 'D3V').email;
-
-
-
-    if (this.url_image_1 && this.url_image_1 && this.url_image_1 ) {
-
-
+    if (this.url_image_1 && this.url_image_2 && this.url_image_3 ) {
 
       this.tool.urlImage = this.url_image_1;
       this.tool.urlImage2 = this.url_image_2;
       this.tool.urlImage3 = this.url_image_3;
 
-
-      console.log(this.tool)
-      this.toolService.saveTool(this.tool);
-
-
-
     }
+    console.log(this.tool)
+      this.toolService.saveTool(this.tool);
 
 
   }

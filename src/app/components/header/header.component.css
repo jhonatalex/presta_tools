@@ -20,9 +20,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px;
-  min-width: 90px;
-
+  height: 45px;
+  min-width: 75px;
+  padding: 10px;
   border-radius: 5px;
 }
 
