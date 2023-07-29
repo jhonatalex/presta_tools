@@ -21,6 +21,6 @@ export class Tool {
   timeUse: number = 0;
   idCategory: number = 0;
   idLenders: string = '';
-  dateUp: Date = new Date();
+  dateUp: string = '';
   rate: number = 0;
 }
