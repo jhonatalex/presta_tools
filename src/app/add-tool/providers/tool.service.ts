@@ -6,6 +6,8 @@ import { SweetUIService } from 'src/app/shared/services/gui.service';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { environment } from 'src/environments/environment';
 import { CallerService } from '../../shared/helpers/caller.service';
+import { ResponseApi } from 'src/app/shared/models/responseApi.model';
+
 //import { RegisterRS } from '../models/registerRS.model';
 
 @Injectable({
@@ -22,12 +24,13 @@ export class ToolServiceNew {
   public saveTool(payload: any):void{
 
     this.spinner.show();
+
     const url = `${environment.baseUrl}${PathTool.saveTool}`;
     this.callManSV.postData(url, payload)
 
     .then((response:any)=>{
       console.log(response);
-      //this.manageResponse(response);
+      this.manageResponse(response);
     })
     .catch((error:any)=>{
       this.manageError(error);
@@ -36,21 +39,24 @@ export class ToolServiceNew {
     
   }
 
-  /*
-  private manageResponse(registerRS:RegisterRS){
-    if(registerRS.success){
-      this.sweetUIService.alertConfirm('Bienvenido',registerRS.message,'success')
+
+  private manageResponse(responseApi:ResponseApi){
+
+    if(responseApi.success){
+      this.sweetUIService.alertConfirm('Mensaje',responseApi.message,'success')
       .then(()=>{
-        this.utilService.navigateToPath('/acceso')
+
+        //this.utilService.navigateToPath('/acceso')
+
       })
       .catch((e:any)=>{console.log(e);})
     }else{
-      this.sweetUIService.alertConfirm('Alerta',registerRS.message ,'error')
-      console.log(registerRS.Error?.message)
+      this.sweetUIService.alertConfirm('Alerta',responseApi.message ,'error')
+      console.log(responseApi.Error?.message)
     }
   }
 
-  ¨*/
+
 
 
   private manageError(e: any) {

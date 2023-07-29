@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   {
    // const uniqueId:number = uuidv4();
     this.user = new User();//instancia de usuario vacía para el formulario
-    this.user.id = this.generarIdUnicoNumerico();
+
 
    }
 
@@ -30,7 +30,8 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form:NgForm):void{
-
+    this.user.id = this.generarIdUnicoNumerico();
+    console.log(this.user);
     this.resgisterService.register(this.user);
 
   }
@@ -38,9 +39,8 @@ export class RegisterComponent implements OnInit {
 
   public generarIdUnicoNumerico(): number {
     const timestamp = new Date().getTime();
-    const randomNum = Math.floor(Math.random() * 10000);
-    const id = parseInt(timestamp.toString() + randomNum.toString());
-    return id;
+    const sixDigitId = parseInt(timestamp.toString().slice(-6));
+    return sixDigitId;
   }
 
   private getRandomArbitrary(min:number , max:number) {
