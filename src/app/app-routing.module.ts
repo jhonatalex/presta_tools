@@ -12,7 +12,7 @@ import { FrequentQuestionsComponent } from './components/frequent-questions/freq
 
 import { ContactComponent } from './contact/contact.component';
 import { AuthGuard } from './login/auth/auth.guard';
-import { AddToolComponent } from './add-tool/components/add-tool.component';
+import { AddToolComponent } from './tool/components/add-tool/add-tool.component';
 import { CategoryComponent } from './category/components/category/category.component';
 import { AddCategoryComponent } from './category/components/add-category/add-category.component';
 import { ListCategoryComponent } from './category/components/list-category/list-category.component';

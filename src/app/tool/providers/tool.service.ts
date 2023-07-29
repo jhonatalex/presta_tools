@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { PathCategory, PathTool, PathUser } from 'src/app/shared/constants/endpoints.class';
+import { PathTool, PathUser } from 'src/app/shared/constants/endpoints.class';
 import { CallerManagerService } from 'src/app/shared/helpers/caller-manager.service';
 import { SweetUIService } from 'src/app/shared/services/gui.service';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { environment } from 'src/environments/environment';
 import { CallerService } from '../../shared/helpers/caller.service';
-import { CategoryRS } from '../models/categoryRS.model';
-import { ListCategoryComponent } from '../components/list-category/list-category.component';
-import { Observable, catchError, finalize, from, map, tap } from 'rxjs';
-import { Category } from '../models/category.model';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { ResponseApi } from 'src/app/shared/models/responseApi.model';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Tool } from '../models/tool.model';
+import { Observable } from 'rxjs/internal/Observable';
+import { catchError, finalize, from, map, of } from 'rxjs';
+
+//import { RegisterRS } from '../models/registerRS.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService{
+export class ToolServiceNew {
 
   constructor(private callManSV: CallerManagerService,
               private spinner: NgxSpinnerService,
@@ -25,30 +26,12 @@ export class CategoryService{
               private utilService: UtilService) { }
 
 
-public getListCategoryProviders(): Observable<Category[]> {
-  this.spinner.show();
-  const url = `${environment.baseUrl}${PathCategory.getListCategory}`;
-
-  return from(this.callManSV.getData(url)).pipe(
-    map((response: any) => response.response),
-    tap((categories: Category[]) => {
-      console.log(categories);
-    }),
-    catchError((error: any) => {
-      this.manageError(error);
-      throw error;
-    }),
-    finalize(() => {
-      this.spinner.hide();
-    })
-  );
-}
-
-  public saveCategory(payload: any):void{
+  public saveTool(payload: any):void{
 
     this.spinner.show();
 
-    const url = `${environment.baseUrl}${PathCategory.saveCategory}`;
+
+    const url = `${environment.baseUrl}${PathTool.saveTool}`;
     this.callManSV.postData(url, payload)
 
 
@@ -62,6 +45,30 @@ public getListCategoryProviders(): Observable<Category[]> {
     .finally(()=>this.spinner.hide())
 
   }
+
+
+
+  public getListTool(): Observable<Tool[]> {
+    this.spinner.show();
+
+    const url = `${environment.baseUrl}${PathTool.getListTool}`;
+    return from(this.callManSV.getData(url)).pipe(
+      map((response: ResponseApi) => {
+        console.log(response);
+        return response.data as unknown as Tool[]; // Asegúrate de que response.data sea del tipo Tool[]
+      }),
+      catchError((error: any) => {
+        this.manageError(error);
+        return of([] as Tool[]); // Devuelve un arreglo vacío con el tipo Tool[] si hay un error.
+      }),
+      finalize(() => this.spinner.hide())
+    );
+  }
+
+
+
+
+
 
 
 
@@ -110,13 +117,14 @@ public getListCategoryProviders(): Observable<Category[]> {
 
 
 
+
   private manageResponse(responseApi:ResponseApi){
 
     if(responseApi.success){
       this.sweetUIService.alertConfirm('Mensaje',responseApi.message,'success')
       .then(()=>{
 
-        this.utilService.navigateToPath('/list-category')
+        //this.utilService.navigateToPath('/acceso')
 
       })
       .catch((e:any)=>{console.log(e);})
@@ -129,18 +137,15 @@ public getListCategoryProviders(): Observable<Category[]> {
 
 
 
-
-
-
-
-
-
-
   private manageError(e: any) {
     let errDesc = e['error']['Error']['message'];
     const tmpErrMsg = e.message ? e.message : JSON.stringify(e);
     errDesc = errDesc ? errDesc : tmpErrMsg;
     this.sweetUIService.alertConfirm('Error', `${errDesc}`, 'error');
   }
+
+
+
+
 
 }

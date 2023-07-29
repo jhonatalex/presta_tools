@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute,Params } from '@angular/router';
 import { ToolService } from '../../services/tool.service';
-import { Tool } from '../../add-tool/models/tool.model';
+import { Tool } from '../../tool/models/tool.model';
 import { FormControl } from '@angular/forms';
 
 

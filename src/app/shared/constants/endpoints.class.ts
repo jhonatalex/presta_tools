@@ -38,13 +38,13 @@ export const PathCategory = {
   /**
    * GET
    */
-  getListUser: 'api/categoria/list',
+  getListCategory: 'api/categoria/list',
   /**
 
   /**
    * POST
    */
-  saveUser: 'api/categoria/insert',
+  saveCategory: 'api/categoria/insert',
 
 };
 
