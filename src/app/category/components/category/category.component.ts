@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  CategoryServiceOld } from 'src/app/services/category.service';
 import { Category } from 'src/app/category/models/category.model';
 import { ActivatedRoute,Params } from '@angular/router';
-import { Tool } from 'src/app/add-tool/models/tool.model';
+import { Tool } from 'src/app/tool/models/tool.model';
 import { ToolService } from 'src/app/services/tool.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class CategoryComponent implements OnInit {
     private toolService: ToolService,
 
   ){this.id = 0;
-     this.category = new Category (0,'','','','');
+     this.category = new Category ();
     }//instancia vacia para guardar categoria por id
 
   ngOnInit(): void {

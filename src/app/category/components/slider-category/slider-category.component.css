@@ -1,0 +1,53 @@
+
+.card {
+  border-radius: 18px;
+ max-width: 80%;
+ max-height: 80%;
+}
+
+.card-body1 {
+  display: contents;
+
+}
+
+.user {
+color: black;
+}
+
+.imagen {
+width: 60px;
+height: 60px;
+border-radius: 50%;
+overflow: hidden;
+padding: 5px;
+}
+
+.img-card-top {
+width: 22rem;
+height: 15rem;
+padding: 1px;
+border-radius: 18px 18px 0px 0px;
+}
+
+.img-preguntas{
+width: 727px;
+height: 100%;
+}
+.mb-50{
+margin-bottom: 50px;
+}
+
+
+
+.image-container img {
+display: block;
+z-index: 2;
+}
+
+.boton-link {
+background-color: white;
+color: black;
+border-radius: 5px;
+padding: 12px;
+
+}

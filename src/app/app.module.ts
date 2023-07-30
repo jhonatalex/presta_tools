@@ -17,7 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 import { HeaderComponent } from './components/header/header.component';
 
-import { RelatedFeaturedProductsComponent } from './components/related-featured-products/related-featured-products.component';
+import { RelatedFeaturedProductsComponent } from './tool/components/related-featured-products/related-featured-products.component';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ImageGalleryDirective } from './directives/image-gallery.directive';
@@ -34,16 +34,16 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { environment } from 'src/environments/environment';
 
-
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ContactComponent } from './contact/contact.component';
-import { AddToolComponent } from './add-tool/components/add-tool.component';
+import { AddToolComponent } from './tool/components/add-tool/add-tool.component';
 import { AddCategoryComponent } from './category/components/add-category/add-category.component';
 import { CategoryComponent } from './category/components/category/category.component';
 import { ListCategoryComponent } from './category/components/list-category/list-category.component';
+import { SliderCategoryComponent } from './category/components/slider-category/slider-category.component';
 
 
 
@@ -64,10 +64,10 @@ import { ListCategoryComponent } from './category/components/list-category/list-
     ThanksRentComponent,
     FrequentQuestionsComponent,
     AddToolComponent,
-
     ContactComponent,
     AddCategoryComponent,
     ListCategoryComponent,
+    SliderCategoryComponent,
 
 
 
@@ -77,10 +77,10 @@ import { ListCategoryComponent } from './category/components/list-category/list-
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-
+    ReactiveFormsModule,
     SlickCarouselModule,
    // NgxStarRatingModule,
-    ReactiveFormsModule,
+
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireStorageModule,

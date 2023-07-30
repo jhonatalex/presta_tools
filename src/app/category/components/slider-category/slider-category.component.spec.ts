@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddToolComponent } from './add-tool.component';
+import { SliderCategoryComponent } from './slider-category.component';
 
-describe('AddToolComponent', () => {
-  let component: AddToolComponent;
-  let fixture: ComponentFixture<AddToolComponent>;
+describe('SliderCategoryComponent', () => {
+  let component: SliderCategoryComponent;
+  let fixture: ComponentFixture<SliderCategoryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddToolComponent ]
+      declarations: [ SliderCategoryComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AddToolComponent);
+    fixture = TestBed.createComponent(SliderCategoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

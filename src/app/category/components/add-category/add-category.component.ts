@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Category } from '../../models/category.model';
+import { Category, CategoryApi } from '../../models/category.model';
+import { CategoryService } from '../../providers/category.service';
 
 @Component({
   selector: 'app-add-category',
@@ -9,8 +10,16 @@ import { Category } from '../../models/category.model';
 })
 export class AddCategoryComponent implements OnInit {
   categoryForm: any;
+  selectedFile1 : File | null = null;
+  selectedFile2: File | null = null;
+  public url_image_1:string='';
+  public  url_image_2:string='';
 
-  constructor(private formBuilder: FormBuilder) { }
+
+  constructor(
+        private formBuilder: FormBuilder,
+        private categoryService:CategoryService,
+    ) { }
 
   ngOnInit() {
     this.initCategoryForm();
@@ -18,29 +27,80 @@ export class AddCategoryComponent implements OnInit {
 
   initCategoryForm() {
     this.categoryForm = this.formBuilder.group({
-      idCat: ['', Validators.required],
       titleCat: ['', Validators.required],
       descripCat: ['', Validators.required],
-      urlImagen: ['', Validators.required],
-      urlImagenBanner: ['', Validators.required]
+
     });
   }
 
-  submitForm() {
+  async submitForm(form: { reset: () => void; }) {
+
+    console.log('entro')
+
+    console.log(this.categoryForm.valid)
+
     if (this.categoryForm.valid) {
-      const category: Category = {
-        idCat: this.categoryForm.value.idCat,
+
+      const category: CategoryApi = {
         titleCat: this.categoryForm.value.titleCat,
         descripCat: this.categoryForm.value.descripCat,
-        urlImagen: this.categoryForm.value.urlImagen,
-        urlImagenBanner: this.categoryForm.value.urlImagenBanner
+        urlImagen: '',
+        urlImagenBanner:''
       };
 
-      // Aquí puedes hacer lo que necesites con la categoría enviada, por ejemplo, enviarla a una API o hacer algún procesamiento adicional.
-      console.log(category);
+
+
+      if (this.selectedFile1 && this.selectedFile2) {
+        const promises = [
+          this. categoryService.uploadFile(this.selectedFile1),
+          this. categoryService.uploadFile(this.selectedFile2),
+
+        ];
+
+        try {
+          // Esperar a que se completen todas las promesas de carga de imágenes
+          const [url1, url2] = await Promise.all(promises);
+
+
+          category.urlImagen = url1;
+          category.urlImagenBanner = url2;
+
+
+          console.log(category);
+          this.categoryService.saveCategory(category);
+
+        } catch (error) {
+          // Manejar cualquier error que ocurra durante la carga de imágenes
+          console.error("Error al cargar las imágenes:", error);
+
+        }
+      }
+
+
+
     } else {
-      this.categoryForm.markAllAsTouched();
+      this.markFormGroupTouched(this.categoryForm);
     }
+  }
+
+  markFormGroupTouched(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+
+      if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control);
+      }
+    });
+  }
+
+
+  onFileSelected1(event: any) {
+    this.selectedFile1 = event.target.files[0];
+    console.log(event.target.files)
+  }
+  onFileSelected2(event: any) {
+    this.selectedFile2 = event.target.files[0];
+    console.log(event.target.files)
   }
 
 }

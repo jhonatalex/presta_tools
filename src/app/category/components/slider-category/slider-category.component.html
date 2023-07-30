@@ -1,0 +1,23 @@
+<div class="container fluid ">
+  <!---SECCION SLIDER CATEGORIAS-->
+    <ngx-slick-carousel class="carousel"
+                #slickModal="slick-carousel"
+                [config]="slideConfig"
+                responsive="breakpoints"
+                (init)="slickInit($event)"
+                (breakpoint)="breakpoint($event)"
+                (afterChange)="afterChange($event)"
+                (beforeChange)="beforeChange($event)">
+
+                      <div ngxSlickItem *ngFor="let category of categories" class="slide d-flex justify-content-center align-items-center">
+                          <div class="card shadow mb-4">
+                             <a [routerLink]="['/categoria/', category.idCat]"><img src="{{category.urlImagen}}" alt="imagenCategory" class="img-card-top img-fluid" width=500px height=200px/></a>
+                              <div class="card-body text-center heighthMax">
+                                  <strong>{{category.titleCat}}</strong>
+                                  <p>{{category.descripCat}}</p>
+                              </div>
+                          </div>
+                      </div>
+
+    </ngx-slick-carousel>
+</div>
