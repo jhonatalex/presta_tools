@@ -116,7 +116,7 @@ export class AddToolComponent implements OnInit {
 
 
         // Llamar al siguiente método para consumir el servicio
-        //console.log(this.tool);
+        console.log(this.tool);
         this.toolService.saveTool(this.tool);
 
       } catch (error) {

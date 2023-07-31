@@ -42,7 +42,8 @@ export class ConfirmationRentComponent implements OnInit {
 
     this.toolService.getDetailTool(this.id).subscribe((response:Tool)=>{
     let data = Object.values(response);
-    this.tool = data[1];
+    this.tool = data[0];
+    console.log(this.tool);
     })
 
     });
