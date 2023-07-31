@@ -2,7 +2,7 @@ import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Category } from "../category/models/category.model";
-import { Tool } from "../add-tool/models/tool.model";
+import { Tool } from "../tool/models/tool.model";
 
 @Injectable()
 export class CategoryServiceOld{

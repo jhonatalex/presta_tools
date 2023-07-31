@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ToolService } from '../../services/tool.service';
+import { ToolService } from '../../../services/tool.service';
 
 import { ActivatedRoute,Params } from '@angular/router';
-import { Tool } from 'src/app/add-tool/models/tool.model';
+import { Tool } from 'src/app/tool/models/tool.model';
+import { ToolServiceNew } from '../../providers/tool.service';
+import { CategoryService } from 'src/app/category/providers/category.service';
+import { UtilService } from 'src/app/shared/services/util.service';
 
 @Component({
   selector: 'app-related-featured-products',
   templateUrl: './related-featured-products.component.html',
   styleUrls: ['./related-featured-products.component.css'],
-  providers:[ToolService ]
+  providers:[ToolServiceNew]
 })
 export class RelatedFeaturedProductsComponent implements OnInit {
   public tools:any;
@@ -65,7 +68,10 @@ export class RelatedFeaturedProductsComponent implements OnInit {
   }
 
   constructor(
-    private toolService: ToolService,
+    //private toolService: ToolService,
+    private toolService:ToolServiceNew,
+    private categoryService: CategoryService,
+    private utilService:UtilService,
     private route: ActivatedRoute)
     {}
 
@@ -74,9 +80,9 @@ export class RelatedFeaturedProductsComponent implements OnInit {
   }
 
   getTools(): void{
-    this.toolService.getTools().subscribe((response: Tool[])=>{
-      let data = Object.values(response);//convierte objeto a arreglo
-      this.tools = data[0];
+    this.toolService.getListTool().subscribe((response: Tool[])=>{
+
+      this.tools = response
     });
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute,Params } from '@angular/router';
-import { Tool } from 'src/app/add-tool/models/tool.model';
+import { Tool } from 'src/app/tool/models/tool.model';
 import { ToolService } from 'src/app/services/tool.service';
 
 @Component({
@@ -42,7 +42,8 @@ export class ConfirmationRentComponent implements OnInit {
 
     this.toolService.getDetailTool(this.id).subscribe((response:Tool)=>{
     let data = Object.values(response);
-    this.tool = data[1];
+    this.tool = data[0];
+    console.log(this.tool);
     })
 
     });
