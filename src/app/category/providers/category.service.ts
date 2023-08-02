@@ -63,6 +63,31 @@ public getListCategoryProviders(): Observable<Category[]> {
 
   }
 
+  getDetailCategoryProviders(id:number):Observable<Category>{
+
+    this.spinner.show();
+    const url = `${environment.baseUrl}${PathCategory.getCategoryId}`;
+
+    /*
+    return from(this.callManSV.getDataById(url,id)).pipe(
+      map((response: any) => response.response),
+      tap((categories: Category[]) => {
+        console.log(categories);
+      }),
+      catchError((error: any) => {
+        this.manageError(error);
+        throw error;
+      }),
+      finalize(() => {
+        this.spinner.hide();
+      })
+    );
+    */
+
+  }
+
+
+
 
 
   async uploadFile(selectedFile: File): Promise<string> {
@@ -125,10 +150,6 @@ public getListCategoryProviders(): Observable<Category[]> {
       console.log(responseApi.Error?.message)
     }
   }
-
-
-
-
 
 
 

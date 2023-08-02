@@ -20,6 +20,19 @@ export class CallerService {
       headers: new HttpHeaders(this.httpHeaders)
     });
   }
+
+  /* --- GET --- */
+  public getByID(url: string,id:number): Observable<Object | undefined> {
+    this.httpHeaders['Access-Control-Allow-Methods'] = 'GET';
+    this.httpHeaders['Content-Type'] = 'application/json';
+    return this.http.get(url+id, {
+      headers: new HttpHeaders(this.httpHeaders)
+    });
+  }
+
+
+
+
   /* --- GET with pagination --- */
   public getByPage(
     url: string,

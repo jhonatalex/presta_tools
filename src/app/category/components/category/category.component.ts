@@ -4,6 +4,7 @@ import { Category } from 'src/app/category/models/category.model';
 import { ActivatedRoute,Params } from '@angular/router';
 import { Tool } from 'src/app/tool/models/tool.model';
 import { ToolService } from 'src/app/services/tool.service';
+import { CategoryService } from '../../providers/category.service';
 
 @Component({
   selector: 'app-category',
@@ -21,6 +22,7 @@ export class CategoryComponent implements OnInit {
 
   constructor(
     private categoryService:CategoryServiceOld,
+    private categoryService1:CategoryService,
     private route: ActivatedRoute,
     private toolService: ToolService,
 
@@ -54,13 +56,28 @@ export class CategoryComponent implements OnInit {
       this.route.params.subscribe(params =>{
       this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
 
-      this.categoryService.getDetailCategory(this.id).subscribe((response:Category)=>{
-      let data = Object.values(response);
-      this.category = data[1];
-      console.log(this.category);
-    })
+
+
+      this.categoryService1.getListCategoryProviders()
+
+
+      //this.categoryService.getDetailCategory(this.id).subscribe((response:Category)=>{
+      //let data = Object.values(response);
+     // this.category = data[1];
+     // console.log(this.category);
+                      })
+
+
+
+
+
 
     });
+
+
+
+
+
   }
 
 

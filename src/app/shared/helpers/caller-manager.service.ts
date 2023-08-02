@@ -21,6 +21,14 @@ export class CallerManagerService {
   public getData(serviceUrl: string): Promise<any> {
     return firstValueFrom(this.callerSV.get(serviceUrl));
   }
+
+
+  public getDataById(serviceUrl: string,id:number): Promise<any> {
+    return firstValueFrom(this.callerSV.getByID(serviceUrl,id));
+  }
+
+
+
   public getFile(serviceUrl: string): Promise<any> {
     return firstValueFrom(this.callerSV.getFile(serviceUrl));
   }
