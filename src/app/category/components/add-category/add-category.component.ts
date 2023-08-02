@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Category } from '../../models/category.model';
+import { Category, CategoryApi } from '../../models/category.model';
 import { CategoryService } from '../../providers/category.service';
 
 @Component({
@@ -33,7 +33,7 @@ export class AddCategoryComponent implements OnInit {
     });
   }
 
-  async submitForm() {
+  async submitForm(form: { reset: () => void; }) {
 
     console.log('entro')
 
@@ -41,8 +41,7 @@ export class AddCategoryComponent implements OnInit {
 
     if (this.categoryForm.valid) {
 
-      const category: Category = {
-        idCat:0,
+      const category: CategoryApi = {
         titleCat: this.categoryForm.value.titleCat,
         descripCat: this.categoryForm.value.descripCat,
         urlImagen: '',
@@ -60,7 +59,7 @@ export class AddCategoryComponent implements OnInit {
 
         try {
           // Esperar a que se completen todas las promesas de carga de imágenes
-          const [url1, url2, url3] = await Promise.all(promises);
+          const [url1, url2] = await Promise.all(promises);
 
 
           category.urlImagen = url1;

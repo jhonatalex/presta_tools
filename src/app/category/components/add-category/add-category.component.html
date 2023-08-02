@@ -3,7 +3,7 @@
 
 <div class="container" style="padding:5%">
   <h2>Agregar Categoria</h2>
-  <form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
+  <form #addCategoryForm ="ngForm" [formGroup]="categoryForm" (ngSubmit)="submitForm(addCategoryForm)">
 
     <div class="mb-3">
       <label for="titleCat" class="form-label">Titulo</label>

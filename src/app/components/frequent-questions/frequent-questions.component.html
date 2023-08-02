@@ -14,8 +14,8 @@
             <h1>ayudarte?</h1>
         </div>
         <div class="col-md-6 contenedor-buscar ">
-            <button class="btn btn-light border-0"><i class="fa fa-search" aria-hidden="true"></i></button>
-            <input type="text" placeholder="Buscar Por..." class="input-buscar fondo">
+            <button class="btn btn-light border-0 col-2"><i class="fa fa-search" aria-hidden="true"></i></button>
+            <input type="text" placeholder="Buscar Por..." class="input-buscar fondo col-9">
         </div>
     </div>
 </section>
@@ -25,20 +25,20 @@
 
     <div class="card shadow text-center p-5">
         <h3>Ademas puedes buscar por los siguientes tópicos</h3>
-        <div class=" d-flex flex-row  mt-5 mb-0 text-center" id="navbarTogglerDemo01">
+        <div class=" d-flex flex-row flex-wrap mt-5 mb-0 text-center" id="navbarTogglerDemo01">
             
-                    <a class="nav-link resaltado col-2" aria-current="page" routerLink="/">Inicio</a>
+                    <a class="nav-link resaltado col-6 col-md-3 col-lg-2">Todos</a>
                
-                    <a class="nav-link  col-2" href="/#productos-destacados">Productos</a>
+                    <a class="nav-link  col-6 col-md-3 col-lg-2">Prestadores</a>
                
-                    <a class="nav-link  col-2" [routerLink]="['/agregar-producto']">Alquila Tu Herramienta</a>
+                    <a class="nav-link  col-6 col-md-3 col-lg-2">Herramientas</a>
                
-                    <a class="nav-link  col-2" [routerLink]="['/contacto']">Contacto</a>
+                    <a class="nav-link  col-6 col-md-3 col-lg-2">Usuarios</a>
                
         </div>
     </div>
 </section>
-<section class="card shadow mx-5 mb-5 p-5">
+<section class="card shadow mx-5 mb-5 p-md-5">
     <div class="accordion" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
@@ -78,67 +78,67 @@
           </div>
         </div>
         <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                 ¿Cómo se establecen los precios de alquiler en PrestaTool?
             </button>
           </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
             </div>
           </div>
         </div>
         <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <h2 class="accordion-header" id="headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                 ¿Cuáles son los requisitos para registrarse como usuario y como propietario de herramientas?
              </button>
           </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
             </div>
           </div>
         </div>
         <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+          <h2 class="accordion-header" id="headingSix">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
                 ¿Puedo alquilar herramientas en ciudades o países diferentes al mío?
             </button>
           </h2>
-          <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 <strong>Lamentablemente, en este momento solo ofrecemos nuestro servicio de alquiler de herramientas en Chile.</strong> Actualmente estamos trabajando para expandir nuestros servicios a otras ciudades y países, pero aún no estamos listos para ofrecer nuestros servicios fuera de este país. Sin embargo, si se encuentra en Chile, puede utilizar nuestro sitio web para alquilar herramientas en su ciudad. ¡Esperamos poder atender a clientes internacionales en el futuro!
               </div>
           </div>
         </div>
         <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <h2 class="accordion-header" id="headingSeven">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
                 ¿Cuándo recibiré el pago por el alquiler de mi herramienta?
             </button>
           </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
             </div>
           </div>
         </div>
         <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <h2 class="accordion-header" id="headingEight">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
                 ¿Qué sucede si el usuario que alquila mi herramienta no la devuelve a tiempo?
             </button>
           </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
             </div>
           </div>
         </div>
       </div>
-      <P>
+      <P class="m-5 text-justify">
 
           Recuerda que estamos aquí para brindarte asistencia adicional. No dudes en contactarnos si tienes más preguntas o necesitas ayuda con el uso de nuestra plataforma. ¡Disfruta de la experiencia colaborativa en PrestaTool!
         </P>
