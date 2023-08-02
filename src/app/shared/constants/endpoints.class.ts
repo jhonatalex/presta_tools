@@ -46,6 +46,10 @@ export const PathCategory = {
    */
   saveCategory: 'api/categoria/insert',
 
+
+  getCategoryId: ' /api/Categoria/get/',
+
+
 };
 
 export const PathTool = {
