@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/components/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './register/components/register.component';
-import { ToolDetailComponent } from './components/tool-detail/tool-detail.component';
+import { ToolDetailComponent } from './tool/components/tool-detail/tool-detail.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -21,7 +21,7 @@ import { RelatedFeaturedProductsComponent } from './tool/components/related-feat
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ImageGalleryDirective } from './directives/image-gallery.directive';
-import { ConfirmationRentComponent } from './components/confirmation-rent/confirmation-rent.component';
+
 import { ThanksRentComponent } from './components/thanks-rent/thanks-rent.component';
 import { FrequentQuestionsComponent } from './components/frequent-questions/frequent-questions.component';
 
@@ -44,6 +44,7 @@ import { AddCategoryComponent } from './category/components/add-category/add-cat
 import { CategoryComponent } from './category/components/category/category.component';
 import { ListCategoryComponent } from './category/components/list-category/list-category.component';
 import { SliderCategoryComponent } from './category/components/slider-category/slider-category.component';
+import { ConfirmationRentComponent } from './tool/components/confirmation-rent/confirmation-rent.component';
 
 
 
