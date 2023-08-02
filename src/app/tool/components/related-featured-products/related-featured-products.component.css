@@ -17,7 +17,7 @@
 
   .div-card{
     padding: 20px;
-    
+    background-color: white;
     margin-bottom: 25px;
   }
   .max-wh-100{
@@ -28,6 +28,7 @@
   
   .card-body{
     border-radius: 12px;
+    
   }
 
   .img-card-container{
