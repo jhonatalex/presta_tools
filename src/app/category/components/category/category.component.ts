@@ -32,9 +32,9 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategoryDetail();//ejecuta funcion al iniciar componente
-    this.getTools();
+    //this.getTools();
   }
-
+/*
   getTools(): void{
     this.toolService.getTools().subscribe((response: Tool[])=>{
       let data = Object.values(response);//convierte objeto a arreglo
@@ -49,34 +49,21 @@ export class CategoryComponent implements OnInit {
 
 
     });
-  }
+  }*/
 
-  getCategoryDetail(){
+  getCategoryDetail():void{
       //obtener el  id de la URL
       this.route.params.subscribe(params =>{
       this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
 
-
-
       this.categoryService1.getListCategoryProviders()
 
+        this.categoryService1.getDetailCategoryProviders(this.id).subscribe((response:Category)=>{
+       // let data = Object.values(response);
+        this.category = response;
+        })
 
-      //this.categoryService.getDetailCategory(this.id).subscribe((response:Category)=>{
-      //let data = Object.values(response);
-     // this.category = data[1];
-     // console.log(this.category);
-                      })
-
-
-
-
-
-
-    });
-
-
-
-
+      });
 
   }
 

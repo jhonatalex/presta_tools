@@ -47,7 +47,7 @@ export const PathCategory = {
   saveCategory: 'api/categoria/insert',
 
 
-  getCategoryId: ' /api/Categoria/get/',
+  getCategoryId: 'api/Categoria/get/',
 
 
 };

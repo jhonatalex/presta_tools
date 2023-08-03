@@ -44,10 +44,14 @@ export class ToolDetailComponent implements OnInit {
         this.route.params.subscribe(params =>{
         this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
         //obtiene la herramienta por id
-        this.toolService.getDetailTool(this.id).subscribe((response:Tool)=>{
-        let data = Object.values(response);
-        this.tool = data[0];
+        this.toolService.getDetailTool(this.id).subscribe((response:any)=>{
+        this.tool = response.data;
         console.log(this.tool);
+
+        //obtener categoria
+        let dato:any = Object.values(response.data)[23];
+        this.category = dato.titleCat;
+        console.log(this.category);
       })
 
       });
