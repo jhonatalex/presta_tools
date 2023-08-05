@@ -1,0 +1,39 @@
+<!--SECCION NAVBAR-->
+<app-header [flaglogo]="false"></app-header>
+
+<div class="container" style="padding:5%">
+  <h2>Editar Categoria</h2>
+  <form #editCategoryForm ="ngForm" [formGroup]="categoryForm" (ngSubmit)="submitForm(editCategoryForm)">
+
+    <div class="mb-3">
+      <label for="titleCat" class="form-label">Título</label>
+      <input type="text" class="form-control" FormControlName="titleCat" [value]="category.titleCat">
+      
+    </div>
+
+    <div class="mb-3">
+      <label for="descripCat" class="form-label">Descripcion</label>
+      <textarea class="form-control" FormControlName ="descripCat" [value]="category.descripCat" required></textarea>
+      
+    </div>
+
+    <div class="mb-3">
+      <label for="urlImagen" class="form-label">Imagen Principal</label>
+      <input  id="urlImagen" class="form-control" type="file" (change)="onFileSelected1($event)" accept="image/*">
+      <div class="invalid-feedback" >
+        Please provide a valid image URL.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="urlImagenBanner" class="form-label">Imagen Banner</label>
+      <input  id="urlImagenBanner" class="form-control" type="file" (change)="onFileSelected2($event)" accept="image/*">
+      <div class="invalid-feedback" >
+        Please provide a valid banner image URL.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+</div>
+

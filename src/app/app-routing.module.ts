@@ -17,6 +17,7 @@ import { CategoryComponent } from './category/components/category/category.compo
 import { AddCategoryComponent } from './category/components/add-category/add-category.component';
 import { ListCategoryComponent } from './category/components/list-category/list-category.component';
 import { ConfirmationRentComponent } from './tool/components/confirmation-rent/confirmation-rent.component';
+import { EditCategoryComponent } from './category/components/edit-category/edit-category.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -36,6 +37,10 @@ const routes: Routes = [
   },
 
   {path: 'agregar-categoria', component: AddCategoryComponent,
+  canActivate:[AuthGuard]
+  },
+
+  {path: 'editar-categoria/:id', component: EditCategoryComponent,
   canActivate:[AuthGuard]
   },
 

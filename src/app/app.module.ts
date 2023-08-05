@@ -45,6 +45,7 @@ import { CategoryComponent } from './category/components/category/category.compo
 import { ListCategoryComponent } from './category/components/list-category/list-category.component';
 import { SliderCategoryComponent } from './category/components/slider-category/slider-category.component';
 import { ConfirmationRentComponent } from './tool/components/confirmation-rent/confirmation-rent.component';
+import { EditCategoryComponent } from './category/components/edit-category/edit-category.component';
 
 
 
@@ -69,6 +70,7 @@ import { ConfirmationRentComponent } from './tool/components/confirmation-rent/c
     AddCategoryComponent,
     ListCategoryComponent,
     SliderCategoryComponent,
+    EditCategoryComponent,
 
 
 
