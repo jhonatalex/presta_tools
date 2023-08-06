@@ -1,6 +1,10 @@
 .bg-contact{
     background-color: #212529;
-    
+
     background-size: cover ;
     color: white;
+}
+
+.max-100{
+  width: 320px;
 }

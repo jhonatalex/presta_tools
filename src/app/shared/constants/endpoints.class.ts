@@ -49,6 +49,7 @@ export const PathCategory = {
 
   getCategoryId: 'api/Categoria/get/',
 
+  deleteCategoryId: 'api/Categoria/delete/',
 
 };
 
@@ -57,7 +58,9 @@ export const PathTool = {
    * GET
    */
   getListTool: 'api/tool/list',
-  /**
+
+
+  getToolId: 'api/tool/get/',
 
   /**
    * POST

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryServiceOld } from 'src/app/services/category.service';
 import { Category } from 'src/app/category/models/category.model';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { Constants } from 'src/app/shared/constants/settings.class';
@@ -11,7 +10,7 @@ import { User } from 'src/app/register/models/user.model';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers:[CategoryServiceOld]
+  providers:[]
 })
 export class HomeComponent implements OnInit {
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
@@ -23,7 +22,6 @@ export class HomeComponent implements OnInit {
   public categories:any;
   public user: User = new User();
   constructor(
-    private categoryService:CategoryServiceOld,
     private utilService: UtilService,
   ){}
 

@@ -60,7 +60,7 @@ export class CallerManagerService {
    * Recurso que retorna una promesa con la respuesta del DELETE
    * @param serviceUrl URL del Servicio
    */
-  public deleteData(serviceUrl: string): Promise<any> {
-    return firstValueFrom(this.callerSV.delete(serviceUrl));
+  public deleteData(serviceUrl: string,id:number): Promise<any> {
+    return firstValueFrom(this.callerSV.deleteByid(serviceUrl,id));
   }
 }

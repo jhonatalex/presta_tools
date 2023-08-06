@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute,Params } from '@angular/router';
-import { Tool } from 'src/app/tool/models/tool.model';
-import { ToolService } from 'src/app/services/tool.service';
+import { Tool, ToolResponse } from 'src/app/tool/models/tool.model';
+import { ToolServiceNew } from '../../providers/tool.service';
 
 @Component({
   selector: 'app-confirmation-rent',
   templateUrl: './confirmation-rent.component.html',
   styleUrls: ['./confirmation-rent.component.css'],
-  providers:[ToolService]
+  providers:[ToolServiceNew]
 })
 export class ConfirmationRentComponent implements OnInit {
   public id:number;
-  public tool:Tool;
+  public tool:ToolResponse;
 
   constructor(
     private route: ActivatedRoute,
-    private toolService: ToolService
+    private toolService: ToolServiceNew
   ) {this.id = 0;
-    this.tool = new Tool ();//instancia vacia para guardar tool por id
+    this.tool = new ToolResponse();//instancia vacia para guardar tool por id
     }
 
   ngOnInit(): void {
@@ -40,10 +40,9 @@ export class ConfirmationRentComponent implements OnInit {
     this.route.params.subscribe(params =>{
     this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
 
-    this.toolService.getDetailTool(this.id).subscribe((response:Tool)=>{
-    let data = Object.values(response);
-    this.tool = data[0];
-    console.log(this.tool);
+    this.toolService.getDetailToolProviders(this.id).subscribe((response:ToolResponse)=>{
+    this.tool = response
+
     })
 
     });

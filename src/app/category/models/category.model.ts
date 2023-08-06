@@ -1,9 +1,12 @@
+import { Tool } from "src/app/tool/models/tool.model";
+
 export class Category{
     public idCat:number=0;
     public titleCat:string='';
     public descripCat:string='';
     public urlImagen:string='';
     public urlImagenBanner:string='';
+    public tools: Array<Tool> =[]
 
 }
 export class CategoryApi{
@@ -11,5 +14,4 @@ export class CategoryApi{
   public descripCat:string='';
   public urlImagen:string='';
   public urlImagenBanner:string='';
-
 }
