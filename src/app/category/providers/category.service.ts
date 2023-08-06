@@ -30,9 +30,9 @@ public getListCategoryProviders(): Observable<Category[]> {
   const url = `${environment.baseUrl}${PathCategory.getListCategory}`;
 
   return from(this.callManSV.getData(url)).pipe(
-    map((response: any) => response.response),
+    map((response: any) => response.data),
     tap((categories: Category[]) => {
-      console.log(categories);
+      //console.log(categories);
     }),
     catchError((error: any) => {
       this.manageError(error);
@@ -42,6 +42,7 @@ public getListCategoryProviders(): Observable<Category[]> {
       this.spinner.hide();
     })
   );
+
 }
 
   public saveCategory(payload: any):void{
@@ -68,9 +69,10 @@ public getListCategoryProviders(): Observable<Category[]> {
     this.spinner.show();
     const url = `${environment.baseUrl}${PathCategory.getCategoryId}`;
 
-    
+    console.log(url+id)
+
     return from(this.callManSV.getDataById(url,id)).pipe(
-      map((response: any) => response.response),
+      map((response: any) => response.data),
       tap((Category: Category) => {
         console.log(Category);
       }),
@@ -82,10 +84,49 @@ public getListCategoryProviders(): Observable<Category[]> {
         this.spinner.hide();
       })
     );
-    
+
 
   }
 
+
+
+  public deleteCategory(id: any):void{
+
+
+
+    this.sweetUIService
+          .alertCancelConfirm(
+            'Atención',
+            'Seguro desea Borrar esta Categoria',
+            'question',
+            'Aceptar',
+            'Cancelar'
+          )
+          .then((r) => {
+            if (r.value) {
+
+                this.spinner.show();
+                const url = `${environment.baseUrl}${PathCategory.deleteCategoryId}`;
+                this.callManSV.deleteData(url, id)
+
+                .then((response:any)=>{
+                  console.log(response);
+
+
+
+                  this.manageResponse(response);
+                  this.getListCategoryProviders();
+
+
+                })
+                .catch((error:any)=>{
+                  this.manageError(error);
+                })
+                .finally(()=>this.spinner.hide())
+            }
+          });
+
+  }
 
 
 

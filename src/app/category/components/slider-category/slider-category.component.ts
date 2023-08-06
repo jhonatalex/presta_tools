@@ -73,9 +73,7 @@ console.log('beforeChange');
 
     this.getCategories();//ejecuta funcion al iniciar y obtiene las categorias
 
-    /*this.categoryService.editTool().subscribe(response=>{
-      console.log(response);
-    });*/
+
 
   }
 
@@ -83,6 +81,7 @@ console.log('beforeChange');
   getCategories() : void {
     this.categoryService.getListCategoryProviders().subscribe((response: Category[])=>{
       this.categories = response;
+      console.log('TS' + response)
     });
   }
 

@@ -21,7 +21,7 @@ export class CallerService {
     });
   }
 
-  /* --- GET --- */
+  /* --- GET  ID--- */
   public getByID(url: string,id:number): Observable<Object | undefined> {
     this.httpHeaders['Access-Control-Allow-Methods'] = 'GET';
     this.httpHeaders['Content-Type'] = 'application/json';
@@ -29,8 +29,6 @@ export class CallerService {
       headers: new HttpHeaders(this.httpHeaders)
     });
   }
-
-
 
 
   /* --- GET with pagination --- */
@@ -107,10 +105,10 @@ export class CallerService {
     });
   }
   /* --- DELETE method --- */
-  public delete(url: string): Observable<Object | undefined> {
+  public deleteByid(url: string,id:number): Observable<Object | undefined> {
     this.httpHeaders['Access-Control-Allow-Methods'] = 'DELETE';
     this.httpHeaders['Content-Type'] = 'application/json';
-    return this.http.delete(url, {
+    return this.http.delete(url+id, {
       headers: new HttpHeaders(this.httpHeaders),
     });
   }

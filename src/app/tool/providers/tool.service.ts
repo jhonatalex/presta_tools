@@ -8,9 +8,9 @@ import { environment } from 'src/environments/environment';
 import { CallerService } from '../../shared/helpers/caller.service';
 import { ResponseApi } from 'src/app/shared/models/responseApi.model';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { Tool } from '../models/tool.model';
+import { Tool, ToolResponse } from '../models/tool.model';
 import { Observable } from 'rxjs/internal/Observable';
-import { catchError, finalize, from, map, of } from 'rxjs';
+import { catchError, finalize, from, map, of, tap } from 'rxjs';
 
 //import { RegisterRS } from '../models/registerRS.model';
 
@@ -68,8 +68,29 @@ export class ToolServiceNew {
 
 
 
+  getDetailToolProviders(id:number):Observable<ToolResponse>{
+
+    this.spinner.show();
+    const url = `${environment.baseUrl}${PathTool.getToolId}`;
+
+    console.log(url+id)
+
+    return from(this.callManSV.getDataById(url,id)).pipe(
+      map((response: ResponseApi<ToolResponse>) => response.data),
+      tap((tool: ToolResponse) => {
+        console.log(tool);
+      }),
+      catchError((error: any) => {
+        this.manageError(error);
+        throw error;
+      }),
+      finalize(() => {
+        this.spinner.hide();
+      })
+    );
 
 
+  }
 
 
   async uploadFile(selectedFile: File): Promise<string> {

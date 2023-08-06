@@ -44,17 +44,20 @@
 
             <!--DESCRIPCION HERRAMIENTA-->
             <div class="card shadow col-md-6 div-card-small">
-                <h1 class="mt-2 text-center"><strong>{{tool.name}}</strong></h1>
+                <h2 class="mt-2 text-center"><strong>{{tool.name}}</strong></h2>
                 <hr class="bg-dark">
-                <p class="margin"><strong>SKU:</strong></p>    
-                <p> <strong>Categoria: </strong>{{category}}</p>
-                <p>DESCRIPCIÓN: <br> {{tool.description}}</p>
-                <p>CARACTERÍSTICAS:</p>            
-                <h6 class="margin"><strong> Marca: </strong>{{tool.model}}</h6>    
+                <p class="margin"><strong>SKU:</strong>{{tool.reference}}</p>
+                <p><strong>Categoria: </strong>{{category?.titleCat}}</p>
+                <p><strong>CARACTERÍSTICAS:</strong></p>
+                <h6 class="margin"><strong> Marca: </strong>{{tool.model}}</h6>
+                <h6 class="margin"><strong> Modelo: </strong>{{tool.model}}</h6>
+                <h6 class="margin"><strong> Año: </strong>{{tool.yearBuy}}</h6>
+                <h6 class="margin"><strong> Acesorios: </strong>{{tool.widgets}}</h6>
                 <p class="negrita">Rentado:</p>
+                <p class="text-justify"><strong>DESCRIPCIÓN:</strong> <br> {{tool.description}}</p>
                 <p class="negrita margin">¡Aún no se han encontrado</p>
                 <p class="negrita">valoraciones!</p>
-                <p>DISPONIBILIDAD:</p>
+                <ngb-rating [max]="5" > {{tool.rate}}</ngb-rating>
                 <a [routerLink]="['/confirma-renta',this.id]" class="btn-blue-grad mb-2 px-5 py-2 border-0 col-md-8 mx-auto">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
             </div>
 
@@ -69,10 +72,10 @@
 
             <div class="col d-grid padding">
                 <strong class="titulo-negrita py-2">Información del Propietario</strong>
-                <strong class="margin">Nombre:</strong>
-                <strong class="margin">Direción:</strong>
-                <strong class="margin">Código postal:</strong>
-                <strong class="py-2">Aún no se han encontrado valoraciones</strong>
+                <p><strong class="margin">Nombre:</strong> {{lender?.name}}  {{lender?.lastName}}</p>
+                <p><strong class="margin">Region:</strong>Coquimbo</p>
+                <p><strong class="margin">Comuna:</strong>La Serena</p>
+                <p><strong class="py-2">Aún no se han encontrado valoraciones</strong></p>
              </div>
              <div class="col d-flex flex-column justify-content-center align-items-center pt-2">
                  <div class="div-logo-simple">

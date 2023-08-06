@@ -10,7 +10,7 @@ import { RecoverPasswordComponent } from './components/recover-password/recover-
 import { ThanksRentComponent } from './components/thanks-rent/thanks-rent.component';
 import { FrequentQuestionsComponent } from './components/frequent-questions/frequent-questions.component';
 
-import { ContactComponent } from './contact/contact.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { AuthGuard } from './login/auth/auth.guard';
 import { AddToolComponent } from './tool/components/add-tool/add-tool.component';
 import { CategoryComponent } from './category/components/category/category.component';

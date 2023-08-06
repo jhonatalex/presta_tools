@@ -1,29 +1,37 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute,Params } from '@angular/router';
-import { ToolService } from '../../../services/tool.service';
-import { Tool } from '../../models/tool.model';
+import { Tool, ToolResponse } from '../../models/tool.model';
 import { FormControl } from '@angular/forms';
+import { ToolServiceNew } from '../../providers/tool.service';
+import { Category } from 'src/app/category/models/category.model';
+import { Lender } from 'src/app/Lender/models/lender.model';
 
 
 @Component({
   selector: 'app-tool-detail',
   templateUrl: './tool-detail.component.html',
   styleUrls: ['./tool-detail.component.css'],
-  providers:[ToolService]
+  providers:[ToolServiceNew]
 })
 export class ToolDetailComponent implements OnInit {
-  public tool: Tool;
+  public tool: ToolResponse;
   public id: number;
   public rating = new FormControl();
   public toolCat: any;
-  category: any;
+  public category: Category|null =null;
+  public lender: Lender| null = null;
+  public starRating =0;
 
   constructor(
     private route: ActivatedRoute,
-    private toolService: ToolService
+    private toolService: ToolServiceNew,
+
   ){
     this.id = 0;
-    this.tool = new Tool ();//instancia vacia para guardar tool por id
+    this.tool = new ToolResponse ();//instancia vacia para guardar tool por id
+    this.category= new Category();
+    this.lender = new Lender();
+    this.starRating = 0;
   }
 
   ngOnInit(): void {
@@ -31,12 +39,12 @@ export class ToolDetailComponent implements OnInit {
   }
 
 
-
+    /*
     getRating(){
       this.tool.rate = this.rating.value;
       console.log(this.tool.rate);
     }
-
+    */
 
 
     getToolDetail(): void{
@@ -44,13 +52,14 @@ export class ToolDetailComponent implements OnInit {
         this.route.params.subscribe(params =>{
         this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
         //obtiene la herramienta por id
-        this.toolService.getDetailTool(this.id).subscribe((response:any)=>{
-        this.tool = response.data;
+        this.toolService.getDetailToolProviders(this.id).subscribe((response:ToolResponse)=>{
+        this.tool = response
         console.log(this.tool);
 
         //obtener categoria
-        let dato:any = Object.values(response.data)[23];
-        this.category = dato.titleCat;
+        //let dato:any = Object.values(response.data)[23];
+        this.category = response.objetoCategoria;
+        this.lender = response.objetoLender;
         console.log(this.category);
       })
 

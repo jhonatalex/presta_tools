@@ -32,10 +32,7 @@
         <td>{{ category.titleCat }}</td>
         <td class="description-cell">{{ category.descripCat }}</td>
         <td>
-          <a routerLink="/ver-categoria/{{ category.idCat }}" class="btn btn-sm btn-warning me-1">
-            <i class="far fa-eye"></i> Ver
-          </a>
-          <a routerLink="/editar-categoria/{{ category.idCat }}" class="btn btn-sm btn-primary me-1">
+          <a routerLink="/editar-categoria/{{ category.idCat }}" class="btn btn-sm btn-warning me-1">
             <i class="far fa-edit"></i> Editar
           </a>
           <button class="btn btn-sm btn-danger" (click)="deleteCategory(category.idCat)">

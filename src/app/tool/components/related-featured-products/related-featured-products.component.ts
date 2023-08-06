@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ToolService } from '../../../services/tool.service';
 
 import { ActivatedRoute,Params } from '@angular/router';
 import { Tool } from 'src/app/tool/models/tool.model';

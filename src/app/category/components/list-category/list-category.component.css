@@ -45,8 +45,6 @@
 
 
 .container td.description-cell {
-  max-width: 680px; /* Puedes ajustar este valor según tus necesidades */
-  overflow: hidden;
-  white-space: nowrap;
+  max-width: 500px; /* Puedes ajustar este valor según tus necesidades */
   text-overflow: ellipsis;
 }
