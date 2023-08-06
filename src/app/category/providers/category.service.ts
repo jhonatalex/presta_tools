@@ -30,7 +30,7 @@ public getListCategoryProviders(): Observable<Category[]> {
   const url = `${environment.baseUrl}${PathCategory.getListCategory}`;
 
   return from(this.callManSV.getData(url)).pipe(
-    map((response: any) => response.response),
+    map((response: any) => response.data),
     tap((categories: Category[]) => {
       console.log(categories);
     }),
@@ -70,7 +70,7 @@ public getListCategoryProviders(): Observable<Category[]> {
 
     
     return from(this.callManSV.getDataById(url,id)).pipe(
-      map((response: any) => response.response),
+      map((response: any) => response.data),
       tap((Category: Category) => {
         console.log(Category);
       }),
