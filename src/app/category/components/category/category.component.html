@@ -16,17 +16,33 @@
 
 <!--SECCION PAGINACION PRODUCTOS-->
 <section id="paginacion-productos" class="fondo py-5">
-    <div class="card shadow container content-products">
-        <div class="products">
+    <div class="card shadow container content-products pt-4">
+        <div class="products d-flex flex-wrap  p-2">
 
-            <div *ngFor="let tool of category.tools" class="slide d-flex justify-content-center align-items-center">
-                <div class="card shadow div-card d-flex justify-content-center align-items-center">
-                    <img src={{tool.urlImage}} alt="imagen" class="img-card img-fluid" width=500px height=200px/>
+            <div *ngFor="let tool of category.tools | paginate: { itemsPerPage: 16, currentPage: page }" class="d-flex justify-content-center align-items-center w-col my-2">
+               <!--  <div class="card shadow div-card d-flex justify-content-center align-items-center">
+                    <img src={{tool.urlImage}} alt="imagen" class="img-card img-fluid" />
                     <div class="card-body text-center heighthMax">
                         <strong>{{tool.name}} {{tool.model}}</strong>
                         <p>Precio Alquiler: {{tool.valueRent}} CLP</p>
                         <a [routerLink]="['/herramienta/']" class="btn-blue-grad mb-4 px-5 py-2 border-0 col-sm-12 col-md-8">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
                     </div>
+                </div> -->
+                <div class="card shadow div-card d-flex justify-content-center align-items-center mx-3">
+                    <div class="img-card rounded" >
+                        <img src={{tool.urlImage}} alt="imagen" class="max-wh-100 rounded" />
+                    </div>
+                    <div class="card-body text-center heighthMax">
+                        <div class="card border-0 caja-textos">
+                            <strong>{{tool.name}} {{tool.model}}</strong>
+                            <p>Precio Alquiler: {{tool.valueRent}} CLP</p>
+                        </div>
+                        <!-- 
+                        <a [routerLink]="['/herramienta/',tool.id]" class="btn-blue-grad d-block"> -->
+                        <a [routerLink]="['/herramienta/']" class="btn-blue-grad d-block">
+                            Reservar
+                            <i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
+                    </div> 
                 </div>
             </div>
 
@@ -35,7 +51,7 @@
 </section>
 
 
-<!---SECCION GRILLA-->
+<!---SECCION GRILLA
 <section id="paginacion" class="fondo py-5">
     <div class="container-fluid py-5 content-grilla">
         <div class="container card shadow">
@@ -44,10 +60,20 @@
         </div>
     </div>
 
+</section>-->
+<!---SECCION GRILLA-->
+<section id="paginacion" class="fondo">
+        <div class="container card shadow d-flex justify-content-center align-items-center pt-4 pb-2">
+            
+            <pagination-controls (pageChange)="page = $event" previousLabel="Anterior"
+            nextLabel="Siguiente"></pagination-controls>
+       
+    </div>
+
 </section>
 
  <!---SLIDER PRODUCTOS RELACIONADOS-->
- <section id="productos-relacionados" class="fondo pb-5">
+ <section id="productos-relacionados" class="fondo py-5">
     <div class="card shadow content-procucts mx-auto padding">
        <strong class="px-2 pb-0 titulo-negrita">Productos relacionados</strong>
        <app-related-featured-products></app-related-featured-products>

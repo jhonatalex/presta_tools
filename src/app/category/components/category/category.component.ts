@@ -17,7 +17,7 @@ export class CategoryComponent implements OnInit {
   public id:number;
   tools: any;
   toolCat: any[]=[];
-
+  public page! : number;
 
 
   constructor(

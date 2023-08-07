@@ -85,6 +85,7 @@ import { VerifyUserComponent } from './Lender/components/verify-user/verify-user
     ReactiveFormsModule,
     SlickCarouselModule,
    // NgxStarRatingModule,
+   NgxPaginationModule,
 
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
