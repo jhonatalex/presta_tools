@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {  CategoryServiceOld } from 'src/app/services/category.service';
+
 import { Category } from 'src/app/category/models/category.model';
 import { ActivatedRoute,Params } from '@angular/router';
 import { Tool } from 'src/app/tool/models/tool.model';
-import { ToolService } from 'src/app/services/tool.service';
+
 import { CategoryService } from '../../providers/category.service';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css'],
-  providers:[CategoryServiceOld,ToolService]
+  providers:[]
 })
 export class CategoryComponent implements OnInit {
   public category:Category;
@@ -21,10 +21,9 @@ export class CategoryComponent implements OnInit {
 
 
   constructor(
-    private categoryService:CategoryServiceOld,
     private categoryService1:CategoryService,
     private route: ActivatedRoute,
-    private toolService: ToolService,
+
 
   ){this.id = 0;
      this.category = new Category ();
@@ -34,37 +33,18 @@ export class CategoryComponent implements OnInit {
     this.getCategoryDetail();//ejecuta funcion al iniciar componente
     //this.getTools();
   }
-/*
-  getTools(): void{
-    this.toolService.getTools().subscribe((response: Tool[])=>{
-      let data = Object.values(response);//convierte objeto a arreglo
-      this.tools = data[1];
-      console.log(this.tools);
-
-      //listar categorias en array de Tools
-      for (let i=0; i<this.tools.length; i++){
-        let dato = this.tools[i].objetoCategoria.titleCat;
-        console.log(dato);
-      }
-
-
-    });
-  }*/
 
   getCategoryDetail():void{
       //obtener el  id de la URL
       this.route.params.subscribe(params =>{
       this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
 
-      this.categoryService1.getListCategoryProviders()
+      this.categoryService1.getDetailCategoryProviders(this.id).subscribe((response:Category)=>{
+      // let data = Object.values(response);
+      this.category = response;
+      })
 
-        this.categoryService1.getDetailCategoryProviders(this.id).subscribe((response:Category)=>{
-       // let data = Object.values(response);
-        this.category = response;
-        })
-
-      });
-
+    });
   }
 
 

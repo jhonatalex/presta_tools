@@ -38,7 +38,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { ContactComponent } from './contact/contact.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { AddToolComponent } from './tool/components/add-tool/add-tool.component';
 import { AddCategoryComponent } from './category/components/add-category/add-category.component';
 import { CategoryComponent } from './category/components/category/category.component';
@@ -46,6 +46,7 @@ import { ListCategoryComponent } from './category/components/list-category/list-
 import { SliderCategoryComponent } from './category/components/slider-category/slider-category.component';
 import { ConfirmationRentComponent } from './tool/components/confirmation-rent/confirmation-rent.component';
 import { EditCategoryComponent } from './category/components/edit-category/edit-category.component';
+import { VerifyUserComponent } from './Lender/components/verify-user/verify-user.component';
 
 
 
@@ -71,6 +72,7 @@ import { EditCategoryComponent } from './category/components/edit-category/edit-
     ListCategoryComponent,
     SliderCategoryComponent,
     EditCategoryComponent,
+    VerifyUserComponent,
 
 
 

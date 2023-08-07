@@ -39,18 +39,8 @@ export class ListCategoryComponent implements OnInit {
 
   deleteCategory(categoryId: number) {
 
-    /*
-    this.categoryService.deleteCategory(categoryId).subscribe(
-      () => {
-        // Actualizar la lista de categorías después de eliminar
-        this.loadCategories();
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.categoryService.deleteCategory(categoryId);
 
-      */
   }
 
 
