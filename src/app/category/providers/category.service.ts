@@ -9,7 +9,7 @@ import { CallerService } from '../../shared/helpers/caller.service';
 import { CategoryRS } from '../models/categoryRS.model';
 import { ListCategoryComponent } from '../components/list-category/list-category.component';
 import { Observable, catchError, finalize, from, map, tap } from 'rxjs';
-import { Category } from '../models/category.model';
+import { Category, CategoryApi } from '../models/category.model';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { ResponseApi } from 'src/app/shared/models/responseApi.model';
 
@@ -64,11 +64,29 @@ public getListCategoryProviders(): Observable<Category[]> {
 
   }
 
+  public updateCategory(payload: any):void{
+
+    this.spinner.show();
+
+    const url = `${environment.baseUrl}${PathCategory.updCategory}`;
+    console.log(url)
+    this.callManSV.putData(url, payload)
+
+    .then((response:any)=>{
+      console.log(response);
+      this.manageResponse(response);
+    })
+    .catch((error:any)=>{
+      this.manageError(error);
+    })
+    .finally(()=>this.spinner.hide())
+
+  }
+
   getDetailCategoryProviders(id:number):Observable<Category>{
 
     this.spinner.show();
     const url = `${environment.baseUrl}${PathCategory.getCategoryId}`;
-
     console.log(url+id)
 
     return from(this.callManSV.getDataById(url,id)).pipe(
@@ -92,8 +110,6 @@ public getListCategoryProviders(): Observable<Category[]> {
 
   public deleteCategory(id: any):void{
 
-
-
     this.sweetUIService
           .alertCancelConfirm(
             'Atención',
@@ -112,11 +128,8 @@ public getListCategoryProviders(): Observable<Category[]> {
                 .then((response:any)=>{
                   console.log(response);
 
-
-
                   this.manageResponse(response);
                   this.getListCategoryProviders();
-
 
                 })
                 .catch((error:any)=>{
@@ -183,6 +196,7 @@ public getListCategoryProviders(): Observable<Category[]> {
       .then(()=>{
 
         this.utilService.navigateToPath('/listar-categoria')
+        
 
       })
       .catch((e:any)=>{console.log(e);})

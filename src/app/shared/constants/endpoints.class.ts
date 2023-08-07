@@ -38,16 +38,17 @@ export const PathCategory = {
   /**
    * GET
    */
-  getListCategory: 'api/categoria/list',
+  getListCategory:'api/Categoria/list',
   /**
 
   /**
    * POST
    */
-  saveCategory: 'api/categoria/insert',
+  saveCategory:     'api/Categoria/insert',
 
+  updCategory:   'api/Categoria/edit',
 
-  getCategoryId: 'api/Categoria/get/',
+  getCategoryId:    'api/Categoria/get/',
 
   deleteCategoryId: 'api/Categoria/delete/',
 
