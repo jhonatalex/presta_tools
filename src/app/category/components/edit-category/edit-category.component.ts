@@ -14,8 +14,6 @@ export class EditCategoryComponent implements OnInit {
   public CategoryForm: any
   selectedFile1!: File;
   selectedFile2!: File;
-  public url_image_1:string='';
-  public url_image_2:string='';
   public category: Category= new Category;
   public id:number=0;
 
@@ -30,17 +28,6 @@ export class EditCategoryComponent implements OnInit {
     this.loadCategoryById();
     this.initCategoryForm();
   }
-
-  initCategoryForm():void {
-    this.CategoryForm = this.formBuilder.group({
-      idCat:           [this.id],
-      titleCat:        [this.category.titleCat,Validators.required],
-      descripCat:      [this.category.descripCat,Validators.required],
-      urlImagen:       [this.category.urlImagen],
-      urlImagenBanner: [this.category.urlImagenBanner]
-    });
-  }
-
 
     loadCategoryById():void {
       //obtener el  id de la URL
@@ -59,34 +46,49 @@ export class EditCategoryComponent implements OnInit {
       });
     }
 
+    initCategoryForm():void {
+      this.CategoryForm = this.formBuilder.group({
+        idCat:           [this.id],
+        titleCat:        [''],
+        descripCat:      [''],
+        urlImagen:       [''],
+        urlImagenBanner: ['']
+      });
+    }
+
+
+
+
+
     async submitForm(form: { reset: () => void; }) {
 
       console.log('entro')
-      console.log(this.CategoryForm)
-
-      //if (this.CategoryForm.valid) {
-  
+      
         const categoryApi: Category = {
           idCat:           this.id,
           titleCat:        this.CategoryForm.value.titleCat,
           descripCat:      this.CategoryForm.value.descripCat,
-          urlImagen:       this.CategoryForm.value.urlImagen,
-          urlImagenBanner: this.CategoryForm.value.urlImagenBanner,
+          urlImagen:       '',
+          urlImagenBanner: '',
           tools: []
         };
-  
+       
+
+        if (this.selectedFile1){
+
           const promises = [
             this.categoryService.uploadFile(this.selectedFile1),
-            this.categoryService.uploadFile(this.selectedFile2),
+          //  this.categoryService.uploadFile(this.selectedFile2),
           ];
   
           try {
             // Esperar a que se completen todas las promesas de carga de imágenes
-            const [url1, url2] = await Promise.all(promises);
+            const [url1] = await Promise.all(promises);
 
-            categoryApi.urlImagen = url1;
-            categoryApi.urlImagenBanner = url2;
-  
+            categoryApi.urlImagen=url1;
+            categoryApi.urlImagenBanner = this.category.urlImagenBanner;
+           
+            
             console.log(categoryApi);
             this.categoryService.updateCategory(categoryApi);
   
@@ -95,9 +97,38 @@ export class EditCategoryComponent implements OnInit {
             console.error("Error al cargar las imágenes:", error);
   
           }
-        //}else{
-        //  console.log('complete el formulario');
-       // }
+        }else if(this.selectedFile2){
+
+          const promises = [
+            //this.categoryService.uploadFile(this.selectedFile1),
+            this.categoryService.uploadFile(this.selectedFile2),
+          ];
+  
+          try {
+            // Esperar a que se completen todas las promesas de carga de imágenes
+            const [url2] = await Promise.all(promises);
+
+            categoryApi.urlImagen = this.category.urlImagen;
+            categoryApi.urlImagenBanner = url2;
+           
+            
+            console.log(categoryApi);
+            this.categoryService.updateCategory(categoryApi);
+  
+          } catch (error) {
+            // Manejar cualquier error que ocurra durante la carga de imágenes
+            console.error("Error al cargar las imágenes:", error);
+  
+          }
+         
+        }else{
+          categoryApi.urlImagen = this.category.urlImagen;
+          categoryApi.urlImagenBanner = this.category.urlImagenBanner;
+          console.log(categoryApi);
+          this.categoryService.updateCategory(categoryApi);
+        }
+          
+         
     }
   
 

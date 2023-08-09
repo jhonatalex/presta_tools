@@ -23,8 +23,8 @@
 
     <div class="mb-3">
       <label for="urlImagen" class="form-label">Imagen Principal</label>
-      <input  id="urlImagen" class="form-control" type="file" (change)="onFileSelected1($event)" accept="image/*" [(ngModel)]="category.urlImagen">
-      <img class="card shadow p-2 my-2" src={{category.urlImagen}} alt="ImagenPrincipal" style="width: 200px; height: 180px;">
+      <input  id="urlImagen" class="form-control" type="file" (change)="onFileSelected1($event)" accept="image/*">
+      <img class="card shadow p-2 my-2" [src]="[category.urlImagen]" alt="ImagenPrincipal" style="width: 200px; height: 180px;" name="urlImagen" #name="ngModel" [(ngModel)]="category.urlImagen">
       <div class="invalid-feedback" >
         Please provide a valid image URL.
       </div>
@@ -32,8 +32,8 @@
 
     <div class="mb-3">
       <label for="urlImagenBanner" class="form-label">Imagen Banner</label>
-      <input  id="urlImagenBanner" class="form-control" type="file" (change)="onFileSelected2($event)" accept="image/*" [(ngModel)]="category.urlImagenBanner">
-      <img class="card shadow p-2 my-2" src={{category.urlImagenBanner}} alt="ImagenBanner" style="width: 200px; height: 180px;">
+      <input  id="urlImagenBanner" class="form-control" type="file" (change)="onFileSelected2($event)" accept="image/*" name="selectedFile2" #name="ngModel" [(ngModel)]="this.selectedFile2">
+      <img class="card shadow p-2 my-2" [src]="[category.urlImagenBanner]" alt="ImagenBanner" style="width: 200px; height: 180px;">
       <div class="invalid-feedback" >
         Please provide a valid banner image URL.
       </div>
