@@ -65,8 +65,8 @@ export class EditCategoryComponent implements OnInit {
       console.log('entro')
       
         const categoryApi: Category = {
-          idCat:           this.id,
-          titleCat:        this.CategoryForm.value.titleCat,
+          idCat:           this.id, Validators.required,
+          titleCat:        this.CategoryForm.value.titleCat,Validators.required
           descripCat:      this.CategoryForm.value.descripCat,
           urlImagen:       '',
           urlImagenBanner: '',
