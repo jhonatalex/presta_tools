@@ -18,6 +18,7 @@ import { AddCategoryComponent } from './category/components/add-category/add-cat
 import { ListCategoryComponent } from './category/components/list-category/list-category.component';
 import { ConfirmationRentComponent } from './tool/components/confirmation-rent/confirmation-rent.component';
 import { EditCategoryComponent } from './category/components/edit-category/edit-category.component';
+import { VerifyUserComponent } from './Lender/components/verify-user/verify-user.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'categoria/:id', component: CategoryComponent},
   {path: 'preguntas-frecuentes', component: FrequentQuestionsComponent},
   {path: 'contacto', component: ContactComponent},
+  {path: 'verifica-usuario', component: VerifyUserComponent},
 
 
 

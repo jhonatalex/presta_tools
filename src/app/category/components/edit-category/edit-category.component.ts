@@ -49,8 +49,8 @@ export class EditCategoryComponent implements OnInit {
     initCategoryForm():void {
       this.CategoryForm = this.formBuilder.group({
         idCat:           [this.id],
-        titleCat:        [''],
-        descripCat:      [''],
+        titleCat:        ['', Validators.required],
+        descripCat:      ['',Validators.required],
         urlImagen:       [''],
         urlImagenBanner: ['']
       });
@@ -65,8 +65,8 @@ export class EditCategoryComponent implements OnInit {
       console.log('entro')
       
         const categoryApi: Category = {
-          idCat:           this.id, Validators.required,
-          titleCat:        this.CategoryForm.value.titleCat,Validators.required
+          idCat:           this.id,
+          titleCat:        this.CategoryForm.value.titleCat,
           descripCat:      this.CategoryForm.value.descripCat,
           urlImagen:       '',
           urlImagenBanner: '',
