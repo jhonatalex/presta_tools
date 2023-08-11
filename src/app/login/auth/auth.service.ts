@@ -59,7 +59,7 @@ export class AuthService {
    * @param authResponse Respuesta del Login
    */
   private manageAuthResponse(loginData: loginResponse) {
-
+    
       if(loginData.success){
         const tokenString = loginData.token;
      // const jwtHelper = new JwtHelperService();
@@ -112,7 +112,7 @@ export class AuthService {
 
     var user = this.utilService.getFromLocalStorage(this.loginKey);
 
-    return user ? true : false;
+    return user? true : false;
   }
 
 
