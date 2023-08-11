@@ -18,6 +18,7 @@ import { AddCategoryComponent } from './category/components/add-category/add-cat
 import { ListCategoryComponent } from './category/components/list-category/list-category.component';
 import { ConfirmationRentComponent } from './tool/components/confirmation-rent/confirmation-rent.component';
 import { EditCategoryComponent } from './category/components/edit-category/edit-category.component';
+import { HasRoleGuard } from './login/auth/has-role.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -31,19 +32,7 @@ const routes: Routes = [
 
 
 
-  //RUTAS PRIVADAS
-  {path: 'listar-categoria', component: ListCategoryComponent,
-  canActivate:[AuthGuard]
-  },
-
-  {path: 'agregar-categoria', component: AddCategoryComponent,
-  canActivate:[AuthGuard]
-  },
-
-  {path: 'editar-categoria/:id', component: EditCategoryComponent,
-  canActivate:[AuthGuard]
-  },
-
+  //RUTAS PRIVADAS SOLO USER
   {
     path: 'confirma-renta/:id', component: ConfirmationRentComponent,
     canActivate:[AuthGuard]
@@ -56,6 +45,39 @@ const routes: Routes = [
     path: 'agregar-producto', component: AddToolComponent,
     canActivate:[AuthGuard]
   },
+
+
+
+
+  //RUTAS PRIVADAS SOLO ADMIN
+  {path: 'listar-categoria', component: ListCategoryComponent,
+  canLoad:[HasRoleGuard],
+  data:{
+    allwedRoles:['Manager']
+  }
+  },
+
+  {path: 'agregar-categoria', component: AddCategoryComponent,
+  canLoad:[HasRoleGuard],
+  data:{
+    allwedRoles:['Manager']
+  }
+  },
+
+  {path: 'editar-categoria/:id', component: EditCategoryComponent,
+  canLoad:[HasRoleGuard],
+  data:{
+    allwedRoles:['Manager']
+  }
+  },
+
+
+
+
+
+
+
+
   {path: '**', redirectTo: '', pathMatch: 'full' },
 
 ];
