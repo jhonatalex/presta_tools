@@ -53,23 +53,23 @@ const routes: Routes = [
 
   //RUTAS PRIVADAS SOLO ADMIN
   {path: 'listar-categoria', component: ListCategoryComponent,
-  canLoad:[HasRoleGuard],
+  canActivate:[HasRoleGuard],
   data:{
-    allwedRoles:['Manager']
-  }
+    allowedRoles:['Manager']
+  },
   },
 
   {path: 'agregar-categoria', component: AddCategoryComponent,
-  canLoad:[HasRoleGuard],
+  canActivate:[HasRoleGuard],
   data:{
-    allwedRoles:['Manager']
+    allowedRoles:['Manager']
   }
   },
 
   {path: 'editar-categoria/:id', component: EditCategoryComponent,
-  canLoad:[HasRoleGuard],
+  canActivate:[HasRoleGuard],
   data:{
-    allwedRoles:['Manager']
+    allowedRoles:['Manager']
   }
   },
 
