@@ -120,9 +120,9 @@
 
         <div class="form-group mt-4 mxauto">
           <label for="categoria">Categoría</label>
-            <select required name="categoria" [(ngModel)]="selectedCategory" (ngModelChange)="onSelectCategory()">
-              <option  selected>Seleccione una categoría</option>
-              <option *ngFor="let categoria of categories" [value]="categoria.idCat">{{ categoria.titleCat }}</option>
+            <select required name="categoria" [(ngModel)]="selectedCategory" (ngModelChange)="onSelectCategory()" selected>
+              <option>Seleccione una categoría</option>
+              <option *ngFor="let categoria of categories" selected="selected" [value]="categoria.idCat">{{ categoria.titleCat }}</option>
             </select>
 
         </div>

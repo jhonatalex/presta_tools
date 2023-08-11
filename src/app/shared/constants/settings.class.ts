@@ -21,11 +21,11 @@ export class Constants {
     /**
      * Rosen Token Access Key
      */
-    loginTokenKey: `RTAC`,
+    loginTokenKey: `USER`,
     /**
      * Rosen Token Data
      */
-    decodedTokenKey: `RTD`,
+    decodedTokenKey: `TOKEN`,
     /**
      * User Token Permission
      */

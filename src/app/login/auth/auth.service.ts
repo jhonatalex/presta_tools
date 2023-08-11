@@ -18,7 +18,9 @@ export class AuthService {
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
     environment.production ? '' : 'D3V'
   }`;
-
+  private tokenKey = `${new Constants().getStorageKeys().decodedTokenKey}${
+    environment.production ? '' : 'D3V'
+  }`;
 
   constructor(
     /**
@@ -57,15 +59,17 @@ export class AuthService {
    * @param authResponse Respuesta del Login
    */
   private manageAuthResponse(loginData: loginResponse) {
+
       if(loginData.success){
         const tokenString = loginData.token;
-        console.log(tokenString);
-      //const jwtHelper = new JwtHelperService();
+     // const jwtHelper = new JwtHelperService();
       //const decodedToken: decodedTkn = jwtHelper.decodeToken(tokenString);
       // const expirationDate = jwtHelper.getTokenExpirationDate(tokenString);
       //const isExpired = jwtHelper.isTokenExpired(tokenString);
-      //SET USER A LOCAL SOTORAGE
+      
+      //SET USER AND TOKEN A LOCAL SOTORAGE
       this.utilService.setToLocalStorage(this.loginKey, loginData.data);
+      this.utilService.setToLocalStorage(this.tokenKey,tokenString);
         this.sweetUIService
         .alertConfirm("Bienvenido", loginData.message, 'success')
         .then(() => {
@@ -93,13 +97,14 @@ export class AuthService {
    */
   public logout(): void {
     /*
-    this.utSV.removeFromCookies(this.tokenKEY);
+    
 
     this.utSV.removeFromLocalStorage(this.tokenPermKEY);
     this.utSV.removeFromSessionStorage(this.tokenUsrCntrsKey);
     this.utSV.removeFromSessionStorage(this.tokenSelCntrsKey);
     */
     this.utilService.removeFromLocalStorage(this.loginKey);
+    this.utilService.removeFromLocalStorage(this.tokenKey);
   }
 
 

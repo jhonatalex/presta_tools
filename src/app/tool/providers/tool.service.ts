@@ -145,7 +145,7 @@ export class ToolServiceNew {
       this.sweetUIService.alertConfirm('Mensaje',responseApi.message,'success')
       .then(()=>{
 
-        //this.utilService.navigateToPath('/acceso')
+        this.utilService.navigateToPath('/')
 
       })
       .catch((e:any)=>{console.log(e);})

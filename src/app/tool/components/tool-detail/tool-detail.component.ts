@@ -55,9 +55,7 @@ export class ToolDetailComponent implements OnInit {
         this.toolService.getDetailToolProviders(this.id).subscribe((response:ToolResponse)=>{
         this.tool = response
         console.log(this.tool);
-
         //obtener categoria
-        //let dato:any = Object.values(response.data)[23];
         this.category = response.objetoCategoria;
         this.lender = response.objetoLender;
         console.log(this.category);
