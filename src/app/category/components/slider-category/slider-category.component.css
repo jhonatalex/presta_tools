@@ -10,6 +10,12 @@
 
 }
 
+
+.heighthMax{
+ height: 250px; 
+ overflow: hidden;
+ margin-bottom: 15px;
+} 
 .user {
 color: black;
 }

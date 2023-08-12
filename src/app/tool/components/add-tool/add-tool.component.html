@@ -12,11 +12,11 @@
 
         <div class="form-group mt-4 mxauto mt-4 mxauto">
           <label class="" for="name">Nombre:</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" name="name"  #name="ngModel" [(ngModel)]="tool.name" >
+          <input type="text" class="form-control" id="name" name="name" placeholder="Nombre de la herramienta" name="name"  #name="ngModel" [(ngModel)]="tool.name" >
         </div>
         <div class="form-group mt-4 mxauto">
           <label class="" for="reference">Referencia:</label>
-          <input placeholder="Referencia" type="text" class="form-control" id="reference" name="reference"   #name="ngModel" [(ngModel)]="tool.reference" >
+          <input placeholder="Referencia / SKU" type="text" class="form-control" id="reference" name="reference"   #name="ngModel" [(ngModel)]="tool.reference" >
         </div>
 
         <div class="form-group mt-4 mxauto">
@@ -30,7 +30,7 @@
         </div>
 
         <div class="form-group mt-4 mxauto">
-          <label  class="" for="timeUse">Tiempo de Uso:</label>
+          <label  class="" for="timeUse">Tiempo de Uso: (años)</label>
           <input placeholder="Tiempo de uso" type="number" class="form-control" id="timeUse" name="timeUse" #name="ngModel" [(ngModel)]="tool.timeUse">
         </div>
 
@@ -52,7 +52,7 @@
         <div class="row">
           <div class="col-md-4">
               <div class="form-group mt-4 ">
-                <label class="" for="valueRent">Valor de Renta:</label>
+                <label class="" for="valueRent">Valor de Renta:  (CLP)</label>
                 <input placeholder="Valor de renta" type="number" class="form-control" id="valueRent" name="valueRent" #name="ngModel" [(ngModel)]="tool.valueRent">
               </div>
 
@@ -60,14 +60,14 @@
 
           <div class="col-md-4">
             <div class="form-group mt-4 ">
-              <label class="" for="valueComercial">Valor Comercial:</label>
+              <label class="" for="valueComercial">Valor Comercial: (CLP)</label>
               <input placeholder="Valor Comercial" type="number" class="form-control" id="valueComercial" name="valueComercial" #name="ngModel" [(ngModel)]="tool.valueCommercial">
                  </div>
           </div>
 
         <div class="col-md-4">
           <div class="form-group mt-4 ">
-            <label class="" for="yearBuy">Año de Compra:</label>
+            <label class="" for="yearBuy">Fecha de Compra: (año)</label>
             <input placeholder="Año de compra" type="number" class="form-control" id="yearBuy" name="yearBuy" #name="ngModel" [(ngModel)]="tool.yearBuy">
                </div>
         </div>
@@ -79,7 +79,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group mt-4 ">
-                  <label class="" for="weigt">Peso:</label>
+                  <label class="" for="weigt">Peso: (kg)</label>
                   <input placeholder="Peso" type="number" class="form-control" id="weigt" name="weigt" #name="ngModel" [(ngModel)]="tool.weigt">
                 </div>
 
@@ -87,14 +87,14 @@
 
             <div class="col-md-4">
               <div class="form-group mt-4 ">
-                <label class="" for="mesuare">Medida:</label>
+                <label class="" for="mesuare">Medida: (metros)</label>
                 <input placeholder="Medida" type="number" class="form-control" id="mesuare" name="mesuare" #name="ngModel" [(ngModel)]="tool.mesuare">
               </div>
             </div>
 
           <div class="col-md-4">
             <div class="form-group mt-4 ">
-              <label class="" for="numberPiece">Número de Piezas:</label>
+              <label class="" for="numberPiece">Número de Piezas: (unidades)</label>
               <input placeholder="Piezas" type="number" class="form-control" id="numberPiece" name="numberPiece" #name="ngModel" [(ngModel)]="tool.numberPiece">
             </div>
           </div>
