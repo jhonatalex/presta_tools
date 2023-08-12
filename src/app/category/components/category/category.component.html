@@ -37,12 +37,10 @@
                             <strong>{{tool.name}} {{tool.model}}</strong>
                             <p>Precio Alquiler: {{tool.valueRent}} CLP</p>
                         </div>
-                        <!-- 
-                        <a [routerLink]="['/herramienta/',tool.id]" class="btn-blue-grad d-block"> -->
-                        <a [routerLink]="['/herramienta/']" class="btn-blue-grad d-block">
+                        <a [routerLink]="['/herramienta/',tool.id]" class="btn-blue-grad d-block">
                             Reservar
                             <i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
-                    </div> 
+                    </div>
                 </div>
             </div>
 
@@ -64,10 +62,10 @@
 <!---SECCION GRILLA-->
 <section id="paginacion" class="fondo">
         <div class="container card shadow d-flex justify-content-center align-items-center pt-4 pb-2">
-            
+
             <pagination-controls (pageChange)="page = $event" previousLabel="Anterior"
             nextLabel="Siguiente"></pagination-controls>
-       
+
     </div>
 
 </section>

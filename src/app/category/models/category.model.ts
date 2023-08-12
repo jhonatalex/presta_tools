@@ -1,4 +1,4 @@
-import { Tool } from "src/app/tool/models/tool.model";
+import { Tool, ToolResponse } from "src/app/tool/models/tool.model";
 
 export class Category{
     public idCat:number=0;
@@ -6,7 +6,7 @@ export class Category{
     public descripCat:string='';
     public urlImagen:string='';
     public urlImagenBanner:string='';
-    public tools: Array<Tool> =[]
+    public tools: Array<ToolResponse> =[]
 
 }
 export class CategoryApi{

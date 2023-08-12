@@ -45,6 +45,7 @@ export class AddToolComponent implements OnInit {
   public tool!: Tool;
   categories: Category[] = [];
   selectedCategory: number | null = null;
+  public defautlCategory:Category|null=null;
 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
     environment.production ? '' : 'D3V'
@@ -131,7 +132,13 @@ export class AddToolComponent implements OnInit {
   loadCategories() {
     this.categoryService.getListCategoryProviders().subscribe(
       (categories: Category[]) => {
+
+        this.defautlCategory = new Category();
+        this.defautlCategory.titleCat="Seleccione una categoría"
+
         this.categories = categories;
+
+
       },
       (error) => {
         console.log(error);
@@ -145,7 +152,7 @@ export class AddToolComponent implements OnInit {
     console.log('Categoría seleccionada:', this.selectedCategory);
 
     if(this.selectedCategory){
-      this.tool.idCategory=  Number(this.selectedCategory);
+      this.tool.idCategory =  Number(this.selectedCategory);
     }
 
   }

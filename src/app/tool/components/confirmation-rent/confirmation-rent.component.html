@@ -22,9 +22,15 @@
                                             <input type="text" class="form-control-sm border" name="telefono" id="telefono">
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                            <label for="region" class="form-label mb-0">Región/Provincia</label>
+                                            <label for="region" class="form-label mb-0">Región</label>
                                             <input type="text" class="form-control-sm border" name="region" id="region">
                                         </div>
+                                        <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
+                                          <label for="starDate">Fecha inicial de arriendo</label>
+                                          <input id="starDate" class="form-control" type="date" (change)="setInitialDate($event)"/>
+                                        </div>
+
+
                                     </div>
                                     <div class="col">
                                         <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
@@ -36,24 +42,34 @@
                                             <input type="email" class="form-control-sm border" name="email" id="email">
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                            <label for="codigo postal" class="form-label mb-0">Código postal</label>
+                                            <label for="codigo postal" class="form-label mb-0">Comuna</label>
                                             <input type="text" class="form-control-sm border" name="codigo postal" id="codigo Postal">
                                         </div>
+                                        <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
+                                          <label for="starDate">Fecha Final de arriendo</label>
+                                          <input id="endDate" class="form-control" type="date" (change)="setInitialDate($event)"/>
+                                        </div>
+
                                     </div>
-    
+
                                     <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                         <label for="email" class="form-label mb-0">Dirección</label>
                                         <input type="email" class="form-control-sm border" name="email" id="email">
                                     </div>
+
+
                                     <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4 pb-5">
                                         <label for="notas" class="form-label mb-0">Notas adicionales(Opcional)</label>
                                         <textarea type="text" class="form-control-sm border pb-5" name="notas" id="notas"></textarea>
                                     </div>
+
+
+
                             </div>
                         </form>
                 </div>
             </div>
-            
+
             <div class="col-md-5 py-5">
                 <div class="card shadow borderRadius ms-4 me-4 p-2">
                     <h5 class="text-center py-2"><strong>Tu orden</strong></h5>
@@ -61,6 +77,7 @@
                             <h5><strong>Producto</strong></h5>
                             <h5><strong> Precio</strong></h5>
                         </div>
+
                         <div class="d-flex justify-content-between px-5 my-5">
                             <img src="{{tool.urlImage}}" alt="image tool" class="img-card w-25 h-25">
                             <div>
@@ -69,20 +86,26 @@
                             </div>
                             <p>{{tool.valueRent}} CLP</p>
                         </div>
+
                         <div class="d-flex justify-content-between px-5 mt-4">
-                            <h6><strong>Subtotal</strong></h6>
+                            <h6><strong>Dias</strong></h6>
                             <h6>{{tool.valueRent}} CLP</h6>
                         </div>
+
+                        <div class="d-flex justify-content-between px-5 mt-4">
+                          <h6><strong>Costo</strong></h6>
+                          <h6>{{tool.valueRent}} CLP</h6>
+                      </div>
                         <div class="d-flex justify-content-between px-5 mt-4 margin-botom">
                             <h6><strong>Total</strong></h6>
                             <h6>{{tool.valueRent}} CLP</h6>
                         </div>
                     <input type="submit" class="btn-blue-grad mt-1  px-5 border-0  mx-auto w-50" [disabled]="confirmForm.invalid" value="Realizar Pago">
                 </div>
-    
+
             </div>
         </div>
-    
+
     </div>
 </section>
 

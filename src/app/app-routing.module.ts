@@ -30,7 +30,7 @@ const routes: Routes = [
   {path: 'categoria/:id', component: CategoryComponent},
   {path: 'preguntas-frecuentes', component: FrequentQuestionsComponent},
   {path: 'contacto', component: ContactComponent},
-  {path: 'verifica-usuario', component: VerifyUserComponent},
+  {path: 'verificar-usuario', component: VerifyUserComponent},
 
 
 

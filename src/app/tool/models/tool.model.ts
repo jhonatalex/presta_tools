@@ -6,6 +6,7 @@ export class Tool {
   name: string = '';
   reference: string = '';
   newItem: boolean = true;
+  brand:string='';
   model: string = '';
   description: string = '';
   widgets: boolean = true;
