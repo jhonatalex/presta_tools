@@ -45,6 +45,7 @@ export class AddToolComponent implements OnInit {
   public tool!: Tool;
   categories: Category[] = [];
   selectedCategory: number | null = null;
+  public text:string='';
 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
     environment.production ? '' : 'D3V'
