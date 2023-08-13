@@ -27,7 +27,7 @@
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                           <label for="starDate">Fecha inicial de arriendo</label>
-                                          <input id="starDate" class="form-control" type="date" (change)="setInitialDate($event)"/>
+                                          <input id="starDate" class="form-control" type="date"  [min]=""(change)="setInitialDate($event)"/>
                                         </div>
 
 
@@ -47,7 +47,7 @@
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                           <label for="starDate">Fecha Final de arriendo</label>
-                                          <input id="endDate" class="form-control" type="date" (change)="setInitialDate($event)"/>
+                                          <input id="endDate" class="form-control" type="date" value="" (change)="setEndDate($event)"/>
                                         </div>
 
                                     </div>
@@ -82,23 +82,23 @@
                             <img src="{{tool.urlImage}}" alt="image tool" class="img-card w-25 h-25">
                             <div>
                                 <h6><strong>{{tool.name}} {{tool.model}}</strong></h6>
-                                <h6><strong> Propietario:</strong> {{tool.idLenders}}</h6>
+                                <h6><strong> Propietario:</strong> {{nameLender + ' ' + lastNameLender}}</h6>
                             </div>
                             <p>{{tool.valueRent}} CLP</p>
                         </div>
 
                         <div class="d-flex justify-content-between px-5 mt-4">
-                            <h6><strong>Dias</strong></h6>
-                            <h6>{{tool.valueRent}} CLP</h6>
+                            <h6><strong>Dias:</strong></h6>
+                            <h6>{{this.days}}</h6>
                         </div>
 
                         <div class="d-flex justify-content-between px-5 mt-4">
-                          <h6><strong>Costo</strong></h6>
+                          <h6><strong>Costo:</strong></h6>
                           <h6>{{tool.valueRent}} CLP</h6>
                       </div>
                         <div class="d-flex justify-content-between px-5 mt-4 margin-botom">
-                            <h6><strong>Total</strong></h6>
-                            <h6>{{tool.valueRent}} CLP</h6>
+                            <h6><strong>Total:</strong></h6>
+                            <h6>{{this.total}} CLP</h6>
                         </div>
                     <input type="submit" class="btn-blue-grad mt-1  px-5 border-0  mx-auto w-50" [disabled]="confirmForm.invalid" value="Realizar Pago">
                 </div>
