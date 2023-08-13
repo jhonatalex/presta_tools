@@ -50,6 +50,7 @@ import { VerifyUserComponent } from './Lender/components/verify-user/verify-user
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
