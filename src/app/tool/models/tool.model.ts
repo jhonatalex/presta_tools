@@ -6,7 +6,6 @@ export class Tool {
   name: string = '';
   reference: string = '';
   newItem: boolean = true;
-  brand:string='';
   model: string = '';
   description: string = '';
   widgets: boolean = true;
@@ -26,6 +25,7 @@ export class Tool {
   idLenders: string = '';
   dateUp: string = new Date().toISOString();
   rate: number = 0;
+  brand:string='';
 }
 
 
@@ -53,6 +53,7 @@ export class ToolResponse {
   idLenders: string = '';
   dateUp: string = new Date().toISOString();
   rate: number = 0;
+  brand: string='';
   objetoCategoria: Category | null = null;
   objetoLender: Lender | null = null;
 

@@ -7,10 +7,11 @@ export class User {
     telephone: string = '';
     address: string = '';
     dIdentidad: string = '';
-    region:string='';
-    commune:string='';
     date: Date = new Date();
     verify: boolean = false;
+    region:string='';
+    commune:string='';
+    rate:string='';
     typeUser: string = '';
 
 }

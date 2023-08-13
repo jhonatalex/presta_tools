@@ -37,11 +37,13 @@
     "ngx-pagination": "^5.1.1",
     "ngx-slick-carousel": "^0.6.0",
     "ngx-spinner": "^14.0.0",
+    "ngx-star-rating": "^2.1.0",
     "or": "^0.2.0",
     "package-typescript": "^1.0.2",
     "rxjs": "~7.5.0",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.0.0",
+    "transbank-sdk": "^4.0.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

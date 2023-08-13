@@ -44,7 +44,7 @@
 }
 
 .fa{
-    margin-right: 25px; 
+    margin-right: 25px;
 }
 
 .btn{
@@ -77,8 +77,9 @@
       height: 525px;
 }
 
-.padding{
+.p-owner{
     padding: 22px;
+    padding-top:30px ;
     margin-left: 10px;
 }
 
@@ -145,13 +146,13 @@
     height: 100px;
 }
 
-::ng-deep label.star{ 
+::ng-deep label.star{
     padding: 0 5px !important;
     font-size:20px !important;
     color:rgb(136, 134, 134) !important;
-    
+
 }
-  
+
  ::before label.star{
         content: "\f005" !important;
  }
@@ -169,9 +170,9 @@
 /*ESTILOS DIRECTIVA IMAGE-GALLERY*/
 .img-container{
     width: 750px;
-    height: 640px; 
-    border-radius: 15px;  
-    margin-bottom: 60px; 
+    height: 640px;
+    border-radius: 15px;
+    margin-bottom: 60px;
 }
 
 .imagen-big{
@@ -201,4 +202,83 @@ margin-left: -55px;
 
 .active{
     opacity: 1;
+}
+
+.ui-box-component-pdp__visible--desktop {
+border: 1px solid rgba(0,0,0,.1);
+-webkit-border-radius: 8px;
+border-radius: 8px;
+margin-top: 24px;
+padding: 32px 16px 24px;
+width: 100%;
+}
+
+.ui-thermometer__level--1 {
+  background: #f1fdd7;
+}
+.ui-thermometer__level--2 {
+  background: #afbb96;
+}
+.ui-thermometer__level--3 {
+  background: #688d19;
+}
+
+.ui-thermometer__level--4 {
+  background: #109b10;
+}
+
+.ui-thermometer__level {
+border-left: 6px solid #fff;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+float: left;
+height: 8px;
+margin-top: 2px;
+width: 20%;
+}
+
+.ui-thermometer {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+display: block;
+height: auto;
+margin-left: -6px;
+overflow: hidden;
+vertical-align: baseline;
+width: 100%;
+}
+
+.icon-estadisticas{
+  width: 100px;
+}
+
+.item-servico .col {
+border-right: gray 1px solid ;
+border-left: gray 1px solid ;
+border-bottom: gray 1px solid  ;
+height: 140px;
+padding-top: 10px;
+
+}
+.pt-100{
+  padding: 20px;
+
+}
+
+.feature{
+  margin: 0px;
+}
+
+.card .caracteristicas  h6{
+  margin: initial;
+}
+
+.text-size-1{
+ font-size: 2.2rem;
+
 }

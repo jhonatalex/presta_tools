@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { Category } from 'src/app/category/models/category.model';
 import { ActivatedRoute,Params } from '@angular/router';
-import { Tool } from 'src/app/tool/models/tool.model';
+import { Tool, ToolResponse } from 'src/app/tool/models/tool.model';
 
 import { CategoryService } from '../../providers/category.service';
+import { ToolServiceNew } from 'src/app/tool/providers/tool.service';
 
 @Component({
   selector: 'app-category',
@@ -23,6 +24,7 @@ export class CategoryComponent implements OnInit {
   constructor(
     private categoryService1:CategoryService,
     private route: ActivatedRoute,
+    private toolService:ToolServiceNew,
 
 
   ){this.id = 0;
@@ -31,7 +33,7 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategoryDetail();//ejecuta funcion al iniciar componente
-    //this.getTools();
+    this.getTools();
   }
 
   getCategoryDetail():void{
@@ -48,7 +50,11 @@ export class CategoryComponent implements OnInit {
   }
 
 
-
+  getTools(): void{
+    this.toolService.getListTool().subscribe((response: ToolResponse[])=>{
+      this.tools = response
+    });
+  }
 
 }
 

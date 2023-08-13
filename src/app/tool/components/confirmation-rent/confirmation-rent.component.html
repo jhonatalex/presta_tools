@@ -71,7 +71,7 @@
             </div>
 
             <div class="col-md-5 py-5">
-                <div class="card shadow borderRadius ms-4 me-4 p-2">
+                <div class="card shadow borderRadius ms-4 me-4 p-2 ">
                     <h5 class="text-center py-2"><strong>Tu orden</strong></h5>
                         <div class="d-flex justify-content-between px-5 mt-4">
                             <h5><strong>Producto</strong></h5>
@@ -87,21 +87,26 @@
                             <p>{{tool.valueRent}} CLP</p>
                         </div>
 
-                        <div class="d-flex justify-content-between px-5 mt-4">
+                        <div class="d-flex justify-content-between px-5 mt-2">
                             <h6><strong>Dias</strong></h6>
                             <h6>{{tool.valueRent}} CLP</h6>
                         </div>
 
-                        <div class="d-flex justify-content-between px-5 mt-4">
+                        <div class="d-flex justify-content-between px-5 mt-2">
                           <h6><strong>Costo</strong></h6>
                           <h6>{{tool.valueRent}} CLP</h6>
                       </div>
-                        <div class="d-flex justify-content-between px-5 mt-4 margin-botom">
+                        <div class="d-flex justify-content-between px-5 mt-2 mb-50">
                             <h6><strong>Total</strong></h6>
                             <h6>{{tool.valueRent}} CLP</h6>
                         </div>
-                    <input type="submit" class="btn-blue-grad mt-1  px-5 border-0  mx-auto w-50" [disabled]="confirmForm.invalid" value="Realizar Pago">
-                </div>
+                    <!--<input type="submit" class="btn-blue-grad mt-1  px-5 border-0  mx-auto w-50" value="Realizar Pago">-->
+                    <button class="btn-blue-grad mt-1  px-5 border-0  mx-auto w-50" (click)="iniciarTransaccion()">Pagar</button>
+                    <img class=""  src="assets/img/webpay.png" alt="webpay" >
+
+
+
+                  </div>
 
             </div>
         </div>

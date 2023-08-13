@@ -13,5 +13,5 @@ export class Lender{
   public commune:string='';
   public balanceWallet:string='';
   public dateUp: String='';
-
+  public rate: String='';
 }

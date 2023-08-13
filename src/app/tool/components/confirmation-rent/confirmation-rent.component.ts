@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute,Params } from '@angular/router';
 import { Tool, ToolResponse } from 'src/app/tool/models/tool.model';
 import { ToolServiceNew } from '../../providers/tool.service';
+import { WebpayPlus } from 'transbank-sdk'; // ES6 Modules
+import { Options, IntegrationApiKeys, Environment, IntegrationCommerceCodes } from 'transbank-sdk'; // ES6 Modules
 
 
 @Component({
@@ -53,8 +55,30 @@ export class ConfirmationRentComponent implements OnInit {
     });
   }
 
-  onSubmit(Form:NgForm){
+ onSubmit(Form:NgForm){
+
 
   }
+
+
+  async iniciarTransaccion(){
+    console.log('click');
+
+    const WebpayPlus = require("transbank-sdk").WebpayPlus; // CommonJS
+    const { Options, IntegrationApiKeys, Environment, IntegrationCommerceCodes } = require("transbank-sdk"); // CommonJS
+
+    const tx = new WebpayPlus.Transaction(new Options(IntegrationCommerceCodes.WEBPAY_PLUS, IntegrationApiKeys.WEBPAY, Environment.Integration));
+
+    var buyOrder = '1';
+    var sessionId='compra';
+    var amount:number = 100;
+    var returnUrl ="http://localhost:4200/gracias"
+
+    const response = await tx.create(buyOrder, sessionId, amount, returnUrl);
+
+
+  }
+
+
 
 }
