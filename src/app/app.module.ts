@@ -50,7 +50,6 @@ import { VerifyUserComponent } from './Lender/components/verify-user/verify-user
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,7 +95,7 @@ import { VerifyUserComponent } from './Lender/components/verify-user/verify-user
 
     BrowserAnimationsModule,
     NgxSpinnerModule,
-    SweetAlert2Module
+    SweetAlert2Module,
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -48,18 +48,18 @@ export class ToolServiceNew {
 
 
 
-  public getListTool(): Observable<Tool[]> {
+  public getListTool(): Observable<ToolResponse[]> {
     this.spinner.show();
 
     const url = `${environment.baseUrl}${PathTool.getListTool}`;
     return from(this.callManSV.getData(url)).pipe(
       map((response: ResponseApi) => {
         console.log(response);
-        return response.data as unknown as Tool[]; // Asegúrate de que response.data sea del tipo Tool[]
+        return response.data as unknown as ToolResponse[]; // Asegúrate de que response.data sea del tipo Tool[]
       }),
       catchError((error: any) => {
         this.manageError(error);
-        return of([] as Tool[]); // Devuelve un arreglo vacío con el tipo Tool[] si hay un error.
+        return of([] as ToolResponse[]); // Devuelve un arreglo vacío con el tipo Tool[] si hay un error.
       }),
       finalize(() => this.spinner.hide())
     );

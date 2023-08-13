@@ -4,6 +4,7 @@ import { ActivatedRoute,Params } from '@angular/router';
 import { Tool, ToolResponse } from 'src/app/tool/models/tool.model';
 import { ToolServiceNew } from '../../providers/tool.service';
 
+
 @Component({
   selector: 'app-confirmation-rent',
   templateUrl: './confirmation-rent.component.html',
@@ -24,6 +25,10 @@ export class ConfirmationRentComponent implements OnInit {
   ngOnInit(): void {
     this.getId();
     this.getToolDetail();
+  }
+
+  setInitialDate(event:any){
+
   }
 
 

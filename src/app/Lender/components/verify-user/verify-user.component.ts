@@ -12,4 +12,8 @@ export class VerifyUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(form:any){}
+
+
+
 }

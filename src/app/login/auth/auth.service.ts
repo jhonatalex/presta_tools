@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-//import { JwtHelperService } from '@auth0/angular-jwt';
+
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SweetUIService } from 'src/app/shared/services/gui.service';
 import { environment } from 'src/environments/environment';
 
 import { Constants } from '../../shared/constants/settings.class';
 import { UtilService } from '../../shared/services/util.service';
-//import { decodedTkn } from '../interfaces/jwt.interface';
+
 import { loginResponse } from '../models/login.model';
 import { LoginService } from '../providers/login.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { decodedTkn } from '../interfaces/jwt.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -59,31 +61,42 @@ export class AuthService {
    * @param authResponse Respuesta del Login
    */
   private manageAuthResponse(loginData: loginResponse) {
-    
+
       if(loginData.success){
-        const tokenString = loginData.token;
-     // const jwtHelper = new JwtHelperService();
+
+      const tokenString = loginData.token;
+      const jwtHelper = new JwtHelperService();
       //const decodedToken: decodedTkn = jwtHelper.decodeToken(tokenString);
-      // const expirationDate = jwtHelper.getTokenExpirationDate(tokenString);
-      //const isExpired = jwtHelper.isTokenExpired(tokenString);
-      
-      //SET USER AND TOKEN A LOCAL SOTORAGE
-      this.utilService.setToLocalStorage(this.loginKey, loginData.data);
-      this.utilService.setToLocalStorage(this.tokenKey,tokenString);
-        this.sweetUIService
-        .alertConfirm("Bienvenido", loginData.message, 'success')
-        .then(() => {
-          this.utilService.navigateToPath('/');
-        })
-        .catch(console.warn);
+      const expirationDate = jwtHelper.getTokenExpirationDate(tokenString);
+      const isExpired = jwtHelper.isTokenExpired(tokenString);
 
-          // Navegar al HOME
-          //this.utSV.navigateToPath('/');
 
-        } else {
+        if(!isExpired){
 
-          this.endSession(loginData.message);
+              //SET USER AND TOKEN A LOCAL SOTORAGE
+              this.utilService.setToLocalStorage(this.loginKey, loginData.data);
+              this.utilService.setToLocalStorage(this.tokenKey,tokenString);
+                this.sweetUIService
+                .alertConfirm("Bienvenido", loginData.message, 'success')
+                .then(() => {
+                  this.utilService.navigateToPath('/');
+                })
+                .catch(console.warn);
+
+                  // Navegar al HOME
+                  //this.utSV.navigateToPath('/');
+
+                } else {
+
+                  this.endSession(loginData.message);
+                }
+
+
         }
+
+
+
+
 
 
 
@@ -97,7 +110,7 @@ export class AuthService {
    */
   public logout(): void {
     /*
-    
+
 
     this.utSV.removeFromLocalStorage(this.tokenPermKEY);
     this.utSV.removeFromSessionStorage(this.tokenUsrCntrsKey);
