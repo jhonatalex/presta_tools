@@ -6,11 +6,12 @@ import { environment } from 'src/environments/environment.prod';
 import { AuthService } from './auth.service';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { SweetUIService } from 'src/app/shared/services/gui.service';
+import { User } from 'src/app/register/models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class VerifyGuard implements CanActivate {
 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
     environment.production ? '' : 'D3V'
@@ -18,6 +19,7 @@ export class AuthGuard implements CanActivate {
 
   constructor( private authService:AuthService,
                 private utilService: UtilService,
+                private sweetUIService:SweetUIService,
          ){
 
   }
@@ -27,18 +29,22 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      if(this.utilService.getFromLocalStorage(this.loginKey+'D3V')){
+      var user: User = this.utilService.getFromLocalStorage(this.loginKey+'D3V');
+
+
+      if(user.verify){
         return true
       }else{
 
+        this.sweetUIService
+        .alertConfirm("Hola", "Para Reservar Necesita estar verificado", 'warning')
+        .then(() => {
+          this.utilService.navigateToPath('/verificar-usuario');
+        })
+        .catch(console.warn);
 
-        this.utilService.navigateToPath('/acceso').finally(() => {
-          this.authService.endSession(
-            '¡Hola! Para acceder aqui, debes  ingresar a tu cuenta o crear una',
-            'Atención'
-          );
-        });
-        return false;
+        return false
+
       }
 
   }

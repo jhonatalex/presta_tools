@@ -44,6 +44,9 @@ export class ConfirmationRentComponent implements OnInit {
   ngOnInit(): void {
     this.getToolDetail();
     this.getUser();
+
+
+
   }
 
 

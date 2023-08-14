@@ -20,32 +20,49 @@ import { ConfirmationRentComponent } from './tool/components/confirmation-rent/c
 import { EditCategoryComponent } from './category/components/edit-category/edit-category.component';
 import { VerifyUserComponent } from './Lender/components/verify-user/verify-user.component';
 import { HasRoleGuard } from './login/auth/has-role.guard';
+import { VerifyGuard } from './login/auth/verify.guard';
 
 const routes: Routes = [
+
+  //RAIMUNDO Y TODO EL MUNDO
   {path: '', component: HomeComponent},
   {path: 'acceso', component: LoginComponent},
   {path: 'registro', component: RegisterComponent},
   {path: 'herramienta/:id', component: ToolDetailComponent},
-  {path: 'recupera-clave', component: RecoverPasswordComponent},
   {path: 'categoria/:id', component: CategoryComponent},
   {path: 'preguntas-frecuentes', component: FrequentQuestionsComponent},
   {path: 'contacto', component: ContactComponent},
-  {path: 'verificar-usuario', component: VerifyUserComponent},
 
 
 
-  //RUTAS PRIVADAS SOLO USER
+  //RUTAS PRIVADAS SOLO USER LOGEADO
+  {path: 'recupera-clave', component: RecoverPasswordComponent,
+  canActivate:[AuthGuard]
+  },
+  {path: 'verificar-usuario', component: VerifyUserComponent,
+  canActivate:[AuthGuard]
+  },
+
+
+
+  //Rutas USER LOGEADO Y VERIFICADO
   {
     path: 'confirma-renta/:id', component: ConfirmationRentComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard,VerifyGuard]
   },
-  {
-    path: 'gracias', component: ThanksRentComponent,
-    canActivate:[AuthGuard]
-  },
+
   {
     path: 'agregar-producto', component: AddToolComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard,VerifyGuard],
+  },
+
+
+
+  //Rutas VERIFICADO
+
+  {
+    path: 'gracias', component: ThanksRentComponent,
+    canActivate:[VerifyGuard]
   },
 
 

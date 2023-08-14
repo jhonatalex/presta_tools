@@ -1,4 +1,7 @@
-const REGIONES={
+
+
+export const REGIONES ={
+
   "regiones": [
   {
   "region": "Arica y Parinacota",
@@ -428,3 +431,7 @@ const REGIONES={
   }
   ]
   }
+
+
+
+
