@@ -22,7 +22,7 @@ jobs:
       - name: Chekear el Repository
         uses: actions/checkout@v3
 
-      # Install NodeJS 
+      # Install NodeJS
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.8.0
         with:
@@ -41,5 +41,5 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           build_dir: dist/presta_tools
-	env: 
+        env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
