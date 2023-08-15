@@ -14,7 +14,7 @@ import { User } from 'src/app/register/models/user.model';
 })
 export class HomeComponent implements OnInit {
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
-    environment.production ? '' : 'D3V'
+    environment.production? 'D3V' : 'D3V'
   }`;
 
 
