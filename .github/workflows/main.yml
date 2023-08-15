@@ -30,7 +30,7 @@ jobs:
 
        # Install Dependencias
       - name: Install Dependencias
-        run: npm install --force
+        run: npm install -force
 
        # Build app to production
       - name: Build App Production
