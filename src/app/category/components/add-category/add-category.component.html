@@ -1,0 +1,42 @@
+<!--SECCION NAVBAR-->
+<app-header [flaglogo]="false"></app-header>
+
+<div class="container" style="padding:5%">
+  <h2>Agregar Categoria</h2>
+  <form #addCategoryForm ="ngForm" [formGroup]="categoryForm" (ngSubmit)="submitForm(addCategoryForm)">
+
+    <div class="mb-3">
+      <label for="titleCat" class="form-label">Título</label>
+      <input type="text" class="form-control" id="titleCat" formControlName="titleCat" required>
+      <div class="invalid-feedback" *ngIf="categoryForm.get('titleCat').invalid && categoryForm.get('titleCat').touched">
+        Ingrese un Título.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="descripCat" class="form-label">Descripción</label>
+      <textarea class="form-control" id="descripCat" formControlName="descripCat" required></textarea>
+      <div class="invalid-feedback" *ngIf="categoryForm.get('descripCat').invalid && categoryForm.get('descripCat').touched">
+        Ingrese una Descripción.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="urlImagen" class="form-label">Imagen Principal</label>
+      <input  id="urlImagen" class="form-control" type="file" (change)="onFileSelected1($event)" accept="image/*" >
+      <div class="invalid-feedback" >
+        Please provide a valid image URL.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="urlImagenBanner" class="form-label">Imagen Banner</label>
+      <input  id="urlImagenBanner" class="form-control" type="file" (change)="onFileSelected2($event)" accept="image/*" >
+      <div class="invalid-feedback" >
+        Please provide a valid banner image URL.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+</div>

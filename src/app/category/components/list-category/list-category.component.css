@@ -1,0 +1,50 @@
+/* Estilos para el contenedor */
+.container {
+  margin: 5%;
+  padding: 5%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f8f8; /* Color de fondo grisáceo para el contenedor */
+}
+
+/* Estilos para el título "Dashboard" */
+.container h2 {
+  margin-bottom: 20px;
+}
+
+/* Estilos para la sección de botones */
+.container .d-flex {
+  margin-bottom: 20px;
+}
+
+/* Estilos para los botones de acciones */
+.container .btn {
+  margin-right: 10px;
+}
+
+/* Estilos para la tabla */
+.container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+/* Estilos para el encabezado de la tabla */
+.container th {
+  background-color: #f2f2f2;
+  text-align: left;
+  padding: 10px;
+}
+
+/* Estilos para las celdas de la tabla */
+.container td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+
+
+.container td.description-cell {
+  max-width: 500px; /* Puedes ajustar este valor según tus necesidades */
+  text-overflow: ellipsis;
+}

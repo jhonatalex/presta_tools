@@ -1,0 +1,97 @@
+.btn-blue-grad {
+    border-radius: 8px;
+    background-image: linear-gradient(to right, #0794b3 0%,  #0050a9  100%);
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+  }
+
+
+  .card {
+    border-radius: 18px;
+    width: 80%;
+    height: 80%;
+    background-color: inherit;
+    margin: 10px;
+}
+
+  .div-card{
+    padding: 20px;
+    background-color: white;
+    margin-bottom: 25px;
+  }
+  .max-wh-100{
+
+    max-height: 100%;
+  max-width: 100%;
+}
+  
+  .card-body{
+    border-radius: 12px;
+    
+  }
+
+  .img-card-container{
+    
+    background-color: white;
+    width: 100%;
+    height: 200px;
+    padding: 1px;
+    border-radius: 18px 18px 0px 0px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .img-card {
+    width: 170px;
+    height: 170px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .rounde{
+    
+    border-radius: 18px;
+  }
+  
+
+  .fondo{
+    background-color:#aca8a8db
+  }
+
+.slide{
+  width: 100%;
+  height: 100%;
+}
+ 
+.heighthMax{
+  max-height: 200px;
+} 
+
+.card-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.slick-list{
+  padding-bottom: 20px;
+}
+
+@media(min-width:768px) {
+  
+
+  .img-card {
+    width: 200px;
+    height: 200px;
+  }}
+@media(max-width:455px) {
+  
+
+  .img-card {
+    width: 200px;
+    height: 200px;
+  }
+
+  }

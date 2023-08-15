@@ -1,0 +1,44 @@
+<!--SECCION NAVBAR-->
+<app-header [flaglogo]="false"></app-header>
+
+<div class="container" style="padding:5%">
+  <h2>Editar Categoria</h2>
+  <form #editCategoryForm ="ngForm" [formGroup]="CategoryForm" (ngSubmit)="submitForm(editCategoryForm)">
+
+    <div class="mb-3">
+      <label for="titleCat" class="form-label">Título</label>
+      <input type="text" class="form-control" id="titleCat" formControlName="titleCat" required [(ngModel)] = "category.titleCat">
+      <div class="invalid-feedback" *ngIf="CategoryForm.get('titleCat').invalid && CategoryForm.get('titleCat').touched">
+        Ingrese un Título.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="descripCat" class="form-label">Descripción</label>
+      <textarea class="form-control" id="descripCat" formControlName="descripCat" required [(ngModel)]="category.descripCat"></textarea>
+      <div class="invalid-feedback" *ngIf="CategoryForm.get('descripCat').invalid && CategoryForm.get('descripCat').touched">
+        Ingrese una Descripción.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="urlImagen" class="form-label">Imagen Principal</label>
+      <input  id="urlImagen" class="form-control" type="file" (change)="onFileSelected1($event)" accept="image/*">
+      <img class="card shadow p-2 my-2" [src]="[category.urlImagen]" alt="ImagenPrincipal" style="width: 200px; height: 180px;" name="urlImagen" #name="ngModel" [(ngModel)]="category.urlImagen">
+      <div class="invalid-feedback" >
+        Please provide a valid image URL.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="urlImagenBanner" class="form-label">Imagen Banner</label>
+      <input  id="urlImagenBanner" class="form-control" type="file" (change)="onFileSelected2($event)" accept="image/*" name="selectedFile2" #name="ngModel" [(ngModel)]="this.selectedFile2">
+      <img class="card shadow p-2 my-2" [src]="[category.urlImagenBanner]" alt="ImagenBanner" style="width: 200px; height: 180px;">
+      <div class="invalid-feedback" >
+        Please provide a valid banner image URL.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+</div>

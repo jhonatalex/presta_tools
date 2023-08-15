@@ -1,0 +1,112 @@
+<!--SECCION HEADER-->
+<section id="header" class="fondo">
+  <div class="container-fluid bg-dark">
+      <br>
+        <header>
+          <!--SECCIÓN NAVBAR-->
+          <app-header></app-header>
+
+          <div class="container-fluid content-banner">
+            <div class="row">
+              <div class="col col-sm-12 col-md-6 col-6-lg bg-dark">
+                <div class="ovalo-buttons col-md-9 mt-5 ms-5">
+                  <a href="/#categorias" type="button" class="btn btn-ligth px-5">Categorías</a>
+                  <a  href="/#preguntas-frecuentes" type="button" class="btn btn-ligth px-5">Conoce más</a>
+                </div>
+                    <div class="parrafo1">
+                      <h1 class="mt-2 ms-5">Todas las herramientas</h1>
+                      <h1 class="blue-h1 mt-2 ms-5">en un solo lugar</h1>
+                    </div>
+
+                  <p class="parrafo mt-2 ms-5">Encuentra las herramientas que necesitas para tus proyectos, ahorra dinero evitando comprar equipos que solo usarás una vez y únete a una red de emprendedores que valoran la colaboración.</p>
+                  <a class="boton-registrar btn-blue-grad mt-2 ms-5 p-2 border-0 col-md-4 nav-link active text-center" [routerLink]="['/registro']">Regístrate gratis</a>
+                  <p class="parrafo mt-2 ms-5"><span class="subtitle">Comparte, Ahorra y Emprende</span><br> La Economía Colaborativa ya esta aqui.</p>
+
+          </div>
+
+              <div class="banner col col-sm-12 col-md-6 col-lg-6 bg-dark">
+                <img src="assets/img/banner.png" alt="banner" class="img-fluid mb-5">
+              </div>
+            </div>
+          </div>
+        </header>
+  </div>
+</section>
+
+<!--SECCION PRODUCTOS-DESTACADOS-->
+<section id="productos-destacados" class="fondo py-5">
+  <div class="container-fluid text-center col-md-6 mb-3">
+      <h1 class="py-2"> <strong> Productos destacados</strong></h1>
+      <h5 class="text">Conecta con una comunidad de usuarios dispuestos a compartir</h5>
+      <p> ¡Descubre una forma <strong>inteligente</strong> y sostenible de acceder a las herramientas que necesitas en nuestro sitio web de economía colaborativa!</p>
+  </div>
+
+  <br/>
+  <!--COMPONENTE SLIDER PRODUCTOS DESTACADOS-->
+  <app-related-featured-products></app-related-featured-products>
+</section>
+
+<!--SECCION CATEGORIA-->
+<section id="categorias" class="fondo py-2" style="padding-top: 10%">
+  <div class="container-fluid text-center col-md-6">
+      <h1> <strong>Categorías</strong></h1>
+      <p>Explora nuestras categorías de herramientas especializadas. Sea cual sea tu proyecto, estamos seguros de que encontrarás la herramienta adecuada. Simplifica tu vida, ahorra dinero uniéndote a nuestra comunidad hoy mismo.</p>
+  </div>
+
+
+  <!---COMPONENTE SLIDER CATEGORIAS--->
+<app-slider-category></app-slider-category>
+
+
+
+<!--SECCION PREGUNTAS FRECUENTES-->
+<section id="preguntas-frecuentes" class="fondo pb-3">
+  <div class="py-5 widthMax">
+      <div class="row mt-2 bg-primary">
+            <div class="col-md-6 content-image-preguntas">
+              <div class="image-container">
+        <!--         <img class="img-preguntas img-fluid"src="assets/img/frecuentes.jpg" alt="preguntas"> -->
+              </div>
+            </div>
+            <div class="col-md-6 color-primary-dark py-5 content-preguntas" style="padding:60px;">
+              <h4 class="text-color-white-theme mt-50">Guia práctica de como generar ingresos</h4>
+              <h1 class="text-color-white-theme">Preguntas frecuentes</h1>
+              <p class="text-color-white-theme text-justify"> Prestatool te permite alquilar herramientas y una amplia variedad de artículos de manera sencilla y segura. A continuación, encontrarás
+                 respuestas a las preguntas más frecuentes que nuestros usuarios suelen plantear. Si tienes alguna otra duda o consulta, no dudes en contactarnos.</p>
+            <button class="btn-blue-grad border-0 me-5 mt-30 text-center">Visita FAQ <a [routerLink]="['/preguntas-frecuentes']"><i class="fa fa-external-link ms-5" aria-hidden="true"></i></a></button>
+            </div>
+      </div>
+  </div>
+</section>
+
+<!--SECCIÓN TESTIMONIOS-->
+<section id="testimonios" class="fondo px-3">
+  <div class="container-fluid widthMax">
+    <div class="row py-5 mb-50">
+      <div class="content-image col-md-6 py-4">
+        <img src="assets/img/alquiler-de-herramientas.jpg" alt="testimonio" class="img-testimonio">
+      </div>
+      <div class="content-testimonio col-md-6 py-4">
+        <h1 class="text-center text-color-white-theme">Testimonios</h1>
+        <p class="text-color-white-theme mb-0"><i>
+          <img src="assets/img/comillaDoble.png" alt="comillas" style="width: 30px;">
+          Descubrir PrestaTools ha sido una auténtica bendición para mí. Como emprendedor
+          en busca de oportunidades para generar ingresos adicionales, esta plataforma ha
+          sido mi solución perfecta. Desde el momento en que me registré, me quedé
+          impresionado por la amplia variedad de herramientas disponibles y la facilidad
+          con la que pude comenzar a alquilarlas.
+          <img src="assets/img/comillaDoble.png" alt="comillas" style="width: 30px;" class="girarImagen">
+        </i></p>
+        <br>
+        <p class="text-color-white-theme text-right fw-bold">Humberto Barazarte</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!--SECCION FOOTER-->
+<app-footer></app-footer>

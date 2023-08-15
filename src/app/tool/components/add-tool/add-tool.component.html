@@ -1,0 +1,170 @@
+
+<!--SECCION NAVBAR-->
+<app-header [flaglogo]="false"></app-header>
+
+
+<div id="add-tool" class="container-fluid fondo pt-5 pb-100">
+<div class="container bg-white card shadow " style="padding:5%">
+  <h2>Registro de Producto</h2>
+  <form #addToolForm ="ngForm" (ngSubmit)="onSubmit(addToolForm)">
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="form-group mt-4 mxauto mt-4 mxauto">
+          <label class="" for="name">Nombre:</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" name="name"  #name="ngModel" [(ngModel)]="tool.name" >
+        </div>
+        <div class="form-group mt-4 mxauto">
+          <label class="" for="reference">Codigo:</label>
+          <input placeholder="Referencia" type="text" class="form-control" id="reference" name="reference"   #name="ngModel" [(ngModel)]="tool.reference" >
+        </div>
+
+        <div class="form-group mt-4 mxauto">
+          <label class="" for="model">Marca:</label>
+          <input placeholder="Modelo" type="text" class="form-control" id="model" name="model" #name="ngModel" [(ngModel)]="tool.brand">
+        </div>
+
+
+        <div class="form-group mt-4 mxauto">
+          <label class="" for="model">Modelo:</label>
+          <input placeholder="Modelo" type="text" class="form-control" id="model" name="model" #name="ngModel" [(ngModel)]="tool.model">
+        </div>
+
+        <div class="form-group mt-4 mxauto">
+          <label class="" for="description">Descripción:</label>
+          <textarea placeholder="Descripción" class="form-control" id="description" name="description" #name="ngModel" [(ngModel)]="tool.description"></textarea>
+        </div>
+
+        <div class="form-group mt-4 mxauto">
+          <label  class="" for="timeUse">Tiempo de Uso:</label>
+          <input placeholder="Tiempo de uso" type="number" class="form-control" id="timeUse" name="timeUse" #name="ngModel" [(ngModel)]="tool.timeUse">
+        </div>
+
+        <div class="form-group mt-4 mxauto">
+          <label class="" for="termsUse">Términos de Uso:</label>
+          <textarea placeholder="Terminos de uso" class="form-control" id="termsUse" name="termsUse" #name="ngModel" [(ngModel)]="tool.termsUse"></textarea>
+        </div>
+        <div class="form-group mt-4 mxauto">
+          <label class="" for="breakDowns">Caracterisiticas Técnicos:</label>
+          <textarea placeholder="Detalles técnicos" class="form-control" id="breakDowns" name="breakDowns" #name="ngModel" [(ngModel)]="tool.breakDowns"></textarea>
+        </div>
+
+
+      </div>
+
+
+      <div class="col-md-6">
+
+        <div class="row">
+          <div class="col-md-4">
+              <div class="form-group mt-4 ">
+                <label class="" for="valueRent">Valor de Renta:</label>
+                <input placeholder="Valor de renta" type="number" class="form-control" id="valueRent" name="valueRent" #name="ngModel" [(ngModel)]="tool.valueRent">
+              </div>
+
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group mt-4 ">
+              <label class="" for="valueComercial">Valor Comercial:</label>
+              <input placeholder="Valor Comercial" type="number" class="form-control" id="valueComercial" name="valueComercial" #name="ngModel" [(ngModel)]="tool.valueCommercial">
+                 </div>
+          </div>
+
+        <div class="col-md-4">
+          <div class="form-group mt-4 ">
+            <label class="" for="yearBuy">Año de Compra:</label>
+            <input placeholder="Año de compra" type="number" class="form-control" id="yearBuy" name="yearBuy" #name="ngModel" [(ngModel)]="tool.yearBuy">
+               </div>
+        </div>
+
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group mt-4 ">
+                  <label class="" for="weigt">Peso:</label>
+                  <input placeholder="Peso" type="number" class="form-control" id="weigt" name="weigt" #name="ngModel" [(ngModel)]="tool.weigt">
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group mt-4 ">
+                <label class="" for="mesuare">Medida:</label>
+                <input placeholder="Medida" type="number" class="form-control" id="mesuare" name="mesuare" #name="ngModel" [(ngModel)]="tool.mesuare">
+              </div>
+            </div>
+
+          <div class="col-md-4">
+            <div class="form-group mt-4 ">
+              <label class="" for="numberPiece">Número de Piezas:</label>
+              <input placeholder="Piezas" type="number" class="form-control" id="numberPiece" name="numberPiece" #name="ngModel" [(ngModel)]="tool.numberPiece">
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-6 mt-4">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="nuevo" name="newItem" #name="ngModel" [(ngModel)]="tool.newItem">
+              <label class="form-check-label" for="nuevo">Marque si es nuevo?</label>
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-4">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="widgets" name="widgets" #name="ngModel" [(ngModel)]="tool.widgets" >
+              <label class="form-check-label" for="widgets">Marque si Incluye accesorios?</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mt-4 mxauto">
+          <label for="categoria">Categoría</label>
+          <select  name="categoria" [(ngModel)]="selectedCategory" (ngModelChange)="onSelectCategory()">
+            <option selected="selected" [value]="">Seleccione una categoría</option>
+            <option *ngFor="let categoria of categories" [value]="categoria.idCat">{{ categoria.titleCat }}</option>
+          </select>
+        </div>
+
+        <div class="form-group mt-4 mxauto">
+          <label for="urlImage1">Imagen Portada Producto</label>
+          <div class="form-container">
+
+                <input type="file" (change)="onFileSelected1($event)" accept="image/*">
+
+          </div>
+
+        </div>
+
+        <div class="form-group  mxauto">
+          <label for="urlImage2"> Imagen 2 </label>
+          <div class="form-container">
+
+                <input type="file" (change)="onFileSelected2($event)" accept="image/*">
+
+          </div>
+        </div>
+        <div class="form-group mxauto">
+          <label for="urlImage3">Imagen 3</label>
+          <div class="form-container">
+                <input type="file" (change)="onFileSelected3($event)" accept="image/*">
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Agrega los demás campos aquí -->
+    <div class="row mt-3">
+      <button type="submit" class="btn-blue-grad">Enviar</button>
+    </div>
+  </form>
+</div>
+</div>
+<app-footer></app-footer>

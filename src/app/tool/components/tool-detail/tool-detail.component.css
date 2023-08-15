@@ -1,0 +1,284 @@
+.fondo{
+    background-color:#ebebebdb;
+}
+
+.card {
+    border-radius: 30px;
+    border:none;
+    width: 640px;
+    height: 550px;
+}
+
+.margin-title{
+    margin-left: -40px;
+}
+
+.contenedor-buscar{
+    border-radius: 20px;
+    background: whitesmoke;
+    width: 550px;
+    height: 50px;
+    padding: 5px;
+    position: relative;
+    left: 87px;
+}
+
+.input-buscar{
+    width: 365px;
+    height: 40px;
+    border: none;
+    padding: 15px;
+}
+
+
+.div-card-small{
+    padding: 25px;
+    width: 500px;
+    height: 700px;
+    position: relative;
+    left: 47px;
+}
+
+.margin{
+    margin: initial;
+}
+
+.fa{
+    margin-right: 25px;
+}
+
+.btn{
+    background: border-box;
+    padding-top: 1px;
+}
+
+.btn-blue-grad {
+    border-radius: 8px;
+    background-image: linear-gradient(to right, #0794b3 0%,  #0050a9  100%);
+    color: white;
+    height: 60px;
+    text-decoration: none;
+    font-size: 25px;
+    margin:10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-propietario{
+      width: 90%;
+      height: 300px;
+      margin-top: 100px;
+}
+
+.content-procucts{
+      width: 90%;
+      height: 525px;
+}
+
+.p-owner{
+    padding: 22px;
+    padding-top:30px ;
+    margin-left: 10px;
+}
+
+.titulo-negrita{
+    font-size: x-large;
+    font-weight:bold ;
+}
+
+.negrita{
+    font-weight: bold;
+}
+
+.width-max{
+    max-width: 95%;
+}
+
+.widthMax{
+    max-width: 99%;
+}
+
+
+.img-small{
+      border-radius: 18px;
+      padding: 15px;
+      width: 195px;
+      height: 145px;
+}
+
+.img-card-top{
+    border-radius: 50px;
+    width: 600px;
+    height: 600px;
+    padding: 40px;
+}
+
+.card-products {
+    border-radius: 12px;
+    margin: 10px;
+    background-color: inherit;
+}
+
+.div-img-small{
+    margin-left: 100px;
+    margin-right: -150;
+}
+
+.div-content-tool{
+    max-width: 95%;
+}
+
+.div-cards{
+    margin-left: -80px;
+}
+
+.div-logo-simple{
+    border-radius: 50%;
+    border:solid gray 1px;
+    height: auto;
+    padding: 30px;
+    margin-top: 20px;
+}
+.logo-simple{
+    width: 100px;
+    height: 100px;
+}
+
+::ng-deep label.star{
+    padding: 0 5px !important;
+    font-size:20px !important;
+    color:rgb(136, 134, 134) !important;
+
+}
+
+ ::before label.star{
+        content: "\f005" !important;
+ }
+
+ :hover label.star{
+    transform: rotate(0deg) scale(1.3) !important;
+}
+
+.marginSmall{
+    margin-left: -165px;
+}
+
+
+
+/*ESTILOS DIRECTIVA IMAGE-GALLERY*/
+.img-container{
+    width: 750px;
+    height: 640px;
+    border-radius: 15px;
+    margin-bottom: 60px;
+}
+
+.imagen-big{
+width: 100%;
+height: 100%;
+padding:22px;
+margin-left: -55px;
+}
+
+.imagen-small{
+    width: 150px;
+    height: 140px;
+    padding: 22px;
+}
+
+.img-prev{
+    margin-top: 10px;
+}
+
+.img-slide{
+    display: inline-block;
+    width: 24%;
+    margin: 0 1px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.active{
+    opacity: 1;
+}
+
+.ui-box-component-pdp__visible--desktop {
+border: 1px solid rgba(0,0,0,.1);
+-webkit-border-radius: 8px;
+border-radius: 8px;
+margin-top: 24px;
+padding: 32px 16px 24px;
+width: 100%;
+}
+
+.ui-thermometer__level--1 {
+  background: #f1fdd7;
+}
+.ui-thermometer__level--2 {
+  background: #afbb96;
+}
+.ui-thermometer__level--3 {
+  background: #688d19;
+}
+
+.ui-thermometer__level--4 {
+  background: #109b10;
+}
+
+.ui-thermometer__level {
+border-left: 6px solid #fff;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+float: left;
+height: 8px;
+margin-top: 2px;
+width: 20%;
+}
+
+.ui-thermometer {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+display: block;
+height: auto;
+margin-left: -6px;
+overflow: hidden;
+vertical-align: baseline;
+width: 100%;
+}
+
+.icon-estadisticas{
+  width: 100px;
+}
+
+.item-servico .col {
+border-right: gray 1px solid ;
+border-left: gray 1px solid ;
+border-bottom: gray 1px solid  ;
+height: 140px;
+padding-top: 10px;
+
+}
+.pt-100{
+  padding: 20px;
+
+}
+
+.feature{
+  margin: 0px;
+}
+
+.card .caracteristicas  h6{
+  margin: initial;
+}
+
+.text-size-1{
+ font-size: 2.2rem;
+
+}

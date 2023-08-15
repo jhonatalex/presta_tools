@@ -1,0 +1,59 @@
+<!--SECCIÓN NAVBAR-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid mt-2">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="logo" *ngIf="flaglogo"><!--CONDICION PARA EL TAMAÑO DEL LOGO NORMAL-->
+        <img src="assets/img/logo.png" alt="logo" class="img-logo ms-2">
+      </div>
+      <div class="logo" *ngIf="!flaglogo"><!---CONDICION PARA EL TAMAÑO DEL LOGO PEQUEÑO-->
+        <img src="assets/img/logo.png" alt="logo" class="img-logo logoSmall">
+      </div>
+      <div class="collapse navbar-collapse  mt-5 mb-0 text-center" id="navbarTogglerDemo01">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/#productos-destacados">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/agregar-producto']">Alquila Tu Herramienta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/contacto']">Contacto</a>
+          </li>
+        </ul>
+        <div>
+
+          <div *ngIf="user" class="d-flex float-right nav-item">
+                <img src="assets/img/userLogin.png" alt="icono" style="width: 30px; height: 30px;" class="fa">
+                <div class="col text-center mx-2">
+                  <div class="col mt-5px"><a class="name-user p-0">{{user.name}} {{user.lastName}}</a></div>
+                  <div class="col mt-neg-5"><small class="name-user p-0" style="font-size: small;">{{user.email}}</small></div>
+                </div>
+                <button class="btn btn-link nav-link btn-logout  ms-4" (click)='signOut()'>Cerrar Sesión</button>
+          </div>
+
+          <div *ngIf="!user" class="d-flex float-right nav-item">
+            <a class="nav-link active" [routerLink]="['/acceso']">Iniciar Sesión</a>
+            <a class="nav-link active" [routerLink]="['/registro']">Regístrate gratis</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+
+  <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="large"
+  type="ball-spin-reverse-rotate"
+>
+  <div style="color: #64d6e2" class="la-ball-clip-rotate-multiple la-3x">
+    <div></div>
+    <div></div>
+</div>
+</ngx-spinner>
