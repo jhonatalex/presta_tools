@@ -38,8 +38,6 @@ export class VerifyUserComponent implements OnInit {
 
     //CAPTURA LA URL DE VENIDA
 
-
-
     this.getUser();
     this.getRegionesArray()
 
