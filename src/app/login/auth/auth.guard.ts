@@ -34,7 +34,7 @@ export class AuthGuard implements CanActivate {
 
         this.utilService.navigateToPath('/acceso').finally(() => {
           this.authService.endSession(
-            '¡Hola! Para acceder aqui, debes  ingresar a tu cuenta o crear una',
+            '¡Hola! Para acceder aquí, debes  ingresar a tu cuenta o crear una',
             'Atención'
           );
         });

@@ -51,73 +51,72 @@ export class ConfirmationRentComponent implements OnInit {
 
 
 
-    setInitialDate(event:any):void{
-      this.startDate = event.target.value;
-    }
-
-    setEndDate(event:any){
-      this.endDate = event.target.value;
-
-      const initialDate = new Date (this.startDate);
-      const finalDate = new Date(this.endDate);
-      let c= initialDate;
-      const dates = [];
-
-      while(c <= finalDate){
-        dates.push(new Date(c))
-        c.setDate(c.getDate()+1)
+      setInitialDate(event:any):void{
+        this.startDate = event.target.value;
       }
-      this.days = dates.length-1;
-      this.total = this.days * this.tool.valueRent;
 
-    }
+      setEndDate(event:any){
+        this.endDate = event.target.value;
+
+        const initialDate = new Date (this.startDate);
+        const finalDate = new Date(this.endDate);
+        let c= initialDate;
+        const dates = [];
+
+        while(c <= finalDate){
+          dates.push(new Date(c))
+          c.setDate(c.getDate()+1)
+        }
+        this.days = dates.length-1;
+        this.total = this.days * this.tool.valueRent;
+
+      }
 
 
       getUser():void{
         this.user= this.utilservice.getFromLocalStorage(this.loginKey + 'D3V');
-
       }
 
 
 
 
-  getToolDetail(): void{
-    //obtener el  id de la URL
-    this.route.params.subscribe(params =>{
-         this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
+      getToolDetail(): void{
+        //obtener el  id de la URL
+        this.route.params.subscribe(params =>{
+            this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
 
-          this.toolService.getDetailToolProviders(this.id).subscribe((response:ToolResponse)=>{
-          this.tool = response
-          this.nameLender = response.objetoLender?.name;
-          this.lastNameLender = response.objetoLender?.lastName;
-          })
+              this.toolService.getDetailToolProviders(this.id).subscribe((response:ToolResponse)=>{
+              this.tool = response
+              this.nameLender = response.objetoLender?.name;
+              this.lastNameLender = response.objetoLender?.lastName;
+              })
 
-    });
-  }
+        });
+      }
 
- onSubmit(Form:NgForm){
-
-
-  }
+      onSubmit(Form:NgForm){
 
 
-  async iniciarTransaccion(){
-    console.log('click');
-
-    const WebpayPlus = require("transbank-sdk").WebpayPlus; // CommonJS
-    const { Options, IntegrationApiKeys, Environment, IntegrationCommerceCodes } = require("transbank-sdk"); // CommonJS
-
-    const tx = new WebpayPlus.Transaction(new Options(IntegrationCommerceCodes.WEBPAY_PLUS, IntegrationApiKeys.WEBPAY, Environment.Integration));
-
-    var buyOrder = '1';
-    var sessionId='compra';
-    var amount:number = 100;
-    var returnUrl ="http://localhost:4200/gracias"
-
-    const response = await tx.create(buyOrder, sessionId, amount, returnUrl);
+        }
 
 
-  }
+      async iniciarTransaccion(){
+        console.log('click');
+
+        const WebpayPlus = require("transbank-sdk").WebpayPlus; // CommonJS
+        const { Options, IntegrationApiKeys, Environment, IntegrationCommerceCodes } = require("transbank-sdk"); // CommonJS
+
+        const tx = new WebpayPlus.Transaction(new Options(IntegrationCommerceCodes.WEBPAY_PLUS, IntegrationApiKeys.WEBPAY, Environment.Integration));
+
+        var buyOrder = '1';
+        var sessionId='compra';
+        var amount:number = 100;
+        var returnUrl ="http://localhost:4200/gracias"
+
+        const response = await tx.create(buyOrder, sessionId, amount, returnUrl);
+
+
+      }
 
 
 

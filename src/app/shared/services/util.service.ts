@@ -7,9 +7,13 @@ import { Router } from '@angular/router';
 })
 export class UtilService {
   private globalData: any;
-  constructor(private router: Router, /*private cookieService: CookieService*/) {
+  
+  constructor(private router: Router, /*private cookieService: CookieService*/
+              ) {
     this.globalData = null;
   }
+
+
 
   /**
    * Navega a una Ruta Especifica dentro del proyecto
