@@ -6,6 +6,7 @@ import { ToolServiceNew } from '../../providers/tool.service';
 import { Category } from 'src/app/category/models/category.model';
 import { Lender } from 'src/app/Lender/models/lender.model';
 
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tool-detail',
@@ -22,9 +23,14 @@ export class ToolDetailComponent implements OnInit {
   public lender: Lender| null = null;
   public starRating =0;
 
+
+ public rating3: number;
+ public form: FormGroup;
+
   constructor(
     private route: ActivatedRoute,
     private toolService: ToolServiceNew,
+    private fb: FormBuilder
 
   ){
     this.id = 0;
@@ -32,6 +38,12 @@ export class ToolDetailComponent implements OnInit {
     this.category= new Category();
     this.lender = new Lender();
     this.starRating = 0;
+
+    this.rating3 = 0;
+    this.form = this.fb.group({
+      rating1: ['', Validators.required],
+      rating2: [4]
+    });
   }
 
   ngOnInit(): void {

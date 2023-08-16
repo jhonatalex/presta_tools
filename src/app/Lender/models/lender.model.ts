@@ -9,7 +9,9 @@ export class Lender{
   public telephone:string='';
   public address:string='';
   public numberBank:string='';
+  public region:string='';
+  public commune:string='';
   public balanceWallet:string='';
   public dateUp: String='';
-
+  public rate: String='';
 }

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
-//import { NgxStarRatingModule } from 'ngx-star-rating';
+import { NgxStarRatingModule } from 'ngx-star-rating';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -47,7 +47,7 @@ import { SliderCategoryComponent } from './category/components/slider-category/s
 import { ConfirmationRentComponent } from './tool/components/confirmation-rent/confirmation-rent.component';
 import { EditCategoryComponent } from './category/components/edit-category/edit-category.component';
 import { VerifyUserComponent } from './Lender/components/verify-user/verify-user.component';
-
+import { PaymentGatewayComponent } from './payment/components/payment-gateway/payment-gateway.component';
 
 
 
@@ -74,6 +74,7 @@ import { VerifyUserComponent } from './Lender/components/verify-user/verify-user
     SliderCategoryComponent,
     EditCategoryComponent,
     VerifyUserComponent,
+    PaymentGatewayComponent,
 
 
 
@@ -85,8 +86,8 @@ import { VerifyUserComponent } from './Lender/components/verify-user/verify-user
     HttpClientModule,
     ReactiveFormsModule,
     SlickCarouselModule,
-   // NgxStarRatingModule,
-   NgxPaginationModule,
+    NgxStarRatingModule,
+    NgxPaginationModule,
 
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
@@ -96,7 +97,7 @@ import { VerifyUserComponent } from './Lender/components/verify-user/verify-user
 
     BrowserAnimationsModule,
     NgxSpinnerModule,
-    SweetAlert2Module
+    SweetAlert2Module,
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

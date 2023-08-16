@@ -9,6 +9,9 @@ export class User {
     dIdentidad: string = '';
     date: Date = new Date();
     verify: boolean = false;
+    region:string='';
+    commune:string='';
+    rate:string='';
     typeUser: string = '';
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute,Params } from '@angular/router';
-import { Tool } from 'src/app/tool/models/tool.model';
+import { Tool, ToolResponse } from 'src/app/tool/models/tool.model';
 import { ToolServiceNew } from '../../providers/tool.service';
 import { CategoryService } from 'src/app/category/providers/category.service';
 import { UtilService } from 'src/app/shared/services/util.service';
@@ -79,8 +79,7 @@ export class RelatedFeaturedProductsComponent implements OnInit {
   }
 
   getTools(): void{
-    this.toolService.getListTool().subscribe((response: Tool[])=>{
-
+    this.toolService.getListTool().subscribe((response: ToolResponse[])=>{
       this.tools = response
     });
   }

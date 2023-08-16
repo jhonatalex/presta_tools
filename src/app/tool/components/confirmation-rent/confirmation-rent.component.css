@@ -15,8 +15,8 @@ input {
 }
 
 .div-formulario{
-    height: 606px;
-    width: 700px;
+
+    padding: 50px;
 }
 
 .div-titulo{
@@ -35,10 +35,12 @@ input {
     justify-content: center;
 }
 
-.margin-botom{
-    margin-bottom: 235px;
-}
+
 
 .maxWidth{
     max-width: 100%;
+}
+
+.mb-50{
+  margin-bottom: 50px;
 }
