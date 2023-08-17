@@ -21,6 +21,7 @@ import { EditCategoryComponent } from './category/components/edit-category/edit-
 import { VerifyUserComponent } from './Lender/components/verify-user/verify-user.component';
 import { HasRoleGuard } from './login/auth/has-role.guard';
 import { VerifyGuard } from './login/auth/verify.guard';
+import { PaymentGatewayComponent } from './payment/components/payment-gateway/payment-gateway.component';
 
 const routes: Routes = [
 
@@ -65,6 +66,10 @@ const routes: Routes = [
     canActivate:[VerifyGuard]
   },
 
+  {
+    path: 'confirmar-transaccion', component: PaymentGatewayComponent,
+    canActivate:[VerifyGuard]
+  },
 
 
 

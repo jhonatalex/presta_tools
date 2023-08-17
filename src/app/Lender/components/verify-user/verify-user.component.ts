@@ -51,19 +51,16 @@ export class VerifyUserComponent implements OnInit {
     //obtener la URL
      this.route.url.subscribe(params =>{
      const url = params[0].path;
-      console.log(url);
       return url;
      })
   }
 //obtiene el user de localstorage
   getUser():void {
     this.user = this.utilservice.getFromLocalStorage(this.loginKey + 'D3V');
-    console.log(this.user);
   }
 //obtiene la region del array REGIONES(shared->constants)
   getRegionesArray():void {
     this.regiones = REGIONES.regiones.map(region => region.region);
-    console.log(this.regiones);
   }
 
 
@@ -76,7 +73,6 @@ export class VerifyUserComponent implements OnInit {
       const regionSeleccionada = REGIONES.regiones.find(r => r.region === this.selectedRegion);
       if (regionSeleccionada) {
         this.comunas = regionSeleccionada.comunas;
-        console.log(this.comunas)
       } else {
         this.comunas = [];
       }

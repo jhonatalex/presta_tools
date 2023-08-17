@@ -11,7 +11,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Observable } from 'rxjs/internal/Observable';
 import { catchError, finalize, from, map, of, tap } from 'rxjs';
 import { PayData } from '../models/payData.models';
-import { PayResponse } from '../models/payResponse.models copy';
+import { PayResponse } from '../models/payResponse.models';
 
 //import { RegisterRS } from '../models/registerRS.model';
 
@@ -30,11 +30,11 @@ export class PaymentServices {
 
 
 
-  public initTransaction(): Observable<PayResponse> {
+  public initTransaction(payData:PayData): Observable<PayResponse> {
     this.spinner.show();
 
     const url = `${environment.baseUrl}${PathTool.initPay}`;
-    return from(this.callManSV.getData(url)).pipe(
+    return from(this.callManSV.postData(url,payData)).pipe(
       map((response: ResponseApi) => {
         console.log(response);
         return response.data as unknown as PayResponse; // Asegúrate de que response.data sea del tipo Tool[]
@@ -46,11 +46,6 @@ export class PaymentServices {
       finalize(() => this.spinner.hide())
     );
   }
-
-
-
-
-
 
 
 
@@ -69,8 +64,6 @@ export class PaymentServices {
       console.log(responseApi.Error?.message)
     }
   }
-
-
 
 
   private manageError(e: any) {

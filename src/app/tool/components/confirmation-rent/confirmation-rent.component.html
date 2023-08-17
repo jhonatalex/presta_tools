@@ -111,6 +111,11 @@
             </div>
         </div>
 
+        <form [formGroup]="formulario" id="form-pago" method="post" [action]="url">
+          <input type="" name="token_ws" formControlName="token_ws" />
+          <input type="submit" value="Ir a pagar" (click)="submitForm()" />
+        </form>
+
     </div>
 </section>
 

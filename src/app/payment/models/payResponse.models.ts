@@ -1,4 +1,4 @@
 export class PayResponse {
-  Url: string = '';
+  url: string = '';
   token: string = '';
 }
