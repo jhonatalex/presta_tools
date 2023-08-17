@@ -5,7 +5,7 @@
 import { Constants } from "src/app/shared/constants/settings.class";
 
 export const environment = {
-  production: false,
+  production: true,
   baseUrl: new Constants().getProdApiURL(),
   firebaseConfig : {
     apiKey: "AIzaSyChCasCEmUn6TzMTTPSUITxLL5uZ6TRxTI",
