@@ -9,6 +9,9 @@ import { environment } from 'src/environments/environment.prod';
 import { ToolServiceNew } from '../../providers/tool.service';
 import { WebpayPlus } from 'transbank-sdk'; // ES6 Modules
 import { Options, IntegrationApiKeys, Environment, IntegrationCommerceCodes } from 'transbank-sdk'; // ES6 Modules
+import { PaymentServices } from 'src/app/payment/providers/payment.service';
+import { PayResponse } from 'src/app/payment/models/payResponse.models copy';
+import { PayData } from 'src/app/payment/models/payData.models';
 
 
 @Component({
@@ -35,7 +38,8 @@ export class ConfirmationRentComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private toolService: ToolServiceNew,
-    private utilservice: UtilService
+    private utilservice: UtilService,
+    private paymentServices:PaymentServices
 
   ) {this.id = 0;
     this.tool = new ToolResponse();//instancia vacia para guardar tool por id
@@ -104,18 +108,24 @@ export class ConfirmationRentComponent implements OnInit {
   async iniciarTransaccion(){
     console.log('click');
 
-    const WebpayPlus = require("transbank-sdk").WebpayPlus; // CommonJS
-    const { Options, IntegrationApiKeys, Environment, IntegrationCommerceCodes } = require("transbank-sdk"); // CommonJS
-
-    const tx = new WebpayPlus.Transaction(new Options(IntegrationCommerceCodes.WEBPAY_PLUS, IntegrationApiKeys.WEBPAY, Environment.Integration));
 
     var buyOrder = '1';
     var sessionId='compra';
-    var amount:number = 100;
+    var amount:number = 1000;
     var returnUrl ="http://localhost:4200/gracias"
 
-    const response = await tx.create(buyOrder, sessionId, amount, returnUrl);
 
+    var payData:PayData= new PayData();
+
+    payData.amount=amount;
+    payData.buyOrder=buyOrder;
+    payData.sessionId=sessionId;
+    payData.returnUrl=returnUrl;
+
+    this.paymentServices.initTransaction().subscribe((response:PayResponse)=>{
+
+      console.log(response)
+      })
 
   }
 

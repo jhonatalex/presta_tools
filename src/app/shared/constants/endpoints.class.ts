@@ -60,12 +60,13 @@ export const PathTool = {
    */
   getListTool: 'api/tool/list',
 
-
   getToolId: 'api/tool/get/',
 
   /**
    * POST
    */
   saveTool: 'api/tool/insert',
+
+  initPay:'api/Payment/iniciar-transaccion',
 
 };
