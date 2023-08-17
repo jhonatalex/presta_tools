@@ -6,6 +6,7 @@ import { Constants } from "src/app/shared/constants/settings.class";
 
 export const environment = {
   production: false,
+  baseUrl: new Constants().getProdApiURL(),
   firebaseConfig : {
     apiKey: "AIzaSyChCasCEmUn6TzMTTPSUITxLL5uZ6TRxTI",
     authDomain: "prestatools-35370.firebaseapp.com",
@@ -16,7 +17,6 @@ export const environment = {
     measurementId: "G-H2VVQGELFY"
   },
 
-  baseUrl: new Constants().getProdApiURL(),
 
 
 };

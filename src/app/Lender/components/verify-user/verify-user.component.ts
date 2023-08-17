@@ -17,8 +17,8 @@ export class VerifyUserComponent implements OnInit {
   public user: User;
   public selectedRegion: string | null = null;
   public selectedComuna: string | null = null;
-  public regiones: string[] =[];
-  public comunas: string[][]=[];
+  public regiones: string[]=[];
+  public comunas: string[]=[];
   public url:string='';
 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
@@ -40,10 +40,8 @@ export class VerifyUserComponent implements OnInit {
   ngOnInit(): void {
 
     //CAPTURA LA URL DE VENIDA
-    this.getUrlSegment();
     this.getUser();
     this.getRegionesArray();
-    this.getComunasArray();
   }
 
 
@@ -67,12 +65,7 @@ export class VerifyUserComponent implements OnInit {
     this.regiones = REGIONES.regiones.map(region => region.region);
     console.log(this.regiones);
   }
-//obtiene las comunas
-  getComunasArray():void {
-    this.comunas = REGIONES.regiones.map(comunas =>comunas.comunas);
-   
-    console.log(this.comunas);
-  }
+
 
 
 //se ejecuta al seleccionar region
@@ -86,6 +79,8 @@ export class VerifyUserComponent implements OnInit {
     //selectedRegion
   }
 
+
+
 //se ejecuta al seleccionar comuna
   onSelectComuna():void {
     // Aquí puedes acceder al valor seleccionado en la variable selectedComuna
@@ -93,8 +88,19 @@ export class VerifyUserComponent implements OnInit {
 
     if(this.selectedComuna){
       this.user.commune =  this.selectedComuna;
+
     }
     //selectedComuna
+  }
+
+  llenarComunas(region: string) {
+    const regionSeleccionada = REGIONES.regiones.find(r => r.region === region);
+    if (regionSeleccionada) {
+      this.comunas = regionSeleccionada.comunas;
+      console.log(this.comunas)
+    } else {
+      this.comunas = [];
+    }
   }
 
 

@@ -24,7 +24,7 @@
 
                                         <div class="form-group mt-4 mxauto">
                                           <label for="region" class="mx-4">Región</label>
-                                          <select  name="region" [(ngModel)]="selectedRegion" (ngModelChange)="onSelectRegion()">
+                                          <select  name="region" [(ngModel)]="selectedRegion" (ngModelChange)="llenarComunas($event.target.value)">
                                             <option selected="selected" value="">Seleccione una Región</option>
                                             <option *ngFor="let region of regiones" value={{region}}>{{region}}</option>
                                           </select>
