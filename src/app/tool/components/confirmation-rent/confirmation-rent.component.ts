@@ -137,13 +137,11 @@ this.route.params.subscribe(params =>{
         this.token = response.token;
         this.url = response.url;
 
-        // Llenar el campo del formulario con el token recibido
         this.formulario.get('token_ws')!.setValue(this.token);
 
         console.log(response)
-        // Enviar el formulario automáticamente
-        this.submitForm();
 
+        this.submitForm();
 
       }
 
