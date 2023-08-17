@@ -67,42 +67,36 @@ export class VerifyUserComponent implements OnInit {
   }
 
 
-
 //se ejecuta al seleccionar region
   onSelectRegion():void {
-    // Aquí puedes acceder al valor seleccionado en la variable selectedRegion
-    console.log('LA REGION seleccionada ES: ', this.selectedRegion);
 
     if(this.selectedRegion){
       this.user.region =  this.selectedRegion;
+
+      const regionSeleccionada = REGIONES.regiones.find(r => r.region === this.selectedRegion);
+      if (regionSeleccionada) {
+        this.comunas = regionSeleccionada.comunas;
+        console.log(this.comunas)
+      } else {
+        this.comunas = [];
+      }
+
+
     }
-    //selectedRegion
+
   }
 
 
 
 //se ejecuta al seleccionar comuna
   onSelectComuna():void {
-    // Aquí puedes acceder al valor seleccionado en la variable selectedComuna
-    console.log('LA comuna seleccionada es : ', this.selectedComuna);
 
     if(this.selectedComuna){
       this.user.commune =  this.selectedComuna;
 
     }
-    //selectedComuna
-  }
 
-  llenarComunas(region: string) {
-    const regionSeleccionada = REGIONES.regiones.find(r => r.region === region);
-    if (regionSeleccionada) {
-      this.comunas = regionSeleccionada.comunas;
-      console.log(this.comunas)
-    } else {
-      this.comunas = [];
-    }
   }
-
 
 
 
@@ -118,7 +112,7 @@ export class VerifyUserComponent implements OnInit {
   }
 
 
-  
+
 
 
 }
