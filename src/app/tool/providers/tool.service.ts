@@ -33,8 +33,6 @@ export class ToolServiceNew {
 
     const url = `${environment.baseUrl}${PathTool.saveTool}`;
     this.callManSV.postData(url, payload)
-
-
     .then((response:any)=>{
      // console.log(response);
       this.manageResponse(response);
@@ -142,7 +140,7 @@ export class ToolServiceNew {
   private manageResponse(responseApi:ResponseApi){
 
     if(responseApi.success){
-      this.sweetUIService.alertConfirm('Mensaje',responseApi.message,'success')
+      this.sweetUIService.alertConfirm('¡Hola!',responseApi.message,'success')
       .then(()=>{
 
         this.utilService.navigateToPath('/')
@@ -151,7 +149,7 @@ export class ToolServiceNew {
       .catch((e:any)=>{console.log(e);})
     }else{
       this.sweetUIService.alertConfirm('Alerta',responseApi.message ,'error')
-  //    console.log(responseApi.Error?.message)
+      console.log(responseApi.Error?.message)
     }
   }
 

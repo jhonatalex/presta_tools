@@ -33,13 +33,11 @@ const routes: Routes = [
   {path: 'categoria/:id', component: CategoryComponent},
   {path: 'preguntas-frecuentes', component: FrequentQuestionsComponent},
   {path: 'contacto', component: ContactComponent},
+  {path: 'recupera-clave', component: RecoverPasswordComponent},
 
 
 
   //RUTAS PRIVADAS SOLO USER LOGEADO
-  {path: 'recupera-clave', component: RecoverPasswordComponent,
-  canActivate:[AuthGuard]
-  },
   {path: 'verificar-usuario', component: VerifyUserComponent,
   canActivate:[AuthGuard]
   },
