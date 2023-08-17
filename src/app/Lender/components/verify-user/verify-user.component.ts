@@ -15,8 +15,11 @@ import { environment } from 'src/environments/environment.prod';
 export class VerifyUserComponent implements OnInit {
 
   public user: User;
-  selectedRegion: string | null = null;
-  public regiones: string[] =[];
+  public selectedRegion: string | null = null;
+  public selectedComuna: string | null = null;
+  public regiones: string[]=[];
+  public comunas: string[]=[];
+  public url:string='';
 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
     environment.production ? '' : 'D3V'
@@ -37,72 +40,85 @@ export class VerifyUserComponent implements OnInit {
   ngOnInit(): void {
 
     //CAPTURA LA URL DE VENIDA
-
     this.getUser();
-    this.getRegionesArray()
-
+    this.getRegionesArray();
   }
 
+
+
+  //obtiene el ultimo segmento de la ruta
+  getUrlSegment(){
+    //obtener la URL
+     this.route.url.subscribe(params =>{
+     const url = params[0].path;
+      console.log(url);
+      return url;
+     })
+  }
+//obtiene el user de localstorage
+  getUser():void {
+    this.user = this.utilservice.getFromLocalStorage(this.loginKey + 'D3V');
+    console.log(this.user);
+  }
+//obtiene la region del array REGIONES(shared->constants)
+  getRegionesArray():void {
+    this.regiones = REGIONES.regiones.map(region => region.region);
+    console.log(this.regiones);
+  }
+
+
+
+//se ejecuta al seleccionar region
+  onSelectRegion():void {
+    // Aquí puedes acceder al valor seleccionado en la variable selectedRegion
+    console.log('LA REGION seleccionada ES: ', this.selectedRegion);
+
+    if(this.selectedRegion){
+      this.user.region =  this.selectedRegion;
+    }
+    //selectedRegion
+  }
+
+
+
+//se ejecuta al seleccionar comuna
+  onSelectComuna():void {
+    // Aquí puedes acceder al valor seleccionado en la variable selectedComuna
+    console.log('LA comuna seleccionada es : ', this.selectedComuna);
+
+    if(this.selectedComuna){
+      this.user.commune =  this.selectedComuna;
+
+    }
+    //selectedComuna
+  }
+
+  llenarComunas(region: string) {
+    const regionSeleccionada = REGIONES.regiones.find(r => r.region === region);
+    if (regionSeleccionada) {
+      this.comunas = regionSeleccionada.comunas;
+      console.log(this.comunas)
+    } else {
+      this.comunas = [];
+    }
+  }
+
+
+
+
+//enviar formulario a la API
   onSubmit(form:any){
 
     //TODO
     //send to Lender to api BD insert lender use service lender
     // update User way udapte user use services register
 
-
-
-    //REDIRECCION ENVIAR A LA URLE DONDE VINO
+    //REDIRECCION ENVIAR A LA URLE de DONDE VINO
 
   }
 
 
-  getUser():void{
-    this.user= this.utilservice.getFromLocalStorage(this.loginKey + 'D3V');
-
-  }
-
-
-  onSelectRegion() {
-    // Aquí puedes acceder al valor seleccionado en la variable selectedCategory
-    console.log('LA REGION ES', this.selectedRegion);
-
-
-    if(this.selectedRegion){
-      this.user.region =  this.selectedRegion;
-    }
-
-
-    //selectedRegion
-
-
-  }
-
-  onSelectComuna() {
-    // Aquí puedes acceder al valor seleccionado en la variable selectedCategory
-    console.log('LA comuan es ', this.selectedRegion);
-
-
-    if(this.selectedRegion){
-      this.user.commune =  this.selectedRegion;
-    }
-
-
-    //selectedRegion
-
-
-  }
-
-
-  getRegionesArray(){
-
-
-    this.regiones = REGIONES.regiones.map(region => region.region);
-
-
-
-
-  }
-
+  
 
 
 }

@@ -2,7 +2,7 @@
 <app-header [flaglogo]="false"></app-header>
 
 <!--SECCION NOMBRE-MODELO BUSCAR TOOL-->
-<section id="detalle-herramienta" class="fondo">
+<section id="detalle-herramienta" class="fondo py-5">
 
     <div class="container col-md-10 widthMax pt-5">
         <div class="row pt-5">
@@ -62,7 +62,7 @@
                 <p class="text-justify"><strong>DESCRIPCIÓN:</strong> <br> {{tool.description}}</p>
                 <p class="negrita margin">¡Aún no se han encontrado</p>
                 <p class="negrita">valoraciones!</p>
-                <ngb-rating [max]="5" > {{tool.rate}}</ngb-rating>
+                <ngb-rating [max]="5" >{{tool.rate}}</ngb-rating>
                 <a [routerLink]="['/confirma-renta',this.id]" class="btn-blue-grad mb-2 px-5 py-2 border-0 col-md-8 mx-auto">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
             </div>
 
@@ -97,15 +97,15 @@
                 <div class="row item-servico ">
                   <div class="col text-center ">
                     <i class="  fa fa-line-chart fa-3x" aria-hidden="true"></i>
-                    <p class="">+100 arriendo en los ultimos 90 dias</p>
+                    <p class="">+100 arriendos en los últimos 90 días</p>
                   </div>
                   <div class="col text-center ">
                     <i class="  fa fa-handshake-o fa-3x" aria-hidden="true"></i>
-                    <p>Brinda buen servicio</p>
+                    <p>Brinda un buen servicio</p>
                   </div>
                   <div class="col text-center ">
                     <i class=" fa fa-cubes fa-3x" aria-hidden="true"></i>
-                    <p>enterga su equipo en buen estado</p>
+                    <p>entrega su equipo en buen estado</p>
                   </div>
                 </div>
 

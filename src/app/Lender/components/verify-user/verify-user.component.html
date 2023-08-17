@@ -9,7 +9,7 @@
                     <h3 class="text-center"><strong>Verificar Usuario</strong></h3>
                 </div>
                 <div class="card shadow borderRadius ms-4 p-2 mt-5 div-formulario">
-                    <h5 class="ms-4 mt-2"><strong>* Para verificar el usuario debe completar los campos vacios</strong></h5>
+                    <h5 class="ms-4 mt-2"><strong>* Para verificar el usuario debe completar los campos vacíos</strong></h5>
                         <form class="form-group" #confirmForm="ngForm" (ngSubmit)="onSubmit(confirmForm)">
                             <div class="row">
                                     <div class="col">
@@ -23,21 +23,13 @@
                                         </div>
 
                                         <div class="form-group mt-4 mxauto">
-                                          <label for="categoria">Categoría</label>
-                                          <select  name="categoria" [(ngModel)]="selectedRegion" (ngModelChange)="onSelectRegion()">
-                                            <option selected="selected" [value]="">Seleccione una Region</option>
-                                            <option *ngFor="let region of regiones" [value]="region">{{ region}}</option>
+                                          <label for="region" class="mx-4">Región</label>
+                                          <select  name="region" [(ngModel)]="selectedRegion" (ngModelChange)="llenarComunas($event.target.value)">
+                                            <option selected="selected" value="">Seleccione una Región</option>
+                                            <option *ngFor="let region of regiones" value={{region}}>{{region}}</option>
                                           </select>
                                         </div>
-
-                                      <!--
-                                        <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                            <label for="region" class="form-label mb-0">Región</label>
-                                            <input type="text" [(ngModel)]="user.region" class="form-control-sm border" name="region" id="region">
-                                        </div>-->
-
-
-
+                                       
                                     </div>
                                     <div class="col">
                                         <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
@@ -50,19 +42,13 @@
                                         </div>
 
                                         <div class="form-group mt-4 mxauto">
-                                          <label for="categoria">Categoría</label>
-                                          <select  name="categoria" [(ngModel)]="selectedRegion" (ngModelChange)="onSelectComuna()">
-                                            <option selected="selected" [value]="">Seleccione una Region</option>
-                                            <option *ngFor="let region of regiones" [value]="region">{{ region}}</option>
+                                          <label for="comuna" class="mx-4">Comuna</label>
+                                          <select  name="comuna" [(ngModel)]="selectedComuna" (ngModelChange)="onSelectComuna()">
+                                            <option selected="selected" value="">Seleccione una Comuna</option>
+                                            <option *ngFor="let comuna of comunas" value={{comuna}}>{{comuna}}</option>
                                           </select>
                                         </div>
 
-                                       <!---
-                                        <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                            <label for="comuna" class="form-label mb-0">Comuna</label>
-                                            <input type="text"  [(ngModel)]="user.commune" class="form-control-sm border" name="comuna" id="comuna">
-                                        </div>
-                                      -->
 
                                     </div>
 
