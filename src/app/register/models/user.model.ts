@@ -7,11 +7,12 @@ export class User {
     telephone: string = '';
     address: string = '';
     dIdentidad: string = '';
-    date: Date = new Date();
+    date: string = new Date().toISOString();
     verify: boolean = false;
     region:string='';
     commune:string='';
-    rate:string='';
+    rate:number=0;
     typeUser: string = '';
+    venta:[]=[]
 
 }

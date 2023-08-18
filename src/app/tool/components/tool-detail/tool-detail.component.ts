@@ -22,6 +22,7 @@ export class ToolDetailComponent implements OnInit {
   public category: Category|null =null;
   public lender: Lender| null = null;
   public starRating =0;
+  public url:any;
 
 
  public rating3: number;
@@ -48,16 +49,18 @@ export class ToolDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getToolDetail()//saca detalle de Tool por su ID
+    this.getUrlSegment();
   }
 
 
-    /*
-    getRating(){
-      this.tool.rate = this.rating.value;
-      console.log(this.tool.rate);
+ //obtiene el ultimo segmento de la ruta
+    getUrlSegment():void{
+      //obtener la URL
+      this.route.url.subscribe(params =>{
+      this.url = params[0].path;
+        console.log(this.url);
+      })
     }
-    */
-
 
     getToolDetail(): void{
         //obtener el  id de la URL
@@ -66,11 +69,9 @@ export class ToolDetailComponent implements OnInit {
         //obtiene la herramienta por id
         this.toolService.getDetailToolProviders(this.id).subscribe((response:ToolResponse)=>{
         this.tool = response
-        console.log(this.tool);
         //obtener categoria
         this.category = response.objetoCategoria;
         this.lender = response.objetoLender;
-        console.log(this.category);
       })
 
       });

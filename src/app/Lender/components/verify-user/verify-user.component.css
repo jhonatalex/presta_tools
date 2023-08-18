@@ -1,3 +1,20 @@
 .pb-100{
   padding-bottom: 100px;
 }
+
+.div-titulo{
+  width: 85%;
+  border-radius: 50px;
+}
+
+.div-formulario{
+  width: 85%;
+  border-radius: 50px;
+}
+
+.div-contenedor{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}

@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/register/models/user.model';
+import { RegisterService } from 'src/app/register/providers/register.service';
 import { REGIONES } from 'src/app/shared/constants/regiones.class';
 import { Constants } from 'src/app/shared/constants/settings.class';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { ToolServiceNew } from 'src/app/tool/providers/tool.service';
 import { environment } from 'src/environments/environment.prod';
+import { Lender } from '../../models/lender.model';
+import { LenderService } from '../../providers/lender.service';
 
 @Component({
   selector: 'app-verify-user',
@@ -14,12 +17,15 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class VerifyUserComponent implements OnInit {
 
+  @Input() urlDeVenida:string = '';
+
   public user: User;
+  public lender:Lender;
   public selectedRegion: string | null = null;
   public selectedComuna: string | null = null;
   public regiones: string[]=[];
   public comunas: string[]=[];
-  public url:string='';
+  
 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
     environment.production ? '' : 'D3V'
@@ -29,16 +35,16 @@ export class VerifyUserComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private toolService: ToolServiceNew,
-    private utilservice: UtilService
-
+    private utilservice: UtilService,
+    private resgisterService: RegisterService,
+    private lenderService: LenderService
   ) {
 
    this.user  = new User;
-
+    this.lender = new Lender;
   }
 
   ngOnInit(): void {
-
     //CAPTURA LA URL DE VENIDA
     this.getUser();
     this.getRegionesArray();
@@ -46,17 +52,29 @@ export class VerifyUserComponent implements OnInit {
 
 
 
-  //obtiene el ultimo segmento de la ruta
-  getUrlSegment(){
-    //obtener la URL
-     this.route.url.subscribe(params =>{
-     const url = params[0].path;
-      return url;
-     })
-  }
+
+
+    public generarIdUnicoNumerico(): number {
+    const timestamp = new Date().getTime();
+    const sixDigitId = parseInt(timestamp.toString().slice(-6));
+    return sixDigitId;
+    }
+
+    private getRandomArbitrary(min:number , max:number) {
+    return Math.random() * (max - min) + min;
+    }
+
+ 
 //obtiene el user de localstorage
   getUser():void {
     this.user = this.utilservice.getFromLocalStorage(this.loginKey + 'D3V');
+   
+    this.lender.name = this.user.name;
+    this.lender.lastName = this.user.lastName;
+    this.lender.telephone = this.user.telephone;
+    this.lender.email = this.user.email;
+    this.lender.address = this.user.address;
+    this.lender.password = this.user.password;
   }
 //obtiene la region del array REGIONES(shared->constants)
   getRegionesArray():void {
@@ -69,6 +87,7 @@ export class VerifyUserComponent implements OnInit {
 
     if(this.selectedRegion){
       this.user.region =  this.selectedRegion;
+      this.lender.region= this.selectedRegion;
 
       const regionSeleccionada = REGIONES.regiones.find(r => r.region === this.selectedRegion);
       if (regionSeleccionada) {
@@ -76,8 +95,6 @@ export class VerifyUserComponent implements OnInit {
       } else {
         this.comunas = [];
       }
-
-
     }
 
   }
@@ -89,7 +106,7 @@ export class VerifyUserComponent implements OnInit {
 
     if(this.selectedComuna){
       this.user.commune =  this.selectedComuna;
-
+      this.lender.commune = this.selectedComuna;
     }
 
   }
@@ -98,13 +115,21 @@ export class VerifyUserComponent implements OnInit {
 
 //enviar formulario a la API
   onSubmit(form:any){
-
     //TODO
+    
+    this.lender.id = this.generarIdUnicoNumerico();
+    this.user.verify = true;
+
     //send to Lender to api BD insert lender use service lender
+    this.lenderService.register(this.lender);
     // update User way udapte user use services register
+    this.resgisterService.update(this.user);
+
+    //SET USER A LOCAL SOTORAGE
+    this.utilservice.setToLocalStorage(this.loginKey +'D3V', this.user);
 
     //REDIRECCION ENVIAR A LA URLE de DONDE VINO
-
+   // this.utilservice.navigateToPath('/producto/');
   }
 
 

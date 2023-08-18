@@ -24,8 +24,20 @@ export class RegisterService {
     const url = `${environment.baseUrl}${PathUser.saveUser}`;
     this.callManSV.postData(url, payload)
     .then((response:any)=>{
-      console.log(response);
       this.manageResponse(response);
+    })
+    .catch((error:any)=>{
+      this.manageError(error);
+    })
+    .finally(()=>this.spinner.hide())
+  }
+
+  public update(payload: any):void{
+    this.spinner.show();
+    const url = `${environment.baseUrl}${PathUser.updateUser}`;
+    this.callManSV.putData(url, payload)
+    .then((response:any)=>{
+      this.manageResponseUpdate(response);
     })
     .catch((error:any)=>{
       this.manageError(error);
@@ -46,11 +58,27 @@ export class RegisterService {
     }
   }
 
+  private manageResponseUpdate(registerRS:RegisterRS){
+    if(registerRS.success){
+      this.sweetUIService.alertConfirm('Usuario Actualizado',registerRS.message,'success')
+      .then(()=>{
+        //this.utilService.navigateToPath('/acceso')
+      })
+      .catch((e:any)=>{console.log(e);})
+    }else{
+      this.sweetUIService.alertConfirm('Alerta',registerRS.message ,'error')
+      console.log(registerRS.Error?.message)
+    }
+  }
+
   private manageError(e: any) {
     let errDesc = e['error']['Error']['message'];
     const tmpErrMsg = e.message ? e.message : JSON.stringify(e);
     errDesc = errDesc ? errDesc : tmpErrMsg;
     this.sweetUIService.alertConfirm('Error', `${errDesc}`, 'error');
   }
+
+
+  
 
 }
