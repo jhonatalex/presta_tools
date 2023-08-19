@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { loginEndpoint } from 'src/app/shared/constants/endpoints.class';
 import { CallerManagerService } from 'src/app/shared/helpers/caller-manager.service';
 import { environment } from 'src/environments/environment';
-import { CallerService } from '../../shared/helpers/caller.service';
 
 @Injectable({
   providedIn: 'root'

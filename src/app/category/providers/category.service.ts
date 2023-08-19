@@ -194,10 +194,7 @@ public getListCategoryProviders(): Observable<Category[]> {
     if(responseApi.success){
       this.sweetUIService.alertConfirm('Mensaje',responseApi.message,'success')
       .then(()=>{
-
         this.utilService.navigateToPath('/listar-categoria')
-        
-
       })
       .catch((e:any)=>{console.log(e);})
     }else{
@@ -205,11 +202,6 @@ public getListCategoryProviders(): Observable<Category[]> {
       console.log(responseApi.Error?.message)
     }
   }
-
-
-
-
-
 
 
   private manageError(e: any) {
