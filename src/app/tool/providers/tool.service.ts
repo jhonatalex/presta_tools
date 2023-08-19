@@ -33,10 +33,8 @@ export class ToolServiceNew {
 
     const url = `${environment.baseUrl}${PathTool.saveTool}`;
     this.callManSV.postData(url, payload)
-
-
     .then((response:any)=>{
-      console.log(response);
+     // console.log(response);
       this.manageResponse(response);
     })
     .catch((error:any)=>{
@@ -54,7 +52,7 @@ export class ToolServiceNew {
     const url = `${environment.baseUrl}${PathTool.getListTool}`;
     return from(this.callManSV.getData(url)).pipe(
       map((response: ResponseApi) => {
-        console.log(response);
+      //  console.log(response);
         return response.data as unknown as ToolResponse[]; // Asegúrate de que response.data sea del tipo Tool[]
       }),
       catchError((error: any) => {
@@ -73,12 +71,12 @@ export class ToolServiceNew {
     this.spinner.show();
     const url = `${environment.baseUrl}${PathTool.getToolId}`;
 
-    console.log(url+id)
+   // console.log(url+id)
 
     return from(this.callManSV.getDataById(url,id)).pipe(
       map((response: ResponseApi<ToolResponse>) => response.data),
       tap((tool: ToolResponse) => {
-        console.log(tool);
+      //  console.log(tool);
       }),
       catchError((error: any) => {
         this.manageError(error);
@@ -116,7 +114,7 @@ export class ToolServiceNew {
 
           // Obtener la URL de descarga
           const url = await fileRef.getDownloadURL().toPromise();
-          console.log('URL de descarga:', url);
+       //   console.log('URL de descarga:', url);
           return url;
         } else {
           // Ocurrió un error durante la carga
@@ -125,7 +123,7 @@ export class ToolServiceNew {
 
       } catch (error) {
         // Ocurrió un error durante la carga
-        console.log('Error al cargar el archivo', error);
+     //   console.log('Error al cargar el archivo', error);
         this.spinner.hide();
         this.sweetUIService.alertConfirm('Alerta','La carga del archivo falló','error')
 
@@ -144,7 +142,7 @@ export class ToolServiceNew {
   private manageResponse(responseApi:ResponseApi){
 
     if(responseApi.success){
-      this.sweetUIService.alertConfirm('Mensaje',responseApi.message,'success')
+      this.sweetUIService.alertConfirm('¡Hola!',responseApi.message,'success')
       .then(()=>{
 
         this.utilService.navigateToPath('/')

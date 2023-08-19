@@ -31,9 +31,26 @@ export const PathUser = {
    * POST
    */
   saveUser: 'api/user/insert',
+  /**
+   * PUT
+   */
+  updateUser:'api/user/update'
 
 };
 
+export const PathLender = {
+  /**
+   * GET
+   */
+  getListLender: 'api/lender/list',
+  /**
+
+  /**
+   * POST
+   */
+  saveLender: 'api/lender/insert',
+
+};
 export const PathCategory = {
   /**
    * GET

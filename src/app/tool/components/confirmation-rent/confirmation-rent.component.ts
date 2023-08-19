@@ -58,8 +58,6 @@ export class ConfirmationRentComponent implements OnInit {
     this.getToolDetail();
     this.getUser();
 
-
-
   }
 
   setInitialDate(event:any):void{

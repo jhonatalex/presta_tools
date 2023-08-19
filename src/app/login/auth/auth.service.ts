@@ -48,6 +48,7 @@ export class AuthService {
     this.loginService
       .authenticate(payload)
       .then((res: any) => {
+        //console.log(res);
         this.manageAuthResponse(res);
       })
       .catch((e) => {
@@ -89,18 +90,14 @@ export class AuthService {
                 } else {
 
                   this.endSession(loginData.message);
+                  console.log(loginData.message)
                 }
 
 
+        }else{
+          this.sweetUIService
+          .alertConfirm("Atención", loginData.message, 'warning')
         }
-
-
-
-
-
-
-
-
 
  }
 

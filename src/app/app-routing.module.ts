@@ -29,17 +29,15 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'acceso', component: LoginComponent},
   {path: 'registro', component: RegisterComponent},
-  {path: 'herramienta/:id', component: ToolDetailComponent},
+  {path: 'producto/:id', component: ToolDetailComponent},
   {path: 'categoria/:id', component: CategoryComponent},
   {path: 'preguntas-frecuentes', component: FrequentQuestionsComponent},
   {path: 'contacto', component: ContactComponent},
+  {path: 'recupera-clave', component: RecoverPasswordComponent},
 
 
 
   //RUTAS PRIVADAS SOLO USER LOGEADO
-  {path: 'recupera-clave', component: RecoverPasswordComponent,
-  canActivate:[AuthGuard]
-  },
   {path: 'verificar-usuario', component: VerifyUserComponent,
   canActivate:[AuthGuard]
   },

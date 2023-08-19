@@ -15,15 +15,18 @@
                                     <div class="col">
                                         <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                             <label for="nombre" class="form-label mb-0">Nombre</label>
-                                            <input type="text"  [(ngModel)]="user.name" class="form-control-sm border" name="nombre" id="nombre">
+                                            <input type="text" #name="ngModel" [(ngModel)]="user.name" class="form-control-sm border" name="nombre" id="nombre" required>
+                                            <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">Nombre no puede quedar vacío</small>
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                             <label for="telefono" class="form-label mb-0">Teléfono</label>
-                                            <input type="text"  [(ngModel)]="user.telephone" class="form-control-sm border" name="telefono" id="telefono">
+                                            <input type="text" #telephone="ngModel" [(ngModel)]="user.telephone" class="form-control-sm border" name="telefono" id="telefono" required>
+                                            <small *ngIf="!telephone.valid && telephone.touched" class="invalid-feedback d-block">telefono no puede quedar vacío</small>
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                             <label for="region" class="form-label mb-0">Región</label>
-                                            <input type="text" [(ngModel)]="user.region" class="form-control-sm border" name="region" id="region">
+                                            <input type="text" #region="ngModel" [(ngModel)]="user.region" class="form-control-sm border" name="region" id="region" required>
+                                            <small *ngIf="!region.valid && region.touched" class="invalid-feedback d-block">región no puede quedar vacía</small>
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                           <label for="starDate">Fecha inicial de arriendo</label>
@@ -35,15 +38,18 @@
                                     <div class="col">
                                         <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                             <label for="apellido" class="form-label mb-0">Apellido</label>
-                                            <input type="text"  [(ngModel)]="user.lastName" class="form-control-sm border" name="apellido" id="apellido">
+                                            <input type="text" #lastName=ngModel [(ngModel)]="user.lastName" class="form-control-sm border" name="apellido" id="apellido" required>
+                                            <small *ngIf="!lastName.valid && lastName.touched" class="invalid-feedback d-block">apellido no puede quedar vacío</small>
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                             <label for="email" class="form-label mb-0">Dirección de correo electrónico</label>
-                                            <input type="email"  [(ngModel)]="user.email" class="form-control-sm border" name="email" id="email">
+                                            <input type="email" #email="ngModel"  [(ngModel)]="user.email" class="form-control-sm border" name="email" id="email" reuired pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                            <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">email inválido</small>
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                             <label for="comuna" class="form-label mb-0">Comuna</label>
-                                            <input type="text"  [(ngModel)]="user.commune" class="form-control-sm border" name="comuna" id="comuna">
+                                            <input type="text" #commune="ngModel"  [(ngModel)]="user.commune" class="form-control-sm border" name="comuna" id="comuna" required>
+                                            <small *ngIf="!commune.valid && commune.touched" class="invalid-feedback d-block">ingrese comuna</small>
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                           <label for="starDate">Fecha Final de arriendo</label>
@@ -54,7 +60,8 @@
 
                                     <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                         <label for="direccion" class="form-label mb-0">Dirección</label>
-                                        <input type="direccion"   [(ngModel)]="user.address" class="form-control-sm border" name="direccion" id="direccion">
+                                        <input type="direccion"  #address="ngModel" [(ngModel)]="user.address" class="form-control-sm border" name="direccion" id="direccion" required>
+                                        <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">escriba su dirección</small>
                                     </div>
 
 

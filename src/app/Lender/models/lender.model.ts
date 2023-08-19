@@ -12,6 +12,6 @@ export class Lender{
   public region:string='';
   public commune:string='';
   public balanceWallet:string='';
-  public dateUp: String='';
-  public rate: String='';
+  public dateUp: string = new Date().toISOString();
+  public rate: number = 0;
 }
