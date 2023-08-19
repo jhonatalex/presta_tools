@@ -63,7 +63,7 @@ export class EditCategoryComponent implements OnInit {
     async submitForm(form: { reset: () => void; }) {
 
       console.log('entro')
-      
+
         const categoryApi: Category = {
           idCat:           this.id,
           titleCat:        this.CategoryForm.value.titleCat,
@@ -72,65 +72,65 @@ export class EditCategoryComponent implements OnInit {
           urlImagenBanner: '',
           tools: []
         };
-       
+
 
         if (this.selectedFile1){
 
           const promises = [
             this.categoryService.uploadFile(this.selectedFile1),
-          //  this.categoryService.uploadFile(this.selectedFile2),
+            this.categoryService.uploadFile(this.selectedFile2),
           ];
-  
+
           try {
             // Esperar a que se completen todas las promesas de carga de imágenes
             const [url1] = await Promise.all(promises);
 
             categoryApi.urlImagen=url1;
             categoryApi.urlImagenBanner = this.category.urlImagenBanner;
-           
-            
+
+
             console.log(categoryApi);
             this.categoryService.updateCategory(categoryApi);
-  
+
           } catch (error) {
             // Manejar cualquier error que ocurra durante la carga de imágenes
             console.error("Error al cargar las imágenes:", error);
-  
+
           }
         }else if(this.selectedFile2){
 
           const promises = [
-            //this.categoryService.uploadFile(this.selectedFile1),
+            this.categoryService.uploadFile(this.selectedFile1),
             this.categoryService.uploadFile(this.selectedFile2),
           ];
-  
+
           try {
             // Esperar a que se completen todas las promesas de carga de imágenes
             const [url2] = await Promise.all(promises);
 
             categoryApi.urlImagen = this.category.urlImagen;
             categoryApi.urlImagenBanner = url2;
-           
-            
+
+
             console.log(categoryApi);
             this.categoryService.updateCategory(categoryApi);
-  
+
           } catch (error) {
             // Manejar cualquier error que ocurra durante la carga de imágenes
             console.error("Error al cargar las imágenes:", error);
-  
+
           }
-         
+
         }else{
           categoryApi.urlImagen = this.category.urlImagen;
           categoryApi.urlImagenBanner = this.category.urlImagenBanner;
           console.log(categoryApi);
           this.categoryService.updateCategory(categoryApi);
         }
-          
-         
+
+
     }
-  
+
 
 
     onFileSelected1(event: any) {
@@ -141,18 +141,18 @@ export class EditCategoryComponent implements OnInit {
       this.selectedFile2 = event.target.files[0];
       console.log(event.target.files)
     }
-  
-    
-  
+
+
+
 }
 
-    
-
-  
 
 
 
-  
+
+
+
+
 
 
 

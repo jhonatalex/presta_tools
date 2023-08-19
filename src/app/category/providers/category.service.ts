@@ -188,13 +188,14 @@ public getListCategoryProviders(): Observable<Category[]> {
 
 
 
-
   private manageResponse(responseApi:ResponseApi){
 
     if(responseApi.success){
       this.sweetUIService.alertConfirm('Mensaje',responseApi.message,'success')
       .then(()=>{
         this.utilService.navigateToPath('/listar-categoria')
+
+
       })
       .catch((e:any)=>{console.log(e);})
     }else{

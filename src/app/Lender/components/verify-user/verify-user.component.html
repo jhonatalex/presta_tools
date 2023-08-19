@@ -57,7 +57,7 @@
     
                                         <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                             <label for="direccion" class="form-label mb-0">Dirección</label>
-                                            <input type="direccion"  [(ngModel)]="user.address" #address="ngModel" class="form-control-sm border" name="address" id="direccion" required>
+                                            <input type="text"  #address="ngModel" [(ngModel)]="user.address" class="form-control-sm border" name="address" id="direccion" required>
                                             <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">Debe colocar una dirección</small>
                                         </div>
     

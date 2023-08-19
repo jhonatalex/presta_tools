@@ -7,24 +7,24 @@
             <div class="capa-fondo content-imagen  d-flex justify-content-evenly flex-column  p-5 col-md-7">
                 <h3 class="cinta  text-shadow ">Categoría</h3 >
                     <h1 class="titulo-herramienta  text-shadow "><strong>{{category.titleCat}}</strong> </h1>
-                    
+
                         <!--  <img src="{{category.urlImagen}}" alt="imagen-categoria" class=" img-fluid mt-2 mx-4" style="width: 85%; height: 20%;"> -->
                         <div class="ms-5 d-none d-md-block">
 
                             <p class="text-center text-shadow ">{{category.descripCat}}</p>
                         </div>
-                    
+
                 </div>
     </div>
 </section>
 
-<!--SECCION PAGINACION PRODUCTOS-->
+<!--SECCION PAGINACION PRODUCTOS-
 <section id="paginacion-productos" class="fondo pb-5">
     <div class="card shadow container content-products pt-4 mx-auto">
         <div class="products d-flex flex-wrap  p-2">
 
             <div *ngFor="let tool of category.tools | paginate: { itemsPerPage: 16, currentPage: page }" class="d-flex justify-content-center align-items-center w-col my-2">
-              
+
                 <div class="card shadow div-card d-flex justify-content-center align-items-center mx-3">
                     <div class="img-card rounded" >
                         <img src={{tool.urlImage}} alt="imagen" class="max-wh-100 rounded" />
@@ -55,7 +55,7 @@
     </div>
 
 </section>
-
+->
  <!---SLIDER PRODUCTOS RELACIONADOS-->
  <section id="productos-relacionados" class="fondo py-5">
     <div class="card shadow content-procucts mx-auto">

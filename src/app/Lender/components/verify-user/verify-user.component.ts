@@ -73,7 +73,6 @@ export class VerifyUserComponent implements OnInit {
     this.lender.lastName = this.user.lastName;
     this.lender.telephone = this.user.telephone;
     this.lender.email = this.user.email;
-    this.lender.address = this.user.address;
     this.lender.password = this.user.password;
   }
 //obtiene la region del array REGIONES(shared->constants)
@@ -119,12 +118,11 @@ export class VerifyUserComponent implements OnInit {
     
     this.lender.id = this.generarIdUnicoNumerico();
     this.user.verify = true;
-
+    this.lender.address = form.value.address;
+     // update User way udapte user use services register
+     this.resgisterService.update(this.user);
     //send to Lender to api BD insert lender use service lender
     this.lenderService.register(this.lender);
-    // update User way udapte user use services register
-    this.resgisterService.update(this.user);
-
     //SET USER A LOCAL SOTORAGE
     this.utilservice.setToLocalStorage(this.loginKey +'D3V', this.user);
 

@@ -22,7 +22,7 @@ export class ToolServiceNew {
   constructor(private callManSV: CallerManagerService,
               private spinner: NgxSpinnerService,
               private sweetUIService:SweetUIService,
-              private storage: AngularFireStorage,
+             private storage: AngularFireStorage,
               private utilService: UtilService) { }
 
 
@@ -92,6 +92,8 @@ export class ToolServiceNew {
 
 
   async uploadFile(selectedFile: File): Promise<string> {
+
+
     if (selectedFile) {
       const filePath = `imagenes/tool/${selectedFile.name}`;
       const fileRef = this.storage.ref(filePath);
