@@ -4,6 +4,7 @@ import { User } from 'src/app/register/models/user.model';
 import { RegisterService } from 'src/app/register/providers/register.service';
 import { REGIONES } from 'src/app/shared/constants/regiones.class';
 import { Constants } from 'src/app/shared/constants/settings.class';
+import { SweetUIService } from 'src/app/shared/services/gui.service';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { ToolServiceNew } from 'src/app/tool/providers/tool.service';
 import { environment } from 'src/environments/environment.prod';
@@ -37,7 +38,8 @@ export class VerifyUserComponent implements OnInit {
     private toolService: ToolServiceNew,
     private utilservice: UtilService,
     private resgisterService: RegisterService,
-    private lenderService: LenderService
+    private lenderService: LenderService,
+    private sweetUIService:SweetUIService,
   ) {
 
    this.user  = new User;
@@ -68,12 +70,6 @@ export class VerifyUserComponent implements OnInit {
 //obtiene el user de localstorage
   getUser():void {
     this.user = this.utilservice.getFromLocalStorage(this.loginKey + 'D3V');
-   
-    this.lender.name = this.user.name;
-    this.lender.lastName = this.user.lastName;
-    this.lender.telephone = this.user.telephone;
-    this.lender.email = this.user.email;
-    this.lender.password = this.user.password;
   }
 //obtiene la region del array REGIONES(shared->constants)
   getRegionesArray():void {
@@ -114,20 +110,35 @@ export class VerifyUserComponent implements OnInit {
 
 //enviar formulario a la API
   onSubmit(form:any){
-    //TODO
     
-    this.lender.id = this.generarIdUnicoNumerico();
+    //se verifica el user
     this.user.verify = true;
-    this.lender.address = form.value.address;
-     // update User way udapte user use services register
-     this.resgisterService.update(this.user);
-    //send to Lender to api BD insert lender use service lender
-    this.lenderService.register(this.lender);
-    //SET USER A LOCAL SOTORAGE
-    this.utilservice.setToLocalStorage(this.loginKey +'D3V', this.user);
 
-    //REDIRECCION ENVIAR A LA URLE de DONDE VINO
-   // this.utilservice.navigateToPath('/producto/');
+    this.lender.id = this.generarIdUnicoNumerico();
+    this.lender.address = this.user.address;
+    this.lender.dIdentidad = this.user.dIdentidad;
+    this.lender.name = this.user.name;
+    this.lender.lastName = this.user.lastName;
+    this.lender.telephone = this.user.telephone;
+    this.lender.email = this.user.email;
+    this.lender.password = this.user.password;
+
+
+     if(this.user.verify){
+       // update User way udapte user use services register
+       this.resgisterService.update(this.user);
+        //send to Lender to api BD insert lender use service lender
+        this.lenderService.register(this.lender);
+        //SET USER A LOCAL SOTORAGE
+        this.utilservice.setToLocalStorage(this.loginKey +'D3V', this.user);
+
+        //REDIRECCION ENVIAR A LA URL de DONDE VINO
+        // this.utilservice.navigateToPath('/producto/this.id');
+     }else{
+      this.sweetUIService
+      .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')
+     }
+    
   }
 
 
