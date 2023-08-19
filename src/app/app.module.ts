@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
-import { NgxPaginationModule } from 'ngx-pagination';
+
 import { NgxStarRatingModule } from 'ngx-star-rating';
 
 
@@ -48,6 +48,8 @@ import { ConfirmationRentComponent } from './tool/components/confirmation-rent/c
 import { EditCategoryComponent } from './category/components/edit-category/edit-category.component';
 import { VerifyUserComponent } from './Lender/components/verify-user/verify-user.component';
 import { PaymentGatewayComponent } from './payment/components/payment-gateway/payment-gateway.component';
+//import { NgxPaginationModule } from 'ngx-pagination/dist/ngx-pagination.module';
+
 
 
 
@@ -87,13 +89,20 @@ import { PaymentGatewayComponent } from './payment/components/payment-gateway/pa
     ReactiveFormsModule,
     SlickCarouselModule,
     NgxStarRatingModule,
-    NgxPaginationModule,
+    //NgxPaginationModule,
 
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
+
+
+
     AngularFireStorageModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+
+
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+
     provideStorage(() => getStorage()),
+
 
     BrowserAnimationsModule,
     NgxSpinnerModule,

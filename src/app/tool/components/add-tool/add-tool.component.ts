@@ -100,9 +100,9 @@ export class AddToolComponent implements OnInit {
 
       try {
         // Esperar a que se completen todas las promesas de carga de imágenes
-        const [url1, url2, url3] = await Promise.all(promises);
+       const [url1, url2, url3] = await Promise.all(promises);
 
-        // Asignar las URLs a las variables
+         //Asignar las URLs a las variables
         this.tool.urlImage = url1;
         this.tool.urlImage2 = url2;
         this.tool.urlImage3 = url3;
@@ -156,8 +156,6 @@ export class AddToolComponent implements OnInit {
     }
 
   }
-
-
 
 
 

@@ -188,7 +188,6 @@ public getListCategoryProviders(): Observable<Category[]> {
 
 
 
-
   private manageResponse(responseApi:ResponseApi){
 
     if(responseApi.success){
@@ -196,7 +195,7 @@ public getListCategoryProviders(): Observable<Category[]> {
       .then(()=>{
 
         this.utilService.navigateToPath('/listar-categoria')
-        
+
 
       })
       .catch((e:any)=>{console.log(e);})
