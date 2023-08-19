@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { RegisterRS } from 'src/app/register/models/registerRS.model';
 import { PathLender} from 'src/app/shared/constants/endpoints.class';
 import { CallerManagerService } from 'src/app/shared/helpers/caller-manager.service';
 import { SweetUIService } from 'src/app/shared/services/gui.service';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { environment } from 'src/environments/environment';
-import { CallerService } from '../../shared/helpers/caller.service';
 import { RegisterLenderRS } from '../models/registerLenderRS.model';
 
 
