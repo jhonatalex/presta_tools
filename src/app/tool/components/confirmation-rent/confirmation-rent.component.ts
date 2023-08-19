@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute,Params } from '@angular/router';
 import { User } from 'src/app/register/models/user.model';
@@ -29,10 +29,13 @@ export class ConfirmationRentComponent implements OnInit {
   public lastNameLender: string|undefined;
   public user: User= new User;
 
-  formulario: FormGroup;
+
+  @ViewChild('paymentForm') paymentForm: ElementRef | undefined;
+
   url: string = ''; // Inicializar la URL con un valor vacío
   token: string = ''; // Inicializar el token con un valor vacío
 
+  responseModel: PayResponse| null = null ;
 
 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
@@ -44,14 +47,14 @@ export class ConfirmationRentComponent implements OnInit {
     private toolService: ToolServiceNew,
     private paymentServices:PaymentServices,
     private utilservice: UtilService,
-    private formBuilder: FormBuilder,
+    private cdr: ChangeDetectorRef
+
 
   ) {
     this.id = 0;
     this.tool = new ToolResponse();
-    this.formulario = this.formBuilder.group({
-      token_ws: [''],
-    });
+    this.responseModel = new PayResponse();
+
     }
 
   ngOnInit(): void {
@@ -103,16 +106,18 @@ this.route.params.subscribe(params =>{
 
 
   }
-  onSubmit(Form:NgForm){
 
 
+  onSubmit(formularioConfir:any) {
   }
+
+
+
   onSubmitPagar(FormData:NgForm){
 
   }
 
   async iniciarTransaccion(){
-
 
     var buyOrder = '0001';
     var sessionId='compra';
@@ -129,16 +134,16 @@ this.route.params.subscribe(params =>{
 
     this.paymentServices.initTransaction(payData).subscribe((response:PayResponse)=>{
 
+      this.responseModel=response;
 
       if(response!=null){
 
         this.token = response.token;
         this.url = response.url;
 
-        this.formulario.get('token_ws')!.setValue(this.token);
 
-        console.log(response)
-
+        this.cdr.detectChanges();
+        console.log(response);
         this.submitForm();
 
       }
@@ -151,11 +156,20 @@ this.route.params.subscribe(params =>{
   }
 
   submitForm() {
+    if (this.paymentForm) {
+      this.paymentForm.nativeElement.submit();
+    }
+  }
+
+  /*
+  onSubmitPay(formulario:NgForm) {
+
     const formElement = document.getElementById(
       'form-pago'
     ) as HTMLFormElement;
     formElement.submit();
   }
+  */
 
 
 

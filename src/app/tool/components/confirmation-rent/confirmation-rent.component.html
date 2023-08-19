@@ -118,9 +118,9 @@
             </div>
         </div>
 
-        <form [formGroup]="formulario" id="form-pago" method="post" [action]="url">
-          <input type="" name="token_ws" formControlName="token_ws" />
-          <input type="submit" value="Ir a pagar" (click)="submitForm()" />
+        <form method="post" [action]="url" target="_self">
+          <input type="hidden" name="token_ws" [value]="token" />
+          <input type="submit" value="Ir a pagar" />
         </form>
 
     </div>
