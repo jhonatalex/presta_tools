@@ -60,7 +60,7 @@ export class RegisterService {
 
   private manageResponseUpdate(registerRS:RegisterRS){
     if(registerRS.success){
-      this.sweetUIService.alertConfirm('Usuario Actualizado',registerRS.message,'success')
+      this.sweetUIService.alertConfirm('Usuario Verificado y Actualizado',registerRS.message,'success')
       .then(()=>{
         //this.utilService.navigateToPath('/acceso')
       })
