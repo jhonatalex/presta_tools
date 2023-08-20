@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/app/register/models/user.model';
+import { User, UserUpdate } from 'src/app/register/models/user.model';
 import { RegisterService } from 'src/app/register/providers/register.service';
 import { REGIONES } from 'src/app/shared/constants/regiones.class';
 import { Constants } from 'src/app/shared/constants/settings.class';
@@ -21,6 +21,7 @@ export class VerifyUserComponent implements OnInit {
   @Input() urlDeVenida:string = '';
 
   public user: User;
+  public userUpdate: UserUpdate;
   public lender:Lender;
   public selectedRegion: string | null = null;
   public selectedComuna: string | null = null;
@@ -43,6 +44,7 @@ export class VerifyUserComponent implements OnInit {
   ) {
 
    this.user  = new User;
+   this.userUpdate = new UserUpdate;
     this.lender = new Lender;
   }
 
@@ -70,6 +72,15 @@ export class VerifyUserComponent implements OnInit {
 //obtiene el user de localstorage
   getUser():void {
     this.user = this.utilservice.getFromLocalStorage(this.loginKey + 'D3V');
+    console.log(this.user)
+
+    this.userUpdate.id = this.user.id;
+    this.userUpdate.name = this.user.name;
+    this.userUpdate.lastName = this.user.lastName;
+    this.userUpdate.email = this.user.email;
+    this.userUpdate.telephone = this.user.telephone;
+
+    console.log(this.userUpdate)
   }
 //obtiene la region del array REGIONES(shared->constants)
   getRegionesArray():void {
@@ -81,7 +92,7 @@ export class VerifyUserComponent implements OnInit {
   onSelectRegion():void {
 
     if(this.selectedRegion){
-      this.user.region =  this.selectedRegion;
+      this.userUpdate.region =  this.selectedRegion;
       this.lender.region= this.selectedRegion;
 
       const regionSeleccionada = REGIONES.regiones.find(r => r.region === this.selectedRegion);
@@ -94,13 +105,11 @@ export class VerifyUserComponent implements OnInit {
 
   }
 
-
-
 //se ejecuta al seleccionar comuna
   onSelectComuna():void {
 
     if(this.selectedComuna){
-      this.user.commune =  this.selectedComuna;
+      this.userUpdate.commune =  this.selectedComuna;
       this.lender.commune = this.selectedComuna;
     }
 
@@ -112,25 +121,33 @@ export class VerifyUserComponent implements OnInit {
   onSubmit(form:any){
     
     //se verifica el user
-    this.user.verify = true;
+    this.userUpdate.verify = true;
+    //datos del formualario
+    this.userUpdate.address = this.user.address;
+    this.userUpdate.dIdentidad = this.user.dIdentidad;
+
+    console.log(this.userUpdate)
+
 
     this.lender.id = this.generarIdUnicoNumerico();
+    //datos recogidos del formulario
     this.lender.address = this.user.address;
     this.lender.dIdentidad = this.user.dIdentidad;
     this.lender.name = this.user.name;
     this.lender.lastName = this.user.lastName;
     this.lender.telephone = this.user.telephone;
     this.lender.email = this.user.email;
-    this.lender.password = this.user.password;
+   
 
-
-     if(this.user.verify){
+     if(this.userUpdate.region){
        // update User way udapte user use services register
-       this.resgisterService.update(this.user);
+       this.resgisterService.update(this.userUpdate);
+       
         //send to Lender to api BD insert lender use service lender
         this.lenderService.register(this.lender);
+        console.log(this.lender)
         //SET USER A LOCAL SOTORAGE
-        this.utilservice.setToLocalStorage(this.loginKey +'D3V', this.user);
+        this.utilservice.setToLocalStorage(this.loginKey +'D3V', this.userUpdate);
 
         //REDIRECCION ENVIAR A LA URL de DONDE VINO
         // this.utilservice.navigateToPath('/producto/this.id');
