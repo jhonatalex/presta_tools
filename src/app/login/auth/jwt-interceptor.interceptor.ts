@@ -24,7 +24,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>,next: HttpHandler): Observable<HttpEvent<unknown>> {
 
-    const token: string =   this.utilService.getFromLocalStorage(this.tokenKEY);
+    const token: string =   this.utilService.getFromLocalStorage(this.tokenKEY + 'D3V');
 
     let req = request;
     if (token) {
