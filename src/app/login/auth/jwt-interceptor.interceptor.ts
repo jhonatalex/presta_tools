@@ -22,10 +22,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
   constructor(private utilService: UtilService,   private sweetUIService: SweetUIService) {}
 
-  intercept(
-    request: HttpRequest<unknown>,
-    next: HttpHandler
-  ): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<unknown>,next: HttpHandler): Observable<HttpEvent<unknown>> {
 
     const token: string =   this.utilService.getFromLocalStorage(this.tokenKEY);
 

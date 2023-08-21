@@ -28,6 +28,7 @@ export class ConfirmationRentComponent implements OnInit {
   public nameLender: string | undefined;
   public lastNameLender: string|undefined;
   public user: User= new User;
+  public minDate: string = new Date().toISOString();
 
 
   @ViewChild('paymentForm') paymentForm: ElementRef | undefined;
@@ -60,6 +61,7 @@ export class ConfirmationRentComponent implements OnInit {
   ngOnInit(): void {
     this.getToolDetail();
     this.getUser();
+    console.log(this.minDate)
 
   }
 

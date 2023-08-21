@@ -21,6 +21,7 @@ export class VerifyUserComponent implements OnInit {
   @Input() urlDeVenida:string = '';
 
   public user: User;
+  public token:string='';
   public userUpdate: UserUpdate;
   public lender:Lender;
   public selectedRegion: string | null = null;
@@ -33,7 +34,7 @@ export class VerifyUserComponent implements OnInit {
     environment.production ? '' : 'D3V'
   }`;
 
-
+  
   constructor(
     private route: ActivatedRoute,
     private toolService: ToolServiceNew,
@@ -56,8 +57,6 @@ export class VerifyUserComponent implements OnInit {
 
 
 
-
-
     public generarIdUnicoNumerico(): number {
     const timestamp = new Date().getTime();
     const sixDigitId = parseInt(timestamp.toString().slice(-6));
@@ -72,7 +71,6 @@ export class VerifyUserComponent implements OnInit {
 //obtiene el user de localstorage
   getUser():void {
     this.user = this.utilservice.getFromLocalStorage(this.loginKey + 'D3V');
-    console.log(this.user)
 
     this.userUpdate.id = this.user.id;
     this.userUpdate.name = this.user.name;
@@ -126,9 +124,6 @@ export class VerifyUserComponent implements OnInit {
     this.userUpdate.address = this.user.address;
     this.userUpdate.dIdentidad = this.user.dIdentidad;
 
-    console.log(this.userUpdate)
-
-
     this.lender.id = this.generarIdUnicoNumerico();
     //datos recogidos del formulario
     this.lender.address = this.user.address;
@@ -140,15 +135,12 @@ export class VerifyUserComponent implements OnInit {
    
 
      if(this.userUpdate.region){
-       // update User way udapte user use services register
-       this.resgisterService.update(this.userUpdate);
-       
+        // update User way udapte user use services register
+        this.resgisterService.update(this.userUpdate);
         //send to Lender to api BD insert lender use service lender
         this.lenderService.register(this.lender);
-        console.log(this.lender)
         //SET USER A LOCAL SOTORAGE
         this.utilservice.setToLocalStorage(this.loginKey +'D3V', this.userUpdate);
-
         //REDIRECCION ENVIAR A LA URL de DONDE VINO
         // this.utilservice.navigateToPath('/producto/this.id');
      }else{

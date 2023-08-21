@@ -12,7 +12,7 @@ export class Constants {
       'Access-Control-Allow-Credentials': 'true',
        'Access-Control-Allow-Methods': 'POST, GET, PUT, OPTIONS, HEAD, DELETE',
      // 'Access-Control-Allow-Methods': '',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization,X-Auth-Token,Origin Accept, X-Requested-With, remember-me',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Auth-Token, Origin Accept, X-Requested-With, remember-me',
        'X-Frame-Options': 'ALLOW-FROM http://localhost:4200'
     },
   };
