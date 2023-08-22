@@ -4,7 +4,7 @@ import { Lender } from "./lender.model";
 
 export class RegisterLenderRS {
     token: string = '';
-    data: Lender | null = null;
+    data: null = null;
     success: boolean | null = null;
     Error: ErrorRes | null = null;
     message: string = '';

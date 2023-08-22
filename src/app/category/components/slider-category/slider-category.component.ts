@@ -26,7 +26,7 @@ export class SliderCategoryComponent implements OnInit {
        slidesToShow: 2,
        slidesToScroll: 1,
        infinite: true,
-       dots: true
+       dots: false
      }
    },
    {
@@ -35,7 +35,7 @@ export class SliderCategoryComponent implements OnInit {
        slidesToShow: 2,
        slidesToScroll: 1,
        infinite: true,
-       dots: true
+       dots: false
      }
    },
    {
@@ -44,19 +44,19 @@ export class SliderCategoryComponent implements OnInit {
        slidesToShow: 1,
        slidesToScroll: 1,
        infinite: true,
-       dots: true
+       dots: false
      }
    }
  ]};
 
 slickInit(e: any) {
-console.log('slick initialized');
+//console.log('slick initialized');
 }
 breakpoint(e: any) {
-console.log('breakpoint');
+//console.log('breakpoint');
 }
 afterChange(e: any) {
-console.log('afterChange');
+//console.log('afterChange');
 }
 beforeChange(e: any) {
 console.log('beforeChange');
@@ -81,7 +81,6 @@ console.log('beforeChange');
   getCategories() : void {
     this.categoryService.getListCategoryProviders().subscribe((response: Category[])=>{
       this.categories = response;
-      console.log('TS' + response)
     });
   }
 
