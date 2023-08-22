@@ -283,52 +283,61 @@ padding-top: 10px;
 
 
 /*ESTILOS PARA RESPONSIVE*/
-@media (max-width:480px){
+@media (max-width:355px){
   
         .seccion-imagen{
             max-width: 50%;
-            margin-left: 25px;
+            margin-left: 35px;
             padding: 5px;
         }
 
         .imagen-big{
-            width: 80%;
-            height: 80%;
+            width: 40%;
+            height: 50%;
         }
 
         .seccion-imagen img{
-            max-width: 50%;
+            max-width: 90%;
+            max-height: 80%;
             margin-left: 25px;
-            padding: 5px;
+            
         }
 
         .secion-img-small{
             max-width: 50%;
-            margin-left: 25px;
-            padding: 5px;
+            max-height: 40%;
+            display: flex;
+            margin-left: 20px;
+        }
+
+        .img-slide img{
+            max-height: 70px;
+            max-width: 80px;
+            padding: 6px;
         }
 
         .seccion-producto{
-            max-width: 90%;
-            
+            max-width: 99%;
             padding: 5px;
         }
 
         .div-producto{
             max-width: 70%;
-            margin-left: 25px;
+            margin-left: 35px;
         }
 
         .seccion-propietario{
             max-width: 100%;
             padding: 5px;
+           
         }
 
         .content-propietario{
-            max-width: 78%;
+            max-width: 85%;
             height: 850px;
             position: relative;
-            right: 40px;
+            right: 20px;
+            
         }
 
 
@@ -363,19 +372,24 @@ padding-top: 10px;
         }
 
         .btn-blue-grad{
-            width: 300px;
+            width: 200px;
         }
         .div-estadisticas{
             position: relative;
-            right: 15px;
+            right: 12px;
             top: 15px;
+            width: 100px;
+            font-size: 12px;
+        }
+        .titulo-negrita{
+            font-size: 14px;
         }
         .content-procucts{
-            max-width: 78%;
+            max-width: 80%;
             height: 850px;
+            margin-left: 35px;
             position: relative;
-            right: 40px;
-
+            right: 20px;
         }
    
     
