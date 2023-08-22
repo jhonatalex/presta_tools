@@ -1,11 +1,13 @@
+
+
 <!--SECCION NAVBAR-->
 <app-header [flaglogo]="false"></app-header>
 
 <!--SECCION NOMBRE-MODELO BUSCAR TOOL-->
-<section id="detalle-herramienta" class="fondo py-5">
+<section id="detalle-herramienta" class="fondo py-5 widthMax">
 
-    <div class="container col-md-10 col-sm-12 widthMax pt-5">
-        <div class="row pt-5 estilos-contenedor">
+    <div class="container col-md-10 widthMax pt-5">
+        <div class="row pt-5 estilos-contenedor widthMax">
            <div class="col-md-6 col-sm-12">
 
              <section class="seccion-nombre-producto">
@@ -29,7 +31,7 @@
         </div>
     </div>
 
-    <div class="container  col-md-10 div-content-tool">
+    <div class="container  col-md-10 div-content-tool widthMax">
         <div class="row py-2 div-cards">
 
                 <!---GALERIA IMAGENES HERRAMIENTA-->
@@ -91,7 +93,7 @@
 </section>
 
 <!--SECCIÓN INFORMACIÓN PROPIETARIO-->
-<section id="informacion-propietario" class="fondo py-5 seccion-propietario">
+<section id="informacion-propietario" class="fondo py-5 seccion-propietario widthMax">
      <div class="card shadow content-propietario mx-auto">
         <div class="row">
 
@@ -103,7 +105,7 @@
                 <p><strong class="py-2"></strong>{{lender?.rate}} </p>
              </div>
 
-             <div class="col d-flex flex-column justify-content-center align-items-center pt-2">
+             <div class="col d-flex flex-column justify-content-center align-items-center pt-2 div-estadisticas">
 
                 <strong class="titulo-negrita py-2">Estadisticas Propietario</strong>
                 <ul aria-hidden="true" class="ui-thermometer" value="5">
@@ -162,7 +164,7 @@
     </div>
 </section>
 
-<section id="productos-relacionados" class="fondo pb-5">
+<section id="productos-relacionados" class="fondo pb-5 widthMax">
      <!---SLIDER PRODUCTOS RELACIONADOS-->
      <div class="card shadow content-procucts pt-100 mx-auto">
         <strong class="px-2 pb-0 titulo-negrita">Productos destacados</strong>

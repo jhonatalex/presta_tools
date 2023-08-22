@@ -92,12 +92,10 @@
     font-weight: bold;
 }
 
-.width-max{
-    max-width: 95%;
-}
+
 
 .widthMax{
-    max-width: 99%;
+    max-width: 100%;
 }
 
 
@@ -312,21 +310,27 @@ padding-top: 10px;
 
         .seccion-producto{
             max-width: 90%;
-            margin-left: 25px;
+            
             padding: 5px;
         }
 
         .div-producto{
-            max-width: 80%;
+            max-width: 70%;
             margin-left: 25px;
+        }
+
+        .seccion-propietario{
+            max-width: 100%;
             padding: 5px;
         }
 
         .content-propietario{
-            max-width: 90%;
-            height: 1000px;
-            margin-left: 25px;
+            max-width: 78%;
+            height: 850px;
+            position: relative;
+            right: 40px;
         }
+
 
         .seccion-nombre-producto{
             max-width: 90%;
@@ -352,6 +356,26 @@ padding-top: 10px;
             top: 2px;
             left: 25px;
             width: 300px;
+        }
+
+        .contenedor-general{
+          max-width: 100%
+        }
+
+        .btn-blue-grad{
+            width: 300px;
+        }
+        .div-estadisticas{
+            position: relative;
+            right: 15px;
+            top: 15px;
+        }
+        .content-procucts{
+            max-width: 78%;
+            height: 850px;
+            position: relative;
+            right: 40px;
+
         }
    
     
