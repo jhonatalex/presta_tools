@@ -73,7 +73,7 @@ export class CallerService {
   /* --- PUT method --- */
   public put(
     url: string,
-    data: any
+    data: any,
   ): Observable<Object | undefined> {
     this.httpHeaders['Access-Control-Allow-Methods'] = 'PUT';
     this.httpHeaders['Content-Type'] = 'application/json';

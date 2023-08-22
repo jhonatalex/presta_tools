@@ -44,3 +44,8 @@ input {
 .mb-50{
   margin-bottom: 50px;
 }
+
+.img-card{
+    width: 111px;
+    height: 111px;
+}

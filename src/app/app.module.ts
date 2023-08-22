@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { NgxStarRatingModule } from 'ngx-star-rating';
 
@@ -48,6 +48,7 @@ import { ConfirmationRentComponent } from './tool/components/confirmation-rent/c
 import { EditCategoryComponent } from './category/components/edit-category/edit-category.component';
 import { VerifyUserComponent } from './Lender/components/verify-user/verify-user.component';
 import { PaymentGatewayComponent } from './payment/components/payment-gateway/payment-gateway.component';
+import { JwtInterceptor } from './login/auth/jwt-interceptor.interceptor';
 //import { NgxPaginationModule } from 'ngx-pagination/dist/ngx-pagination.module';
 
 
@@ -110,7 +111,9 @@ import { PaymentGatewayComponent } from './payment/components/payment-gateway/pa
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

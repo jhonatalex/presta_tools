@@ -18,12 +18,12 @@
 
         <div class="row">
           <div class="form-group mt-4 mxauto col">
-            <label class="" for="reference">Codigo:</label>
+            <label class="" for="reference">Código:</label>
             <input placeholder="Referencia" type="text" class="form-control" id="reference" name="reference"   #reference="ngModel" [(ngModel)]="tool.reference" required>
             <small *ngIf="!reference.valid && reference.touched" class="invalid-feedback d-block">Debe colocar un valor válido</small>
           </div>
           <div class="form-group mt-4 mxauto col">
-            <label  class="" for="timeUse">Tiempo de Uso:</label>
+            <label  class="" for="timeUse">Tiempo de Uso(meses):</label>
             <input placeholder="Tiempo de uso" type="number" class="form-control" id="timeUse" name="timeUse" #timeUse="ngModel" [(ngModel)]="tool.timeUse" required>
             <small *ngIf="!timeUse.valid && timeUse.touched" class="invalid-feedback d-block">Debe colocar un valor válido</small>
           </div>
@@ -59,7 +59,7 @@
         </div>
 
         <div class="form-group mt-4 mxauto">
-          <label class="" for="breakDowns">Caracterisiticas Técnicos:</label>
+          <label class="" for="breakDowns">Características Técnicos:</label>
           <textarea placeholder="Detalles técnicos" class="form-control" id="breakDowns" name="breakDowns" #breakDowns="ngModel" [(ngModel)]="tool.breakDowns" required></textarea>
           <small *ngIf="!breakDowns.valid && breakDowns.touched" class="invalid-feedback d-block">Debe colocar un valor válido</small>
         </div>
@@ -74,7 +74,7 @@
         <div class="row">
           <div class="col-md-4">
               <div class="form-group mt-4 ">
-                <label class="" for="valueRent">Valor de Renta:</label>
+                <label class="" for="valueRent">Valor Renta(diario):</label>
                 <input placeholder="Valor de renta" type="number" class="form-control" id="valueRent" name="valueRent" #name="ngModel" [(ngModel)]="tool.valueRent">
               </div>
 
@@ -101,7 +101,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group mt-4 ">
-                  <label class="" for="weigt">Peso:</label>
+                  <label class="" for="weigt">Peso(Kg):</label>
                   <input placeholder="Peso" type="number" class="form-control" id="weigt" name="weigt" #name="ngModel" [(ngModel)]="tool.weigt">
                 </div>
 
