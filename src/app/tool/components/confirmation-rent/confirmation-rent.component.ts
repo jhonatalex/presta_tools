@@ -10,6 +10,8 @@ import { ToolServiceNew } from '../../providers/tool.service';
 import { PayData } from 'src/app/payment/models/payData.models';
 import { PaymentServices } from 'src/app/payment/providers/payment.service';
 import { PayResponse } from 'src/app/payment/models/payResponse.models';
+import { Venta } from 'src/app/payment/models/venta.models';
+import { DetalleVenta } from 'src/app/payment/models/details_venta';
 
 
 @Component({
@@ -110,43 +112,76 @@ this.route.params.subscribe(params =>{
   }
 
 
-  onSubmit(formularioConfir:any) {
-  }
+  onSubmit(ngForm:NgForm) {
 
 
+    //Tabla VENTA
+    //TIpo comprobante (Boleta o Factura)
+    //Numero Compraban BuyOrder
+    //Date
+    // Tax
+    //total = amount
+    // State= por Pagar
+    //ID USER (EMAIL)
 
-  onSubmitPagar(FormData:NgForm){
+    let buyOrder = "O-" + Math.floor(Math.random() * 10000) + 1;
+    let sessionId = "S-" + Math.floor(Math.random() * 10000) + 1;
 
-  }
 
-  async iniciarTransaccion(){
-
-    var buyOrder = '0001';
-    var sessionId='compra';
     var amount:number = 1000;
     var returnUrl ="http://localhost:4200/confirmar-transaccion"
 
 
-    var payData:PayData= new PayData();
+    //VENTA
+    var venta: Venta = new Venta();
+    venta.IdUser = this.user.email;
+    venta.NumberComprobante= buyOrder;
+    venta.State=false;
+    venta.TypeComprobante="Boleta";
 
+    //TABLA DETALLE VENTA
+    var detalleVenta: DetalleVenta = new DetalleVenta();
+    detalleVenta.Amount=amount;
+    detalleVenta.IdTool=  this.tool.id;
+    detalleVenta.Price = this.tool.valueRent;
+    detalleVenta.RentalDays=this.days;
+    detalleVenta.StartDate= this.startDate.toString();
+    detalleVenta.EndDate = this.endDate.toString();
+    detalleVenta.Total = this.total;
+
+    //Pay DATA
+    var payData:PayData= new PayData();
     payData.amount=amount;
     payData.buyOrder=buyOrder;
     payData.sessionId=sessionId;
     payData.returnUrl=returnUrl;
+    payData.ventum = venta;
+    payData.detalleVentum = detalleVenta;
+
+
+
+    this.iniciarTransaccion(payData);
+
+  }
+
+
+
+
+  async iniciarTransaccion(payData:PayData){
+
+    console.log(payData);
 
     this.paymentServices.initTransaction(payData).subscribe((response:PayResponse)=>{
-
-      this.responseModel=response;
+    this.responseModel=response;
 
       if(response!=null){
 
         this.token = response.token;
         this.url = response.url;
 
-
         this.cdr.detectChanges();
-        console.log(response);
-        this.submitForm();
+        //console.log(response);
+        this.submitFormPay();
 
       }
 
@@ -157,10 +192,10 @@ this.route.params.subscribe(params =>{
 
   }
 
-  submitForm() {
-    if (this.paymentForm) {
-      this.paymentForm.nativeElement.submit();
-    }
+  submitFormPay() {
+
+    const form = document.getElementById('returForm') as HTMLFormElement;
+    form.submit();
   }
 
   /*
