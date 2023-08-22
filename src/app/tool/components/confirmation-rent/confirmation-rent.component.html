@@ -3,6 +3,10 @@
 
 <section id="seccion confirma renta py-5 fondo">
     <div class="container col-md-15">
+
+
+      <form class="form-group" #confirmForm="ngForm" (ngSubmit)="onSubmit(confirmForm)">
+
         <div class="row  maxWidth">
             <div class="col-md-7 py-5">
                 <div class="card shadow borderRadius ms-4 p-2 div-titulo">
@@ -10,7 +14,7 @@
                 </div>
                 <div class="card shadow borderRadius ms-4 p-2 mt-5 div-formulario">
                     <h5 class="ms-4 mt-2"><strong>Datos de Facturación</strong></h5>
-                        <form class="form-group" #confirmForm="ngForm" (ngSubmit)="onSubmit(confirmForm)">
+
                             <div class="row">
                                     <div class="col">
                                         <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
@@ -73,7 +77,7 @@
 
 
                             </div>
-                        </form>
+
                 </div>
             </div>
 
@@ -107,24 +111,18 @@
                             <h6><strong>Total:</strong></h6>
                             <h6>{{this.total}} CLP</h6>
                         </div>
-                    <!--<input type="submit" class="btn-blue-grad mt-1  px-5 border-0  mx-auto w-50" value="Realizar Pago">-->
-                    <button class="btn-blue-grad mt-1  px-5 border-0  mx-auto w-50" (click)="iniciarTransaccion()">Pagar</button>
+                   <input type="submit" class="btn-blue-grad mt-1  px-5 border-0  mx-auto w-50" value="Realizar Pago">
+                     <!--<button class="btn-blue-grad mt-1  px-5 border-0  mx-auto w-50" (click)="iniciarTransaccion()">Pagar</button>-->
                     <img class=""  src="assets/img/webpay.png" alt="webpay" >
-
-
-
                   </div>
 
-            </div>
-        </div>
+              </div>
+          </div>
+      </form>
 
-
-
-
-
-        <form  [action]="url" method="post"  id="returForm" target="_self">
-          <input type="hidden" name="token_ws" [value]="token" />
-        </form>
+      <form  [action]="url" method="post"  id="returForm" target="_self">
+        <input type="hidden" name="token_ws" [value]="token" />
+      </form>
 
     </div>
 </section>
