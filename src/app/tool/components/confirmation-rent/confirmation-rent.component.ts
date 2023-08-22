@@ -144,7 +144,7 @@ this.route.params.subscribe(params =>{
 
         this.cdr.detectChanges();
         console.log(response);
-        this.submitForm();
+        this.submitFormPay();
 
       }
 
@@ -155,10 +155,10 @@ this.route.params.subscribe(params =>{
 
   }
 
-  submitForm() {
-    if (this.paymentForm) {
-      this.paymentForm.nativeElement.submit();
-    }
+  submitFormPay() {
+
+    const form = document.getElementById('returForm') as HTMLFormElement;
+    form.submit();
   }
 
   /*
