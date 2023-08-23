@@ -12,6 +12,7 @@ import { PaymentServices } from 'src/app/payment/providers/payment.service';
 import { PayResponse } from 'src/app/payment/models/payResponse.models';
 import { Venta } from 'src/app/payment/models/venta.models';
 import { DetalleVenta } from 'src/app/payment/models/details_venta';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -30,7 +31,12 @@ export class ConfirmationRentComponent implements OnInit {
   public nameLender: string | undefined;
   public lastNameLender: string|undefined;
   public user: User= new User;
-  public minDate: string = new Date().toISOString();
+
+  public minDateStart: Date = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()-1);
+  public minStrStart:any;
+
+  public minDateEnd : Date = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+  public minStrEnd:any;
 
 
   @ViewChild('paymentForm') paymentForm: ElementRef | undefined;
@@ -50,8 +56,8 @@ export class ConfirmationRentComponent implements OnInit {
     private toolService: ToolServiceNew,
     private paymentServices:PaymentServices,
     private utilservice: UtilService,
-    private cdr: ChangeDetectorRef
-
+    private cdr: ChangeDetectorRef,
+    private datePipe : DatePipe
 
   ) {
     this.id = 0;
@@ -63,30 +69,43 @@ export class ConfirmationRentComponent implements OnInit {
   ngOnInit(): void {
     this.getToolDetail();
     this.getUser();
-    console.log(this.minDate)
+    this.setMinstartDate();//valor inicial del calendario startDate
+    this.setMinEndDate();//valor inicial endDate
+  }
 
+  setMinstartDate(){
+    this.minStrStart = this.datePipe.transform(this.minDateStart,"yyyy-MM-dd");
+  }
+
+  setMinEndDate(){
+    this.minStrEnd = this.datePipe.transform(this.minDateEnd,"yyyy-MM-dd");
   }
 
   setInitialDate(event:any):void{
     this.startDate = event.target.value;
+    this.CalcDays();
   }
 
-setEndDate(event:any){
-  this.endDate = event.target.value;
+  setEndDate(event:any):void{
+    this.endDate = event.target.value;
+    this.CalcDays();
+  }
 
-  const initialDate = new Date (this.startDate);
-  const finalDate = new Date(this.endDate);
-   let c= initialDate;
-   const dates = [];
+  CalcDays(){
+    const initialDate = new Date (this.startDate);
+    const finalDate = new Date(this.endDate);
+    let c= initialDate;
+    const dates = [];
 
-  while(c <= finalDate){
-  dates.push(new Date(c))
-     c.setDate(c.getDate()+1)
-   }
-   this.days = dates.length-1;
-  this.total = this.days * this.tool.valueRent;
+    while(c <= finalDate){
+    dates.push(new Date(c))
+      c.setDate(c.getDate()+1)
+    }
+    this.days = dates.length-1;
+    this.total = this.days * this.tool.valueRent;
+  }
 
-}
+  
 
 
 getUser():void{

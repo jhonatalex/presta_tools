@@ -35,7 +35,7 @@
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                           <label for="starDate">Fecha inicial de arriendo</label>
-                                          <input id="starDate" class="form-control" type="date" min="2023-08-20" value="2023-08-20" required (change)="setInitialDate($event)"/>
+                                          <input id="starDate" class="form-control" type="date" [min]="minStrStart" (change)="setInitialDate($event)" required/>
                                         </div>
 
 
@@ -58,7 +58,7 @@
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                           <label for="starDate">Fecha Final de arriendo</label>
-                                          <input id="endDate" class="form-control" type="date" value="" required (change)="setEndDate($event)"/>
+                                          <input id="endDate" class="form-control" type="date" [min]="minStrEnd" (change)="setEndDate($event)" required />
                                         </div>
 
                                     </div>

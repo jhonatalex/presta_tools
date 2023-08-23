@@ -283,7 +283,7 @@ padding-top: 10px;
 
 
 /*ESTILOS PARA RESPONSIVE*/
-@media (max-width:355px){
+@media (max-width:480px){
   
         .seccion-imagen{
             max-width: 50%;
