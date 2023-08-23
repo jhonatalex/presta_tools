@@ -11,6 +11,10 @@
 npm-debug.log
 yarn-error.log
 
+
+#eviroment
+/eviroments
+
 # IDEs and editors
 .idea/
 .project
