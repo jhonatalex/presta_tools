@@ -73,3 +73,17 @@ select option {
 }
 
 
+.imagen-clp{
+  margin: 0px;
+  padding: 0px;
+  width: 43px;
+  height: 33px;
+  position: relative;
+  left: 70px;
+  top: 35px;
+  opacity: 0.4;
+}
+
+
+
+
