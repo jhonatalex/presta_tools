@@ -12,8 +12,9 @@ npm-debug.log
 yarn-error.log
 
 
-#eviroment
+#eviroment Variables de Entorno
 /eviroments
+.env
 
 # IDEs and editors
 .idea/

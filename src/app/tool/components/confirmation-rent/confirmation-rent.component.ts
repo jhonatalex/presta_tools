@@ -134,20 +134,20 @@ this.route.params.subscribe(params =>{
 
     //VENTA
     var venta: Venta = new Venta();
-    venta.IdUser = this.user.email;
-    venta.NumberComprobante= buyOrder;
-    venta.State=false;
-    venta.TypeComprobante="Boleta";
+    venta.idUser = this.user.email;
+    venta.numberComprobante= buyOrder;
+    venta.state=false;
+    venta.typeComprobante="Boleta";
 
     //TABLA DETALLE VENTA
     var detalleVenta: DetalleVenta = new DetalleVenta();
-    detalleVenta.Amount=amount;
-    detalleVenta.IdTool=  this.tool.id;
-    detalleVenta.Price = this.tool.valueRent;
-    detalleVenta.RentalDays=this.days;
-    detalleVenta.StartDate= this.startDate.toString();
-    detalleVenta.EndDate = this.endDate.toString();
-    detalleVenta.Total = this.total;
+    detalleVenta.amount=amount;
+    detalleVenta.idTool=  this.tool.id;
+    detalleVenta.price = this.tool.valueRent;
+    detalleVenta.rentalDays=this.days;
+    detalleVenta.startDate= this.startDate.toString();
+    detalleVenta.endDate = this.endDate.toString();
+    detalleVenta.total = this.total;
 
     //Pay DATA
     var payData:PayData= new PayData();
