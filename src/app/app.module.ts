@@ -50,7 +50,9 @@ import { VerifyUserComponent } from './Lender/components/verify-user/verify-user
 import { PaymentGatewayComponent } from './payment/components/payment-gateway/payment-gateway.component';
 import { JwtInterceptor } from './login/auth/jwt-interceptor.interceptor';
 import { DatePipe } from '@angular/common';
-//import { NgxPaginationModule } from 'ngx-pagination/dist/ngx-pagination.module';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
 
 
 
@@ -91,7 +93,7 @@ import { DatePipe } from '@angular/common';
     ReactiveFormsModule,
     SlickCarouselModule,
     NgxStarRatingModule,
-    //NgxPaginationModule,
+    NgxPaginationModule,
 
 
 
