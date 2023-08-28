@@ -5,12 +5,12 @@
 
 
         <div  ngxSlickItem *ngFor="let tool of tools" class=" h-100 m-1"> <!-- col-12 col-sm-6 col-md-4 col-lg-3 -->
-            <div class="card-product shadow bg-white">
-              <figure class="card d-flex justify-content-center align-items-center vh40">
+            <div class="card-product card bg-white">
+              <figure class="card shadow d-flex justify-content-center align-items-center vh30">
                 <img src={{tool.urlImage}}
                   alt="Imagen dinámica" class="card-img">
               </figure>
-              <div class="d-flex flex-column justify-content-between align-items-center text-center vh40">
+              <div class="d-flex flex-column justify-content-between align-items-center text-center vh25">
                 <div class="m-1">
                   <h6><b>{{tool.name}} {{tool.model}}</b></h6>
                   <p>Precio Alquiler: {{tool.valueRent}} CLP</p>
@@ -21,6 +21,7 @@
       
             </div>
           </div>
+
         <!-- <div ngxSlickItem *ngFor="let tool of tools" class="slide d-flex justify-content-center align-items-center">
            
             <div class="card shadow div-card d-flex justify-content-center align-items-center">
