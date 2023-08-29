@@ -1,22 +1,32 @@
+
+
 <!--SECCION NAVBAR-->
 <app-header [flaglogo]="false"></app-header>
 
 <!--SECCION NOMBRE-MODELO BUSCAR TOOL-->
 <section id="detalle-herramienta" class="fondo py-5">
 
-    <div class="container col-md-10 widthMax pt-5">
-        <div class="row pt-5">
-           <div class="col-sm-10 col-md-6 col-lg-6">
-                <h1 class="margin-title text-size-1 "><strong>{{tool.name}}</strong></h1>
-                <div class="row">
-                    <div class="col margin-title">
-                </div>
-                  <div class="col"><small class="marginSmall">0 veces reservado|Propietario:</small></div>
-                </div>
+    <div class="container col-md-10 pt-5">
+        <div class="row pt-5 estilos-contenedor">
+           <div class="col-md-6 col-sm-12">
+
+             <section class="seccion-nombre-producto">
+              <h1 class="margin-title text-size-1 "><strong>{{tool.name}}</strong></h1>
+              <div class="row">
+                  <div class="col margin-title">
+              </div>
+                <div class="col"><small class="marginSmall">0 veces reservado|Propietario:</small></div>
+              </div>
+             </section>
+                
            </div>
-            <div class="col-md-6 contenedor-buscar mt-2">
+            <div class="col-md-6 col-sm-12 contenedor-buscar mt-2">
+
+              <section class="seccion-buscar-producto">
                 <button class="btn btn-light border-0"><i class="fa fa-search" aria-hidden="true"></i></button>
                 <input type="text" placeholder="Buscar Producto" class="input-buscar fondo">
+              </section>
+               
             </div>
         </div>
     </div>
@@ -25,26 +35,36 @@
         <div class="row py-2 div-cards">
 
                 <!---GALERIA IMAGENES HERRAMIENTA-->
-               <div class="container fluid col-md-6">
-                    <div class="img-container">
-                            <img src="{{tool.urlImage}}" alt="image" id="preview" class="img-fluid card shadow imagen-big">
-                        <div class="img-prev text-center card-body">
-                            <div class="img-slide active">
-                                <img src="{{tool.urlImage}}" alt="image1" class="img-fluid card shadow imagen-small" appImageGallery>
-                            </div>
-                            <div class="img-slide">
-                                <img src="{{tool.urlImage2}}" alt="image2" class="img-fluid card shadow imagen-small" appImageGallery>
-                            </div>
-                            <div class="img-slide">
-                                <img src="{{tool.urlImage3}}" alt="image3" class="img-fluid card shadow imagen-small" appImageGallery>
-                            </div>
+               <div class="container fluid col-md-6 col-sm-12">
+
+                 <section class="col-sm-12 seccion-imagen">
+                  <div class="img-container">
+                    <img src="{{tool.urlImage}}" alt="image" id="preview" class="img-fluid card shadow imagen-big">
+                    <div class="img-prev text-center card-body">
+
+                      <section class="secion-img-small">
+                        <div class="img-slide active">
+                          <img src="{{tool.urlImage}}" alt="image1" class="img-fluid card shadow imagen-small" appImageGallery>
                         </div>
+                        <div class="img-slide">
+                          <img src="{{tool.urlImage2}}" alt="image2" class="img-fluid card shadow imagen-small" appImageGallery>
+                        </div>
+                        <div class="img-slide">
+                          <img src="{{tool.urlImage3}}" alt="image3" class="img-fluid card shadow imagen-small" appImageGallery>
+                        </div>
+                      </section>
+                       
                     </div>
+                </div>
+                 </section>
+                   
                </div>
 
 
             <!--DESCRIPCION HERRAMIENTA-->
-            <div class="card shadow col-md-6 div-card-small caracteristicas ">
+            <div class="card shadow col-md-6 div-card-small div-producto ">
+
+              <section class="seccion-producto">
                 <h2 class="mt-2 text-center"><strong>{{tool.name}}</strong></h2>
                 <hr class="bg-dark">
                 <p class="margin"><strong>Codigo: </strong>{{tool.reference}}</p>
@@ -64,6 +84,8 @@
                 <p class="negrita">valoraciones!</p>
                 <ngb-rating [max]="5" >{{tool.rate}}</ngb-rating>
                 <a [routerLink]="['/confirma-renta',this.id]" class="btn-blue-grad mb-2 px-5 py-2 border-0 col-md-8 mx-auto">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
+              </section>
+        
             </div>
 
         </div>
@@ -83,7 +105,7 @@
                 <p><strong class="py-2"></strong>{{lender?.rate}} </p>
              </div>
 
-             <div class="col d-flex flex-column justify-content-center align-items-center pt-2">
+             <div class="col d-flex flex-column justify-content-center align-items-center pt-2 div-estadisticas">
 
                 <strong class="titulo-negrita py-2">Estadisticas Propietario</strong>
                 <ul aria-hidden="true" class="ui-thermometer" value="5">
@@ -144,7 +166,7 @@
 
 <section id="productos-relacionados" class="fondo pb-5">
      <!---SLIDER PRODUCTOS RELACIONADOS-->
-     <div class="card shadow content-procucts pt-100 mx-auto">
+     <div class="card shadow content-products pt-100 mx-auto">
         <strong class="px-2 pb-0 titulo-negrita">Productos destacados</strong>
         <app-related-featured-products></app-related-featured-products>
     </div>

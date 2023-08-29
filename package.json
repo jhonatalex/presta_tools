@@ -32,7 +32,7 @@
     "jquery-validation": "^1.19.5",
     "marked": "^6.0.0",
     "ngx-bootstrap": "^11.0.2",
-    "ngx-pagination": "^6.0.3",
+    "ngx-pagination": "^6.0.2",
     "ngx-slick-carousel": "^0.6.0",
     "ngx-spinner": "^14.0.0",
     "ngx-star-rating": "^2.1.0",

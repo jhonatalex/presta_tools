@@ -49,7 +49,10 @@ import { EditCategoryComponent } from './category/components/edit-category/edit-
 import { VerifyUserComponent } from './Lender/components/verify-user/verify-user.component';
 import { PaymentGatewayComponent } from './payment/components/payment-gateway/payment-gateway.component';
 import { JwtInterceptor } from './login/auth/jwt-interceptor.interceptor';
-//import { NgxPaginationModule } from 'ngx-pagination/dist/ngx-pagination.module';
+import { DatePipe } from '@angular/common';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
 
 
 
@@ -90,7 +93,7 @@ import { JwtInterceptor } from './login/auth/jwt-interceptor.interceptor';
     ReactiveFormsModule,
     SlickCarouselModule,
     NgxStarRatingModule,
-    //NgxPaginationModule,
+    NgxPaginationModule,
 
 
 
@@ -112,7 +115,8 @@ import { JwtInterceptor } from './login/auth/jwt-interceptor.interceptor';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
