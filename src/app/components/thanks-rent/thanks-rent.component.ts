@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-thanks-rent',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThanksRentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
+    const navigationState = this.route.getCurrentNavigation()?.extras?.state;
+    const responseApi = navigationState?.['responseApi'];
+
+    if (responseApi) {
+     console.log(responseApi);
+    }
   }
 
 }

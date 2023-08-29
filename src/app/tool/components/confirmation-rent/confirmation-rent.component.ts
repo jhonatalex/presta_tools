@@ -105,7 +105,7 @@ export class ConfirmationRentComponent implements OnInit {
     this.total = this.days * this.tool.valueRent;
   }
 
-  
+
 
 
 getUser():void{
@@ -147,7 +147,7 @@ this.route.params.subscribe(params =>{
     let sessionId = "S-" + Math.floor(Math.random() * 10000) + 1;
 
 
-    var amount:number = 1000;
+    var amount:number = this.total;
     var returnUrl ="http://localhost:4200/confirmar-transaccion"
 
 
@@ -176,7 +176,6 @@ this.route.params.subscribe(params =>{
     payData.returnUrl=returnUrl;
     payData.ventum = venta;
     payData.detalleVentum = detalleVenta;
-
 
 
     this.iniciarTransaccion(payData);

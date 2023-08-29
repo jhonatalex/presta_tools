@@ -51,6 +51,7 @@ import { PaymentGatewayComponent } from './payment/components/payment-gateway/pa
 import { JwtInterceptor } from './login/auth/jwt-interceptor.interceptor';
 import { DatePipe } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FailsTransactionComponent } from './components/fails-transaction/fails-transaction.component';
 
 
 
@@ -81,6 +82,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     EditCategoryComponent,
     VerifyUserComponent,
     PaymentGatewayComponent,
+    FailsTransactionComponent,
 
 
 

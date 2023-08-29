@@ -85,5 +85,6 @@ export const PathTool = {
   saveTool: 'api/tool/insert',
 
   initPay:'api/Venta/iniciar-transaccion',
+  commitPay:'api/Venta/confirmar-transaccion',
 
 };
