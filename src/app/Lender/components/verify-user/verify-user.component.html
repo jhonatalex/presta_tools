@@ -84,19 +84,7 @@
 
 
                         </div>
-                        <div class="col-12 d-flex flex-column">
-                            <label for="direccion" class="">Dirección</label>
-                            <input type="direccion" [(ngModel)]="user.address" #address="ngModel" class=" border"
-                                name="address" id="direccion" required>
-                            <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">Debe
-                                colocar una dirección</small>
-                        </div>
-
-
-                        <div class="mt-3 text-center py-3">
-                            <button type="submit" class="btn-blue-grad w-75"
-                                [disabled]=confirmForm.invalid>Enviar</button>
-                        </div>
+                        
                     </form>
                 </div>
             </div>
