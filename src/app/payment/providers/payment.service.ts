@@ -12,6 +12,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { catchError, finalize, from, map, of, tap } from 'rxjs';
 import { PayData } from '../models/payData.models';
 import { PayResponse } from '../models/payResponse.models';
+import { NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 
 //import { RegisterRS } from '../models/registerRS.model';
 
@@ -22,6 +24,7 @@ export class PaymentServices {
 
   constructor(private callManSV: CallerManagerService,
               private spinner: NgxSpinnerService,
+              private router: Router,
               private sweetUIService:SweetUIService,
               private storage: AngularFireStorage,
               private utilService: UtilService) { }
@@ -49,19 +52,43 @@ export class PaymentServices {
 
 
 
-  private manageResponse(responseApi:ResponseApi){
+  public verifyTransaction(toke_ws:string): void {
+    this.spinner.show();
 
-    if(responseApi.success){
-      this.sweetUIService.alertConfirm('Mensaje',responseApi.message,'success')
-      .then(()=>{
+    const url = `${environment.baseUrl}${PathTool.commitPay}`;
 
-        this.utilService.navigateToPath('/')
+    this.callManSV.postData(url,toke_ws).then((response:any)=>{
+       this.manageResponse(response);
+     })
+     .catch((error:any)=>{
+       this.manageError(error);
+     })
+     .finally(()=>this.spinner.hide())
 
-      })
-      .catch((e:any)=>{console.log(e);})
-    }else{
-      this.sweetUIService.alertConfirm('Alerta',responseApi.message ,'error')
-      console.log(responseApi.Error?.message)
+  }
+
+
+
+
+  private manageResponse(responseApi: ResponseApi) {
+    if (responseApi.success) {
+
+          const navigationExtras: NavigationExtras = {
+            state: { responseApi } // Pasamos el objeto responseApi como parte del estado de navegación
+          };
+
+          this.router.navigate(['/gracias'], navigationExtras)
+
+
+    } else {
+
+      const navigationExtras: NavigationExtras = {
+        state: { responseApi } // Pasamos el objeto responseApi como parte del estado de navegación
+      };
+
+      this.router.navigate(['/transaccion-fallida'], navigationExtras)
+
+      console.log(responseApi.Error?.message);
     }
   }
 

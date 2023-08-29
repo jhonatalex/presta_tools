@@ -22,6 +22,7 @@ import { VerifyUserComponent } from './Lender/components/verify-user/verify-user
 import { HasRoleGuard } from './login/auth/has-role.guard';
 import { VerifyGuard } from './login/auth/verify.guard';
 import { PaymentGatewayComponent } from './payment/components/payment-gateway/payment-gateway.component';
+import { FailsTransactionComponent } from './components/fails-transaction/fails-transaction.component';
 
 const routes: Routes = [
 
@@ -61,6 +62,11 @@ const routes: Routes = [
 
   {
     path: 'gracias', component: ThanksRentComponent,
+    canActivate:[VerifyGuard]
+  },
+
+  {
+    path: 'transaccion-fallida', component: FailsTransactionComponent,
     canActivate:[VerifyGuard]
   },
 

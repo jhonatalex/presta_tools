@@ -1,6 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PaymentServices } from '../../providers/payment.service';
+import { ResponseApi } from 'src/app/shared/models/responseApi.model';
+import { Venta } from '../../models/venta.models';
+import { DetailedPeerCertificate } from 'tls';
+import { DetalleVenta } from '../../models/details_venta';
 
 @Component({
   selector: 'app-payment-gateway',
@@ -9,7 +14,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PaymentGatewayComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+    public venta : Venta = new Venta();
+    public detalleVenta: DetalleVenta = new DetalleVenta();
+
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private paymentServices:PaymentServices,
+
+
+    ) { }
 
 
   ngOnInit() {
@@ -17,7 +31,6 @@ export class PaymentGatewayComponent implements OnInit {
       const token = params['token_ws'];
 
       if (token) {
-        // Aquí tienes el token, ahora puedes enviarlo a otra API
         this.enviarTokenParaConfirmarTransaccion(token);
       }
     });
@@ -28,13 +41,7 @@ export class PaymentGatewayComponent implements OnInit {
     const otraAPIUrl = 'URL_DE_LA_OTRA_API';
     const data = { token_ws: token };
 
-
-
-
-
-
-
-
+    this.paymentServices.verifyTransaction(token);
 
 
   }

@@ -8,9 +8,9 @@ export const environment = {
   production: false,
   baseUrl: new Constants().getProdApiURL(),
   firebaseConfig : {
-    apiKey: "AIzaSyChCasCEmUn6TzMTTPSUITxLL5uZ6TRxTI",
-    authDomain: "prestatools-35370.firebaseapp.com",
-    projectId: "prestatools-35370",
+    apiKey: import.meta.env.NG_APP_FIREBASE.apiKey ,
+    authDomain: import.meta.env.NG_APP_FIREBASE.authDomain,
+    projectId: import.meta.env.NG_APP_FIREBASE.proyecId,
     storageBucket: "prestatools-35370.appspot.com",
     messagingSenderId: "218432434957",
     appId: "1:218432434957:web:4f0ae3ac846cb2debaf644",

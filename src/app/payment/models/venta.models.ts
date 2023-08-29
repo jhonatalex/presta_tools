@@ -1,14 +1,14 @@
 export class Venta {
 
-TypeComprobante: string ='';
+typeComprobante: string ='';
 
-NumberComprobante: string ='';
+numberComprobante: string ='';
 
-IdUser: string ='';
+idUser: string ='';
 
-Date :string =new Date().toISOString();
+date :string =new Date().toISOString();
 
-State:boolean = false;
+state:boolean = false;
 
 
 }

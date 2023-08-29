@@ -1,14 +1,14 @@
 export class DetalleVenta {
-  IdVenta: number=0;
-  IdTool: number=0;
-  Amount: number=0;
-  Date: string = new Date().toISOString();
-  Price: number=0;
-  Descuento: number=0;
-  Total: number=0;
-  StartDate: string = '';
-  EndDate: string = '';
-  RentalDays: number=0;
+  idVenta: number=0;
+  idTool: number=0;
+  amount: number=0;
+  date: string = new Date().toISOString();
+  price: number=0;
+  descuento: number=0;
+  total: number=0;
+  startDate: string = '';
+  endDate: string = '';
+  rentalDays: number=0;
 
 }
 
