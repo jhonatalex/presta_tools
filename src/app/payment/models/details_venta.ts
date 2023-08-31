@@ -9,6 +9,9 @@ export class DetalleVenta {
   startDate: string = '';
   endDate: string = '';
   rentalDays: number=0;
-
+  Token:string='';
+  BuyOrder:string='';
+  SessionId:string='';
+  PaymentTypeCode='';
 }
 

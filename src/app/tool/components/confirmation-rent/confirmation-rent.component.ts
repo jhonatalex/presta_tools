@@ -164,6 +164,7 @@ this.route.params.subscribe(params =>{
     detalleVenta.idTool=  this.tool.id;
     detalleVenta.price = this.tool.valueRent;
     detalleVenta.rentalDays=this.days;
+    detalleVenta.BuyOrder=buyOrder;
     detalleVenta.startDate= this.startDate.toString();
     detalleVenta.endDate = this.endDate.toString();
     detalleVenta.total = this.total;
