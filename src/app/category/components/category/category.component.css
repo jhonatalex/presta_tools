@@ -51,9 +51,10 @@
     text-shadow: 2px 2px #000000;
 }
 
-.content-procucts {
-    width: 88%;
-    height: 490px;
+.content-products {
+    
+    width: 93%;
+    height: 545px;
     border-radius: 18px;
     padding: 5px;
 }

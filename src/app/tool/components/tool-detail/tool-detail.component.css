@@ -36,7 +36,7 @@
     width: 500px;
     height: 700px;
     position: relative;
-    left: 47px;
+    left: 45px;
 }
 
 .margin{
@@ -73,8 +73,10 @@
 }
 
 .content-products{
-      width: 162vh;
-      height: 70vh;
+    width: 90%;
+    height: 570px;
+    border-radius: 18px;
+    padding: 5px;
 }
 
 
@@ -175,10 +177,11 @@
 }
 
 .imagen-big{
-width: 100%;
-height: 109%;
-padding:22px;
-margin-left: -55px;
+width: 720px;
+height: 700px;
+padding:25px;
+margin-left: -53px;
+
 }
 
 .imagen-small{
@@ -193,7 +196,7 @@ margin-left: -55px;
 
 .img-slide{
     display: inline-block;
-    width: 24%;
+    width: 30vh;
     margin: 0 1px;
     cursor: pointer;
     opacity: 0.5;
@@ -201,6 +204,11 @@ margin-left: -55px;
 
 .active{
     opacity: 1;
+}
+
+
+.seccion-img-small{
+    margin-left: -53px;
 }
 
 .ui-box-component-pdp__visible--desktop {
@@ -282,6 +290,10 @@ padding-top: 10px;
 
 }
 
+.text-small{
+    font-size: small;
+}
+
 
 /*ESTILOS PARA RESPONSIVE*/
 @media (max-width:455px){
@@ -309,6 +321,11 @@ padding-top: 10px;
             max-height: 40%;
             display: flex;
             margin-left: 20px;
+           
+        }
+
+        .img-slide{
+            width: 30vh;
         }
 
         .img-slide img{
@@ -386,3 +403,8 @@ padding-top: 10px;
    
     
   }
+
+
+
+
+  
