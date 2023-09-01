@@ -164,6 +164,7 @@ this.route.params.subscribe(params =>{
     detalleVenta.idTool=  this.tool.id;
     detalleVenta.price = this.tool.valueRent;
     detalleVenta.rentalDays=this.days;
+    detalleVenta.BuyOrder=buyOrder;
     detalleVenta.startDate= this.startDate.toString();
     detalleVenta.endDate = this.endDate.toString();
     detalleVenta.total = this.total;
@@ -177,17 +178,14 @@ this.route.params.subscribe(params =>{
     payData.ventum = venta;
     payData.detalleVentum = detalleVenta;
 
-
-    this.iniciarTransaccion(payData);
+    console.log(payData);
+    //this.iniciarTransaccion(payData);
 
   }
 
 
 
-
   async iniciarTransaccion(payData:PayData){
-
-    console.log(payData);
 
     this.paymentServices.initTransaction(payData).subscribe((response:PayResponse)=>{
     this.responseModel=response;
