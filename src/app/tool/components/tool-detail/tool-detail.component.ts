@@ -42,8 +42,8 @@ export class ToolDetailComponent implements OnInit {
 
     this.rating3 = 0;
     this.form = this.fb.group({
-      rating1: ['', Validators.required],
-      rating2: [4]
+      rating1: [3, Validators.required],
+      rating2: [5, Validators.required]
     });
   }
 
