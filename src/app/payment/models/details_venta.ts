@@ -12,6 +12,6 @@ export class DetalleVenta {
   Token:string='';
   BuyOrder:string='';
   SessionId:string='';
-  PaymentTypeCode='';
+  PaymentTypeCode:string='';
 }
 
