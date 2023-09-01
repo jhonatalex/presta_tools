@@ -178,8 +178,8 @@ this.route.params.subscribe(params =>{
     payData.ventum = venta;
     payData.detalleVentum = detalleVenta;
 
-
-    this.iniciarTransaccion(payData);
+    console.log(payData);
+    //this.iniciarTransaccion(payData);
 
   }
 
@@ -188,7 +188,7 @@ this.route.params.subscribe(params =>{
 
   async iniciarTransaccion(payData:PayData){
 
-    console.log(payData);
+
 
     this.paymentServices.initTransaction(payData).subscribe((response:PayResponse)=>{
     this.responseModel=response;
