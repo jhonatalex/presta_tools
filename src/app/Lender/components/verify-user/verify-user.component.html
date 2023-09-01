@@ -26,7 +26,7 @@
                                             </div>
 
                                             <div class="form-group mt-4 mxauto">
-                                              <label for="region" class="mx-4">Región</label>
+                                              <label for="region" class="ms-5 me-5">Región</label>
                                               <select  name="region" #region="ngModel" [(ngModel)]="selectedRegion" (ngModelChange)="onSelectRegion()" required>
                                                 <option selected>Seleccione una Región</option>
                                                 <option *ngFor="let region of regiones" [value]="region">{{region}}</option>
@@ -47,7 +47,7 @@
                                             </div>
 
                                             <div class="form-group mt-4 mxauto">
-                                              <label for="comuna" class="mx-4">Comuna</label>
+                                              <label for="comuna" class="margin-32px">Comuna</label>
                                               <select  name="comuna" [(ngModel)]="selectedComuna" (ngModelChange)="onSelectComuna()" required>
                                                 <option selected>Seleccione una Comuna</option>
                                                 <option *ngFor="let comuna of comunas" value={{comuna}}>{{comuna}}</option>
@@ -57,16 +57,20 @@
 
 
                                     <div class="row">
-                                        <div class="col col-md-6"><div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
-                                            <label for="direccion" class="form-label mb-0">Dirección</label>
-                                            <input type="text"  #address="ngModel" [(ngModel)]="user.address" class="form-control-sm border input-caracteristicas" name="address" id="direccion" required>
-                                            <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">Debe colocar una dirección</small>
-                                        </div></div>
-                                        <div class="col col-md-6"><div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
-                                            <label for="dIdentidad" class="form-label mb-0">Número de Rut</label>
-                                            <input type="text"  #dIdentidad="ngModel" [(ngModel)]="user.dIdentidad" class="form-control-sm border input-caracteristicas" name="dIdentidad" id="direccion" required>
-                                            <small *ngIf="!dIdentidad.valid && dIdentidad.touched" class="invalid-feedback d-block">No puede quedar vaío</small>
-                                        </div></div>
+                                        <div class="col col-md-6">
+                                            <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
+                                                <label for="direccion" class="form-label mb-0 ms-4">Dirección</label>
+                                                <input type="text"  #address="ngModel" [(ngModel)]="user.address" class="form-control-sm border input-caracteristicas width-442" name="address" id="direccion" required>
+                                                <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">Debe colocar una dirección</small>
+                                            </div>
+                                        </div>
+                                        <div class="col col-md-6">
+                                            <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
+                                                <label for="dIdentidad" class="form-label mb-0 margin-32">Número de Rut</label>
+                                                <input type="text"  #dIdentidad="ngModel" [(ngModel)]="user.dIdentidad" class="form-control-sm border input-caracteristicas width-442px" name="dIdentidad" id="direccion" required>
+                                                <small *ngIf="!dIdentidad.valid && dIdentidad.touched" class="invalid-feedback d-block">No puede quedar vacío</small>
+                                            </div>
+                                        </div>
                                     </div>
 
 

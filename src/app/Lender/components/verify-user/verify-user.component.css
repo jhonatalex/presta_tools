@@ -38,12 +38,33 @@ select {
   border-radius: 8px; /* Bordes redondeados */
   background-color: #f5f5f5; /* Color de fondo */
   appearance: none; /* Eliminar los estilos por defecto del select */
-  width: 70%; /* Ancho del select para ocupar todo el espacio disponible */
+  width: 63%; /* Ancho del select para ocupar todo el espacio disponible */
+}
+
+
+.margin-32px{
+  margin-left: 43px;
+  margin-right: 38px;
 }
 
 /* Estilos para las opciones del select */
 select option {
   font-size: 14px; /* Tamaño de fuente para las opciones */
+}
+
+
+.width-442px{
+  width: 441px;
+  margin-left: 30px;
+}
+
+.width-442{
+  width: 441px;
+  margin-left: 23px;
+}
+
+.margin-32{
+  margin-left: 32px;
 }
 
 
