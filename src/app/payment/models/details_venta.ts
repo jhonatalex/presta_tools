@@ -13,5 +13,8 @@ export class DetalleVenta {
   BuyOrder:string='';
   SessionId:string='';
   PaymentTypeCode:string='';
+  InstallmentsAmount:number=0;
+  InstallmentsNumber:number=0;
+
 }
 

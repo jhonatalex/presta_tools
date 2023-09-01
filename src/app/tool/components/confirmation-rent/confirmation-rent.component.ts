@@ -185,10 +185,7 @@ this.route.params.subscribe(params =>{
 
 
 
-
   async iniciarTransaccion(payData:PayData){
-
-
 
     this.paymentServices.initTransaction(payData).subscribe((response:PayResponse)=>{
     this.responseModel=response;
