@@ -15,7 +15,13 @@ export class ThanksRentComponent implements OnInit {
     const responseApi = navigationState?.['responseApi'];
 
     if (responseApi) {
+
+
+
      console.log(responseApi);
+
+
+
     }
   }
 

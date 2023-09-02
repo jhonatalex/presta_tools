@@ -29,7 +29,7 @@ export class PaymentGatewayComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       const token = params['token_ws'];
-
+      console.log(token);
       if (token) {
         this.enviarTokenParaConfirmarTransaccion(token);
       }
@@ -39,9 +39,11 @@ export class PaymentGatewayComponent implements OnInit {
 
   enviarTokenParaConfirmarTransaccion(token: string) {
     const otraAPIUrl = 'URL_DE_LA_OTRA_API';
-    const data = { token_ws: token };
+    const data = { 'tokenPasarela': token };
 
-    this.paymentServices.verifyTransaction(token);
+
+    console.log(data);
+    this.paymentServices.verifyTransaction(data);
 
 
   }

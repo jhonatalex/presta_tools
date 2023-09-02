@@ -52,12 +52,14 @@ export class PaymentServices {
 
 
 
-  public verifyTransaction(toke_ws:string): void {
+  public verifyTransaction(toke_ws:any): void {
     this.spinner.show();
 
     const url = `${environment.baseUrl}${PathTool.commitPay}`;
 
     this.callManSV.postData(url,toke_ws).then((response:any)=>{
+
+      console.log(response)
        this.manageResponse(response);
      })
      .catch((error:any)=>{
@@ -86,7 +88,7 @@ export class PaymentServices {
         state: { responseApi } // Pasamos el objeto responseApi como parte del estado de navegación
       };
 
-      this.router.navigate(['/transaccion-fallida'], navigationExtras)
+          this.router.navigate(['/transaccion-fallida'], navigationExtras)
 
       console.log(responseApi.Error?.message);
     }
