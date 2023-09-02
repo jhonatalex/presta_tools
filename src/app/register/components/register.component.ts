@@ -31,8 +31,8 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(form:NgForm):void{
     this.user.id = this.generarIdUnicoNumerico();
+    console.log(this.user)
     this.resgisterService.register(this.user);
-
   }
 
 

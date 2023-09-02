@@ -28,6 +28,7 @@ export class VerifyUserComponent implements OnInit {
   public selectedComuna: string | null = null;
   public regiones: string[]=[];
   public comunas: string[]=[];
+  public ConfirmPassword:string='';
   
 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
@@ -47,6 +48,7 @@ export class VerifyUserComponent implements OnInit {
    this.user  = new User;
    this.userUpdate = new UserUpdate;
     this.lender = new Lender;
+
   }
 
   ngOnInit(): void {
@@ -77,8 +79,6 @@ export class VerifyUserComponent implements OnInit {
     this.userUpdate.lastName = this.user.lastName;
     this.userUpdate.email = this.user.email;
     this.userUpdate.telephone = this.user.telephone;
-
-    console.log(this.userUpdate)
   }
 //obtiene la region del array REGIONES(shared->constants)
   getRegionesArray():void {
@@ -123,8 +123,10 @@ export class VerifyUserComponent implements OnInit {
     //datos del formualario
     this.userUpdate.address = this.user.address;
     this.userUpdate.dIdentidad = this.user.dIdentidad;
+    this.userUpdate.password = this.user.password;
 
     this.lender.id = this.generarIdUnicoNumerico();
+    this.lender.password = this.user.password;
     //datos recogidos del formulario
     this.lender.address = this.user.address;
     this.lender.dIdentidad = this.user.dIdentidad;
