@@ -8,7 +8,7 @@ idUser: string ='';
 
 date :string =new Date().toISOString();
 
-state:boolean = false;
+state:string = '';
 
 
 }

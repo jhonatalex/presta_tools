@@ -118,8 +118,8 @@ getUser():void{
 getToolDetail(): void{
 //obtener el  id de la URL
 this.route.params.subscribe(params =>{
- this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
- this.toolService.getDetailToolProviders(this.id).subscribe((response:ToolResponse)=>{
+  this.id = +params['id'];//guardamos parametro en la variable id y convertimos en entero
+  this.toolService.getDetailToolProviders(this.id).subscribe((response:ToolResponse)=>{
   this.tool = response
   this.nameLender = response.objetoLender?.name;
   this.lastNameLender = response.objetoLender?.lastName;
@@ -155,7 +155,7 @@ this.route.params.subscribe(params =>{
     var venta: Venta = new Venta();
     venta.idUser = this.user.email;
     venta.numberComprobante= buyOrder;
-    venta.state=false;
+    venta.state="pendiente";
     venta.typeComprobante="Boleta";
 
     //TABLA DETALLE VENTA
@@ -179,7 +179,7 @@ this.route.params.subscribe(params =>{
     payData.detalleVentum = detalleVenta;
 
     console.log(payData);
-    //this.iniciarTransaccion(payData);
+    this.iniciarTransaccion(payData);
 
   }
 
@@ -214,7 +214,7 @@ this.route.params.subscribe(params =>{
     form.submit();
   }
 
-  /*
+ /* 
   onSubmitPay(formulario:NgForm) {
 
     const formElement = document.getElementById(

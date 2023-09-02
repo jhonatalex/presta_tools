@@ -4,6 +4,7 @@ import { UtilService } from 'src/app/shared/services/util.service';
 import { Constants } from 'src/app/shared/constants/settings.class';
 import { environment } from 'src/environments/environment.prod';
 import { User } from 'src/app/register/models/user.model';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -21,21 +22,28 @@ export class HomeComponent implements OnInit {
 
   public categories:any;
   public user: User = new User();
+  public url: string ='';
   constructor(
     private utilService: UtilService,
+    private route:ActivatedRoute
   ){}
 
   ngOnInit(): void {
-    //this.getCategories();//ejecuta funcion al iniciar y obtiene las categorias
-
-    /*this.categoryService.editTool().subscribe(response=>{
-      console.log(response);
-    });*/
+   
     this.user = this.utilService.getFromLocalStorage(this.loginKey);
+    this.getUrlSegment()//para redireccion al entrar en verify-user
+
   }
 
 
-
+//obtiene el ultimo segmento de la ruta
+    getUrlSegment():void{
+      //obtener la URL
+      this.route.url.subscribe(params =>{
+      this.url = params[0].path + '/' + params[1].path;
+        console.log(this.url);
+      })
+    }
 
 
 

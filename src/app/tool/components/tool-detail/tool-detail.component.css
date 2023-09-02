@@ -163,7 +163,7 @@
 }
 
 .marginSmall{
-    margin-left: -165px;
+    margin-left: -145px;
 }
 
 
@@ -292,6 +292,14 @@ padding-top: 10px;
 
 .text-small{
     font-size: small;
+}
+
+
+
+.ngx-star{
+    margin: 0px;
+    padding: 0px;
+    display: flex !important;
 }
 
 

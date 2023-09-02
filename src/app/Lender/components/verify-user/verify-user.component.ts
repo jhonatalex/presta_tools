@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User, UserUpdate } from 'src/app/register/models/user.model';
 import { RegisterService } from 'src/app/register/providers/register.service';
 import { REGIONES } from 'src/app/shared/constants/regiones.class';
@@ -18,7 +18,7 @@ import { LenderService } from '../../providers/lender.service';
 })
 export class VerifyUserComponent implements OnInit {
 
-  @Input() urlDeVenida:string = '';
+  @Input()  urlRedireccion:string;//recibe url para redideccionar 
 
   public user: User;
   public token:string='';
@@ -43,16 +43,19 @@ export class VerifyUserComponent implements OnInit {
     private resgisterService: RegisterService,
     private lenderService: LenderService,
     private sweetUIService:SweetUIService,
+    private router: Router
   ) {
 
    this.user  = new User;
    this.userUpdate = new UserUpdate;
-    this.lender = new Lender;
-
+   this.lender = new Lender;
+   this.urlRedireccion = ''
   }
 
   ngOnInit(): void {
     //CAPTURA LA URL DE VENIDA
+    console.log(this.urlRedireccion);
+    
     this.getUser();
     this.getRegionesArray();
   }
@@ -144,7 +147,7 @@ export class VerifyUserComponent implements OnInit {
         //SET USER A LOCAL SOTORAGE
         this.utilservice.setToLocalStorage(this.loginKey +'D3V', this.userUpdate);
         //REDIRECCION ENVIAR A LA URL de DONDE VINO
-        // this.utilservice.navigateToPath('/producto/this.id');
+         this.utilservice.navigateToPath('/'+ this.urlRedireccion);
      }else{
       this.sweetUIService
       .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')

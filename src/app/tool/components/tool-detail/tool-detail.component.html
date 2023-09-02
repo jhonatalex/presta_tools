@@ -11,10 +11,15 @@
 
             <section class="seccion-nombre-producto">
               <h1 class="margin-title text-size-1 "><strong>{{tool.name}}</strong></h1>
-              <div class="row">
+              <div class="row pt-2">
                   <div class="col margin-title">
-              </div>
-                <div class="col"><small class="marginSmall">0 veces reservado|Propietario:</small> {{lender?.name + " " + lender?.lastName}}</div>
+                    <form [formGroup]="form1">
+                      <ngx-star-rating formControlName="rating1" class="ngx-star"></ngx-star-rating>
+                    </form>
+                  </div>
+                  <div class="col">
+                    <p class="marginSmall">Propietario: {{lender?.name + " " + lender?.lastName}}</p>
+                  </div>
               </div>
             </section>
                 
@@ -34,7 +39,7 @@
 
 
       <!--seccion galeria-->
-    <section id="seccion-galeria-imagen" class="fondo py-5">
+    <section id="seccion-galeria-imagen" class="fondo pt-4 pb-5">
         <div class="container  col-md-10">
           <div class="row py-2 div-cards">
 
@@ -85,10 +90,17 @@
                   </h6>
 
                   <p class="negrita">Rentado:</p>
-                  <p class="text-justify"><strong>DESCRIPCIÓN:</strong> <br> {{tool.description}}</p>
+                  <p class="text-justify"><strong>DESCRIPCIÓN:</strong> <br> {{tool.description}}</p><br>
                  <!-- <p class="negrita margin">¡Aún no se han encontrado</p>-->
-                  <p class="negrita">valoracion: </p><strong>{{lender?.rate}}</strong>  Star
-                  <ngx-star-rating formControlName="rating1" [id]="'[{{lender?.rate}}]'" [disabled] ="true"></ngx-star-rating>
+
+                 <div class="container ngx-star">
+                  <form [formGroup]="form1">
+                    <ngx-star-rating formControlName="rating1" class="ngx-star"></ngx-star-rating>
+                  </form>
+                </div>
+
+                  <p class="ms-2">valoracion: <strong>{{tool.rate}}</strong>  Star</p>
+                        
                   <a [routerLink]="['/confirma-renta',this.id]" class="btn-blue-grad mb-2 px-5 py-2 border-0 col-md-8 mx-auto">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
                 </section>
           
@@ -152,7 +164,7 @@
                     </div>
                     <div class="valoracion">
                         <p class="negrita text-center margin">Propietario</p>
-                            <form [formGroup]="form">
+                            <form [formGroup]="form2">
                               <!--
                               <div class="cont">
                                 <div class="stars">
@@ -166,7 +178,7 @@
 
                               <div class="cont">
                                   <div class="stars">
-                                    <ngx-star-rating formControlName="lender?.rate" [id]="'[{{lender?.rate}}]'" [disabled] ="true"></ngx-star-rating>
+                                    <ngx-star-rating formControlName="rating2" [disabled] ="true"></ngx-star-rating>
                                   </div>
                                   <div>Valoracion: <strong>{{lender?.rate}}</strong>  Star</div>
                                 </div>
@@ -185,8 +197,6 @@
             <app-related-featured-products></app-related-featured-products>
         </div>
     </section>
-
-
 
 
 <!--SECCION FOOTER-->
