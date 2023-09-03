@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ResponseApi } from 'src/app/shared/models/responseApi.model';
 
 @Component({
   selector: 'app-thanks-rent',
@@ -7,8 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./thanks-rent.component.css']
 })
 export class ThanksRentComponent implements OnInit {
-
-  constructor(private route: Router) { }
+public data : ResponseApi<any>
+  constructor(private route: Router) { this.data = new ResponseApi}
 
   ngOnInit(): void {
     const navigationState = this.route.getCurrentNavigation()?.extras?.state;
@@ -16,9 +17,9 @@ export class ThanksRentComponent implements OnInit {
 
     if (responseApi) {
 
+      this.data = responseApi;
 
-
-     console.log(responseApi);
+     console.log(this.data);
 
 
 
