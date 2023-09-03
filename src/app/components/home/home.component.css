@@ -203,10 +203,25 @@
   margin-left: 100px;
 }
 
+.ml-3{
+  margin-left: 3rem;
+}
+
+.content-image-preguntas {
+  background-image: url("../../../assets/img/frecuentes.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.img-testimonio {
+
+  max-width: 600px;
+  width: 100%;
+}
 
 
 
-@media(max-width:900px) {
+@media(max-width:512px) {
   .ovalo-buttons {
     display: none;
   }
@@ -222,18 +237,21 @@
 
   .parrafo1 {
     text-align: center;
+    padding-top: 20px;
+  }
+
+  .parrafo1 h1{
+    font-size: 24px;
   }
 
   .banner {
     text-align: center;
-
-
   }
 
 
-.banner img{
-  margin-left: 50px;
-}
+  .banner img{
+    margin-left: 0px;
+  }
   .content-image {
     display: flex;
     justify-content: center;
@@ -262,6 +280,8 @@
   }
 
   .boton-registrar {
+    margin-bottom: 40px;
+    margin-left: 87px;
     width: 160px;
   }
 
@@ -270,18 +290,11 @@
     flex-direction: column-reverse;
   }
 
+  .ml-3{
+    margin-left: 0px;
+  }
+
 
 }
 
 
-.content-image-preguntas {
-  background-image: url("../../../assets/img/frecuentes.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.img-testimonio {
-
-  max-width: 600px;
-  width: 100%;
-}

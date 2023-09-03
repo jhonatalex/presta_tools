@@ -27,15 +27,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-    
+
 }
 
 .card-body {
   background-color: white;
   width: 400px;
   border-bottom-right-radius: 18px;
-  border-bottom-left-radius: 18px; 
-    
+  border-bottom-left-radius: 18px;
+
 }
 
 .img-card {
@@ -97,4 +97,33 @@ input {
 
 
 
+@media(max-width:512px) {
+  .card {
 
+    width: 350px;
+    height: 650px;
+  }
+
+  .card-title {
+
+    height: 40px;
+    width: 350px;
+  }
+
+  .card-body {
+    background-color: white;
+    width: 350px;
+  }
+
+  .img-fluid{
+    padding-top: 150px;
+    width: 148px;
+  }
+
+  .blue-zone{
+  margin-top: -40%;
+    height: 40vh;
+
+  }
+
+}
