@@ -36,6 +36,10 @@ jobs:
       - name: Build App Production
         run: npm run build:prod
 
+      # Rename Index For Fix Rutas
+      - name: Rename Index For Fix Rutas
+        run: mv dist/presta_tools/index.html dist/presta_tools/404.html
+
         #Depoly to Page
       - name: Configure GitHub Pages
         uses: crazy-max/ghaction-github-pages@v3.1.0

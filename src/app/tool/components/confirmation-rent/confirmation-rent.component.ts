@@ -148,7 +148,7 @@ this.route.params.subscribe(params =>{
 
 
     var amount:number = this.total;
-    var returnUrl ="http://localhost:4200/confirmar-transaccion"
+    var returnUrl = environment.production ? 'https://jhonatalex.github.io/presta_tools/confirmar-transaccion' : '"http://localhost:4200/confirmar-transaccion" '
 
 
     //VENTA
@@ -214,7 +214,7 @@ this.route.params.subscribe(params =>{
     form.submit();
   }
 
- /* 
+ /*
   onSubmitPay(formulario:NgForm) {
 
     const formElement = document.getElementById(
