@@ -39,7 +39,7 @@ export class PaymentGatewayComponent implements OnInit {
 
   enviarTokenParaConfirmarTransaccion(token: string) {
     const otraAPIUrl = 'URL_DE_LA_OTRA_API';
-    const data = { 'tokenPasarela': token };
+    const data = { 'token': token };
 
 
     console.log(data);
