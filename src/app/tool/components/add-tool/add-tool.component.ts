@@ -56,13 +56,7 @@ export class AddToolComponent implements OnInit {
   constructor( private toolService:ToolServiceNew,
                private categoryService: CategoryService,
                private utilService:UtilService
-     ) {
-
-      this.tool = new Tool();//instancia de usuario vacía para el formulario
-
-
-
-      }
+     ) {this.tool = new Tool();}//instancia de usuario vacía para el formulario
 
 
   ngOnInit(): void {

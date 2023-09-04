@@ -4,6 +4,7 @@
 
 .borderRadius{
     border-radius: 50px;
+    
 }
 
 input {
@@ -48,4 +49,8 @@ input {
 .img-card{
     width: 111px;
     height: 111px;
+}
+
+.height-100{
+    height: 100%;
 }

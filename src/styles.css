@@ -302,3 +302,27 @@
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
+
+
+/*ESTILOS RESPONSIVE*/
+@media(max-width:512px) {
+  
+  .carousel{
+    width: 150% !important;
+    margin-left: -70px !important;
+  }
+  .slick-prev:before {
+    color: #0050a9 !important;
+    font-size: 30px !important;
+    position: relative !important;
+    right: 25px !important;
+  }
+  
+  .slick-next:before {
+    color: #0050a9 !important;
+    font-size: 30px !important;
+    position: relative !important;
+    left: 14px !important;
+  }
+ 
+}

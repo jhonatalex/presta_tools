@@ -163,7 +163,8 @@
 }
 
 .marginSmall{
-    margin-left: -145px;
+    margin-left: -117px;
+    padding-top: 5px;
 }
 
 
@@ -294,17 +295,29 @@ padding-top: 10px;
     font-size: small;
 }
 
-
+.rating-top{
+    display: flex !important;
+    margin-right: 5px !important;
+}
 
 .ngx-star{
     margin: 0px;
     padding: 0px;
     display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+
+.container-rating{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
 /*ESTILOS PARA RESPONSIVE*/
-@media (max-width:455px){
+@media (max-width:512px){
   
         .seccion-imagen{
             max-width: 50%;
@@ -313,33 +326,31 @@ padding-top: 10px;
         }
 
         .imagen-big{
-            width: 40%;
-            height: 50%;
+            width: 160%;
+            height: 67%;
+            padding-left: 10px;
         }
 
-        .seccion-imagen img{
+        .seccion-imagen {
             max-width: 90%;
-            max-height: 80%;
-            margin-left: 25px;
+          margin-left: -28px;
             
         }
 
-        .secion-img-small{
-            max-width: 50%;
-            max-height: 40%;
-            display: flex;
-            margin-left: 20px;
+        .seccion-img-small{
            
+           width: 99%;
+           margin-left: 10px;
+        }
+
+        .imagen-small{
+            width: 150px;
+    height: 100px;
+    padding: 12px;
         }
 
         .img-slide{
-            width: 30vh;
-        }
-
-        .img-slide img{
-            max-height: 70px;
-            max-width: 80px;
-            padding: 6px;
+            width: 10vh;
         }
 
         .seccion-producto{
@@ -358,13 +369,13 @@ padding-top: 10px;
            
         }
         .content-propietario{
-            max-width: 85%;
+            max-width: 90%;
             height: 850px;
             position: relative;
             right: 20px;  
         }
         .seccion-nombre-producto{
-            max-width: 90%;
+            max-width: 100%;
             margin-left: 50px;
             padding: 5px;
         }
@@ -407,6 +418,13 @@ padding-top: 10px;
             margin-left: 35px;
             position: relative;
             right: 20px;
+        }
+        .img-container{
+            width: 60%;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            margin-left: 180px;
         }
    
     
