@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { PaymentServices } from 'src/app/payment/providers/payment.service';
+import { ResponseApi } from 'src/app/shared/models/responseApi.model';
 
 @Component({
   selector: 'app-thanks-rent',
@@ -10,29 +11,26 @@ import { PaymentServices } from 'src/app/payment/providers/payment.service';
 })
 export class ThanksRentComponent implements OnInit {
 
+  apiResponse : any;
+  detalleVenta:any;
+  venta:any;
 
+  constructor(private router: ActivatedRoute, payServices: PaymentServices) {
 
-  constructor(
-    private route: ActivatedRoute,
-     private router: Router,
-    private paymentServices:PaymentServices) { }
+    payServices.getData().subscribe({
 
-  ngOnInit() {
+      next: data =>{
+      this.apiResponse= data;
+      this.venta = this.apiResponse.data;
+      this.detalleVenta = this.apiResponse.data.detalleVenta[0];
+      console.log(data)
 
-   // const stateData = this.route.snapshot.state;
-  // o
-  this.route.data.subscribe((data) => {
-    const stateData = data;
-    // Aquí puedes utilizar los datos del estado como desees
-    console.log('componente activo thanks-rent: '+ stateData);
-  });
+      }
+    })
 
+  }
 
-
-   7// this.paymentServices.disparadorDATA.subscribe(data =>{
-    //  console.log('recibiendo data...',data)
-    //});
-
+  ngOnInit(): void {
 
 
   }

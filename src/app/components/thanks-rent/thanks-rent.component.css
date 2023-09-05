@@ -17,7 +17,7 @@
 
 .posicionar{
     position: relative;
-    right: 117px;
+    right: -48px;
     top: 25px;
 }
 
@@ -32,4 +32,18 @@
 .img-fluid{
   width: 200px;
 
+}
+.card-facturacion{
+  height: 465px;
+  width: 115%;
+}
+.card-detalle-producto{
+  height: 465px;
+width: 115%;
+margin-left: -45px;
+}
+.width-100{
+  
+  width:100%;
+  
 }
