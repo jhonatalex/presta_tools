@@ -12,6 +12,8 @@ import { ResponseApi } from 'src/app/shared/models/responseApi.model';
 export class ThanksRentComponent implements OnInit {
 
   apiResponse : any;
+  detalleVenta:any;
+  venta:any;
 
   constructor(private router: ActivatedRoute, payServices: PaymentServices) {
 
@@ -19,6 +21,8 @@ export class ThanksRentComponent implements OnInit {
 
       next: data =>{
       this.apiResponse= data;
+      this.venta = this.apiResponse.data;
+      this.detalleVenta = this.apiResponse.data.detalleVenta;
       console.log(data)
 
       }
