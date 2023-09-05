@@ -18,10 +18,10 @@ import { decodedTkn } from '../interfaces/jwt.interface';
 export class AuthService {
 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
-    environment.production? 'D3V' : 'D3V'
+    environment.production? '' : 'D3V'
   }`;
   private tokenKey = `${new Constants().getStorageKeys().decodedTokenKey}${
-    environment.production? 'D3V' : 'D3V'
+    environment.production? '' : 'D3V'
   }`;
 
   constructor(
@@ -124,9 +124,6 @@ export class AuthService {
 
     return user? true : false;
   }
-
-
-
 
 
 

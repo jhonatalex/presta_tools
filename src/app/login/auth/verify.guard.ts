@@ -29,7 +29,7 @@ export class VerifyGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      var user: User = this.utilService.getFromLocalStorage(this.loginKey+'D3V');
+      var user: User = this.utilService.getFromLocalStorage(this.loginKey);
 
       if(user.verify){
         return true
