@@ -15,13 +15,13 @@ export class ThanksRentComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
      private router: Router,
-    private paymentServices:PaymentServices,) { }
+    private paymentServices:PaymentServices) { }
 
   ngOnInit() {
 
-    this.paymentServices.disparador.subscribe(data =>{
+    this.paymentServices.disparadorDATA.subscribe(data =>{
       console.log('recibiendo data...',data)
-    })
+    });
 
 
 

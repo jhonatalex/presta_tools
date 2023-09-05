@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PathTool, PathUser } from 'src/app/shared/constants/endpoints.class';
 import { CallerManagerService } from 'src/app/shared/helpers/caller-manager.service';
@@ -14,6 +14,8 @@ import { PayData } from '../models/payData.models';
 import { PayResponse } from '../models/payResponse.models';
 import { NavigationExtras } from '@angular/router';
 import { Router } from '@angular/router';
+import { outputAst } from '@angular/compiler';
+
 
 //import { RegisterRS } from '../models/registerRS.model';
 
@@ -22,12 +24,18 @@ import { Router } from '@angular/router';
 })
 export class PaymentServices {
 
+@Output() disparadorDATA: EventEmitter<any> = new EventEmitter();
+
+
   constructor(private callManSV: CallerManagerService,
               private spinner: NgxSpinnerService,
               private router: Router,
               private sweetUIService:SweetUIService,
               private storage: AngularFireStorage,
               private utilService: UtilService) { }
+
+
+
 
 
 
@@ -73,6 +81,9 @@ export class PaymentServices {
 
   private manageResponse(responseApi: ResponseApi) {
     if (responseApi.success) {
+
+
+          this.disparadorDATA.emit({data:responseApi})
 
           const navigationExtras: NavigationExtras = { state: { responseApi } // Pasamos el objeto responseApi como parte del estado de navegación
 
