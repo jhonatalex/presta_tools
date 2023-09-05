@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ResponseApi } from 'src/app/shared/models/responseApi.model';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { PaymentServices } from 'src/app/payment/providers/payment.service';
 
 @Component({
   selector: 'app-thanks-rent',
@@ -8,19 +9,21 @@ import { ResponseApi } from 'src/app/shared/models/responseApi.model';
   styleUrls: ['./thanks-rent.component.css']
 })
 export class ThanksRentComponent implements OnInit {
-public data : ResponseApi<any>
-  constructor(private route: Router) { this.data = new ResponseApi}
 
-  ngOnInit(): void {
-    const navigationState = this.route.getCurrentNavigation()?.extras?.state;
-    const responseApi = navigationState?.['responseApi'];
 
-    if (responseApi) {
 
-      this.data = responseApi.data;
+  constructor(
+    private route: ActivatedRoute,
+     private router: Router,
+    private paymentServices:PaymentServices,) { }
 
-    }
-    console.log(responseApi);
+  ngOnInit() {
+
+    this.paymentServices.disparador.subscribe(data =>{
+      console.log('recibiendo data...',data)
+    })
+
+
+
   }
-  
 }

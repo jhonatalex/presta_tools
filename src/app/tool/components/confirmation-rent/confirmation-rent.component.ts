@@ -109,7 +109,7 @@ export class ConfirmationRentComponent implements OnInit {
 
 
 getUser():void{
- this.user= this.utilservice.getFromLocalStorage(this.loginKey + 'D3V');
+ this.user= this.utilservice.getFromLocalStorage(this.loginKey);
 }
 
 
@@ -148,7 +148,7 @@ this.route.params.subscribe(params =>{
 
 
     var amount:number = this.total;
-    var returnUrl = environment.production? 'https://jhonatalex.github.io/presta_tools/confirmar-transaccion' : '"http://localhost:4200/confirmar-transaccion" '
+    var returnUrl = environment.production? 'https://jhonatalex.github.io/presta_tools/confirmar-transaccion' : 'http://localhost:4200/confirmar-transaccion'
 
 
     //VENTA
