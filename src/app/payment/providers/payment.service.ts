@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable, Output } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PathTool, PathUser } from 'src/app/shared/constants/endpoints.class';
 import { CallerManagerService } from 'src/app/shared/helpers/caller-manager.service';
@@ -9,13 +9,11 @@ import { CallerService } from '../../shared/helpers/caller.service';
 import { ResponseApi } from 'src/app/shared/models/responseApi.model';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Observable } from 'rxjs/internal/Observable';
-import { catchError, finalize, from, map, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, finalize, from, map, of, tap } from 'rxjs';
 import { PayData } from '../models/payData.models';
 import { PayResponse } from '../models/payResponse.models';
 import { NavigationExtras } from '@angular/router';
 import { Router } from '@angular/router';
-import { outputAst } from '@angular/compiler';
-
 
 //import { RegisterRS } from '../models/registerRS.model';
 
@@ -24,8 +22,8 @@ import { outputAst } from '@angular/compiler';
 })
 export class PaymentServices {
 
-@Output() disparadorDATA: EventEmitter<any> = new EventEmitter();
 
+  miBehaviorSubject = new BehaviorSubject<ResponseApi|null>(null);
 
   constructor(private callManSV: CallerManagerService,
               private spinner: NgxSpinnerService,
@@ -33,9 +31,6 @@ export class PaymentServices {
               private sweetUIService:SweetUIService,
               private storage: AngularFireStorage,
               private utilService: UtilService) { }
-
-
-
 
 
 
@@ -80,16 +75,19 @@ export class PaymentServices {
 
 
   private manageResponse(responseApi: ResponseApi) {
+
+
+    this.setData(responseApi);
+
+
     if (responseApi.success) {
-
-
-          this.disparadorDATA.emit({data:responseApi})
 
           const navigationExtras: NavigationExtras = { state: { responseApi } // Pasamos el objeto responseApi como parte del estado de navegación
 
           };
 
-          this.router.navigate(['/gracias'], { state: { responseApi } })
+
+          this.router.navigate(['/gracias'], navigationExtras )
 
 
     } else {
@@ -113,7 +111,14 @@ export class PaymentServices {
   }
 
 
+  setData(data:any){
+    this.miBehaviorSubject.next(data);
 
+  }
+
+  getData(){
+    return  this.miBehaviorSubject.asObservable();
+  }
 
 
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { PaymentServices } from 'src/app/payment/providers/payment.service';
+import { ResponseApi } from 'src/app/shared/models/responseApi.model';
 
 @Component({
   selector: 'app-thanks-rent',
@@ -10,19 +11,22 @@ import { PaymentServices } from 'src/app/payment/providers/payment.service';
 })
 export class ThanksRentComponent implements OnInit {
 
+  apiResponse : any;
 
+  constructor(private router: ActivatedRoute, payServices: PaymentServices) {
 
-  constructor(
-    private route: ActivatedRoute,
-     private router: Router,
-    private paymentServices:PaymentServices) { }
+    payServices.getData().subscribe({
 
-  ngOnInit() {
+      next: data =>{
+      this.apiResponse= data;
+      console.log(data)
 
-    this.paymentServices.disparadorDATA.subscribe(data =>{
-      console.log('recibiendo data...',data)
-    });
+      }
+    })
 
+  }
+
+  ngOnInit(): void {
 
 
   }
