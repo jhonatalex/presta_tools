@@ -3,18 +3,18 @@
 
 
     <!--SECCION NOMBRE-MODELO BUSCAR TOOL-->
-    <section id="seccion-buscar" class="fondo py-5">
+    <section id="seccion-buscar" class="fondo py-5 col-sm-12">
 
-      <div class="container col-md-10 pt-5">
+      <div class="container col-md-10 pt-2">
         <div class="row pt-5 estilos-contenedor">
           <div class="col-md-6 col-sm-12">
 
             <section class="seccion-nombre-producto">
-              <h1 class="margin-title text-size-1 "><strong>{{tool.name}}</strong></h1>
+              <h1 class="margin-title text-size-1 "><strong class="title-product">{{tool.name}}</strong></h1>
               <div class="row pt-2">
-                  <div class="col margin-title">
-                    <form [formGroup]="form1">
-                      <ngx-star-rating formControlName="rating1" class="ngx-star"></ngx-star-rating>
+                  <div class="col">
+                    <form [formGroup]="form2">
+                      <ngx-star-rating formControlName="rating2" class="rating-top"></ngx-star-rating>
                     </form>
                   </div>
                   <div class="col">
@@ -39,20 +39,20 @@
 
 
       <!--seccion galeria-->
-    <section id="seccion-galeria-imagen" class="fondo pt-4 pb-5">
+    <section id="seccion-galeria-imagen" class="fondo pt-4 pb-5 col-sm-12">
         <div class="container  col-md-10">
           <div class="row py-2 div-cards">
 
 
                   <!--GALERIA IMAGENES HERRAMIENTA-->
-                <div class="container col-md-6">
+                <div class="container col-md-6 col-sm-12">
 
                   <section class="seccion-imagen">
-                    <div class="img-container">
+                    <div class="img-container col-sm-12">
                       <img src="{{tool.urlImage}}" alt="image" id="preview" class="img-fluid card shadow imagen-big">
                       <div class="img-prev text-center card-body">
 
-                        <section class="seccion-img-small">
+                        <section class="seccion-img-small col-sm-12">
                           <div class="img-slide active">
                             <img src="{{tool.urlImage}}" alt="image1" class="img-fluid card shadow imagen-small" appImageGallery>
                           </div>
@@ -73,14 +73,14 @@
 
 
               <!--DESCRIPCION HERRAMIENTA-->
-              <div class="card shadow col-md-6 div-card-small div-producto ">
+              <div class="card shadow col-md-6 col-sm-12 div-producto">
 
                 <section class="seccion-producto">
                   <h2 class="mt-2 text-center"><strong>{{tool.name}}</strong></h2>
                   <hr class="bg-dark">
                   <p class="margin"><strong>Codigo: </strong>{{tool.reference}}</p>
                   <p><strong>Categoria: </strong>{{category?.titleCat}}</p>
-                  <p class="feature"><strong>CARACTERÍSTICAS:</strong></p>
+                  <p class="feature mb-2"><strong>CARACTERÍSTICAS:</strong></p>
                   <h6 class="margin"><strong> Marca: </strong>{{tool.brand}}</h6>
                   <h6 class="margin"><strong> Modelo: </strong>{{tool.model}}</h6>
                   <h6 class="margin"><strong> Año: </strong>{{tool.yearBuy}}</h6>
@@ -89,9 +89,8 @@
                     <input type="checkbox" [checked]="tool.widgets">
                   </h6>
 
-                  <p class="negrita">Rentado:</p>
-                  <p class="text-justify"><strong>DESCRIPCIÓN:</strong> <br> {{tool.description}}</p><br>
-                 <!-- <p class="negrita margin">¡Aún no se han encontrado</p>-->
+                  <p class="text-justify my-2"><strong>DESCRIPCIÓN:</strong> <br> {{tool.description}}</p><br>
+                 
 
                  <div class="container ngx-star">
                   <form [formGroup]="form1">
@@ -99,7 +98,10 @@
                   </form>
                 </div>
 
-                  <p class="ms-2">valoracion: <strong>{{tool.rate}}</strong>  Star</p>
+                  <div class="container-rating">
+                    <p class="ms-2">valoracion: <strong>{{tool.rate}}</strong>  Star</p>
+                  </div>
+                
                         
                   <a [routerLink]="['/confirma-renta',this.id]" class="btn-blue-grad mb-2 px-5 py-2 border-0 col-md-8 mx-auto">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
                 </section>
@@ -118,8 +120,8 @@
 
 
     <!--SECCIÓN INFORMACIÓN PROPIETARIO-->
-    <section id="informacion-propietario" class="fondo py-5 seccion-propietario">
-        <div class="card shadow content-propietario mx-auto">
+    <section id="informacion-propietario" class="fondo py-5 seccion-propietario col-sm-12">
+        <div class="card shadow content-propietario mx-auto ps-3">
             <div class="row">
 
                 <div class="col d-grid p-owner">
@@ -165,17 +167,6 @@
                     <div class="valoracion">
                         <p class="negrita text-center margin">Propietario</p>
                             <form [formGroup]="form2">
-                              <!--
-                              <div class="cont">
-                                <div class="stars">
-                                  
-                                  <ngx-star-rating formControlName="rating1" [id]="'rating'"></ngx-star-rating>
-                                  
-                                </div>
-                                <div>Rating: {{form.value.rating1}}</div>
-                                <p>form is valid: {{ form.valid ? 'true' : 'false' }}</p>
-                              </div>-->
-
                               <div class="cont">
                                   <div class="stars">
                                     <ngx-star-rating formControlName="rating2" [disabled] ="true"></ngx-star-rating>
@@ -190,17 +181,18 @@
         </div>
     </section>
 
-    <section id="productos-relacionados" class="fondo pb-5">
+    <section id="productos-relacionados" class="fondo seccion-slider pb-5 col-sm-12">
         <!--SLIDER PRODUCTOS RELACIONADOS-->
         <div class="card shadow content-products pt-100 mx-auto">
-            <strong class="px-2 pb-0 titulo-negrita">Productos destacados</strong>
+            <strong class="ps-3 pt-2  pb-0 titulo-negrita">Productos destacados</strong>
             <app-related-featured-products></app-related-featured-products>
         </div>
     </section>
 
 
 <!--SECCION FOOTER-->
-<app-footer></app-footer>
+<section class="footer"><app-footer></app-footer></section>
+
 
 
 

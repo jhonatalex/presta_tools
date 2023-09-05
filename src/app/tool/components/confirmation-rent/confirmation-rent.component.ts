@@ -25,17 +25,17 @@ export class ConfirmationRentComponent implements OnInit {
   public id:number;
   public tool:ToolResponse;
   public startDate: Date = new Date();
-  public endDate: Date = new Date();
+  public endDate: Date;
   public days:number=0;
   public total:number=0;
   public nameLender: string | undefined;
   public lastNameLender: string|undefined;
   public user: User= new User;
 
-  public minDateStart: Date = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()-1);
+  public minDateStart: Date = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
   public minStrStart:any;
 
-  public minDateEnd : Date = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+  public minDateEnd : Date = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()+1);
   public minStrEnd:any;
 
 
@@ -63,7 +63,7 @@ export class ConfirmationRentComponent implements OnInit {
     this.id = 0;
     this.tool = new ToolResponse();
     this.responseModel = new PayResponse();
-
+    this.endDate = new Date();
     }
 
   ngOnInit(): void {
@@ -101,7 +101,7 @@ export class ConfirmationRentComponent implements OnInit {
     dates.push(new Date(c))
       c.setDate(c.getDate()+1)
     }
-    this.days = dates.length-1;
+    this.days = dates.length;
     this.total = this.days * this.tool.valueRent;
   }
 

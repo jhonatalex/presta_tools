@@ -77,8 +77,8 @@ export class PaymentServices {
 
           const navigationExtras: NavigationExtras = {
             state: { responseApi } // Pasamos el objeto responseApi como parte del estado de navegación
+            
           };
-
           this.router.navigate(['/gracias'], navigationExtras)
 
 

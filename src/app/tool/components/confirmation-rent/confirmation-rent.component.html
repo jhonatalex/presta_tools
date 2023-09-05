@@ -35,7 +35,7 @@
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                           <label for="starDate">Fecha inicial de arriendo</label>
-                                          <input id="starDate" class="form-control" type="date" [min]="minStrStart" (change)="setInitialDate($event)" required/>
+                                          <input id="starDate" class="form-control" type="date" [min]="minStrStart" [max]="minStrStart" [value]="minStrStart" (change)="setInitialDate($event)" required/>
                                         </div>
 
 
@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                             <label for="email" class="form-label mb-0">Dirección de correo electrónico</label>
-                                            <input type="email" #email="ngModel"  [(ngModel)]="user.email" class="form-control-sm border" name="email" id="email" reuired pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                            <input type="email" #email="ngModel"  [(ngModel)]="user.email" class="form-control-sm border" name="email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                                             <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">email inválido</small>
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
@@ -58,7 +58,7 @@
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                           <label for="starDate">Fecha Final de arriendo</label>
-                                          <input id="endDate" class="form-control" type="date" [min]="minStrEnd" (change)="setEndDate($event)" required />
+                                          <input id="endDate" class="form-control" type="date" [min]="minStrEnd" required (change)="setEndDate($event)"/>
                                         </div>
 
                                     </div>
@@ -75,35 +75,26 @@
                                         <textarea type="text" class="form-control-sm border pb-5" name="notas" id="notas"></textarea>
                                     </div>
 
-
-
                             </div>
-
                 </div>
             </div>
 
             <div class="col-md-5 py-5">
-                <div class="card shadow borderRadius ms-4 me-4 p-2 ">
+                <div class="card shadow borderRadius ms-4 me-4 p-2 height-100">
                     <h5 class="text-center pt-3"><strong>Tu orden</strong></h5>
                         <div class="text-center mt-2">
                             <h6>Producto: {{tool.name}} {{tool.brand}}</h6>
                         </div>
-
                         <div class="text-center">
                             <img src="{{tool.urlImage}}" alt="image tool" class="img-card">
                         </div>
-
-
-
                         <div class="text-center py-3">
                             <h6><strong> Propietario:</strong> {{nameLender + ' ' + lastNameLender}}</h6>
                         </div>
-
                         <div class="d-flex justify-content-between px-5 mt-3">
                             <h6><strong>Dias:</strong></h6>
                             <h6>{{this.days}}</h6>
                         </div>
-
                         <div class="d-flex justify-content-between px-5 mt-4">
                           <h6><strong>Costo:</strong></h6>
                           <h6>{{tool.valueRent}} CLP</h6>
@@ -112,11 +103,10 @@
                             <h6><strong>Total:</strong></h6>
                             <h6>{{this.total}} CLP</h6>
                         </div>
-                   <input type="submit" class="btn-blue-grad mt-1  px-5 border-0  mx-auto w-50" value="Realizar Pago">
+                   <input type="submit" class="btn-blue-grad mt-1  px-5 border-0  mx-auto w-50" value="Realizar Pago" [disabled]="confirmForm.invalid">
                      <!--<button class="btn-blue-grad mt-1  px-5 border-0  mx-auto w-50" (click)="iniciarTransaccion()">Pagar</button>-->
                     <img class=""  src="assets/img/webpay.png" alt="webpay" >
                   </div>
-
               </div>
           </div>
       </form>
