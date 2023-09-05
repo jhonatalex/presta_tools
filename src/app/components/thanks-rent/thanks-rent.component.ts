@@ -19,11 +19,24 @@ export class ThanksRentComponent implements OnInit {
 
   ngOnInit() {
 
-    this.paymentServices.disparadorDATA.subscribe(data =>{
-      console.log('recibiendo data...',data)
-    });
+   // const stateData = this.route.snapshot.state;
+  // o
+  this.route.data.subscribe((data) => {
+    const stateData = data;
+    // Aquí puedes utilizar los datos del estado como desees
+    console.log('componente activo thanks-rent: '+ stateData);
+  });
+
+
+
+   7// this.paymentServices.disparadorDATA.subscribe(data =>{
+    //  console.log('recibiendo data...',data)
+    //});
 
 
 
   }
+
+
+
 }

@@ -89,7 +89,7 @@ export class PaymentServices {
 
           };
 
-          this.router.navigate(['/gracias'], { state: { responseApi } })
+          this.router.navigate(['/gracias'], { state: { "nombre":"Hialmar" } })
 
 
     } else {
