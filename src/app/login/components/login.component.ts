@@ -67,6 +67,19 @@ export class LoginComponent implements OnInit {
 
 
 
+  googleLogin(){
+
+    console.log('emtro')
+
+
+    this.authService.sinInWithGoogle();
+  }
+
+
+
+
+
+
 
   public userLogin(): void {
     const val = this.validatePayload()

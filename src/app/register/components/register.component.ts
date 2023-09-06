@@ -20,8 +20,8 @@ export class RegisterComponent implements OnInit {
 
   constructor( private resgisterService: RegisterService)
   {
-   // const uniqueId:number = uuidv4();
-    this.user = new User();//instancia de usuario vacía para el formulario
+
+    this.user = new User();
 
 
    }

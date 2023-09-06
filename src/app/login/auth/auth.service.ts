@@ -11,6 +11,12 @@ import { loginResponse } from '../models/login.model';
 import { LoginService } from '../providers/login.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { decodedTkn } from '../interfaces/jwt.interface';
+import { Auth, AuthCredential, UserCredential, signInWithCredential } from '@angular/fire/auth';
+import { signInWithPopup,signOut,GoogleAuthProvider } from '@angular/fire/auth';
+import { RegisterService } from 'src/app/register/providers/register.service';
+import { User } from 'src/app/register/models/user.model';
+import { use } from 'marked';
+
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +30,13 @@ export class AuthService {
     environment.production? '' : 'D3V'
   }`;
 
+  public user = new User();;
+
   constructor(
+
+    private auth: Auth,
+
+    private resgisterService: RegisterService,
     /**
      * Servicio de Proveedor de Data de Login
      */
@@ -42,6 +54,48 @@ export class AuthService {
      */
     private spinner: NgxSpinnerService
   ) {}
+
+
+    public sinInWithGoogle()
+    {
+
+
+      this.spinner.show();
+
+      signInWithPopup(this.auth, new GoogleAuthProvider())
+        .then((res: any) => {
+
+          const userFirebase = res.user;
+
+          this.user.email= userFirebase.email;
+          this.user.id= userFirebase.uid;
+          this.user.name= userFirebase.displayName;
+          this.user.lastName= userFirebase.displayName;
+          this.user.typeUser='user'
+
+          console.log(this.user);
+          console.log(userFirebase);
+          userFirebase
+
+          //TODO LOGIGA PARA SABER SE ES NUEVO O NO
+          //this.resgisterService.register(this.user)
+          this.manageAuthResponseFirebase(userFirebase);
+
+
+        })
+        .catch((e) => {
+          this.manageError(e);
+        })
+        .finally(() => this.spinner.hide());
+
+
+    }
+
+
+
+
+
+
 
   public userLoginAuth(payload: any): void {
     this.spinner.show();
@@ -101,18 +155,31 @@ export class AuthService {
 
  }
 
+ private manageAuthResponseFirebase(loginData: any) {
+
+
+
+      //SET USER AND TOKEN A LOCAL SOTORAGE
+      this.utilService.setToLocalStorage(this.loginKey, loginData);
+      this.utilService.setToLocalStorage(this.tokenKey,loginData.uid);
+        this.sweetUIService
+        .alertConfirm("Bienvenido", loginData.message, 'success')
+        .then(() => {
+          this.utilService.navigateToPath('/');
+        })
+        .catch(console.warn);
+
+
+
+}
+
+
  /*
   /**
    * Cierra la sesion del usuario actual
    */
   public logout(): void {
-    /*
 
-
-    this.utSV.removeFromLocalStorage(this.tokenPermKEY);
-    this.utSV.removeFromSessionStorage(this.tokenUsrCntrsKey);
-    this.utSV.removeFromSessionStorage(this.tokenSelCntrsKey);
-    */
     this.utilService.removeFromLocalStorage(this.loginKey);
     this.utilService.removeFromLocalStorage(this.tokenKey);
   }
@@ -144,8 +211,6 @@ export class AuthService {
       })
       .catch(console.warn);
   }
-
-
 
 
 

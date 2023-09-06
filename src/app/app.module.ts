@@ -52,6 +52,7 @@ import { JwtInterceptor } from './login/auth/jwt-interceptor.interceptor';
 import { DatePipe } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FailsTransactionComponent } from './components/fails-transaction/fails-transaction.component';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 
 
@@ -113,6 +114,7 @@ import { FailsTransactionComponent } from './components/fails-transaction/fails-
     BrowserAnimationsModule,
     NgxSpinnerModule,
     SweetAlert2Module,
+    provideAuth(() => getAuth()),
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
