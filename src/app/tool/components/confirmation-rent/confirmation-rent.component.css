@@ -21,7 +21,7 @@ input {
 }
 
 .div-titulo{
-    width: 700px;
+    width: 97%
 }
 
 .btn-blue-grad {
@@ -50,7 +50,25 @@ input {
     width: 111px;
     height: 111px;
 }
-
-.height-100{
+.h-100{
     height: 100%;
+}
+.w-92{
+    width: 92%;
+}
+.width-90{
+    width: 101%;
+}
+
+
+
+
+/*ESTILOS PARA RESPONSIVE*/
+@media (max-width:512px){
+    .width-90{
+        width: 90%;
+    }
+    .btn-blue-grad{
+        font-size: small;
+    }
 }
