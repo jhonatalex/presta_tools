@@ -22,7 +22,7 @@ export class ThanksRentComponent implements OnInit {
       next: data =>{
       this.apiResponse= data;
       this.venta = this.apiResponse.data;
-      this.detalleVenta = this.apiResponse.data.detalleVenta;
+      this.detalleVenta = this.apiResponse.data.detalleVenta[0];
       console.log(data)
 
       }
@@ -34,4 +34,7 @@ export class ThanksRentComponent implements OnInit {
 
 
   }
+
+
+
 }
