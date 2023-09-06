@@ -5,8 +5,9 @@
 .card {
     border-radius: 30px;
     border:none;
-    width: 640px;
-    height: 550px;
+    width: 478px;
+    height: 701px;
+    margin-right: -140px;
 }
 
 .margin-title{
@@ -133,6 +134,7 @@
 
 .div-cards{
     margin-left: -80px;
+    width: 100%;
 }
 
 .div-logo-simple{
@@ -171,7 +173,7 @@
 
 /*ESTILOS DIRECTIVA IMAGE-GALLERY*/
 .img-container{
-    width: 750px;
+    width: 720px;
     height: 640px;
     border-radius: 15px;
     margin-bottom: 60px;
@@ -180,15 +182,15 @@
 .imagen-big{
 width: 720px;
 height: 700px;
-padding:25px;
-margin-left: -53px;
+padding:20px;
+margin-left: -112px;
 
 }
 
 .imagen-small{
     width: 150px;
     height: 140px;
-    padding: 22px;
+    padding: 10px;
 }
 
 .img-prev{
@@ -197,7 +199,7 @@ margin-left: -53px;
 
 .img-slide{
     display: inline-block;
-    width: 30vh;
+    width: 185px;
     margin: 0 1px;
     cursor: pointer;
     opacity: 0.5;
@@ -209,7 +211,7 @@ margin-left: -53px;
 
 
 .seccion-img-small{
-    margin-left: -53px;
+    margin-left: -87px;
 }
 
 .ui-box-component-pdp__visible--desktop {
@@ -318,35 +320,43 @@ padding-top: 10px;
 
 /*ESTILOS PARA RESPONSIVE*/
 @media (max-width:512px){
-  
-        .seccion-imagen{
-            max-width: 50%;
-            margin-left: 35px;
-            padding: 5px;
+        .marginSmall{
+            margin-left: 5px;
         }
 
         .imagen-big{
-            width: 160%;
-            height: 67%;
-            padding-left: 10px;
+            width: 100%;
+            height: 50%;
+        
         }
-
         .seccion-imagen {
-            max-width: 90%;
-          margin-left: -28px;
+            max-width: 114%;
+            margin-left: -57px;
+            position: relative;
+            top: 163px;
             
+        }
+        .pt-2{
+            display: contents;
         }
 
         .seccion-img-small{
            
            width: 99%;
-           margin-left: 10px;
+           margin-left: 183px;
+           display: flex;
+           flex-direction: column;
+        }
+        .title-product{
+            font-size: 22px;
+            display: flex;
+            justify-content: center;
         }
 
         .imagen-small{
-            width: 150px;
-    height: 100px;
-    padding: 12px;
+            width: 67px;
+            height: 84px;
+            padding: 7px;
         }
 
         .img-slide{
@@ -359,20 +369,18 @@ padding-top: 10px;
         }
 
         .div-producto{
-            max-width: 70%;
-            margin-left: 35px;
-        }
-
-        .seccion-propietario{
             max-width: 100%;
-            padding: 5px;
-           
-        }
-        .content-propietario{
-            max-width: 90%;
-            height: 850px;
+            margin-left: 79px;
+            height: 50%;
             position: relative;
-            right: 20px;  
+            top: -343px;
+            
+        }
+        .seccion-propietario{
+            padding-top: 1px !important;
+            position: relative;
+            top: -398px;
+           
         }
         .seccion-nombre-producto{
             max-width: 100%;
@@ -404,7 +412,7 @@ padding-top: 10px;
         }
         .div-estadisticas{
             position: relative;
-            right: 12px;
+            right: 17px;
             top: 15px;
             width: 100px;
             font-size: 12px;
@@ -413,19 +421,30 @@ padding-top: 10px;
             font-size: 14px;
         }
         .content-products{
-            max-width: 80%;
-            height: 850px;
-            margin-left: 35px;
-            position: relative;
-            right: 20px;
+            height: 100%; 
+           
+        }
+        .content-propietario{
+            height: 100%;
         }
         .img-container{
-            width: 60%;
+            width: 64%;
             display: flex;
             align-items: center;
             flex-direction: row;
-            margin-left: 180px;
+            margin-left: 240px;
+            position: relative;
+            bottom: 347px;
         }
+        .seccion-slider{
+            position: relative;
+            bottom: 398px;
+        }
+        .footer{
+            position: relative;
+            bottom: 396px;
+        }
+
    
     
   }

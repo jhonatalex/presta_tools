@@ -10,7 +10,7 @@
           <div class="col-md-6 col-sm-12">
 
             <section class="seccion-nombre-producto">
-              <h1 class="margin-title text-size-1 "><strong>{{tool.name}}</strong></h1>
+              <h1 class="margin-title text-size-1 "><strong class="title-product">{{tool.name}}</strong></h1>
               <div class="row pt-2">
                   <div class="col">
                     <form [formGroup]="form2">
@@ -73,7 +73,7 @@
 
 
               <!--DESCRIPCION HERRAMIENTA-->
-              <div class="card shadow col-md-6 col-sm-12 div-card-small div-producto ">
+              <div class="card shadow col-md-6 col-sm-12 div-producto">
 
                 <section class="seccion-producto">
                   <h2 class="mt-2 text-center"><strong>{{tool.name}}</strong></h2>
@@ -181,7 +181,7 @@
         </div>
     </section>
 
-    <section id="productos-relacionados" class="fondo pb-5 col-sm-12">
+    <section id="productos-relacionados" class="fondo seccion-slider pb-5 col-sm-12">
         <!--SLIDER PRODUCTOS RELACIONADOS-->
         <div class="card shadow content-products pt-100 mx-auto">
             <strong class="ps-3 pt-2  pb-0 titulo-negrita">Productos destacados</strong>
@@ -191,7 +191,8 @@
 
 
 <!--SECCION FOOTER-->
-<app-footer></app-footer>
+<section class="footer"><app-footer></app-footer></section>
+
 
 
 

@@ -315,14 +315,16 @@
     color: #0050a9 !important;
     font-size: 30px !important;
     position: relative !important;
-    right: 25px !important;
+    right: -55px !important;
+    top:219px !important;
   }
   
   .slick-next:before {
     color: #0050a9 !important;
     font-size: 30px !important;
     position: relative !important;
-    left: 14px !important;
+    left: -58px !important;
+    top: 219px !important;
   }
  
 }
