@@ -35,7 +35,7 @@
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                           <label for="starDate">Fecha inicial de arriendo</label>
-                                          <input id="starDate" class="form-control" type="date" [min]="minStrStart"  [value]="minStrStart" (change)="setInitialDate($event)" required/>
+                                          <input id="starDate" class="form-control w-92" type="date" [min]="minStrStart"  [value]="minStrStart" (change)="setInitialDate($event)" required/>
                                         </div>
 
 
@@ -47,7 +47,7 @@
                                             <small *ngIf="!lastName.valid && lastName.touched" class="invalid-feedback d-block">apellido no puede quedar vacío</small>
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                            <label for="email" class="form-label mb-0">Dirección de correo electrónico</label>
+                                            <label for="email" class="form-label mb-0">Correo electrónico</label>
                                             <input type="email" #email="ngModel"  [(ngModel)]="user.email" class="form-control-sm border" name="email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                                             <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">email inválido</small>
                                         </div>
@@ -58,21 +58,21 @@
                                         </div>
                                         <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                           <label for="starDate">Fecha Final de arriendo</label>
-                                          <input id="endDate" class="form-control" type="date" [min]="minStrEnd" required (change)="setEndDate($event)"/>
+                                          <input id="endDate" class="form-control w-92" type="date" [min]="minStrEnd" required (change)="setEndDate($event)"/>
                                         </div>
 
                                     </div>
 
                                     <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                         <label for="direccion" class="form-label mb-0">Dirección</label>
-                                        <input type="direccion"  #address="ngModel" [(ngModel)]="user.address" class="form-control-sm border" name="direccion" id="direccion" required>
+                                        <input type="direccion"  #address="ngModel" [(ngModel)]="user.address" class="form-control-sm border width-90" name="direccion" id="direccion" required>
                                         <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">escriba su dirección</small>
                                     </div>
 
 
                                     <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4 pb-5">
                                         <label for="notas" class="form-label mb-0">Notas adicionales(Opcional)</label>
-                                        <textarea type="text" class="form-control-sm border pb-5" name="notas" id="notas"></textarea>
+                                        <textarea type="text" class="form-control-sm border pb-5 width-90" name="notas" id="notas"></textarea>
                                     </div>
 
                             </div>
@@ -80,7 +80,7 @@
             </div>
 
             <div class="col-md-5 py-5">
-                <div class="card shadow borderRadius ms-4 me-4 p-2 height-100">
+                <div class="card shadow borderRadius ms-4 me-4 p-2 h-100">
                     <h5 class="text-center pt-3"><strong>Tu orden</strong></h5>
                         <div class="text-center mt-2">
                             <h6>Producto: {{tool.name}} {{tool.brand}}</h6>

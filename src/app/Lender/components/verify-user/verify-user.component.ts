@@ -75,7 +75,7 @@ export class VerifyUserComponent implements OnInit {
  
 //obtiene el user de localstorage
   getUser():void {
-    this.user = this.utilservice.getFromLocalStorage(this.loginKey + 'D3V');
+    this.user = this.utilservice.getFromLocalStorage(this.loginKey);
 
     this.userUpdate.id = this.user.id;
     this.userUpdate.name = this.user.name;
@@ -145,7 +145,7 @@ export class VerifyUserComponent implements OnInit {
         //send to Lender to api BD insert lender use service lender
         this.lenderService.register(this.lender);
         //SET USER A LOCAL SOTORAGE
-        this.utilservice.setToLocalStorage(this.loginKey +'D3V', this.userUpdate);
+        this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);
         //REDIRECCION ENVIAR A LA URL de DONDE VINO
          this.utilservice.navigateToPath('/'+ this.urlRedireccion);
      }else{
