@@ -75,7 +75,14 @@ export class AuthService {
 
           console.log(this.user);
           console.log(userFirebase);
-          userFirebase
+
+
+          //SET USER AND TOKEN A LOCAL SOTORAGE
+          this.utilService.setToLocalStorage(this.loginKey, this.user);
+
+          //REMPLAR POR EL JWT CUANDO SE VERIFIQUE
+          this.utilService.setToLocalStorage(this.tokenKey,this.user.id);
+
 
           //TODO LOGIGA PARA SABER SE ES NUEVO O NO
           //this.resgisterService.register(this.user)
@@ -155,21 +162,16 @@ export class AuthService {
 
  }
 
- private manageAuthResponseFirebase(loginData: any) {
-
+ private manageAuthResponseFirebase(userFirebase: any) {
 
 
       //SET USER AND TOKEN A LOCAL SOTORAGE
-      this.utilService.setToLocalStorage(this.loginKey, loginData);
-      this.utilService.setToLocalStorage(this.tokenKey,loginData.uid);
         this.sweetUIService
-        .alertConfirm("Bienvenido", loginData.message, 'success')
+        .alertConfirm("Bienvenido", 'success')
         .then(() => {
           this.utilService.navigateToPath('/');
         })
         .catch(console.warn);
-
-
 
 }
 

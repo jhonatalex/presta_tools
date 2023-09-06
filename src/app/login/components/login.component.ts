@@ -68,10 +68,6 @@ export class LoginComponent implements OnInit {
 
 
   googleLogin(){
-
-    console.log('emtro')
-
-
     this.authService.sinInWithGoogle();
   }
 
