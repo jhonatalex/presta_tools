@@ -115,6 +115,7 @@ export class VerifyLenderComponent implements OnInit {
 
       
      if(this.user.typeUser === 'user'){
+      //this.user.typeUser = 'lender'; cambiara el tipo de usuario a lender
       // Enviar Lender a la api
       // this.lenderService.register(this.lender);
      console.log(this.lender)

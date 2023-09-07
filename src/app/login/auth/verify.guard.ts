@@ -31,7 +31,7 @@ export class VerifyGuard implements CanActivate {
 
       var user: User = this.utilService.getFromLocalStorage(this.loginKey);
 
-      if(user.verify && user.typeUser ==='user'){
+      if(user.verify){
         return true
       }else{
 
