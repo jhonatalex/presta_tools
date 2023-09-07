@@ -53,6 +53,7 @@ import { DatePipe } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FailsTransactionComponent } from './components/fails-transaction/fails-transaction.component';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import { VerifyLenderComponent } from './Lender/components/verify-lender/verify-lender.component';
 
 
 
@@ -84,6 +85,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     VerifyUserComponent,
     PaymentGatewayComponent,
     FailsTransactionComponent,
+    VerifyLenderComponent,
 
 
 

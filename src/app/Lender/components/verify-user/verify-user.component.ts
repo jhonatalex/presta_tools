@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PaymentServices } from 'src/app/payment/providers/payment.service';
 import { User, UserUpdate } from 'src/app/register/models/user.model';
 import { RegisterService } from 'src/app/register/providers/register.service';
 import { REGIONES } from 'src/app/shared/constants/regiones.class';
@@ -18,17 +19,15 @@ import { LenderService } from '../../providers/lender.service';
 })
 export class VerifyUserComponent implements OnInit {
 
-  @Input()  urlRedireccion:string;//recibe url para redideccionar 
 
   public user: User;
-  public token:string='';
   public userUpdate: UserUpdate;
-  public lender:Lender;
   public selectedRegion: string | null = null;
   public selectedComuna: string | null = null;
   public regiones: string[]=[];
   public comunas: string[]=[];
   public ConfirmPassword:string='';
+  public urlRedireccion: any;
   
 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
@@ -37,29 +36,34 @@ export class VerifyUserComponent implements OnInit {
 
   
   constructor(
-    private route: ActivatedRoute,
-    private toolService: ToolServiceNew,
     private utilservice: UtilService,
     private resgisterService: RegisterService,
-    private lenderService: LenderService,
     private sweetUIService:SweetUIService,
-    private router: Router
+    private paymentServices: PaymentServices
   ) {
 
    this.user  = new User;
    this.userUpdate = new UserUpdate;
-   this.lender = new Lender;
-   this.urlRedireccion = ''
   }
+
+  
+
+
+
 
   ngOnInit(): void {
-    //CAPTURA LA URL DE VENIDA
-    console.log(this.urlRedireccion);
-    
     this.getUser();
     this.getRegionesArray();
-  }
 
+
+    //recibe url para redireccion
+    this.paymentServices.getDataUrl().subscribe({
+      next: data =>{
+      console.log('Url recibida: ',data)
+      this.urlRedireccion = data;
+      }
+      });
+  }
 
 
     public generarIdUnicoNumerico(): number {
@@ -76,25 +80,16 @@ export class VerifyUserComponent implements OnInit {
 //obtiene el user de localstorage
   getUser():void {
     this.user = this.utilservice.getFromLocalStorage(this.loginKey);
-
-    this.userUpdate.id = this.user.id;
-    this.userUpdate.name = this.user.name;
-    this.userUpdate.lastName = this.user.lastName;
-    this.userUpdate.email = this.user.email;
-    this.userUpdate.telephone = this.user.telephone;
   }
 //obtiene la region del array REGIONES(shared->constants)
   getRegionesArray():void {
     this.regiones = REGIONES.regiones.map(region => region.region);
   }
-
-
 //se ejecuta al seleccionar region
   onSelectRegion():void {
 
     if(this.selectedRegion){
       this.userUpdate.region =  this.selectedRegion;
-      this.lender.region= this.selectedRegion;
 
       const regionSeleccionada = REGIONES.regiones.find(r => r.region === this.selectedRegion);
       if (regionSeleccionada) {
@@ -111,7 +106,6 @@ export class VerifyUserComponent implements OnInit {
 
     if(this.selectedComuna){
       this.userUpdate.commune =  this.selectedComuna;
-      this.lender.commune = this.selectedComuna;
     }
 
   }
@@ -120,34 +114,32 @@ export class VerifyUserComponent implements OnInit {
 
 //enviar formulario a la API
   onSubmit(form:any){
-    
-    //se verifica el user
+
+
+    //crear usuario para actualizar y verificar
+    this.userUpdate.id = this.user.id;
+    this.userUpdate.name = this.user.name;
+    this.userUpdate.lastName = this.user.lastName;
+    this.userUpdate.email = this.user.email;
+    this.userUpdate.telephone = this.user.telephone;
     this.userUpdate.verify = true;
     //datos del formualario
     this.userUpdate.address = this.user.address;
     this.userUpdate.dIdentidad = this.user.dIdentidad;
     this.userUpdate.password = this.user.password;
+    this.userUpdate.typeUser = this.user.typeUser;
 
-    this.lender.id = this.generarIdUnicoNumerico();
-    this.lender.password = this.user.password;
-    //datos recogidos del formulario
-    this.lender.address = this.user.address;
-    this.lender.dIdentidad = this.user.dIdentidad;
-    this.lender.name = this.user.name;
-    this.lender.lastName = this.user.lastName;
-    this.lender.telephone = this.user.telephone;
-    this.lender.email = this.user.email;
-   
 
-     if(this.userUpdate.region){
+     if(this.user.typeUser === 'user'){
+
+      console.log(this.userUpdate);
         // update User way udapte user use services register
-        this.resgisterService.update(this.userUpdate);
-        //send to Lender to api BD insert lender use service lender
-        this.lenderService.register(this.lender);
+       // this.resgisterService.update(this.userUpdate);
+       
         //SET USER A LOCAL SOTORAGE
-        this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);
+       // this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);
         //REDIRECCION ENVIAR A LA URL de DONDE VINO
-         this.utilservice.navigateToPath('/'+ this.urlRedireccion);
+       //  this.utilservice.navigateToPath('/'+ this.urlRedireccion);
      }else{
       this.sweetUIService
       .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')

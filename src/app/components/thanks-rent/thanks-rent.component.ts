@@ -14,6 +14,7 @@ export class ThanksRentComponent implements OnInit {
   apiResponse : any;
   detalleVenta:any;
   venta:any;
+  tool: any;
 
   constructor(private router: ActivatedRoute, payServices: PaymentServices) {
 
@@ -23,6 +24,8 @@ export class ThanksRentComponent implements OnInit {
       this.apiResponse= data;
       this.venta = this.apiResponse.data;
       this.detalleVenta = this.apiResponse.data.detalleVenta[0];
+      this.tool = this.apiResponse.data.detalleVenta[0].idToolNavigation
+
       console.log(data)
 
       }

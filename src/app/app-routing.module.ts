@@ -23,6 +23,8 @@ import { HasRoleGuard } from './login/auth/has-role.guard';
 import { VerifyGuard } from './login/auth/verify.guard';
 import { PaymentGatewayComponent } from './payment/components/payment-gateway/payment-gateway.component';
 import { FailsTransactionComponent } from './components/fails-transaction/fails-transaction.component';
+import { VerifyLenderComponent } from './Lender/components/verify-lender/verify-lender.component';
+import { VerifyLenderGuard } from './login/auth/verify-lender.guard';
 
 const routes: Routes = [
 
@@ -43,6 +45,10 @@ const routes: Routes = [
   canActivate:[AuthGuard]
   },
 
+  {path: 'verificar-lender', component: VerifyLenderComponent,
+  canActivate:[AuthGuard]
+  },
+
 
 
   //Rutas USER LOGEADO Y VERIFICADO
@@ -53,7 +59,7 @@ const routes: Routes = [
 
   {
     path: 'agregar-producto', component: AddToolComponent,
-    canActivate:[AuthGuard,VerifyGuard],
+    canActivate:[AuthGuard,VerifyLenderGuard],
   },
 
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute,Params } from '@angular/router';
+import { ActivatedRoute,NavigationExtras,Params, Router } from '@angular/router';
 import { Tool, ToolResponse } from '../../models/tool.model';
 import { FormControl } from '@angular/forms';
 import { ToolServiceNew } from '../../providers/tool.service';
@@ -7,6 +7,8 @@ import { Category } from 'src/app/category/models/category.model';
 import { Lender } from 'src/app/Lender/models/lender.model';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PaymentServices } from 'src/app/payment/providers/payment.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-tool-detail',
@@ -15,6 +17,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   providers:[ToolServiceNew]
 })
 export class ToolDetailComponent implements OnInit {
+ 
+  
+
   public tool: ToolResponse;
   public id: number;
   public rating = new FormControl();
@@ -23,17 +28,21 @@ export class ToolDetailComponent implements OnInit {
   public lender: Lender| null = null;
   public starRating: number;
   public url:any;
+ 
 
 
  public rating3: number;
  public form1: FormGroup;
  public form2: FormGroup;
 
+  
+
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private toolService: ToolServiceNew,
-    private fb: FormBuilder
-
+    private fb: FormBuilder,
+    private paymentServices: PaymentServices,
   ){
     this.id = 0;
     this.tool = new ToolResponse ();//instancia vacia para guardar tool por id
@@ -63,11 +72,11 @@ export class ToolDetailComponent implements OnInit {
       //obtener la URL
       this.route.url.subscribe(params =>{
       this.url = params[0].path + '/' + params[1].path;
-        console.log(this.url);
+      this.paymentServices.setDataUrl(this.url); //envia url para redireccion
       })
     }
 
-
+    
 
     getToolDetail(): void{
         //obtener el  id de la URL

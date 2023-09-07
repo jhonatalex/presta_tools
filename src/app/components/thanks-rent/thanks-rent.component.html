@@ -53,12 +53,12 @@
                                 <h5><strong>Detalles</strong></h5>
                                 <p><strong>producto</strong></p>
                                 <div class="producto">
-                                    <img src="assets/img/taladro.png" alt="imagen Producto" class="d-inline w-25 h-25">
-                                    <p class="d-inline ms-2"><strong>Nombre Marca</strong></p>
-                                    <p class="d-inline posicionar">Propietario:<strong>    </strong></p>
+                                    <img src="{{this.tool.urlImage}}" alt="imagen Producto" class="d-inline w-25 h-25">
+                                    <p class="d-inline ms-2"><strong>{{this.tool.name}} {{this.tool.brand}}</strong></p>
+                                    <p class="d-inline posicionar"><strong>Propietario: </strong></p>
                                     <p><strong>Subtotal</strong></p>
                                    <!-- <p><strong>Envío</strong></p>-->
-                                    <p><strong>Método de pago</strong></p>
+                                    <p><strong>Valoración:</strong></p>
                                     <p><strong>Total</strong></p>
                                 </div>
                             </div>
@@ -70,10 +70,10 @@
                                     <p class="mt-5"><strong>250 CLP</strong></p>
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <p class="mt-90px"><strong>250 CLP</strong></p>
+                                    <p class="mt-90px"><strong>{{this.tool.rate}} estrellas</strong></p>
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <p><strong>250 CLP</strong></p>
+                                    <p><strong>{{this.detalleVenta.amount}} CLP</strong></p>
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <p><strong>Paypal</strong></p>

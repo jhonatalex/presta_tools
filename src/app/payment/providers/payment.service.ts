@@ -24,6 +24,8 @@ export class PaymentServices {
 
 
   miBehaviorSubject = new BehaviorSubject<ResponseApi|null>(null);
+  miBehaviorSubjectUrl = new BehaviorSubject<string|null>(null);
+  
 
   constructor(private callManSV: CallerManagerService,
               private spinner: NgxSpinnerService,
@@ -119,6 +121,19 @@ export class PaymentServices {
   getData(){
     return  this.miBehaviorSubject.asObservable();
   }
+
+
+
+
+  //para redirecion en verify-user
+  setDataUrl(data:string){
+    this.miBehaviorSubjectUrl.next(data);
+    console.log(data)
+  }
+  getDataUrl(){
+    return  this.miBehaviorSubjectUrl.asObservable();
+  }
+ 
 
 
 }

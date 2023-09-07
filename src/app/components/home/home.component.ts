@@ -5,6 +5,7 @@ import { Constants } from 'src/app/shared/constants/settings.class';
 import { environment } from 'src/environments/environment.prod';
 import { User } from 'src/app/register/models/user.model';
 import { ActivatedRoute } from '@angular/router';
+import { PaymentServices } from 'src/app/payment/providers/payment.service';
 
 
 @Component({
@@ -15,17 +16,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
-    environment.production? 'D3V' : 'D3V'
+    environment.production? ' ' : 'D3V'
   }`;
 
 
 
   public categories:any;
   public user: User = new User();
-  public url: string ='';
+  public url: any;
   constructor(
     private utilService: UtilService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private paymentServices: PaymentServices,
   ){}
 
   ngOnInit(): void {
@@ -40,8 +42,8 @@ export class HomeComponent implements OnInit {
     getUrlSegment():void{
       //obtener la URL
       this.route.url.subscribe(params =>{
-      this.url = params[0].path + '/' + params[1].path;
-        console.log(this.url);
+      this.url = params;
+      this.paymentServices.setDataUrl(this.url); //envia url para redireccion
       })
     }
 
