@@ -36,7 +36,7 @@ export class VerifyGuard implements CanActivate {
       }else{
 
         this.sweetUIService
-        .alertConfirm("Hola", "Para Arrendar Necesitas estar verificado", 'warning')
+        .alertConfirm("Hola", "Para Reservar Necesitas estar verificado", 'warning')
         .then(() => {
           this.utilService.navigateToPath('/verificar-usuario');
         })

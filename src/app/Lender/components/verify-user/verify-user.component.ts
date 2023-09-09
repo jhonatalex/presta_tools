@@ -139,7 +139,9 @@ export class VerifyUserComponent implements OnInit {
         //SET USER A LOCAL SOTORAGE
        // this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);
         //REDIRECCION ENVIAR A LA URL de DONDE VINO
-       //  this.utilservice.navigateToPath('/'+ this.urlRedireccion);
+         this.utilservice.navigateToPath('/'+ this.urlRedireccion);
+         
+       
      }else{
       this.sweetUIService
       .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')

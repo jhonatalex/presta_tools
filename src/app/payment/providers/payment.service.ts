@@ -128,7 +128,6 @@ export class PaymentServices {
   //para redirecion en verify-user
   setDataUrl(data:string){
     this.miBehaviorSubjectUrl.next(data);
-    console.log(data)
   }
   getDataUrl(){
     return  this.miBehaviorSubjectUrl.asObservable();
