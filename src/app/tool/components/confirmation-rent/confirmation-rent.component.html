@@ -13,7 +13,7 @@
                 <div class="card shadow borderRadius ms-4 p-2 div-titulo">
                     <h3 class="text-center"><strong>Confirmación de renta</strong></h3>
                 </div>
-                <div class="card shadow borderRadius ms-4 p-2 mt-5 div-formulario">
+                <div class="card shadow borderRadius ms-4 p-2 mt-5 pt-5 div-formulario">
                     <h5 class="ms-4 mt-2"><strong>Datos de Facturación</strong></h5>
 
                             <div class="row">
@@ -63,16 +63,10 @@
 
                                     </div>
 
-                                    <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
+                                    <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4 pt-2 pb-5">
                                         <label for="direccion" class="form-label mb-0">Dirección</label>
                                         <input type="direccion"  #address="ngModel" [(ngModel)]="user.address" class="form-control-sm border width-90" name="direccion" id="direccion" required>
                                         <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">escriba su dirección</small>
-                                    </div>
-
-
-                                    <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4 pb-5">
-                                        <label for="notas" class="form-label mb-0">Notas adicionales(Opcional)</label>
-                                        <textarea type="text" class="form-control-sm border pb-5 width-90" name="notas" id="notas"></textarea>
                                     </div>
 
                             </div>
