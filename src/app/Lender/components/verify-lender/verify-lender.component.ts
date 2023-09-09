@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { PaymentServices } from 'src/app/payment/providers/payment.service';
 import { User, UserUpdate } from 'src/app/register/models/user.model';
 import { REGIONES } from 'src/app/shared/constants/regiones.class';
@@ -45,12 +46,12 @@ export class VerifyLenderComponent implements OnInit {
     this.getRegionesArray();
 
      //recibe url para redireccion
-     this.paymentServices.getDataUrl().subscribe({
+    /* this.paymentServices.getDataUrl().subscribe({
       next: data =>{
       console.log('Url recibida: ',data)
       this.urlRedireccion = data;
       }
-      });
+      });*/
   }
 
 
@@ -102,6 +103,7 @@ export class VerifyLenderComponent implements OnInit {
 
   //enviar formulario a la API
   onSubmit(Form:any){
+    
       //crear lender para registrarlo si va a alquilar producto
       this.lender.id = this.generarIdUnicoNumerico();
       this.lender.password = this.user.password;
@@ -119,26 +121,31 @@ export class VerifyLenderComponent implements OnInit {
     this.userUpdate.lastName = this.user.lastName;
     this.userUpdate.email = this.user.email;
     this.userUpdate.telephone = this.user.telephone;
-    this.userUpdate.verify = true;
+    this.userUpdate.verify = true;//usuario se verifica
+    this.userUpdate.typeUser = 'lender'; //cambia tipo de usuario a lender
+    this.userUpdate.typeUser = this.user.typeUser;
     //datos del formualario
     this.userUpdate.address = this.user.address;
     this.userUpdate.dIdentidad = this.user.dIdentidad;
-    this.userUpdate.password = this.user.password;
-    this.userUpdate.typeUser = this.user.typeUser;
+
+    
 
 
 
       
 
       
-     if(this.user.typeUser === 'user'){
-      this.userUpdate.typeUser = 'lender'; //cambia tipo de usuario a lender
+     if(this.userUpdate && this.lender){
       // Enviar Lender a la api
-      // this.lenderService.register(this.lender);
+      // this.lenderService.register(this.lender);//registrar lender
+      // update User way udapte user use services register
+       // this.resgisterService.update(this.userUpdate);//actualiza user
+      // this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);//guarda user actualizado en Local Storage.
      console.log(this.lender);
      console.log(this.userUpdate);
+     
       //REDIRECCION ENVIAR A LA URL de DONDE VINO
-       this.utilservice.navigateToPath('/'+ this.urlRedireccion);
+      // this.utilservice.navigateToPath('/agregar-producto');
    }else{
     this.sweetUIService
     .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')

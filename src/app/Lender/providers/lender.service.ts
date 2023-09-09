@@ -34,7 +34,7 @@ export class LenderService {
 
   private manageResponse(registerLenderRS:RegisterLenderRS){
     if(registerLenderRS.success){
-      this.sweetUIService.alertConfirm('Usuario Verificado',registerLenderRS.message,'success')
+      this.sweetUIService.alertConfirm('Lender Verificado',registerLenderRS.message,'success')
       .then(()=>{
        // this.utilService.navigateToPath('/')
       })

@@ -26,7 +26,7 @@ export class VerifyLenderGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       var user: User = this.utilService.getFromLocalStorage(this.loginKey);
 
-      if(user.verify){
+      if(user.verify && user.typeUser == 'lender'){
         return true
       }else{
 

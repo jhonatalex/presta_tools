@@ -31,7 +31,7 @@ export class VerifyUserComponent implements OnInit {
   
 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
-    environment.production ? '' : 'D3V'
+    environment.production ? '': 'D3V'
   }`;
 
   
@@ -130,12 +130,11 @@ export class VerifyUserComponent implements OnInit {
     this.userUpdate.typeUser = this.user.typeUser;
 
 
-     if(this.user.typeUser === 'user'){
+     if(this.userUpdate){
 
       console.log(this.userUpdate);
         // update User way udapte user use services register
        // this.resgisterService.update(this.userUpdate);
-       
         //SET USER A LOCAL SOTORAGE
        // this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);
         //REDIRECCION ENVIAR A LA URL de DONDE VINO

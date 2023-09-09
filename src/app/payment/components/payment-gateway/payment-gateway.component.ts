@@ -31,7 +31,7 @@ export class PaymentGatewayComponent implements OnInit {
       const token = params['token_ws'];
       console.log(token);
       if (token) {
-       // this.enviarTokenParaConfirmarTransaccion(token);
+        this.enviarTokenParaConfirmarTransaccion(token);
       }
     });
   }

@@ -101,7 +101,7 @@ export class ConfirmationRentComponent implements OnInit {
     dates.push(new Date(c))
       c.setDate(c.getDate()+1)
     }
-    this.days = dates.length+1;
+    this.days = dates.length;
     this.total = this.days * this.tool.valueRent;
   }
 
