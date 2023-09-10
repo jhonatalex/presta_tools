@@ -54,6 +54,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FailsTransactionComponent } from './components/fails-transaction/fails-transaction.component';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { VerifyLenderComponent } from './Lender/components/verify-lender/verify-lender.component';
+import { DashboardComponent } from './Lender/components/dashboard/dashboard.component';
 
 
 
@@ -86,6 +87,7 @@ import { VerifyLenderComponent } from './Lender/components/verify-lender/verify-
     PaymentGatewayComponent,
     FailsTransactionComponent,
     VerifyLenderComponent,
+    DashboardComponent,
 
 
 

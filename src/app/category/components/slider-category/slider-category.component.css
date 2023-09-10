@@ -76,3 +76,10 @@
 .vh70{
   height: 63vh;
 }
+
+/*Estilos responsive*/
+@media(width:1920px){
+  .vh70{
+    height: 60%;
+  }
+}

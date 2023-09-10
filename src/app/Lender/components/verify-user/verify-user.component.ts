@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaymentServices } from 'src/app/payment/providers/payment.service';
-import { User, UserUpdate } from 'src/app/register/models/user.model';
+import { User } from 'src/app/register/models/user.model';
 import { RegisterService } from 'src/app/register/providers/register.service';
 import { REGIONES } from 'src/app/shared/constants/regiones.class';
 import { Constants } from 'src/app/shared/constants/settings.class';
@@ -21,7 +21,7 @@ export class VerifyUserComponent implements OnInit {
 
 
   public user: User;
-  public userUpdate: UserUpdate;
+  public userUpdate: User;
   public selectedRegion: string | null = null;
   public selectedComuna: string | null = null;
   public regiones: string[]=[];
@@ -43,7 +43,7 @@ export class VerifyUserComponent implements OnInit {
   ) {
 
    this.user  = new User;
-   this.userUpdate = new UserUpdate;
+   this.userUpdate = new User;
   }
 
   
@@ -120,27 +120,25 @@ export class VerifyUserComponent implements OnInit {
     this.userUpdate.id = this.user.id;
     this.userUpdate.name = this.user.name;
     this.userUpdate.lastName = this.user.lastName;
+    this.userUpdate.password = this.user.password;
     this.userUpdate.email = this.user.email;
     this.userUpdate.telephone = this.user.telephone;
     this.userUpdate.verify = true;
+    this.userUpdate.typeUser = 'user';
     //datos del formualario
     this.userUpdate.address = this.user.address;
     this.userUpdate.dIdentidad = this.user.dIdentidad;
-    this.userUpdate.password = this.user.password;
-    this.userUpdate.typeUser = this.user.typeUser;
 
 
      if(this.userUpdate){
 
       console.log(this.userUpdate);
-        // update User way udapte user use services register
-       // this.resgisterService.update(this.userUpdate);
+         //update User way udapte user use services register
+        this.resgisterService.update(this.userUpdate);
         //SET USER A LOCAL SOTORAGE
-       // this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);
+        this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);
         //REDIRECCION ENVIAR A LA URL de DONDE VINO
          this.utilservice.navigateToPath('/'+ this.urlRedireccion);
-         
-       
      }else{
       this.sweetUIService
       .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')

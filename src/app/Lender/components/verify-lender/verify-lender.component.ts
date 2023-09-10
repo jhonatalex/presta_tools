@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PaymentServices } from 'src/app/payment/providers/payment.service';
-import { User, UserUpdate } from 'src/app/register/models/user.model';
+import { User } from 'src/app/register/models/user.model';
+import { RegisterService } from 'src/app/register/providers/register.service';
 import { REGIONES } from 'src/app/shared/constants/regiones.class';
 import { Constants } from 'src/app/shared/constants/settings.class';
 import { SweetUIService } from 'src/app/shared/services/gui.service';
@@ -20,8 +21,10 @@ export class VerifyLenderComponent implements OnInit {
     environment.production ? '' : 'D3V'
   }`;
 
+
+
   public user: User;
-  public userUpdate: UserUpdate;
+  public userUpdate: User;
   public ConfirmPassword:string='';
   public token:string='';
   public lender:Lender;
@@ -34,24 +37,16 @@ export class VerifyLenderComponent implements OnInit {
     private utilservice: UtilService,
     private lenderService: LenderService,
     private sweetUIService:SweetUIService,
-    private paymentServices: PaymentServices) 
+    private resgisterService: RegisterService,) 
 
     {this.user  = new User;
-      this.userUpdate = new UserUpdate;
+      this.userUpdate = new User;
     this.lender = new Lender;   
     }
 
   ngOnInit(): void {
     this.getUser();
     this.getRegionesArray();
-
-     //recibe url para redireccion
-    /* this.paymentServices.getDataUrl().subscribe({
-      next: data =>{
-      console.log('Url recibida: ',data)
-      this.urlRedireccion = data;
-      }
-      });*/
   }
 
 
@@ -119,33 +114,27 @@ export class VerifyLenderComponent implements OnInit {
     this.userUpdate.id = this.user.id;
     this.userUpdate.name = this.user.name;
     this.userUpdate.lastName = this.user.lastName;
+    this.userUpdate.password = this.user.password;
     this.userUpdate.email = this.user.email;
     this.userUpdate.telephone = this.user.telephone;
     this.userUpdate.verify = true;//usuario se verifica
-    this.userUpdate.typeUser = 'lender'; //cambia tipo de usuario a lender
-    this.userUpdate.typeUser = this.user.typeUser;
+    this.userUpdate.typeUser = 'lender'; //cambia tipo de usuario 
     //datos del formualario
     this.userUpdate.address = this.user.address;
     this.userUpdate.dIdentidad = this.user.dIdentidad;
 
     
-
-
-
-      
-
       
      if(this.userUpdate && this.lender){
-      // Enviar Lender a la api
-      // this.lenderService.register(this.lender);//registrar lender
-      // update User way udapte user use services register
-       // this.resgisterService.update(this.userUpdate);//actualiza user
-      // this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);//guarda user actualizado en Local Storage.
-     console.log(this.lender);
-     console.log(this.userUpdate);
+      // Registrar Lender en la api 
+      this.lenderService.register(this.lender);
+
+      // actualizar user y guardar en Local Storage
+      this.resgisterService.update(this.userUpdate);
+      this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);
      
       //REDIRECCION ENVIAR A LA URL de DONDE VINO
-      // this.utilservice.navigateToPath('/agregar-producto');
+       this.utilservice.navigateToPath('/agregar-producto');
    }else{
     this.sweetUIService
     .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')

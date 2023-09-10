@@ -2,7 +2,7 @@ import { ErrorRes } from "src/app/shared/models/error.model";
 import { Lender } from "./lender.model";
 
 
-export class RegisterLenderRS {
+export class LenderRS {
     token: string = '';
     data: null = null;
     success: boolean | null = null;

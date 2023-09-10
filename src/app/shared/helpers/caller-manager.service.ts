@@ -27,6 +27,9 @@ export class CallerManagerService {
     return firstValueFrom(this.callerSV.getByID(serviceUrl,id));
   }
 
+  public getDataByEmail(serviceUrl:string, email:string): Promise<any> {
+    return firstValueFrom(this.callerSV.getByEmail(serviceUrl, email));
+  }
 
 
   public getFile(serviceUrl: string): Promise<any> {

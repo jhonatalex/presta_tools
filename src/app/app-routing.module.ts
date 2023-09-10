@@ -25,6 +25,7 @@ import { PaymentGatewayComponent } from './payment/components/payment-gateway/pa
 import { FailsTransactionComponent } from './components/fails-transaction/fails-transaction.component';
 import { VerifyLenderComponent } from './Lender/components/verify-lender/verify-lender.component';
 import { VerifyLenderGuard } from './login/auth/verify-lender.guard';
+import { DashboardComponent } from './Lender/components/dashboard/dashboard.component';
 
 const routes: Routes = [
 
@@ -56,11 +57,12 @@ const routes: Routes = [
     path: 'confirma-renta/:id', component: ConfirmationRentComponent,
     canActivate:[AuthGuard,VerifyGuard]
   },
-
   {
     path: 'agregar-producto', component: AddToolComponent,
     canActivate:[AuthGuard,VerifyLenderGuard],
   },
+  {path: 'panel', component: DashboardComponent,
+  canActivate:[AuthGuard,VerifyLenderGuard]},
 
 
 

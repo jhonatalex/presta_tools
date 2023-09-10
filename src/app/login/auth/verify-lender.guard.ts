@@ -31,7 +31,7 @@ export class VerifyLenderGuard implements CanActivate {
       }else{
 
         this.sweetUIService
-        .alertConfirm("Hola", "Para Alquilar Necesitas estar verificado", 'warning')
+        .alertConfirm("Hola", "Para entrar aquí, Necesitas estar verificado y ser un PrestaTools", 'warning')
         .then(() => {
           this.utilService.navigateToPath('/verificar-lender');
         })

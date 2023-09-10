@@ -1,0 +1,116 @@
+
+<section id="seccion-dashboard" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <nav class="navbar navbar-expand-lg blue-gradient">
+                        <div class="container">
+                          <a class="nav-link navbar-brand">Dashboard</a>
+                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                          </button>
+                          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                              <form class="d-flex w-100">
+                                <button class="btn btn-link bg-white border-0 " type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                <input class="form-control me-2 ps-5" type="search" placeholder="Buscar Productos" aria-label="Search">
+                              </form>
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 float-end">
+                              <li class="nav-item">
+                                <a class="nav-link" href="">Documentación</a>
+                              </li>
+                             
+                              <li class="nav-item">
+                                <a class="nav-link " href="">Soporte</a>
+                              </li>
+                            </ul>
+                           
+                          </div>
+                        </div>
+                      </nav>
+                    <div class="col col-md-3 pt-5 border">
+                        <div class="d-flex justify-content-center">
+                            <img src="assets/img/userLogin.png" alt="icono" style="width: 30px; height: 30px;" class="fa">
+                            <p class="p-1 text-colr-black">{{lender.name + lender.lastName}}</p><br><br> 
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <p>{{lender.email}}</p>
+                        </div>
+                        <div class="form-group d-flex justify-content-center pb-3">
+                            <a class="boton-registrar btn-blue-grad mt-2 p-2 border-0 col-md-4 nav-link active text-center"[routerLink]="['/agregar-producto']">Registrar Producto</a>
+                        </div>
+                        <div class="form-group d-flex justify-content-center pb-3">
+                            <button class="form-control-sm btn nav-link btn-logout" (click)='signOut()'>Cerrar Sesión</button>
+                        </div>
+                        <div>
+                            <p class="ps-3">Promember</p>
+                        </div>
+                        <div>
+                            <p class="ps-3">3 artículos</p> 
+                        </div>
+                    </div>
+                    <div class="col col-md-6 pt-5 border">
+                        <div class=" row border-botton d-flex">
+                            <h5 class="p-3">Productos Alquilados</h5>
+                        </div>
+                        <div class=" row border-top py-5">
+                            <div class="col">
+                                <p>Sierra Caladora</p>
+                            </div>
+                            <div class="col">
+                                <p>Estado: Disponible</p>
+                            </div>
+                            <div class="col">
+                                <strong>Valoracion:    </strong><p class="d-inline-block">Estrellas</p>
+                            </div>
+                        </div>
+                        <div class="row border-top py-5">
+                            <div class="col">
+                                <p>Martillo Neumático</p>
+                            </div>
+                            <div class="col">
+                                <p>Estado: Disponible</p>
+                            </div>
+                            <div class="col">
+                                <strong>Valoracion:    </strong><p class="d-inline-block">Estrellas</p>
+                            </div>
+                        </div>
+                        <div class="row border-top py-5">
+                            <div class="col">
+                                <p>Taladro Inalambrico</p>
+                            </div>
+                            <div class="col">
+                                <p>Estado: Disponible</p>
+                            </div>
+                            <div class="col">
+                                <strong>Valoracion:    </strong><p class="d-inline-block">Estrellas</p>
+                            </div>
+                        </div>
+                        <div class="row border-top py-5">
+                            <div class="col">
+                                <p>Bicicleta de Ruta</p>
+                            </div>
+                            <div class="col">
+                                <p>Estado: Disponible</p>
+                            </div>
+                            <div class="col">
+                                <strong>Valoracion:    </strong><p class="d-inline-block">Estrellas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-3 pt-5 border">
+                        <div class="row pb-3">
+                            <strong>Ganancias</strong>
+                        </div>
+                        <div class="between pb-3">
+                           <p class="d-inline-block">Saldo:</p> 
+                           <p class="d-inline-block">12$</p>
+                        </div>
+                       
+                        <div class="container fluid border-top pb-3 d-flex justify-content-center">
+                            <a class="boton-registrar btn-blue-grad mt-2 p-2 border-0 col-md-4 nav-link active text-center"[routerLink]="['']">Retirar Dinero</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
+
+

@@ -30,6 +30,15 @@ export class CallerService {
     });
   }
 
+  public getByEmail(url:string, email:string): Observable<Object | undefined> {
+    this.httpHeaders['Access-Control-Allow-Methods'] = 'GET';
+    this.httpHeaders['Content-Type'] = 'application/json';
+    return this.http.get(url+email, {
+      headers: new HttpHeaders(this.httpHeaders)
+    });
+  }
+
+
 
   /* --- GET with pagination --- */
   public getByPage(

@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { catchError, finalize, from, map, Observable, tap } from 'rxjs';
 import { PathLender} from 'src/app/shared/constants/endpoints.class';
 import { CallerManagerService } from 'src/app/shared/helpers/caller-manager.service';
 import { SweetUIService } from 'src/app/shared/services/gui.service';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { environment } from 'src/environments/environment';
-import { RegisterLenderRS } from '../models/registerLenderRS.model';
+import { Lender } from '../models/lender.model';
+import { LenderRS } from '../models/registerLenderRS.model';
+
 
 
 @Injectable({
@@ -17,6 +20,33 @@ export class LenderService {
               private spinner: NgxSpinnerService,
               private sweetUIService:SweetUIService,
               private utilService: UtilService) { }
+
+
+
+              public getLenderByEmail(email:string):Observable<any>{
+
+                this.spinner.show();
+                const url = `${environment.baseUrl}${PathLender.getLenderById}`;
+
+
+                return from(this.callManSV.getDataByEmail(url,email)).pipe(
+                  map((response: any) => response.data),
+                  tap((lender: Lender) => {
+                    
+                  }),
+                  catchError((error: any) => {
+                    this.manageError(error);
+                    throw error;
+                  }),
+                  finalize(() => {
+                    this.spinner.hide();
+                  })
+                );
+
+              }
+
+             
+
 
 
   public register(payload: any):void{
@@ -32,15 +62,15 @@ export class LenderService {
     .finally(()=>this.spinner.hide())
   }
 
-  private manageResponse(registerLenderRS:RegisterLenderRS){
-    if(registerLenderRS.success){
-      this.sweetUIService.alertConfirm('Lender Verificado',registerLenderRS.message,'success')
+  private manageResponse(lenderRS:LenderRS){
+    if(lenderRS.success){
+      this.sweetUIService.alertConfirm('PrestaTools Verificado',lenderRS.message,'success')
       .then(()=>{
        // this.utilService.navigateToPath('/')
       })
       .catch((e:any)=>{console.log(e);})
     }else{
-      this.sweetUIService.alertConfirm('Alerta',registerLenderRS.message ,'error')
+      this.sweetUIService.alertConfirm('Alerta',lenderRS.message ,'error')
      // console.log(registerLenderRS.Error?.message)
     }
   }
