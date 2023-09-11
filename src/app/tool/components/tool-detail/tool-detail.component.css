@@ -445,8 +445,10 @@ padding-top: 10px;
             bottom: 398px;
         }
         .footer{
-            position: relative;
-            bottom: 396px;
+            margin-top: -397px;
+        }
+        .mt-48{
+            margin-top: -48px;
         }
 
    

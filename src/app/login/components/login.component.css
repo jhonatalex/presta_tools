@@ -96,7 +96,7 @@ input {
 }
 
 
-
+/*Responsive*/
 @media(max-width:512px) {
   .card {
 
