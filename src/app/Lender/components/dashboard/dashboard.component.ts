@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/login/auth/auth.service';
 import { User } from 'src/app/register/models/user.model';
 import { Constants } from 'src/app/shared/constants/settings.class';
@@ -20,11 +21,17 @@ export class DashboardComponent implements OnInit {
   public user: User = new User();
   public lender: any;
   public email: string;
+  public form1: FormGroup;
   
   constructor(
     private authService: AuthService,
     private utilService: UtilService,
-    private lenderService: LenderService){this.email = '';}
+    private lenderService: LenderService,
+    private fb: FormBuilder,)
+    {this.email = '';
+    this.form1 = this.fb.group({
+      rating1: [0, Validators.required],
+    })}
  
 
   ngOnInit(): void {
@@ -46,6 +53,10 @@ export class DashboardComponent implements OnInit {
     this.lenderService.getLenderByEmail(data).subscribe(lender=>{
       console.log(lender);
       this.lender = lender;
+       //asignamos valor de rate Lender a rating1
+       this.form1 = this.fb.group({
+        rating1: [this.lender.rate, Validators.required]
+      })
     })
   }
 

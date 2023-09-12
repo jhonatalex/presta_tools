@@ -31,3 +31,27 @@
       display: flex;
       justify-content: space-between;
   }
+
+/*EStilos ngx-star-rating*/
+  ::ng-deep label.star{
+    padding: 0 5px !important;
+    font-size:20px !important;
+    color:rgb(136, 134, 134) !important;
+
+}
+
+ ::before label.star{
+        content: "\f005" !important;
+ }
+
+ :hover label.star{
+    transform: rotate(0deg) scale(1.3) !important;
+}
+  .ngx-star{
+    margin: 0px;
+    padding: 0px;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+/*-----------------------------------------------------*/
