@@ -318,6 +318,9 @@ padding-top: 10px;
     align-items: center;
     justify-content: center;
 }
+.stars{
+    width: 95%;
+}
 
 
 /*ESTILOS PARA RESPONSIVE*/
