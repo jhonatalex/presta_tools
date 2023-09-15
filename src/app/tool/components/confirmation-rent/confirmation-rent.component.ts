@@ -25,7 +25,7 @@ export class ConfirmationRentComponent implements OnInit {
   public id:number;
   public tool:ToolResponse;
   public startDate: Date = new Date();
-  public endDate: Date;
+  public endDate!: Date;
   public days:number=0;
   public total:number=0;
   public nameLender: string | undefined;
@@ -63,7 +63,7 @@ export class ConfirmationRentComponent implements OnInit {
     this.id = 0;
     this.tool = new ToolResponse();
     this.responseModel = new PayResponse();
-    this.endDate = new Date();
+    
     }
 
   ngOnInit(): void {
@@ -87,6 +87,7 @@ export class ConfirmationRentComponent implements OnInit {
   }
 
   setEndDate(event:any):void{
+    this.endDate = new Date();
     this.endDate = event.target.value;
     this.CalcDays();
   }
