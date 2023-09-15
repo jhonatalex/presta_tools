@@ -29,8 +29,10 @@ export class Constants {
      * User Token Permission
      */
     usrTknPrm: `UTP`,
+    lenderSetKey:`LENDER`,
     /**
      * User Centro y Almacen
+     * 
      */
     usrCntrs: `CNTR-ALM`,
     /**

@@ -145,6 +145,15 @@
     padding-bottom: 20px;
 }
 
+
+/*Estilos responsive*/
+@media(width:1920px){
+    .content-products{
+        height: 621px;
+        width: 69%;
+    }
+}
+
 @media(max-width:1024px) {
 
 

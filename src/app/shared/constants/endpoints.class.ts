@@ -50,6 +50,8 @@ export const PathLender = {
    */
   saveLender: 'api/lender/insert',
 
+  getLenderById:'api/lender/get/',
+
 };
 export const PathCategory = {
   /**

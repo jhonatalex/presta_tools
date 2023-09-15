@@ -6,7 +6,7 @@ numberComprobante: string ='';
 
 idUser: string ='';
 
-date :string =new Date().toISOString();
+date :string =new Date().toLocaleString();
 
 state:string = '';
 

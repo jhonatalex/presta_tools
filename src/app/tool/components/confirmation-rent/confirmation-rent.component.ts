@@ -165,8 +165,8 @@ this.route.params.subscribe(params =>{
     detalleVenta.price = this.tool.valueRent;
     detalleVenta.rentalDays=this.days;
     detalleVenta.BuyOrder=buyOrder;
-    detalleVenta.startDate= this.startDate.toString();
-    detalleVenta.endDate = this.endDate.toString();
+    detalleVenta.startDate= this.startDate.toLocaleString();
+    detalleVenta.endDate = this.endDate.toLocaleString();
     detalleVenta.total = this.total;
 
     //Pay DATA

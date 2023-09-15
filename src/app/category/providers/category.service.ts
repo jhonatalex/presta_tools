@@ -87,12 +87,12 @@ public getListCategoryProviders(): Observable<Category[]> {
 
     this.spinner.show();
     const url = `${environment.baseUrl}${PathCategory.getCategoryId}`;
-    console.log(url+id)
+
 
     return from(this.callManSV.getDataById(url,id)).pipe(
       map((response: any) => response.data),
       tap((Category: Category) => {
-        console.log(Category);
+        
       }),
       catchError((error: any) => {
         this.manageError(error);

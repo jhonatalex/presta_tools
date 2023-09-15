@@ -1,0 +1,87 @@
+.pb-100{
+    padding-bottom: 100px;
+  }
+  
+  .div-titulo{
+    width: 85%;
+    border-radius: 50px;
+  }
+  
+  .div-formulario{
+    width: 85%;
+    border-radius: 50px;
+    align-items: center;
+  }
+  
+  .div-contenedor{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+  
+  /*estilos para los input del formulario*/
+  .input-caracteristicas{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    color: rgb(97, 97, 97);
+  }
+  
+  
+  /* Estilos para el select */
+  select {
+    padding: 5px; /* Espaciado interior para que se vea más bonito */
+    font-size: 14px; /* Tamaño de fuente */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #f5f5f5; /* Color de fondo */
+    appearance: none; /* Eliminar los estilos por defecto del select */
+    width: 63%; /* Ancho del select para ocupar todo el espacio disponible */
+  }
+  
+  
+  .margin-32px{
+    margin-left: 43px;
+    margin-right: 38px;
+  }
+  
+  /* Estilos para las opciones del select */
+  select option {
+    font-size: 14px; /* Tamaño de fuente para las opciones */
+  }
+  
+  
+  .width-442px{
+    width: 441px;
+    margin-left: 30px;
+  }
+  
+  .width-442{
+    width: 441px;
+    margin-left: 20px;
+  }
+  
+  .margin-32{
+    margin-left: 32px;
+  }
+  .margin-30{
+    margin-left: 30px;
+    width: 93%;
+  }
+  
+  
+  
+  
+   
+  
+   
+  
+  
+   
+  
+  
+   
+  
+  

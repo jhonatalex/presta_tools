@@ -29,6 +29,9 @@ export class AuthService {
   private tokenKey = `${new Constants().getStorageKeys().decodedTokenKey}${
     environment.production? '' : 'D3V'
   }`;
+  private lenderKey = `${new Constants().getStorageKeys().lenderSetKey}${
+    environment.production? '' : 'D3V'
+  }`;
 
   public user = new User();;
 
@@ -184,6 +187,7 @@ export class AuthService {
 
     this.utilService.removeFromLocalStorage(this.loginKey);
     this.utilService.removeFromLocalStorage(this.tokenKey);
+    this.utilService.removeFromLocalStorage(this.lenderKey);
   }
 
 

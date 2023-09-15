@@ -2,7 +2,7 @@ export class DetalleVenta {
   idVenta: number=0;
   idTool: number=0;
   amount: number=0;
-  date: string = new Date().toISOString();
+  date: string = new Date().toLocaleString();
   price: number=0;
   descuento: number=0;
   total: number=0;
