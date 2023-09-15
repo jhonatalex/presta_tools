@@ -13,72 +13,66 @@
 
                             <form class="form-group" #confirmForm = "ngForm" (ngSubmit)="onSubmit(confirmForm)">
                                 <div class="row">
-                                        <div class="col">
-                                            <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                        <div class="col ">
+                                            <div class="form-group d-flex flex-column mt-4  ">
                                                 <label for="nombre" class="form-label mb-0">Nombre</label>
                                                 <input class="form-control " type="text"  name="name"  #name="ngModel" [(ngModel)]="user.name" required pattern="[a-zA-Z]+">
                                                 <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">Debe colocar un nombre válido</small>
                                             </div>
-                                            <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+
+                                            <div class="form-group d-flex flex-column mt-4  ">
+                                              <label for="dIdentidad" class="form-label mb-0 ">Número de Rut</label>
+                                              <input type="text"  #dIdentidad="ngModel" [(ngModel)]="user.dIdentidad" class="form-control" name="dIdentidad" id="dIdentidad" required>
+                                              <small *ngIf="!dIdentidad.valid && dIdentidad.touched" class="invalid-feedback d-block">No puede quedar vacío</small>
+                                            </div>
+
+                                            <div class="form-group d-flex flex-column mt-4  o">
                                                 <label for="telefono" class="form-label mb-0">Teléfono</label>
                                                 <input type="text"  name="telephone" #telephone="ngModel" [(ngModel)]="user.telephone" required class="form-control" id="telefono">
                                                 <small *ngIf="!telephone.valid && telephone.touched" class="invalid-feedback d-block">Debe colocar un número de teléfono válido</small>
                                             </div>
 
-                                            <div class="form-group mt-4 mxauto">
-                                              <label for="region" class="ms-5 me-5">Región</label>
-                                              <select  name="region" #region="ngModel" [(ngModel)]="selectedRegion" (ngModelChange)="onSelectRegion()" required>
-                                                <option selected class="form-label">Seleccione una Región</option>
-                                                <option class="form-control" *ngFor="let region of regiones" [value]="region">{{region}}</option>
+
+                                            <div class="form-group  d-flex  mt-4 ">
+                                              <label for="region" class=" label-region">Región</label>
+                                              <select class="select-css" name="region" #region="ngModel" [(ngModel)]="selectedRegion" (ngModelChange)="onSelectRegion()" required>
+                                                  <option [ngValue]="null" disabled selected>Seleccionar Región</option>
+                                                  <option class="form-control" *ngFor="let region of regiones" [value]="region">{{region}}</option>
                                               </select>
-                                            </div>
+                                          </div>
 
                                         </div>
-                                        <div class="col">
-                                            <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                        <div class="col ">
+                                            <div class="form-group d-flex flex-column mt-4 ">
                                                 <label for="apellido" class="form-label mb-0">Apellido</label>
                                                 <input type="text" [(ngModel)]="user.lastName" class="form-control" name="lastName" #lastName="ngModel" id="apellido" required>
                                                 <small *ngIf="!lastName.valid && lastName.touched" class="invalid-feedback d-block">Debe colocar un apellido válido</small>
                                             </div>
-                                            <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                            <div class="form-group d-flex flex-column mt-4 ">
                                                 <label for="email" class="form-label mb-0">Dirección de correo electrónico</label>
                                                 <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                                                 <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">Debe colocar un correo válido</small>
                                             </div>
+                                            <div class="form-group d-flex flex-column mt-4 ">
+                                              <label for="direccion" class="form-label  mb-0">Dirección / Nombre calle y numero casa </label>
+                                              <input type="text"  #address="ngModel" [(ngModel)]="user.address" class="form-control" name="address" id="direccion" required>
+                                              <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">Debe colocar una dirección</small>
+                                            </div>
 
-                                            <div class="form-group mt-4 mxauto">
-                                              <label for="comuna" class="margin-32px">Comuna</label>
-                                              <select  name="comuna" [(ngModel)]="selectedComuna" (ngModelChange)="onSelectComuna()" required>
-                                                <option class="form-label" selected>Seleccione una Comuna</option>
-                                                <option class="form-control" *ngFor="let comuna of comunas" value={{comuna}}>{{comuna}}</option>
+                                            <div class="form-group  d-flex  mt-4">
+                                              <label for="comuna" class="label-comuna">Comuna</label>
+                                              <select  class="select-css" name="comuna" [(ngModel)]="selectedComuna" (ngModelChange)="onSelectComuna()" required>
+                                                  <option [ngValue]="null" disabled selected>Seleccionar Comuna</option>
+                                                  <option class="form-control" *ngFor="let comuna of comunas" [value]="comuna">{{comuna}}</option>
                                               </select>
-                                            </div>
-                                        </div>
+                                          </div>
 
-
-                                        <div class="row">
-                                            <div class="col col-md-6">
-                                                <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
-                                                    <label for="direccion" class="form-label mb-0 ms-4">Dirección</label>
-                                                    <input type="text"  #address="ngModel" [(ngModel)]="user.address" class="form-control" name="address" id="direccion" required>
-                                                    <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">Debe colocar una dirección</small>
-                                                </div>
-                                            
-                                            </div>
-                                            <div class="col col-md-6">
-                                                <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
-                                                    <label for="dIdentidad" class="form-label mb-0 margin-32">Número de Rut</label>
-                                                    <input type="text"  #dIdentidad="ngModel" [(ngModel)]="user.dIdentidad" class="form-control" name="dIdentidad" id="dIdentidad" required>
-                                                    <small *ngIf="!dIdentidad.valid && dIdentidad.touched" class="invalid-feedback d-block">No puede quedar vacío</small>
-                                                </div>
-                                                
-                                            </div>
                                         </div>
                                 </div>
                                 <div class="form-group mt-3 text-center py-3 d-flex justify-content-center">
-                                    <button type="submit" class="form-control btn-blue-grad w-75 text-color-white" [disabled] = "confirmForm.invalid">Enviar</button>
+                                    <button type="submit" class="form-control btn-blue-grad w-75 h-75 text-color-white" [disabled] = "confirmForm.invalid">Enviar</button>
                                   </div>
-                        
+
                             </form>
 
                     </div>
