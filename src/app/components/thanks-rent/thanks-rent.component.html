@@ -2,25 +2,25 @@
 <app-header [flaglogo]="false"></app-header>
 
 
-<section id="titulo" class="fondo p-5">
+<section id="titulo" class="fondo p-50">
     <div class="container">
-        <div class="card shadow d-flex justify-content-center align-items-center radius p-5 pb-100 higth300px">
-          <img src="assets/img/bien.png" alt="image tool" class="img-fluid">
-            <h1><strong>¡Hemos recibido su pago!</strong></h1>
-            <h2><strong>a continuacion vera detalle de la transaccion!</strong></h2>
+        <div class="card shadow text-center d-flex justify-content-center align-items-center radius p-50 pb-100 higth300px">
+          <img  class="img-fluid-check" src="assets/img/bien.png" alt="logo-check" >
+            <h2 class="titulo-gracias"><strong>¡Hemos recibido su pago!</strong></h2>
+            <h3 class="subtitulo-gracias"><strong>Gracias. Tu pedido ha sido recibido.</strong></h3>
         </div>
     </div>
 </section>
 
-<section id="" class="fondo p-5">
+<section id="" class="fondo p-50">
     <div class="container">
         <div class="card shadow radius p-5">
             <div class="row">
-                <div class="col linea-vertical">
+                <div class="col  linea-vertical">
                     <h5 class="text-center"> <strong>Número de pedido</strong></h5>
                     <p class="text-center mt-5">{{this.venta.numberComprobante}}</p>
                 </div>
-                <div class="col linea-vertical">
+                <div class="col  linea-vertical ">
                     <h5 class="text-center"><strong>Fecha</strong></h5>
                     <p class="text-center mt-5">{{this.venta.date}}</p>
                 </div>
@@ -28,81 +28,68 @@
                     <h5 class="text-center"><strong>Correo</strong></h5>
                     <p class="text-center mt-5">{{this.venta.idUser}}</p>
                 </div>
-                <div class="col linea-vertical">
+                <div class="col ">
                     <h5 class="text-center"> <strong>Total</strong></h5>
                     <p class="text-center mt-5">{{this.detalleVenta.amount}}</p>
                 </div>
-                <div class="col linea-vertical">
-                    <h5 class="text-center"> <strong>Método de pago</strong></h5>
-                    <p class="text-center mt-5"></p>
-                </div>
+
             </div>
         </div>
     </div>
 </section>
 
 
-<section id="seccion-final" class="fondo p-5">
-    <div class="row width-100">
-        <div class="col col-md-6 col-sm-12 detalles-producto">
-            <section id="seccion-detalles-producto" class="p-5">
-                <div class="container">
-                    <div class="card shadow radius p-5 card-detalle-producto">
-                        <div class="row">
-                            <div class="col">
-                                <h5><strong>Detalles</strong></h5>
-                                <p><strong>producto</strong></p>
-                                <div class="producto">
-                                    <img src="{{this.tool.urlImage}}" alt="imagen Producto" class="d-inline w-25 h-25">
-                                    <p class="d-inline ms-2"><strong>{{this.tool.name}} {{this.tool.brand}}</strong></p>
-                                    <p class="d-inline posicionar"><strong>Propietario: </strong></p>
-                                    <p><strong>Subtotal</strong></p>
-                                   <!-- <p><strong>Envío</strong></p>-->
-                                    <p><strong>Valoración:</strong></p>
-                                    <p><strong>Total</strong></p>
-                                </div>
+<section id="seccion-final" class="fondo p-50">
+    <div class="container">
+        <div class="row">
+          <div class="col col-md-6 col-sm-12 detalles-producto">
+                <div class="card shadow radius p-5">
+                    <div class="row">
+                        <div class="col">
+                            <h5><strong>Detalle del pedido</strong></h5>
+                            <p><strong>Producto</strong></p>
+                            <div class="producto">
+                                <img src="{{this.tool.urlImage}}" alt="imagen Producto" class="d-inline w-25 h-25">
+                                <p class="d-inline ms-2"><strong>{{this.tool.name}} {{this.tool.brand}}</strong></p>
+                                <p ><strong>Propietario: </strong></p>
+                                <p><strong>Subtotal:</strong></p>
+                                <p><strong>Valoración:</strong></p>
+                                <p><strong>Total:</strong></p>
                             </div>
-                            <div class="col">
-                                <div class="d-flex justify-content-end">
-                                    <h5><strong>Total</strong></h5>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <p class="mt-5"><strong>250 CLP</strong></p>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <p class="mt-90px"><strong>{{this.tool.rate}} estrellas</strong></p>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <p><strong>{{this.detalleVenta.amount}} CLP</strong></p>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <p><strong>Paypal</strong></p>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <p><strong>250 CLP</strong></p>
-                                </div>
+                        </div>
+                        <div class="col">
+                            <div class="d-flex justify-content-end">
+                                <h5><strong>Total</strong></h5>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <p class="mt-5"><strong>{{this.detalleVenta.price}}</strong></p>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <p class="mt-90px"><strong>{{this.tool.rate}} estrellas</strong></p>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <p><strong>{{this.detalleVenta.amount}} CLP</strong></p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </div>
-        <div class="col col-md-6 col sm-12 datos-facturacion">
-            <section id="seccion-datos-facturacion" class="p-5">
-                <div class="container">
-                    <div class="card shadow radius p-5 card-facturacion">
-                        <div>
-                            <h5><strong>Datos de facturación</strong></h5>
-                            <p>Joe Due</p>
-                            <p>Av 10th street, Spns</p>
-                            <p>Us</p>
-                            <p>550204</p>
-                            <p> <strong>Teléfono:</strong></p>
-                            <p><strong>Correo:</strong></p>
-                        </div>
+
+            </div>
+          </div>
+          <div class="col col-md-6 col-sm-12 datos-facturacion">
+            <div class="container">
+                <div class="card shadow radius p-5">
+                  <div class="row">
+                    <div class="col">
+                        <h5><strong>Datos de facturación</strong></h5>
+                        <br>
+                        <p> <strong>Teléfono:</strong></p>
+                        <p><strong>Correo:</strong></p>
+                        <p><strong>Direccion:</strong></p>
                     </div>
+                  </div>
                 </div>
-            </section>
+            </div>
+          </div>
         </div>
         <div class="form-group mt-3 pt-1 d-flex justify-content-center">
             <a [routerLink]="[' ']" class="btn-blue-grad d-flex justify-content-center align-items-center mb-3 ms-3">Ir a Home</a>
