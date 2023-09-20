@@ -59,6 +59,7 @@
                                         <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
                                           <label for="starDate">Fecha Final de arriendo</label>
                                           <input id="endDate" class="form-control w-92" type="date" [min]="minStrEnd" required (change)="setEndDate($event)" required/>
+                                          <small *ngIf="!this.endDate" class="invalid-feedback d-block">selecione una fecha</small>
                                         </div>
 
                                     </div>

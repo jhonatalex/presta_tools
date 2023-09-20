@@ -68,6 +68,7 @@ export class RegisterService {
     }else{
       this.sweetUIService.alertConfirm('Alerta',registerRS.message ,'error')
       console.log(registerRS.Error?.message)
+       this.utilService.navigateToPath('/')
     }
   }
 

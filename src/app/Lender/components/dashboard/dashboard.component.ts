@@ -22,6 +22,12 @@ export class DashboardComponent implements OnInit {
   public lender: any;
   public email: string;
   public form1: FormGroup;
+
+  //array de pruebas
+  public tools:Array<any> = [{'name': 'Taladro Inalámbrico', 'status':'disponible','rate':5},
+                             {'name': 'Sierra Caladora', 'status':'disponible','rate':4},
+                             {'name': 'Martillo Neumático', 'status': 'alquilado','rate':5}];
+  //========================================================================================
   
   constructor(
     private authService: AuthService,

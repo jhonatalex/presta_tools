@@ -1,6 +1,6 @@
 
-<section id="seccion-dashboard" class="py-5">
-            <div class="container">
+<section id="seccion-dashboard">
+            <div class="container-fluid">
                 <div class="row">
                     <nav class="navbar navbar-expand-lg blue-gradient">
                         <div class="container">
@@ -51,61 +51,30 @@
                             <button class="form-control-sm btn nav-link btn-logout" (click)='signOut()'>Cerrar Sesión</button>
                         </div>
                         <div>
-                            <p class="ps-3">Promember</p>
+                            <p class="ps-3 ms-3">Promember</p>
                         </div>
                         <div>
-                            <p class="ps-3">3 artículos</p> 
+                            <p class="ps-3 ms-3">3 artículos</p> 
                         </div>
                     </div>
+                    
                     <div class="col col-md-6 pt-5 border">
                         <div class=" row border-botton d-flex">
                             <h5 class="p-3">Productos Alquilados</h5>
                         </div>
-                        <div class=" row border-top py-5">
+                        <div class=" row border-top py-5" *ngFor="let tool of tools">
                             <div class="col">
-                                <strong>Producto:   </strong><p class="d-inline-block">Sierra Caladora</p>
+                                <strong>Producto:   </strong><p class="d-inline-block">{{tool.name}}</p>
                             </div>
                             <div class="col">
-                                <strong>Estado:      </strong><p class="d-inline-block">Disponible</p>
+                                <strong>Estado:      </strong><p class="d-inline-block">{{tool.status}}</p>
                             </div>
                             <div class="col">
-                                <p>valoracion: <strong>  </strong>  Estrellas</p>
-                            </div>
-                        </div>
-                        <div class="row border-top py-5">
-                            <div class="col">
-                                <strong>Producto:   </strong><p class="d-inline-block">Martillo Neumático</p>
-                            </div>
-                            <div class="col">
-                                <strong>Estado:      </strong><p class="d-inline-block">Disponible</p>
-                            </div>
-                            <div class="col">
-                                <p>valoracion: <strong>  </strong>  Estrellas</p>
-                            </div>
-                        </div>
-                        <div class="row border-top py-5">
-                            <div class="col">
-                                <strong>Producto:   </strong><p class="d-inline-block">Taladro Inalambrico</p>
-                            </div>
-                            <div class="col">
-                                <strong>Estado:      </strong><p class="d-inline-block">Disponible</p>
-                            </div>
-                            <div class="col">
-                                <p>valoracion: <strong>  </strong>  Estrellas</p>
-                            </div>
-                        </div>
-                        <div class="row border-top py-5">
-                            <div class="col">
-                                <strong>Producto:   </strong><p class="d-inline-block">Bicicleta de Ruta</p>
-                            </div>
-                            <div class="col">
-                                <strong>Estado:      </strong><p class="d-inline-block">Disponible</p>
-                            </div>
-                            <div class="col">
-                                <p>valoracion: <strong>  </strong>  Estrellas</p>
+                                <p>valoracion: <strong>  </strong> {{tool.rate}} Estrellas</p>
                             </div>
                         </div>
                     </div>
+
                     <div class="col col-md-3 pt-5 border">
                         <div class="row pb-3">
                             <strong>Ganancias</strong>
@@ -122,5 +91,8 @@
                 </div>
             </div>
 </section>
+
+<!--SECCION FOOTER-->
+<app-footer></app-footer>
 
 

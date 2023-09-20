@@ -111,34 +111,38 @@ export class VerifyLenderComponent implements OnInit {
       this.lender.email = this.user.email;
 
       //crear usuario para actualizar y verificar
-    this.userUpdate.id = this.user.id;
-    this.userUpdate.name = this.user.name;
-    this.userUpdate.lastName = this.user.lastName;
-    this.userUpdate.password = this.user.password;
-    this.userUpdate.email = this.user.email;
-    this.userUpdate.telephone = this.user.telephone;
-    this.userUpdate.verify = true;//usuario se verifica
-    this.userUpdate.typeUser = 'lender'; //cambia tipo de usuario 
-    //datos del formualario
-    this.userUpdate.address = this.user.address;
-    this.userUpdate.dIdentidad = this.user.dIdentidad;
+      this.userUpdate.id = this.user.id;
+      this.userUpdate.name = this.user.name;
+      this.userUpdate.lastName = this.user.lastName;
+      this.userUpdate.password = this.user.password;
+      this.userUpdate.email = this.user.email;
+      this.userUpdate.telephone = this.user.telephone;
+      
+      this.userUpdate.typeUser = 'lender'; //cambia tipo de usuario 
+      //datos del formualario
+      this.userUpdate.address = this.user.address;
+      this.userUpdate.dIdentidad = this.user.dIdentidad;
 
     
       
-     if(this.userUpdate && this.lender){
+     if(this.lender){
       // Registrar Lender en la api 
-      this.lenderService.register(this.lender);
-
-      // actualizar user y guardar en Local Storage
-      this.resgisterService.update(this.userUpdate);
-      this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);
+      this.lenderService.register(this.lender); 
      
-      //REDIRECCION ENVIAR A LA URL de DONDE VINO
-       this.utilservice.navigateToPath('/agregar-producto');
-   }else{
-    this.sweetUIService
-    .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')
-   }
+      if(this.userUpdate){
+        // actualizar user y guardar en Local Storage
+        this.userUpdate.verify = true;//se verifica user antes de actualizar
+        this.resgisterService.update(this.userUpdate);//se envia user actualizado a la api
+        this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);//guarda user actualizado en Local Storage
+        //REDIRECCION ENVIAR A LA URL de DONDE VINO
+        this.utilservice.navigateToPath('/agregar-producto');
+      }
+
+    } else{
+        this.sweetUIService
+        .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')
+      }
+  
   }
 
 }

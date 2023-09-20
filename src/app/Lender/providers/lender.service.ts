@@ -72,6 +72,7 @@ export class LenderService {
     }else{
       this.sweetUIService.alertConfirm('Alerta',lenderRS.message ,'error')
      // console.log(registerLenderRS.Error?.message)
+      this.utilService.navigateToPath('/verificar-lender')
     }
   }
 
