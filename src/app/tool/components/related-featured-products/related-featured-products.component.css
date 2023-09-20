@@ -105,7 +105,19 @@ height: 25vh;
   padding-bottom: 20px;
 }
 
+.width-50{
+  width: 85%;
+  height: 85%;
+  transform: rotate(-45deg);
+  border:solid red;
+  position: relative;
+  top:130px;
+}
 
+
+
+
+/*responsive*/
 @media(width:1920px){
   .card-product{
     height: 50vh;

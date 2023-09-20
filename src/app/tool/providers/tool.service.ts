@@ -45,6 +45,25 @@ export class ToolServiceNew {
   }
 
 
+  public updateTool(payload: any):void{
+
+    this.spinner.show();
+
+
+    const url = `${environment.baseUrl}${PathTool.updateTool}`;
+    this.callManSV.putData(url, payload)
+    .then((response:any)=>{
+     // console.log(response);
+      this.manageResponseUpdate(response);
+    })
+    .catch((error:any)=>{
+      this.manageError(error);
+    })
+    .finally(()=>this.spinner.hide())
+
+  }
+
+
 
   public getListTool(): Observable<ToolResponse[]> {
     this.spinner.show();
@@ -135,7 +154,21 @@ export class ToolServiceNew {
   }
 
 
+  private manageResponseUpdate(responseApi:ResponseApi){
 
+    if(responseApi.success){
+      this.sweetUIService.alertConfirm('¡Hola!',responseApi.message,'success')
+      .then(()=>{
+
+       // this.utilService.navigateToPath('/')
+
+      })
+      .catch((e:any)=>{console.log(e);})
+    }else{
+      this.sweetUIService.alertConfirm('Alerta',responseApi.message ,'error')
+      console.log(responseApi.Error?.message)
+    }
+  }
 
 
 

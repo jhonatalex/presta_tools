@@ -52,6 +52,7 @@ export class RelatedFeaturedProductsComponent implements OnInit {
                       }
                     }
       ]};
+  state: any;
 
   slickInit(e: any) {
    // console.log('slick initialized');
