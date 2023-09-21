@@ -15,7 +15,7 @@ export class VerifyLenderGuard implements CanActivate {
     environment.production ? '' : 'D3V'
   }`;
 
-  constructor( 
+  constructor(
     private utilService: UtilService,
     private sweetUIService:SweetUIService,
   ){}
@@ -26,7 +26,7 @@ export class VerifyLenderGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       var user: User = this.utilService.getFromLocalStorage(this.loginKey);
 
-      if(user.verify && user.typeUser == 'lender'){
+      if(user.verify && user.typeUser == 'lender' || user.typeUser == 'Manager'){
         return true
       }else{
 
@@ -40,7 +40,7 @@ export class VerifyLenderGuard implements CanActivate {
         return false
 
       }
-    
+
   }
-  
+
 }

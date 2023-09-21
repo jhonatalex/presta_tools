@@ -3,35 +3,43 @@
         (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
         (beforeChange)="beforeChange($event)">
 
-      
+
           <div  ngxSlickItem *ngFor="let tool of tools" class=" h-100 m-1"> <!-- col-12 col-sm-6 col-md-4 col-lg-3 -->
-                
+
                       <div class="card-product card bg-white">
+
                         <figure class="card d-flex justify-content-center align-items-center vh30 border-0">
-                          <div class="container d-flex justify-content-center" *ngIf="tool.state == 'rentado'">
-                            <img src="assets/img/rentado.png" alt="rentado" class="img-fluid width-50">
-                          </div>
+
                           <img src={{tool.urlImage}} alt="Imagen dinámica" class="card-img img-fluid">
                         </figure>
+
                         <div class="d-flex flex-column justify-content-between align-items-center text-center vh25">
                           <div class="m-1">
                             <h6><b>{{tool.name}} {{tool.model}}</b></h6>
                             <p>Precio Alquiler: {{tool.valueRent}} CLP</p>
                           </div>
+
+                          <div class="container d-flex justify-content-center" *ngIf="tool.state == 'rentado'">
+                            <div class="banner">
+                              <h3 class="rentado">Rentado</h3>
+                              <div class="fecha">Hasta: <span id="fechaRentado">{{tool.dateUp}}</span></div>
+                            </div>
+                          </div>
                           <div class="container d-flex justify-content-center" *ngIf="tool.state != 'rentado'">
                             <a [routerLink]="['/producto/',tool.id]" class="btn-blue-grad d-flex justify-content-center align-items-center mb-3">
                               Reservar <i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
                           </div>
-                          
+
+
                         </div>
                       </div>
-                  
+
           </div>
-        
-         
+
+
 
         <!-- <div ngxSlickItem *ngFor="let tool of tools" class="slide d-flex justify-content-center align-items-center">
-           
+
             <div class="card shadow div-card d-flex justify-content-center align-items-center">
                 <div class="img-card rounded">
                     <img src={{tool.urlImage}} alt="imagen" class="max-wh-100 rounded" />

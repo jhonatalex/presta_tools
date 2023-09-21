@@ -70,10 +70,37 @@ export class AuthService {
 
           const userFirebase = res.user;
 
+
+            // Tu cadena de entrada
+            const inputString = userFirebase.displayName;
+
+            // Dividir la cadena en palabras
+            const palabras = inputString.split(' ');
+
+            let nombre: string;
+            let apellido: string;
+
+            if (palabras.length >= 1) {
+              // El primer elemento es el nombre
+              nombre = palabras[0];
+
+              if (palabras.length > 1) {
+                // Si hay más de una palabra, el resto se considera el apellido
+                apellido = palabras.slice(1).join(' ');
+              } else {
+                // Si solo hay una palabra, no hay apellido
+                apellido = '';
+              }
+            } else {
+              // Si no hay palabras, establece ambas variables en valores predeterminados o nulos según corresponda.
+              nombre = '';
+              apellido = '';
+            }
+
           this.user.email= userFirebase.email;
           this.user.id= userFirebase.uid;
-          this.user.name= userFirebase.displayName;
-          this.user.lastName= userFirebase.displayName;
+          this.user.name= nombre;
+          this.user.lastName= apellido;
           this.user.typeUser='user'
 
           console.log(this.user);
@@ -170,7 +197,7 @@ export class AuthService {
 
       //SET USER AND TOKEN A LOCAL SOTORAGE
         this.sweetUIService
-        .alertConfirm("Bienvenido", 'success')
+        .alertConfirm("Bienvenido", 'Login Exitoso')
         .then(() => {
           this.utilService.navigateToPath('/');
         })

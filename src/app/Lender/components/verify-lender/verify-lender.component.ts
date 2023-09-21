@@ -10,6 +10,7 @@ import { UtilService } from 'src/app/shared/services/util.service';
 import { environment } from 'src/environments/environment.prod';
 import { Lender } from '../../models/lender.model';
 import { LenderService } from '../../providers/lender.service';
+import { RegisterRS } from 'src/app/register/models/registerRS.model';
 
 @Component({
   selector: 'app-verify-lender',
@@ -37,11 +38,11 @@ export class VerifyLenderComponent implements OnInit {
     private utilservice: UtilService,
     private lenderService: LenderService,
     private sweetUIService:SweetUIService,
-    private resgisterService: RegisterService,) 
+    private resgisterService: RegisterService,)
 
     {this.user  = new User;
       this.userUpdate = new User;
-    this.lender = new Lender;   
+    this.lender = new Lender;
     }
 
   ngOnInit(): void {
@@ -98,7 +99,7 @@ export class VerifyLenderComponent implements OnInit {
 
   //enviar formulario a la API
   onSubmit(Form:any){
-    
+
       //crear lender para registrarlo si va a alquilar producto
       this.lender.id = this.generarIdUnicoNumerico();
       this.lender.password = this.user.password;
@@ -117,32 +118,42 @@ export class VerifyLenderComponent implements OnInit {
       this.userUpdate.password = this.user.password;
       this.userUpdate.email = this.user.email;
       this.userUpdate.telephone = this.user.telephone;
-      
-      this.userUpdate.typeUser = 'lender'; //cambia tipo de usuario 
+
+      this.userUpdate.typeUser = 'lender'; //cambia tipo de usuario
       //datos del formualario
       this.userUpdate.address = this.user.address;
       this.userUpdate.dIdentidad = this.user.dIdentidad;
 
-    
-      
-     if(this.lender){
-      // Registrar Lender en la api 
-      this.lenderService.register(this.lender); 
-     
+
+
+
+
+
+
       if(this.userUpdate){
         // actualizar user y guardar en Local Storage
         this.userUpdate.verify = true;//se verifica user antes de actualizar
-        this.resgisterService.update(this.userUpdate);//se envia user actualizado a la api
+        this.resgisterService.update(this.userUpdate).subscribe((response:RegisterRS)=>{
+
+          if(this.lender){
+            // Registrar Lender en la api
+            this.lenderService.register(this.lender);
+          } else{
+            this.sweetUIService
+            .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')
+          }
+
+        });
+
+
+
         this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);//guarda user actualizado en Local Storage
         //REDIRECCION ENVIAR A LA URL de DONDE VINO
         this.utilservice.navigateToPath('/agregar-producto');
       }
 
-    } else{
-        this.sweetUIService
-        .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')
-      }
-  
+
+
   }
 
 }

@@ -16,8 +16,8 @@ export class ThanksRentComponent implements OnInit {
   apiResponse : any;
   detalleVenta:any;
   venta:any;
-  public tool: Tool;
-  public toolUpdate: Tool;
+  public tool: any;
+
 
   constructor(private router: ActivatedRoute, payServices: PaymentServices, private toolService: ToolServiceNew) {
 
@@ -34,8 +34,7 @@ export class ThanksRentComponent implements OnInit {
       }
     })
 
-    this.toolUpdate = new Tool;
-    this.tool = new Tool;
+
   }
 
   ngOnInit(): void {
@@ -45,10 +44,10 @@ export class ThanksRentComponent implements OnInit {
 
   updateTool():void{
 
-    this.toolUpdate = this.tool;
-    this.toolUpdate.state = 'rentado';
-    this.toolService.updateTool(this.tool);
-  } 
+    //this.toolUpdate = this.tool;
+    //this.toolUpdate.state = 'rentado';
+    //this.toolService.updateTool(this.tool);
+  }
 
 
 
