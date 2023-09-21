@@ -135,6 +135,10 @@ export class VerifyLenderComponent implements OnInit {
         this.userUpdate.verify = true;//se verifica user antes de actualizar
         this.resgisterService.update(this.userUpdate).subscribe((response:RegisterRS)=>{
 
+
+          console.log(response)
+
+          /*
           if(this.lender){
             // Registrar Lender en la api
             this.lenderService.register(this.lender);
@@ -142,6 +146,7 @@ export class VerifyLenderComponent implements OnInit {
             this.sweetUIService
             .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')
           }
+          */
 
         });
 
