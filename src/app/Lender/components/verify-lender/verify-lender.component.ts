@@ -133,28 +133,33 @@ export class VerifyLenderComponent implements OnInit {
       if(this.userUpdate){
         // actualizar user y guardar en Local Storage
         this.userUpdate.verify = true;//se verifica user antes de actualizar
-        this.resgisterService.update(this.userUpdate).subscribe((response:RegisterRS)=>{
+        this.resgisterService.update(this.userUpdate).subscribe((response)=>{
 
 
           console.log(response)
 
-          /*
-          if(this.lender){
-            // Registrar Lender en la api
-            this.lenderService.register(this.lender);
+          if(response=='Usuario actualizado satisfactoriamente'){
+
+            this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);
+
+            if(this.lender){
+              // Registrar Lender en la api
+              this.lenderService.register(this.lender);
+            }
+
           } else{
-            this.sweetUIService
-            .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')
+              this.sweetUIService
+              .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')
           }
-          */
+
 
         });
 
 
 
-        this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);//guarda user actualizado en Local Storage
+        //this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);//guarda user actualizado en Local Storage
         //REDIRECCION ENVIAR A LA URL de DONDE VINO
-        this.utilservice.navigateToPath('/agregar-producto');
+        //this.utilservice.navigateToPath('/agregar-producto');
       }
 
 

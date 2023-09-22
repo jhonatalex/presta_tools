@@ -34,7 +34,9 @@ export const PathUser = {
   /**
    * PUT
    */
-  updateUser:'api/user/update'
+  updateUser:'api/user/update',
+
+  getUserById:'api/user/get/'
 
 };
 

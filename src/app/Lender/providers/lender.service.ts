@@ -8,6 +8,7 @@ import { UtilService } from 'src/app/shared/services/util.service';
 import { environment } from 'src/environments/environment';
 import { Lender } from '../models/lender.model';
 import { LenderRS } from '../models/registerLenderRS.model';
+import { Constants } from 'src/app/shared/constants/settings.class';
 
 
 
@@ -16,6 +17,10 @@ import { LenderRS } from '../models/registerLenderRS.model';
 })
 export class LenderService {
 
+  private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
+    environment.production ? '' : 'D3V'
+  }`;
+
   constructor(private callManSV: CallerManagerService,
               private spinner: NgxSpinnerService,
               private sweetUIService:SweetUIService,
@@ -23,29 +28,29 @@ export class LenderService {
 
 
 
-              public getLenderByEmail(email:string):Observable<any>{
+  public getLenderByEmail(email:string):Observable<any>{
 
-                this.spinner.show();
-                const url = `${environment.baseUrl}${PathLender.getLenderById}`;
+    this.spinner.show();
+    const url = `${environment.baseUrl}${PathLender.getLenderById}`;
 
 
-                return from(this.callManSV.getDataByEmail(url,email)).pipe(
-                  map((response: any) => response.data),
-                  tap((lender: Lender) => {
-                    
-                  }),
-                  catchError((error: any) => {
-                    this.manageError(error);
-                    throw error;
-                  }),
-                  finalize(() => {
-                    this.spinner.hide();
-                  })
-                );
+    return from(this.callManSV.getDataByEmail(url,email)).pipe(
+      map((response: any) => response.data),
+      tap((lender: Lender) => {
 
-              }
+      }),
+      catchError((error: any) => {
+        this.manageError(error);
+        throw error;
+      }),
+      finalize(() => {
+        this.spinner.hide();
+      })
+    );
 
-             
+  }
+
+
 
 
 
@@ -64,14 +69,16 @@ export class LenderService {
 
   private manageResponse(lenderRS:LenderRS){
     if(lenderRS.success){
+
       this.sweetUIService.alertConfirm('PrestaTools Verificado',lenderRS.message,'success')
       .then(()=>{
-       // this.utilService.navigateToPath('/')
+          //REDIRECCION ENVIAR A LA URL de DONDE VINO
+        this.utilService.navigateToPath('/agregar-producto')
       })
       .catch((e:any)=>{console.log(e);})
     }else{
       this.sweetUIService.alertConfirm('Alerta',lenderRS.message ,'error')
-     // console.log(registerLenderRS.Error?.message)
+      console.log(lenderRS)
       this.utilService.navigateToPath('/verificar-lender')
     }
   }
@@ -84,6 +91,6 @@ export class LenderService {
   }
 
 
-  
+
 
 }

@@ -16,6 +16,7 @@ import { signInWithPopup,signOut,GoogleAuthProvider } from '@angular/fire/auth';
 import { RegisterService } from 'src/app/register/providers/register.service';
 import { User } from 'src/app/register/models/user.model';
 import { use } from 'marked';
+import { RegisterRS } from 'src/app/register/models/registerRS.model';
 
 
 @Injectable({
@@ -62,26 +63,20 @@ export class AuthService {
     public sinInWithGoogle()
     {
 
-
       this.spinner.show();
 
       signInWithPopup(this.auth, new GoogleAuthProvider())
-        .then((res: any) => {
+        .then( (res: any) => {
 
           const userFirebase = res.user;
 
-
-            // Tu cadena de entrada
             const inputString = userFirebase.displayName;
-
-            // Dividir la cadena en palabras
             const palabras = inputString.split(' ');
 
             let nombre: string;
             let apellido: string;
 
             if (palabras.length >= 1) {
-              // El primer elemento es el nombre
               nombre = palabras[0];
 
               if (palabras.length > 1) {
@@ -92,19 +87,20 @@ export class AuthService {
                 apellido = '';
               }
             } else {
-              // Si no hay palabras, establece ambas variables en valores predeterminados o nulos según corresponda.
               nombre = '';
               apellido = '';
             }
 
+          this.user.id = this.generarIdUnicoNumerico();
+          this.user.password=this.generarIdUnicoNumerico().toString();
           this.user.email= userFirebase.email;
-          this.user.id= userFirebase.uid;
           this.user.name= nombre;
           this.user.lastName= apellido;
           this.user.typeUser='user'
 
-          console.log(this.user);
-          console.log(userFirebase);
+
+          //console.log(this.user);
+          //console.log(userFirebase);
 
 
           //SET USER AND TOKEN A LOCAL SOTORAGE
@@ -115,8 +111,18 @@ export class AuthService {
 
 
           //TODO LOGIGA PARA SABER SE ES NUEVO O NO
-          //this.resgisterService.register(this.user)
-          this.manageAuthResponseFirebase(userFirebase);
+           this.resgisterService.getUserByEmail(this.user.email).subscribe(response=>{
+
+            if(response=='Usuario no encontrado'){
+              this.resgisterService.register(this.user)
+              this.utilService.navigateToPath('/');
+            }else{
+              this.manageAuthResponseFirebase(userFirebase);
+            }
+
+          });
+
+
 
 
         })
@@ -192,8 +198,14 @@ export class AuthService {
 
  }
 
- private manageAuthResponseFirebase(userFirebase: any) {
+ public generarIdUnicoNumerico(): number {
+  const timestamp = new Date().getTime();
+  const sixDigitId = parseInt(timestamp.toString().slice(-6));
+  return sixDigitId;
+}
 
+
+ private manageAuthResponseFirebase(userFirebase: any) {
 
       //SET USER AND TOKEN A LOCAL SOTORAGE
         this.sweetUIService
@@ -224,7 +236,6 @@ export class AuthService {
 
     return user? true : false;
   }
-
 
 
   /**

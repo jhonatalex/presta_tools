@@ -28,9 +28,34 @@ export class RegisterService {
       this.manageResponse(response);
     })
     .catch((error:any)=>{
+      console.log(error)
       this.manageError(error);
     })
     .finally(()=>this.spinner.hide())
+  }
+
+
+
+  public getUserByEmail(email:string):Observable<any>{
+
+    this.spinner.show();
+    const url = `${environment.baseUrl}${PathUser.getUserById}`;
+
+    return from(this.callManSV.getDataByEmail(url,email)).pipe(
+      map((response: any) => response.message),
+      tap(() => {
+
+      }),
+      catchError((error: any) => {
+        console.log(error)
+        this.manageError(error);
+        throw error;
+      }),
+      finalize(() => {
+        this.spinner.hide();
+      })
+    );
+
   }
 
 
@@ -64,14 +89,15 @@ export class RegisterService {
     }
   }
 */
-    update(payload: any):Observable<RegisterRS>{
+   public update(payload: any):Observable<any>{
 
     this.spinner.show();
+    console.log(payload);
     const url = `${environment.baseUrl}${PathUser.updateUser}`;
 
     return from(this.callManSV.putData(url, payload)).pipe(
-      map((response: RegisterRS) => {
-        return response.data as unknown as RegisterRS; // Asegúrate de que response.data sea del tipo Tool[]
+      map((response: any) => response.message),
+      tap(() => {
 
       }),
       catchError((error: any) => {
@@ -85,10 +111,6 @@ export class RegisterService {
 
 
   }
-
-
-
-
 
 
 
@@ -112,12 +134,20 @@ export class RegisterService {
 
 
   private manageError(e: any) {
-    let errDesc = e['error']['Error']['message'];
-    const tmpErrMsg = e.message ? e.message : JSON.stringify(e);
-    errDesc = errDesc ? errDesc : tmpErrMsg;
-    this.sweetUIService.alertConfirm('Error', `${errDesc}`, 'error');
+    if (e.error && e.error.errors) {
+      const errorMessages = [];
+      for (const key in e.error.errors) {
+        if (e.error.errors.hasOwnProperty(key)) {
+          errorMessages.push(e.error.errors[key]);
+        }
+      }
+      const errorMessage = errorMessages.join('\n');
+      this.sweetUIService.alertConfirm('Error', errorMessage, 'error');
+    } else {
+      let errDesc = e.message ? e.message : JSON.stringify(e);
+      this.sweetUIService.alertConfirm('Error', errDesc, 'error');
+    }
   }
-
 
 
 
