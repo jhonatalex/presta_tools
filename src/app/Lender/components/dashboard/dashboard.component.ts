@@ -22,22 +22,43 @@ export class DashboardComponent implements OnInit {
   public lender: any;
   public email: string;
   public form1: FormGroup;
+  public form2: FormGroup;
 
-  //array de pruebas
-  public tools:Array<any> = [{'name': 'Taladro Inalámbrico', 'status':'disponible','rate':5},
-                             {'name': 'Sierra Caladora', 'status':'disponible','rate':4},
-                             {'name': 'Martillo Neumático', 'status': 'alquilado','rate':5}];
+  //array de pruebas=========================================================================
+  public tools:Array<any> = [{'id':'12',
+                              'name': 'Taladro Inalámbrico', 
+                              'status':'disponible',
+                              'rate':5,
+                              'reference':'00001'
+                              },
+                             {'id':'13',
+                              'name': 'Sierra Caladora',
+                              'status':'disponible',
+                              'rate':4,
+                              'reference':'00002'
+                              },
+                             {'id':'14',
+                              'name': 'Martillo Neumático',
+                              'status': 'alquilado',
+                              'rate':5,
+                              'reference':'00003'
+                              }];
   //========================================================================================
   
   constructor(
     private authService: AuthService,
     private utilService: UtilService,
     private lenderService: LenderService,
-    private fb: FormBuilder,)
-    {this.email = '';
-    this.form1 = this.fb.group({
-      rating1: [0, Validators.required],
-    })}
+    private fb: FormBuilder)
+
+    { this.email = '';
+      this.form1 = this.fb.group({
+      rating1: [0, Validators.required],}),
+      
+      this.form2 = this.fb.group({
+        rating2: [0, Validators.required],})
+
+    }
  
 
   ngOnInit(): void {
@@ -64,6 +85,17 @@ export class DashboardComponent implements OnInit {
         rating1: [this.lender.rate, Validators.required]
       })
     })
+
+     
   }
+
+
+  deleteTool(toolId: number) {
+
+    this.lenderService.deleteToolById(toolId);
+
+  }
+
+ 
 
 }

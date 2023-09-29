@@ -88,6 +88,7 @@ export const PathTool = {
    */
   saveTool: 'api/tool/insert',
   updateTool:'api/tool/edit',
+  deleteToolById:'api/tool/delete/',
 
   initPay:'api/Venta/iniciar-transaccion',
   commitPay:'api/Venta/confirmar-transaccion',

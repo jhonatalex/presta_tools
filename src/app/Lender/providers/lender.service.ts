@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { catchError, finalize, from, map, Observable, tap } from 'rxjs';
-import { PathLender} from 'src/app/shared/constants/endpoints.class';
+import { PathLender, PathTool} from 'src/app/shared/constants/endpoints.class';
 import { CallerManagerService } from 'src/app/shared/helpers/caller-manager.service';
 import { SweetUIService } from 'src/app/shared/services/gui.service';
 import { UtilService } from 'src/app/shared/services/util.service';
@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import { Lender } from '../models/lender.model';
 import { LenderRS } from '../models/registerLenderRS.model';
 import { Constants } from 'src/app/shared/constants/settings.class';
+import { ResponseApi } from 'src/app/shared/models/responseApi.model';
 
 
 
@@ -88,6 +89,58 @@ export class LenderService {
     const tmpErrMsg = e.message ? e.message : JSON.stringify(e);
     errDesc = errDesc ? errDesc : tmpErrMsg;
     this.sweetUIService.alertConfirm('Error', `${errDesc}`, 'error');
+  }
+
+
+
+  public deleteToolById(id: any):void{
+
+    this.sweetUIService
+          .alertCancelConfirm(
+            'Atención',
+            'Seguro desea Borrar este Producto',
+            'question',
+            'Aceptar',
+            'Cancelar'
+          )
+          .then((r) => {
+            if (r.value) {
+
+                this.spinner.show();
+                const url = `${environment.baseUrl}${PathTool.deleteToolById}`;
+                this.callManSV.deleteData(url, id)
+
+                .then((response:any)=>{
+                  console.log(response);
+
+                  this.manageResponseDelete(response);
+                 // this.getListCategoryProviders();
+
+                })
+                .catch((error:any)=>{
+                  this.manageError(error);
+                })
+                .finally(()=>this.spinner.hide())
+            }
+          });
+
+  }
+
+
+  private manageResponseDelete(responseApi:ResponseApi){
+
+    if(responseApi.success){
+      this.sweetUIService.alertConfirm('Mensaje',responseApi.message,'success')
+      .then(()=>{
+        //this.utilService.navigateToPath('/listar-categoria')
+
+
+      })
+      .catch((e:any)=>{console.log(e);})
+    }else{
+      this.sweetUIService.alertConfirm('Alerta',responseApi.message ,'error')
+      console.log(responseApi.Error?.message)
+    }
   }
 
 
