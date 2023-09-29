@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="col col-md-6 pt-5 border">
-                        <div class=" row border-botton d-flex">
+                        <!--<div class=" row border-botton d-flex">
                             <h5 class="p-3">Productos Alquilados</h5>
                         </div>
                         <div class=" row border-top py-5" *ngFor="let tool of tools">
@@ -70,8 +70,45 @@
                             <div class="col">
                                 <p>valoracion: <strong>  </strong> {{tool.rate}} Estrellas</p>
                             </div>
-                        </div>
+
+                        </div>-->
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Código</th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Valoración</th>
+                                <th>Acciones</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let tool of tools">
+                                <td class="py-3">{{tool.reference}}</td>
+                                <td class="py-3">{{tool.name}}</td>
+                                <td class="py-3">{{tool.status}}</td>
+                                <td class="py-3">{{tool.rate}} Estrellas
+                                    <div class="container ngx-star">
+                                        <form [formGroup]="form2">
+                                        <ngx-star-rating formControlName="rating2"></ngx-star-rating>
+                                        </form>
+                                    </div>
+                                </td>
+                                <td class="py-3">
+                                    <a  class="btn btn-sm btn-warning me-1">
+                                      <i class="far fa-edit"></i> Actualizar Datos
+                                    </a>
+                                    <button class="btn btn-sm btn-danger" (click)="deleteTool(tool.id)">
+                                      <i class="far fa-trash-alt"></i> Borrar
+                                    </button>
+                                  </td>
+                                
+                              </tr>
+                            </tbody>
+                          </table>
+
                     </div>
+                    
 
                     <div class="col col-md-3 pt-5 border">
                         <div class="row pb-3">

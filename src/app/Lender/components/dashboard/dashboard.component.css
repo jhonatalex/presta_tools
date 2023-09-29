@@ -35,7 +35,7 @@
 /*EStilos ngx-star-rating*/
   ::ng-deep label.star{
     padding: 0 5px !important;
-    font-size:20px !important;
+    font-size:15px !important;
     color:rgb(136, 134, 134) !important;
 
 }
@@ -55,3 +55,6 @@
     align-items: center !important;
 }
 /*-----------------------------------------------------*/
+
+
+
