@@ -74,7 +74,7 @@ export class VerifyLenderComponent implements OnInit {
   onSelectRegion():void {
 
     if(this.selectedRegion){
-      this.lender.region= this.selectedRegion;//asignaregion a lender
+      this.lender.region= this.selectedRegion;//asigna region a lender
       this.userUpdate.region =  this.selectedRegion;//asigna region a user
 
       const regionSeleccionada = REGIONES.regiones.find(r => r.region === this.selectedRegion);
