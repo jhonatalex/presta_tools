@@ -46,7 +46,7 @@ const routes: Routes = [
   canActivate:[AuthGuard]
   },
 
-  {path: 'verificar-lender', component: VerifyLenderComponent,
+  {path: 'verificar-prestatool', component: VerifyLenderComponent,
   canActivate:[AuthGuard]
   },
 
