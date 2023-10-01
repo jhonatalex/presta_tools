@@ -26,6 +26,7 @@ import { FailsTransactionComponent } from './components/fails-transaction/fails-
 import { VerifyLenderComponent } from './Lender/components/verify-lender/verify-lender.component';
 import { VerifyLenderGuard } from './login/auth/verify-lender.guard';
 import { DashboardComponent } from './Lender/components/dashboard/dashboard.component';
+import { UpdateLenderComponent } from './Lender/components/update-lender/update-lender.component';
 
 const routes: Routes = [
 
@@ -62,6 +63,8 @@ const routes: Routes = [
     canActivate:[AuthGuard,VerifyLenderGuard],
   },
   {path: 'panel', component: DashboardComponent,
+  canActivate:[AuthGuard,VerifyLenderGuard]},
+  {path:'actualizar-lender', component: UpdateLenderComponent,
   canActivate:[AuthGuard,VerifyLenderGuard]},
 
 

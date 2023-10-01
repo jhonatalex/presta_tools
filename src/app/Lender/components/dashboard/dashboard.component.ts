@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
                              {'id':'14',
                               'name': 'Martillo Neumático',
                               'status': 'alquilado',
-                              'rate':5,
+                              'rate':3,
                               'reference':'00003'
                               }];
   //========================================================================================
@@ -53,10 +53,10 @@ export class DashboardComponent implements OnInit {
 
     { this.email = '';
       this.form1 = this.fb.group({
-      rating1: [0, Validators.required],}),
+      rating1: [0, Validators.required],});
       
       this.form2 = this.fb.group({
-        rating2: [0, Validators.required],})
+        rating2: [4, Validators.required],});
 
     }
  
@@ -83,7 +83,9 @@ export class DashboardComponent implements OnInit {
        //asignamos valor de rate Lender a rating1
        this.form1 = this.fb.group({
         rating1: [this.lender.rate, Validators.required]
-      })
+       })
+       console.log(this.lender.rate);
+       
     })
 
      
@@ -95,6 +97,9 @@ export class DashboardComponent implements OnInit {
     this.lenderService.deleteToolById(toolId);
 
   }
+
+
+  
 
  
 

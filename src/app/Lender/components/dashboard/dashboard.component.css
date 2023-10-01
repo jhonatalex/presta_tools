@@ -1,6 +1,4 @@
-.nav-link{
-    color: white;
-}
+
 .w-100{
     width: 100%;
 }
@@ -11,7 +9,7 @@
 .btn-logout {
     background-color: #FFC400;
     border-radius: 5px;
-    color: white;
+    color: black;
     text-decoration: none;
     padding: 10px;
     height: 45px;
@@ -31,11 +29,14 @@
       display: flex;
       justify-content: space-between;
   }
+  .p-3px{
+    padding: 1px;
+  }
 
 /*EStilos ngx-star-rating*/
   ::ng-deep label.star{
     padding: 0 5px !important;
-    font-size:15px !important;
+    font-size:10px !important;
     color:rgb(136, 134, 134) !important;
 
 }
@@ -55,6 +56,12 @@
     align-items: center !important;
 }
 /*-----------------------------------------------------*/
+.w-2{
+  width: 25px;
+}
+.w-95{
+  width: 95%;
+}
 
 
 

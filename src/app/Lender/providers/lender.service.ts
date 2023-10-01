@@ -34,7 +34,6 @@ export class LenderService {
     this.spinner.show();
     const url = `${environment.baseUrl}${PathLender.getLenderById}`;
 
-
     return from(this.callManSV.getDataByEmail(url,email)).pipe(
       map((response: any) => response.data),
       tap((lender: Lender) => {
