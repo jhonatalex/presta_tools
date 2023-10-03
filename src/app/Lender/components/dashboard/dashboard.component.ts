@@ -78,13 +78,11 @@ export class DashboardComponent implements OnInit {
 
   getLender(data:string){
     this.lenderService.getLenderByEmail(data).subscribe(lender=>{
-      console.log(lender);
       this.lender = lender;
        //asignamos valor de rate Lender a rating1
        this.form1 = this.fb.group({
         rating1: [this.lender.rate, Validators.required]
        })
-       console.log(this.lender.rate);
        
     })
 
