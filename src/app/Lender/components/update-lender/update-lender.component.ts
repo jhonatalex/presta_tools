@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Lender } from '../../models/lender.model';
 import { REGIONES } from 'src/app/shared/constants/regiones.class';
+import { User } from 'src/app/register/models/user.model';
+import { UtilService } from 'src/app/shared/services/util.service';
+import { LenderService } from '../../providers/lender.service';
+import { Constants } from 'src/app/shared/constants/settings.class';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-update-lender',
@@ -8,22 +13,42 @@ import { REGIONES } from 'src/app/shared/constants/regiones.class';
   styleUrls: ['./update-lender.component.css']
 })
 export class UpdateLenderComponent implements OnInit {
+  private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
+    environment.production? '' : 'D3V'
+  }`;
+
   public selectedRegion: string | null = null;
   public selectedComuna: string | null = null;
   public regiones: string[]=[];
   public comunas: string[]=[];
   public lender:Lender;
+  public user: User = new User();
+  public email: string;
 
-  constructor() {this.lender = new Lender; }
+  constructor(
+    private utilService: UtilService,
+    private lenderService: LenderService,) 
+    {this.lender = new Lender;
+      this.email = ''; }
 
   ngOnInit(): void {
+    //obtener user al iniciar compente
+    this.user = this.utilService.getFromLocalStorage(this.loginKey);
+    this.email = this.user.email;
+    //obtener lender por email
+    this.getLender(this.email);
     this.getRegionesArray();
   }
+   
 
+    getLender(data:string){
+      this.lenderService.getLenderByEmail(data).subscribe(lender=>{
+        console.log(lender);
+        this.lender = lender;
+        
+      })
 
-  onSubmit(form:any){
-
-  }
+    }
 
     //obtiene la region del array REGIONES(shared->constants)
     getRegionesArray():void {
@@ -51,6 +76,10 @@ export class UpdateLenderComponent implements OnInit {
     if(this.selectedComuna){
       this.lender.commune = this.selectedComuna;
     }
+
+  }
+
+  onSubmit(form:any){
 
   }
 

@@ -137,7 +137,7 @@ body{
 }
 
 .label-comuna {
-  padding: 12px;
+  margin-bottom: -20px;
   margin-top: 3%;
 
 }
@@ -145,7 +145,7 @@ body{
 
 
 .label-region{
-  padding: 12px;
+  margin-bottom: -20px;
   margin-top: 3%;
 
 }

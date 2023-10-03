@@ -64,7 +64,7 @@ const routes: Routes = [
   },
   {path: 'panel', component: DashboardComponent,
   canActivate:[AuthGuard,VerifyLenderGuard]},
-  {path:'actualizar-lender', component: UpdateLenderComponent,
+  {path:'actualizar-prestatool', component: UpdateLenderComponent,
   canActivate:[AuthGuard,VerifyLenderGuard]},
 
 

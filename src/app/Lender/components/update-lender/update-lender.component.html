@@ -9,24 +9,24 @@
                         <h3 class="text-center"><strong>Actualizar PrestaTool</strong></h3>
                     </div>
                     <div class="card shadow borderRadius ms-4 p-2 mt-5 div-formulario">
-                        <h5 class="ms-4 mt-2 py-3"><strong>* Puede actualizar aqui sus datos!!!</strong></h5>
+                        <h5 class="ms-4 mt-2 py-3"><strong>* Puede actualizar sus datos aquí!!!</strong></h5>
                             <form class="form-group" #updateForm = "ngForm" (ngSubmit)="onSubmit(updateForm)">
                                 <div class="row">
                                         <div class="col">
                                             <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                                 <label for="nombre" class="form-label mb-0">Nombre</label>
-                                                <input class="form-control" type="text"  name="name"  required pattern="[a-zA-Z]+">
-                                                <small class="invalid-feedback d-block">Debe colocar un nombre válido</small>
+                                                <input class="form-control" type="text"  name="name" #name="ngModel" [(ngModel)]="lender.name" id="nombre" required pattern="[a-zA-Z]+">
+                                                <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">Debe colocar un nombre válido</small>
                                             </div>
                                             <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                                 <label for="telefono" class="form-label mb-0">Teléfono</label>
-                                                <input type="text"  name="telephone" required class="form-control" id="telefono">
-                                                <small class="invalid-feedback d-block">Debe colocar un número de teléfono válido</small>
+                                                <input type="text"  name="telephone" #telephone="ngModel" [(ngModel)]="lender.telephone" required class="form-control" id="telefono">
+                                                <small *ngIf="!telephone.valid && telephone.touched" class="invalid-feedback d-block">Debe colocar un número de teléfono válido</small>
                                             </div>
                                             <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                                 <label for="direccion" class="form-label mb-0">Dirección</label>
-                                                <input type="text" class="form-control" name="address" id="direccion" required>
-                                                <small class="invalid-feedback d-block">Debe colocar una dirección</small>
+                                                <input type="text" class="form-control" name="address" #address="ngModel" [(ngModel)]="lender.address" id="direccion" required>
+                                                <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">Debe colocar una dirección</small>
                                             </div>
                                             <div class="form-group mt-4 mxauto">
                                               <label for="region" class="form-label ms-5 me-5">Región</label>
@@ -40,18 +40,18 @@
                                         <div class="col">
                                             <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                                 <label for="apellido" class="form-label mb-0">Apellido</label>
-                                                <input type="text" class="form-control" name="lastName" id="apellido" required>
-                                                <small class="invalid-feedback d-block">Debe colocar un apellido válido</small>
+                                                <input type="text" class="form-control" name="lastName" #lastName="ngModel" [(ngModel)]="lender.lastName" id="apellido" required>
+                                                <small *ngIf="!lastName.valid && lastName.touched" class="invalid-feedback d-block">Debe colocar un apellido válido</small>
                                             </div>
                                             <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                                 <label for="email" class="form-label mb-0">Dirección de correo electrónico</label>
-                                                <input type="email" class="form-control" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                                                <small class="invalid-feedback d-block">Debe colocar un correo válido</small>
+                                                <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="lender.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                                <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">Debe colocar un correo válido</small>
                                             </div>
                                             <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                                 <label for="dIdentidad" class="form-label mb-0">Número de Rut</label>
-                                                <input type="text" class="form-control" name="dIdentidad" id="dIdentidad" required>
-                                                <small class="invalid-feedback d-block">No puede quedar vacío</small>
+                                                <input type="text" class="form-control" name="dIdentidad" #dIdentidad="ngModel" [(ngModel)]="lender.dIdentidad" id="dIdentidad" required>
+                                                <small *ngIf="!dIdentidad.valid && dIdentidad.touched" class="invalid-feedback d-block">coloque un número de rut válido</small>
                                             </div>
 
                                             <div class="form-group mt-4 mx-auto">
@@ -69,7 +69,7 @@
                                             <div class="col">
                                               <div class="form-group mt-4 mx-auto">
                                                 <label for="comuna" class="form-label margin-32px">Banco</label>
-                                                <select class="select-css" name="comuna" [(ngModel)]="selectedComuna" (ngModelChange)="onSelectComuna()" required>
+                                                <select class="select-css margin-40" name="comuna" [(ngModel)]="selectedComuna" (ngModelChange)="onSelectComuna()" required>
                                                   <option [ngValue]="null" disabled selected>Seleccione una Banco</option>
                                                   <option class="form-control" *ngFor="let comuna of comunas" value={{comuna}}>{{comuna}}</option>
                                                 </select>
@@ -78,15 +78,15 @@
 
                                             <div class="col">
                                                 <div class="form-group d-flex flex-column mt-4  mx-auto">
-                                                  <label for="numberBank" class="form-label mb-0">Tipo de Cuenta</label>
-                                                  <input type="text"  #numberBank="ngModel" [(ngModel)]="lender.numberBank" class="form-control" name="numberBank" id="numberBank" required>
-                                                  <small *ngIf="!numberBank.valid && numberBank.touched" class="invalid-feedback d-block">Coloque su número de Cuenta Bancaria</small>
+                                                  <label for="numberBank" class="form-label mb-0 margin-left-128">Tipo de Cuenta</label>
+                                                  <input type="text"  #numberBank="ngModel" [(ngModel)]="lender.numberBank" class="form-control margin-" name="numberBank" id="numberBank" required>
+                                                  <small *ngIf="!numberBank.valid && numberBank.touched" class="invalid-feedback d-block">Coloque un tipo de Cuenta válido</small>
                                               </div>
                                             </div>
                                             <div class="col">
                                               <div class="form-group d-flex flex-column mt-4  mx-auto">
                                                 <label for="numberBank" class="form-label mb-0">Numero de Cuenta</label>
-                                                <input type="text"  #numberBank="ngModel" [(ngModel)]="lender.numberBank" class="form-control" name="numberBank" id="numberBank" required>
+                                                <input type="text"  #numberBank="ngModel" [(ngModel)]="lender.numberBank" class="form-control width-200" name="numberBank" id="numberBank" required>
                                                 <small *ngIf="!numberBank.valid && numberBank.touched" class="invalid-feedback d-block">Coloque su número de Cuenta Bancaria</small>
                                               </div>
                                             </div>
