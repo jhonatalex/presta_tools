@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable, map, tap } from 'rxjs';
 import { User } from 'src/app/register/models/user.model';
 import { Constants } from 'src/app/shared/constants/settings.class';
@@ -11,7 +11,7 @@ import { SweetUIService } from 'src/app/shared/services/gui.service';
 @Injectable({
   providedIn: 'root'
 })
-export class HasRoleGuard implements CanActivate {
+export class HasRoleGuard  {
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
     environment.production ? '' : 'D3V'
   }`;
