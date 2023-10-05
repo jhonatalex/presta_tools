@@ -46,9 +46,8 @@ export class UpdateLenderComponent implements OnInit {
    
     //busca lender en base de datos
     getLender(data:string){
-      this.lenderService.getLenderByEmail(data).subscribe(lender=>{
-        this.lender = lender;
-        console.log(lender)
+      this.lenderService.getLenderByEmail(data).subscribe(Lender=>{
+        this.lender = Lender;
       })
     }
     //obtiene la region del array REGIONES(shared->constants)
@@ -85,7 +84,6 @@ export class UpdateLenderComponent implements OnInit {
     this.lender.numberBank = form.form.value.numberBank;
     this.lender.region = form.form.value.region;
     this.lender.telephone = form.form.value.telephone;
-    console.log(this.lender);
 
     //enviar lender actualizado
     if(this.lender){

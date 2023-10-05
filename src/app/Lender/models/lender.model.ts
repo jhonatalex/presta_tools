@@ -14,4 +14,5 @@ export class Lender{
   public balanceWallet:string='';
   public dateUp: string = new Date().toLocaleString();
   public rate: number = 0;
+  public tools:[]=[];
 }

@@ -55,6 +55,7 @@ export class ToolResponse {
   dateUp: string = new Date().toISOString();
   rate: number = 0;
   brand: string='';
+  state:string='';
   objetoCategoria: Category | null = null;
   objetoLender: Lender | null = null;
 

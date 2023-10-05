@@ -25,19 +25,19 @@ export class DashboardComponent implements OnInit {
   public form2: FormGroup;
 
   //array de pruebas=========================================================================
-  public tools:Array<any> = [{'id':'12',
+  public tools:Array<any> = [{'id':'93',
                               'name': 'Taladro Inalámbrico', 
                               'status':'disponible',
                               'rate':5,
                               'reference':'00001'
                               },
-                             {'id':'13',
+                             {'id':'88',
                               'name': 'Sierra Caladora',
                               'status':'disponible',
                               'rate':4,
                               'reference':'00002'
                               },
-                             {'id':'14',
+                             {'id':'69',
                               'name': 'Martillo Neumático',
                               'status': 'alquilado',
                               'rate':3,
@@ -79,11 +79,13 @@ export class DashboardComponent implements OnInit {
   getLender(data:string){
     this.lenderService.getLenderByEmail(data).subscribe(Lender=>{
        this.lender = Lender;
+       
+       console.log(this.lender)
        //asignamos valor de rate Lender a rating1
        this.form1 = this.fb.group({
         rating1: [this.lender.rate, Validators.required]
-       })
-    }) 
+       });
+    }); 
   }
   //borrar producto
   deleteTool(toolId: number) {

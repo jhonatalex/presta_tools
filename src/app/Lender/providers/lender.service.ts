@@ -128,17 +128,16 @@ export class LenderService {
                 this.spinner.show();
                 const url = `${environment.baseUrl}${PathTool.deleteToolById}`;
                 this.callManSV.deleteData(url, id)
-
+                
                 .then((response:any)=>{
-                  console.log(response);
-
+                  
                   this.manageResponseDelete(response);
                  // this.getListCategoryProviders();
 
-                })
+                 })
                 .catch((error:any)=>{
                   this.manageError(error);
-                })
+                 })
                 .finally(()=>this.spinner.hide())
             }
           });
@@ -151,14 +150,14 @@ export class LenderService {
     if(responseApi.success){
       this.sweetUIService.alertConfirm('Mensaje',responseApi.message,'success')
       .then(()=>{
-        //this.utilService.navigateToPath('/listar-categoria')
-
+        this.utilService.navigateToPath('/panel')
 
       })
       .catch((e:any)=>{console.log(e);})
     }else{
-      this.sweetUIService.alertConfirm('Alerta',responseApi.message ,'error')
-      console.log(responseApi.Error?.message)
+      this.sweetUIService.alertConfirm('Alerta',responseApi.message ,'error');
+      console.log(responseApi.Error?.message);
+      
     }
   }
 

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-
 import {  inject} from '@angular/core';
 import { Storage, ref, uploadBytesResumable } from '@angular/fire/storage';
 import { NgForm } from '@angular/forms';
@@ -16,20 +14,15 @@ import { UtilService } from 'src/app/shared/services/util.service';
 import { environment } from 'src/environments/environment.prod';
 import { Constants } from 'src/app/shared/constants/settings.class';
 import { User } from 'src/app/register/models/user.model';
-
-
-
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'add-tool',
-  templateUrl: './add-tool.component.html',
-  styleUrls: ['./add-tool.component.css'],
+  selector: 'app-update-tool',
+  templateUrl: './update-tool.component.html',
+  styleUrls: ['./update-tool.component.css'],
   providers:[ToolServiceNew],
-
 })
-
-export class AddToolComponent implements OnInit {
+export class UpdateToolComponent implements OnInit{
 
   selectedFile1 : File | null = null;
   selectedFile2: File | null = null;
@@ -57,20 +50,63 @@ export class AddToolComponent implements OnInit {
 
   constructor( private toolService:ToolServiceNew,
                private categoryService: CategoryService,
-               private utilService:UtilService
+               private utilService:UtilService,
+               private router:ActivatedRoute
      ) {this.tool = new Tool();}//instancia de usuario vacía para el formulario
 
 
   ngOnInit(): void {
 
     this.loadCategories();
+    this.getToolById();
+  }
+
+  //busca tool por id en la api
+  getToolById(){
+      this.router.params.subscribe(params=>{
+          const idTool= +params['id'];
+              this.toolService.getDetailToolProviders(idTool).subscribe(Tool=>{
+                console.log(Tool);
+                this.tool = Tool;
+              })   
+      })
+  }
+
+  //obtiene todas las categorias
+  loadCategories() {
+    this.categoryService.getListCategoryProviders().subscribe(
+      (categories: Category[]) => {
+
+        this.defautlCategory = new Category();
+        this.defautlCategory.titleCat="Seleccione una categoría"
+
+        this.categories = categories;
+
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+   // Método que se ejecuta cuando se selecciona una categoría
+   onSelectCategory() {
+    // Aquí puedes acceder al valor seleccionado en la variable selectedCategory
+    console.log('Categoría seleccionada:', this.selectedCategory);
+
+    if(this.selectedCategory){
+      this.tool.idCategory =  Number(this.selectedCategory);
+    }
 
   }
 
-
+  public generarIdUnicoNumerico(): number {
+    const timestamp = new Date().getTime();
+    const sixDigitId = parseInt(timestamp.toString().slice(-6));
+    return sixDigitId;
+  }
 
   onFileSelected1(event: any) {
-
 
     const file = event.target.files[0];
     if (file) {
@@ -82,7 +118,6 @@ export class AddToolComponent implements OnInit {
         this.selectedFileName = undefined;
     }
 
-
   }
 
   onFileSelected2(event: any) {
@@ -93,9 +128,7 @@ export class AddToolComponent implements OnInit {
     this.selectedFile3 = event.target.files[0];
 
   }
-
-
-
+  //metodo para actualizar en la api
   async onSubmit(form:NgForm):Promise<void>{
 
     if (this.selectedFile1 && this.selectedFile2 && this.selectedFile3) {
@@ -124,7 +157,7 @@ export class AddToolComponent implements OnInit {
 
         // Llamar al siguiente método para consumir el servicio
         console.log(this.tool);
-        this.toolService.saveTool(this.tool);
+        this.toolService.updateTool(this.tool);
 
       } catch (error) {
         // Manejar cualquier error que ocurra durante la carga de imágenes
@@ -136,41 +169,7 @@ export class AddToolComponent implements OnInit {
 
   }
 
-  loadCategories() {
-    this.categoryService.getListCategoryProviders().subscribe(
-      (categories: Category[]) => {
 
-        this.defautlCategory = new Category();
-        this.defautlCategory.titleCat="Seleccione una categoría"
-
-        this.categories = categories;
-
-
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-
-  // Método que se ejecuta cuando se selecciona una categoría
-  onSelectCategory() {
-    // Aquí puedes acceder al valor seleccionado en la variable selectedCategory
-    console.log('Categoría seleccionada:', this.selectedCategory);
-
-    if(this.selectedCategory){
-      this.tool.idCategory =  Number(this.selectedCategory);
-    }
-
-  }
-
-
-
-  public generarIdUnicoNumerico(): number {
-    const timestamp = new Date().getTime();
-    const sixDigitId = parseInt(timestamp.toString().slice(-6));
-    return sixDigitId;
-  }
 
 
 

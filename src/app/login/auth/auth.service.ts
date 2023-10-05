@@ -258,7 +258,7 @@ export class AuthService {
     this.sweetUIService
     .alertCancelConfirm(
       'Atención',
-      '¿Seguro que desea salir?',
+      '¿Seguro que desea cerrar sesión?',
       'question',
       'Aceptar',
       'Cancelar'
