@@ -135,9 +135,6 @@ export class VerifyLenderComponent implements OnInit {
         this.userUpdate.verify = true;//se verifica user antes de actualizar
         this.resgisterService.update(this.userUpdate).subscribe((response)=>{
 
-
-          console.log(response)
-
           if(response=='Usuario actualizado satisfactoriamente'){
 
             this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);

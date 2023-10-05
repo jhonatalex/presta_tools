@@ -29,7 +29,7 @@ export class LenderService {
 
 
 
-  public getLenderByEmail(email:string):Observable<any>{
+  public getLenderByEmail(email:string):Observable<Lender>{
 
     this.spinner.show();
     const url = `${environment.baseUrl}${PathLender.getLenderById}`;
@@ -49,11 +49,31 @@ export class LenderService {
     );
 
   }
+  //metodo para actualizar lender
+  public updateLender(payload: any):Observable<any>{
+
+    this.spinner.show();
+    const url = `${environment.baseUrl}${PathLender.updateLender}`;
+
+    return from(this.callManSV.putData(url, payload)).pipe(
+      map((response: any) => response.message),
+      tap(() => {
+
+      }),
+      catchError((error: any) => {
+        this.manageError(error);
+        throw error;
+      }),
+      finalize(() => {
+        this.spinner.hide();
+      })
+    );
 
 
+  }
 
 
-
+//registra lender en api
   public register(payload: any):void{
     this.spinner.show();
     const url = `${environment.baseUrl}${PathLender.saveLender}`;
@@ -70,16 +90,16 @@ export class LenderService {
   private manageResponse(lenderRS:LenderRS){
     if(lenderRS.success){
 
-      this.sweetUIService.alertConfirm('PrestaTools Verificado',lenderRS.message,'success')
+      this.sweetUIService.alertConfirm('PrestaTool Verificado',lenderRS.message,'success')
       .then(()=>{
           //REDIRECCION ENVIAR A LA URL de DONDE VINO
-        this.utilService.navigateToPath('/agregar-producto')
+        this.utilService.navigateToPath('/agregar-producto');
       })
       .catch((e:any)=>{console.log(e);})
     }else{
       this.sweetUIService.alertConfirm('Alerta',lenderRS.message ,'error')
       console.log(lenderRS)
-      this.utilService.navigateToPath('/verificar-lender')
+      this.utilService.navigateToPath('/verificar-prestatool')
     }
   }
 
@@ -97,7 +117,7 @@ export class LenderService {
     this.sweetUIService
           .alertCancelConfirm(
             'Atención',
-            'Seguro desea Borrar este Producto',
+            'Seguro que desea Borrar este Producto',
             'question',
             'Aceptar',
             'Cancelar'

@@ -243,10 +243,8 @@ export class AuthService {
    * ( Redirecciona al Login )
    */
 
-  public endSession(
-    message: string = 'Su sesión se ha cerrado',
-    title: string = 'Atención'
-  ) {
+  public endSession(message: string = 'Su sesión se ha cerrado', title: string = 'Atención'){
+   
     this.logout();
     this.sweetUIService
       .alertConfirm(title, message, 'warning')
@@ -256,6 +254,31 @@ export class AuthService {
       .catch(console.warn);
   }
 
+  public endSession2(message: string = 'Su sesión se ha cerrado', title: string = 'Atención'){
+    this.sweetUIService
+    .alertCancelConfirm(
+      'Atención',
+      '¿Seguro que desea salir?',
+      'question',
+      'Aceptar',
+      'Cancelar'
+    )
+    .then((r) => {
+          if (r.value) {
+              this.spinner.show();
+              this.logout()
+              this.sweetUIService
+                .alertConfirm(title, message, 'warning')
+                .then(() => {
+              this.utilService.navigateToPath('/acceso');
+              })
+              .catch(console.warn);
+              this.spinner.hide();
+          }
+          
+    });
+    
+  }
 
 
 

@@ -18,8 +18,8 @@ export class DashboardComponent implements OnInit {
     environment.production? '' : 'D3V'
   }`;
 
-  public user: User = new User();
-  public lender: any;
+  public user: User;
+  public lender: Lender;
   public email: string;
   public form1: FormGroup;
   public form2: FormGroup;
@@ -45,19 +45,22 @@ export class DashboardComponent implements OnInit {
                               }];
   //========================================================================================
   
-  constructor(
-    private authService: AuthService,
-    private utilService: UtilService,
-    private lenderService: LenderService,
-    private fb: FormBuilder)
+    constructor(
+      private authService: AuthService,
+      private utilService: UtilService,
+      private lenderService: LenderService,
+      private fb: FormBuilder
+    )
 
     { this.email = '';
       this.form1 = this.fb.group({
-      rating1: [0, Validators.required],});
-      
+        rating1: [0, Validators.required]
+      });
       this.form2 = this.fb.group({
-        rating2: [4, Validators.required],});
-
+        rating2: [4, Validators.required]
+      });
+      this.lender = new Lender;
+      this.user = new User;
     }
  
 
@@ -68,32 +71,23 @@ export class DashboardComponent implements OnInit {
     //obtener lender por email
     this.getLender(this.email);
   }
-
-
-
   //cerrar sesión
   signOut(){
-    this.authService.endSession();
+    this.authService.endSession2();
   }
-
+  //busca lender en base de datos
   getLender(data:string){
-    this.lenderService.getLenderByEmail(data).subscribe(lender=>{
-      this.lender = lender;
+    this.lenderService.getLenderByEmail(data).subscribe(Lender=>{
+       this.lender = Lender;
        //asignamos valor de rate Lender a rating1
        this.form1 = this.fb.group({
         rating1: [this.lender.rate, Validators.required]
        })
-       
-    })
-
-     
+    }) 
   }
-
-
+  //borrar producto
   deleteTool(toolId: number) {
-
     this.lenderService.deleteToolById(toolId);
-
   }
 
 

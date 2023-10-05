@@ -4,7 +4,7 @@
                 <div class="row">
                     <nav class="navbar navbar-expand-lg blue-gradient">
                         <div class="container">
-                          <a class="nav-link navbar-brand">Dashboard</a>
+                          <a class="nav-link nav-color-white navbar-brand">Dashboard</a>
                           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                           </button>
@@ -15,10 +15,10 @@
                               </form>
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0 float-end">
                               <li class="nav-item">
-                                <a class="nav-link" href="">Documentación</a>
+                                <a class="nav-link nav-color-white" href="">Documentación</a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link " href="">Soporte</a>
+                                <a class="nav-link nav-color-white" href="">Soporte</a>
                               </li>
                             </ul>
                           </div>
@@ -46,33 +46,19 @@
                         </div>
 
                         <div class="form-group d-flex justify-content-center pt-3 pb-3">
-                          <a  class="btn btn-lg btn-warning me-1 w-95" [routerLink]="['/actualizar-prestatool']">
+                          <a  class="btn btn-lg btn-warning me-1 w-275" [routerLink]="['/actualizar-prestatool']">
                             <i class="far fa-edit"></i> Actualizar Datos
                           </a>
                         </div>
                         
                         <div class="form-group d-flex justify-content-center pt-3 pb-3">
-                            <button class="form-control-sm btn nav-link btn-logout" (click)='signOut()'>Cerrar Sesión</button>
+                            <button class="form-control-sm btn nav-link btn-logout" (click)='signOut()'> Cerrar Sesión</button>
                         </div>
                         
                     </div>
 
                     <div class="col col-md-6 pt-5 border">
-                        <!--<div class=" row border-botton d-flex">
-                            <h5 class="p-3">Productos Alquilados</h5>
-                        </div>
-                        <div class=" row border-top py-5" *ngFor="let tool of tools">
-                            <div class="col">
-                                <strong>Producto:   </strong><p class="d-inline-block">{{tool.name}}</p>
-                            </div>
-                            <div class="col">
-                                <strong>Estado:      </strong><p class="d-inline-block">{{tool.status}}</p>
-                            </div>
-                            <div class="col">
-                                <p>valoracion: <strong>  </strong> {{tool.rate}} Estrellas</p>
-                            </div>
-
-                        </div>-->
+                        
                         <table class="table">
                             <thead>
                               <tr>
@@ -85,17 +71,17 @@
                             </thead>
                             <tbody>
                               <tr *ngFor="let tool of tools">
-                                <td class="py-3">{{tool.reference}}</td>
-                                <td class="py-3">{{tool.name}}</td>
-                                <td class="py-3">{{tool.status}}</td>
-                                <td class="py-3 w-25">{{tool.rate}} Estrellas
-                                    <div class="container ngx-star">
+                                <td class="py-4">{{tool.reference}}</td>
+                                <td class="py-4">{{tool.name}}</td>
+                                <td class="py-4">{{tool.status}}</td>
+                                <td class="py-4">{{tool.rate}} Estrellas
+                                    <div class="container ngx-star position-relative">
                                         <form [formGroup]="form2">
                                            <ngx-star-rating formControlName="rating2"></ngx-star-rating>
                                         </form>
                                     </div>
                                 </td>
-                                <td class="py-3">
+                                <td class="py-4">
                                     <a  class="btn btn-sm btn-warning me-1 p-3px">
                                       <i class="far fa-edit"></i> Editar
                                     </a>
@@ -121,7 +107,7 @@
                         </div>
 
                         <div class="container fluid border-top pb-3 d-flex justify-content-center">
-                            <a class="boton-registrar btn-blue-grad mt-2 p-2 border-0 col-md-4 nav-link active text-center"[routerLink]="['']">Retirar Dinero</a>
+                            <a class="boton-registrar btn-blue-grad mt-2 p-2 border-0 col-md-4 nav-link active text-center" [routerLink] = "['']">Retirar Dinero</a>
                         </div>
                     </div>
                 </div>
@@ -130,8 +116,7 @@
             <div class="form-group mt-3 pt-1 d-flex justify-content-center">
               <a [routerLink]="['']" class="btn-blue-grad d-flex justify-content-center align-items-center mb-3 ms-3">Ir a Home</a>
           </div>
-
-         
+   
 </section>
 
 

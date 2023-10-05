@@ -53,6 +53,7 @@ export const PathLender = {
   saveLender: 'api/lender/insert',
 
   getLenderById:'api/lender/get/',
+  updateLender:'api/lender/update',
 
 };
 export const PathCategory = {
