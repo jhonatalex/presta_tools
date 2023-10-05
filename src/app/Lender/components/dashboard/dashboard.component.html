@@ -33,7 +33,7 @@
                             <p>{{lender.email}}</p>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <p>valoracion: <strong>{{lender.rate}}</strong>  Estrellas</p>
+                            <p>valoración: <strong>{{lender.rate}}</strong>  Estrellas</p>
                         </div>
                         <div class="container ngx-star">
                             <form [formGroup]="form1">
@@ -45,15 +45,16 @@
                             <a class="boton-registrar btn-blue-grad mt-2 p-2 border-0 col-md-4 nav-link active text-center"[routerLink]="['/agregar-producto']">Registrar Producto</a>
                         </div>
 
-                        <div class="form-group d-flex justify-content-center pb-3">
+                        <div class="form-group d-flex justify-content-center pt-3 pb-3">
+                          <a  class="btn btn-lg btn-warning me-1 w-95" [routerLink]="['/actualizar-prestatool']">
+                            <i class="far fa-edit"></i> Actualizar Datos
+                          </a>
+                        </div>
+                        
+                        <div class="form-group d-flex justify-content-center pt-3 pb-3">
                             <button class="form-control-sm btn nav-link btn-logout" (click)='signOut()'>Cerrar Sesión</button>
                         </div>
-                        <div>
-                            <p class="ps-3 ms-3">Promember</p>
-                        </div>
-                        <div>
-                            <p class="ps-3 ms-3">3 artículos</p>
-                        </div>
+                        
                     </div>
 
                     <div class="col col-md-6 pt-5 border">
@@ -87,21 +88,21 @@
                                 <td class="py-3">{{tool.reference}}</td>
                                 <td class="py-3">{{tool.name}}</td>
                                 <td class="py-3">{{tool.status}}</td>
-                                <td class="py-3">{{tool.rate}} Estrellas
+                                <td class="py-3 w-25">{{tool.rate}} Estrellas
                                     <div class="container ngx-star">
                                         <form [formGroup]="form2">
-                                        <ngx-star-rating formControlName="rating2"></ngx-star-rating>
+                                           <ngx-star-rating formControlName="rating2"></ngx-star-rating>
                                         </form>
                                     </div>
                                 </td>
                                 <td class="py-3">
-                                    <a  class="btn btn-sm btn-warning me-1">
-                                      <i class="far fa-edit"></i> Actualizar Datos
+                                    <a  class="btn btn-sm btn-warning me-1 p-3px">
+                                      <i class="far fa-edit"></i> Editar
                                     </a>
-                                    <button class="btn btn-sm btn-danger" (click)="deleteTool(tool.id)">
+                                    <button class="btn btn-sm btn-danger p-3px" (click)="deleteTool(tool.id)">
                                       <i class="far fa-trash-alt"></i> Borrar
                                     </button>
-                                  </td>
+                                </td>
                                 
                               </tr>
                             </tbody>
@@ -125,6 +126,12 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-group mt-3 pt-1 d-flex justify-content-center">
+              <a [routerLink]="['']" class="btn-blue-grad d-flex justify-content-center align-items-center mb-3 ms-3">Ir a Home</a>
+          </div>
+
+         
 </section>
 
 

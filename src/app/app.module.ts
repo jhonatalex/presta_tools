@@ -55,6 +55,7 @@ import { FailsTransactionComponent } from './components/fails-transaction/fails-
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { VerifyLenderComponent } from './Lender/components/verify-lender/verify-lender.component';
 import { DashboardComponent } from './Lender/components/dashboard/dashboard.component';
+import { UpdateLenderComponent } from './Lender/components/update-lender/update-lender.component';
 
 
 
@@ -88,6 +89,7 @@ import { DashboardComponent } from './Lender/components/dashboard/dashboard.comp
     FailsTransactionComponent,
     VerifyLenderComponent,
     DashboardComponent,
+    UpdateLenderComponent,
 
 
 

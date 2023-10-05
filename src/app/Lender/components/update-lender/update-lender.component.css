@@ -1,35 +1,53 @@
 .pb-100{
-  padding-bottom: 100px;
-}
+    padding-bottom: 100px;
+  }
+  
+  .div-titulo{
+    width: 85%;
+    border-radius: 50px;
+  }
+  
+  .div-formulario{
+    width: 85%;
+    border-radius: 50px;
+    align-items: center;
+  }
+  
+  .div-contenedor{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+ 
+  
+  
+  .margin-32px{
+    margin-left: 48px;
+    margin-right: 38px;
+  }
+ 
+  
+  .width-442px{
+    width: 441px;
+    margin-left: 30px;
+  }
+  
+  .width-442{
+    width: 441px;
+    margin-left: 20px;
+  }
+  
+  .margin-32{
+    margin-left: 32px;
+  }
+  .margin-30{
+    margin-left: 30px;
+    width: 93%;
+  }
 
-.div-titulo{
-  width: 85%;
-  border-radius: 50px;
-}
 
-.div-formulario{
-  width: 85%;
-  border-radius: 50px;
-  align-items: center;
-}
-
-.div-contenedor{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-}
-
-/*estilos para los input del formulario*/
-.input-caracteristicas{
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  color: rgb(97, 97, 97);
-}
-
-
+  
 /* Estilos para el select */
 select {
   padding: 5px; /* Espaciado interior para que se vea más bonito */
@@ -40,37 +58,10 @@ select {
   appearance: none; /* Eliminar los estilos por defecto del select */
   width: 63%; /* Ancho del select para ocupar todo el espacio disponible */
 }
-
-
-.margin-32px{
-  margin-left: 43px;
-  margin-right: 38px;
-}
-
 /* Estilos para las opciones del select */
 select option {
   font-size: 14px; /* Tamaño de fuente para las opciones */
 }
-
-
-.width-442px{
-  width: 441px;
-  margin-left: 30px;
-}
-
-.width-442{
-  width: 441px;
-  margin-left: 23px;
-}
-
-.margin-32{
-  margin-left: 32px;
-}
-.text-color-white{
-  color: white;
-}
-
-
 
 *:after,*:before{
   box-sizing: border-box;
@@ -86,6 +77,8 @@ body{
   font-size: 14px;
   font-family: Verdana;
 }
+
+
 .select-css {
   display: block;
   font-size: 16px;
@@ -94,10 +87,10 @@ body{
   color: #444;
   line-height: 1.3;
   padding: .4em 1.4em .3em .8em;
-  width: 400px;
+  width: 375px;
   max-width: 100%;
   box-sizing: border-box;
- margin: 20px auto;
+ margin: -8px auto;
   border: 1px solid #aaa;
   box-shadow: 0 1px 0 1px rgba(0,0,0,.03);
   border-radius: .3em;
@@ -137,29 +130,34 @@ body{
 }
 
 .label-comuna {
-  margin-bottom: -20px;
+  padding: 12px;
   margin-top: 3%;
 
 }
-
-
-
-.label-region{
-  margin-bottom: -20px;
-  margin-top: 3%;
-
+.margin-{
+  width: 108px;
+  margin-left: 77px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.margin-left-128{
+  margin-left: 77px;
+}
+.margin-40{
+  margin-left: 40px;
+}
+.width-200{
+  width: 207px;
+}
+  
+  
+  
+   
+  
+   
+  
+  
+   
+  
+  
+   
+  
+  

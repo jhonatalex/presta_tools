@@ -31,7 +31,7 @@ export class VerifyLenderGuard  {
       }else{
 
         this.sweetUIService
-        .alertConfirm("Hola", "Para entrar aquí, Necesitas estar verificado y ser un PrestaTools", 'warning')
+        .alertConfirm("Hola", "Para entrar aquí, Necesitas estar verificado y ser un PrestaTool", 'warning')
         .then(() => {
           this.utilService.navigateToPath('/verificar-lender');
         })
