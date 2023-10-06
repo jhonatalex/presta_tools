@@ -69,24 +69,26 @@
                                             <div class="col">
                                               <div class="form-group mt-4 mx-auto">
                                                 <label for="comuna" class="form-label margin-32px">Banco</label>
-                                                <select class="select-css margin-40" name="commune" #commune="ngModel" [(ngModel)]="selectedComuna" (ngModelChange)="onSelectComuna()" required>
+                                                <select class="select-css margin-40" name="banco" #bank="ngModel" [(ngModel)]="selectedBank" (ngModelChange)="onSelectBank()" required>
                                                   <option [ngValue]="null" disabled selected>Seleccione una Banco</option>
-                                                  <option class="form-control" *ngFor="let comuna of comunas" value={{comuna}}>{{comuna}}</option>
+                                                  <option class="form-control" *ngFor="let bank of banks" value={{bank}}>{{bank}}</option>
                                                 </select>
                                               </div>
                                             </div>
 
                                             <div class="col">
-                                                <div class="form-group d-flex flex-column mt-4  mx-auto">
-                                                  <label for="numberBank" class="form-label mb-0 margin-left-128">Tipo de Cuenta</label>
-                                                  <input type="text"  #numberBank="ngModel" [(ngModel)]="lender.numberBank" class="form-control margin-" name="numberBank" id="numberBank" required>
-                                                  <small *ngIf="!numberBank.valid && numberBank.touched" class="invalid-feedback d-block">Coloque un tipo de Cuenta válido</small>
-                                              </div>
+                                                <div class="form-group  mt-4  ml-78px  typeCount">
+                                                  <label for="typeCount" class="form-label  ">Tipo de Cuenta</label>
+                                                  <select class="select-css " name="tipo" #typeCount="ngModel" [(ngModel)]="selecteTypeCount" (ngModelChange)="onSelectTypeCount()" required>
+                                                    <option [ngValue]="null" disabled selected>Seleccione</option>
+                                                    <option class="form-control" *ngFor="let type of typeCounts" value={{type}}>{{type}}</option>
+                                                  </select>
+                                                </div>
                                             </div>
                                             <div class="col">
-                                              <div class="form-group d-flex flex-column mt-4  mx-auto">
+                                              <div class="form-group d-flex flex-column mt-4  mx-auto numberCount ">
                                                 <label for="numberBank" class="form-label mb-0">Numero de Cuenta</label>
-                                                <input type="text"  #numberBank="ngModel" [(ngModel)]="lender.numberBank" class="form-control width-200" name="numberBank" id="numberBank" required>
+                                                <input type="text"  #numberBank="ngModel" [(ngModel)]="lender.numberBank" class="form-control " name="numberBank" id="numberBank" required>
                                                 <small *ngIf="!numberBank.valid && numberBank.touched" class="invalid-feedback d-block">Coloque su número de Cuenta Bancaria</small>
                                               </div>
                                             </div>
