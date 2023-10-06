@@ -72,7 +72,7 @@ const routes: Routes = [
   {
     path:'actualizar-prestatool', component: UpdateLenderComponent,
     canActivate:[AuthGuard,VerifyLenderGuard]},
-  
+
 
 
 

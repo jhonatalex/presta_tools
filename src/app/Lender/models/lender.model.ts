@@ -9,6 +9,8 @@ export class Lender{
   public telephone:string='';
   public address:string='';
   public numberBank:string='';
+  public bank:string='';
+  public typeCount:string='';
   public region:string='';
   public commune:string='';
   public balanceWallet:string='';

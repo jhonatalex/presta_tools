@@ -209,7 +209,7 @@ export class AuthService {
 
       //SET USER AND TOKEN A LOCAL SOTORAGE
         this.sweetUIService
-        .alertConfirm("Bienvenido", 'Login Exitoso')
+        .alertConfirm("Bienvenido",  userFirebase.displayName +' Login Exitoso')
         .then(() => {
           this.utilService.navigateToPath('/');
         })
@@ -244,7 +244,7 @@ export class AuthService {
    */
 
   public endSession(message: string = 'Su sesión se ha cerrado', title: string = 'Atención'){
-   
+
     this.logout();
     this.sweetUIService
       .alertConfirm(title, message, 'warning')
@@ -275,9 +275,9 @@ export class AuthService {
               .catch(console.warn);
               this.spinner.hide();
           }
-          
+
     });
-    
+
   }
 
 

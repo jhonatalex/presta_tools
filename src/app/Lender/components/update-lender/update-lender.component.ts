@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, IterableDiffers, OnInit } from '@angular/core';
 import { Lender } from '../../models/lender.model';
 import { REGIONES } from 'src/app/shared/constants/regiones.class';
 import { User } from 'src/app/register/models/user.model';
@@ -7,6 +7,7 @@ import { LenderService } from '../../providers/lender.service';
 import { Constants } from 'src/app/shared/constants/settings.class';
 import { environment } from 'src/environments/environment.prod';
 import { SweetUIService } from 'src/app/shared/services/gui.service';
+import { BANKS } from 'src/app/shared/constants/bankList';
 
 @Component({
   selector: 'app-update-lender',
@@ -20,8 +21,14 @@ export class UpdateLenderComponent implements OnInit {
 
   public selectedRegion: string | null = null;
   public selectedComuna: string | null = null;
+  public selectedBank: string | null = null;
+  public selecteTypeCount: string | null = null;
+
   public regiones: string[]=[];
   public comunas: string[]=[];
+  public banks: string[]=[];
+  public typeCounts: string[]=[];
+
   public lender:Lender;
   public user: User;
   public email: string;
@@ -30,7 +37,7 @@ export class UpdateLenderComponent implements OnInit {
     private utilService: UtilService,
     private lenderService: LenderService,
     private sweetUIService:SweetUIService,
-  ) 
+  )
     { this.lender = new Lender;
       this.user = new User;
       this.email = ''; }
@@ -42,8 +49,11 @@ export class UpdateLenderComponent implements OnInit {
       //obtener lender por email
       this.getLender(this.email);
       this.getRegionesArray();
+      this.getBanks();
+      this.getTypeCount();
     }
-   
+
+
     //busca lender en base de datos
     getLender(data:string){
       this.lenderService.getLenderByEmail(data).subscribe(Lender=>{
@@ -54,12 +64,38 @@ export class UpdateLenderComponent implements OnInit {
     getRegionesArray():void {
       this.regiones = REGIONES.regiones.map(region => region.region);
     }
+
+    getBanks() {
+      this.banks = BANKS.bank.map(item=>item.nombre)
+    }
+
+    getTypeCount() {
+      this.typeCounts = BANKS.tipos_de_cuenta.map(item=>item.nombre);
+    }
+
+
+    onSelectBank():void {
+
+      if(this.selectedBank){
+        this.lender.bank= this.selectedBank;
+      }
+
+    }
+
+    onSelectTypeCount():void {
+
+      if(this.selecteTypeCount){
+        this.lender.typeCount= this.selecteTypeCount;
+      }
+
+    }
+
     //se ejecuta al seleccionar region
     onSelectRegion():void {
 
       if(this.selectedRegion){
         this.lender.region= this.selectedRegion;//asigna region a lender
-        
+
         const regionSeleccionada = REGIONES.regiones.find(r => r.region === this.selectedRegion);
         if (regionSeleccionada) {
           this.comunas = regionSeleccionada.comunas;
@@ -77,6 +113,9 @@ export class UpdateLenderComponent implements OnInit {
       }
 
     }
+
+
+
 
   onSubmit(form:any){
     this.lender.address = form.form.value.address;
@@ -99,7 +138,7 @@ export class UpdateLenderComponent implements OnInit {
           }
       });
     }
-    
+
   }
 
 

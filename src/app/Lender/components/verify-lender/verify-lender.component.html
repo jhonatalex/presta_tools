@@ -24,7 +24,7 @@
                                                 <small *ngIf="!telephone.valid && telephone.touched" class="invalid-feedback d-block">Debe colocar un número de teléfono válido</small>
                                             </div>
                                             <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                                <label for="direccion" class="form-label mb-0">Dirección/calle/número de casa</label>
+                                                <label for="direccion" class="form-label mb-0">Dirección (calle y número de casa)</label>
                                                 <input type="text"  #address="ngModel" [(ngModel)]="user.address" class="form-control" name="address" id="direccion" required>
                                                 <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">Debe colocar una dirección</small>
                                             </div>

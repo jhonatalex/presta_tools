@@ -1,43 +1,43 @@
 .pb-100{
     padding-bottom: 100px;
   }
-  
+
   .div-titulo{
     width: 85%;
     border-radius: 50px;
   }
-  
+
   .div-formulario{
     width: 85%;
     border-radius: 50px;
     align-items: center;
   }
-  
+
   .div-contenedor{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
   }
- 
-  
-  
+
+
+
   .margin-32px{
     margin-left: 48px;
     margin-right: 38px;
   }
- 
-  
+
+
   .width-442px{
     width: 441px;
     margin-left: 30px;
   }
-  
+
   .width-442{
     width: 441px;
     margin-left: 20px;
   }
-  
+
   .margin-32{
     margin-left: 32px;
   }
@@ -47,7 +47,7 @@
   }
 
 
-  
+
 /* Estilos para el select */
 select {
   padding: 5px; /* Espaciado interior para que se vea más bonito */
@@ -147,17 +147,25 @@ body{
 .width-200{
   width: 207px;
 }
-  
-  
-  
-   
-  
-   
-  
-  
-   
-  
-  
-   
-  
-  
+
+.typeCount{
+  width: 180px ;
+}
+.ml-78px{
+  margin-left: 78px;
+}
+
+.numberCount{
+
+  width: 164px;
+}
+
+
+
+
+
+
+
+
+
+
