@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Lender } from '../../models/lender.model';
 import { LenderService } from '../../providers/lender.service';
 import { RegisterRS } from 'src/app/register/models/registerRS.model';
+import { BANKS } from 'src/app/shared/constants/bankList';
 
 @Component({
   selector: 'app-verify-lender',
@@ -31,8 +32,12 @@ export class VerifyLenderComponent implements OnInit {
   public lender:Lender;
   public selectedRegion: string | null = null;
   public selectedComuna: string | null = null;
+  public selectedBank: string | null = null;
+  public selecteTypeCount: string | null = null;
   public regiones: string[]=[];
   public comunas: string[]=[];
+  public banks: string[]=[];
+  public typeCounts: string[]=[];
   public urlRedireccion: any;
   constructor(
     private utilservice: UtilService,
@@ -48,6 +53,8 @@ export class VerifyLenderComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.getRegionesArray();
+    this.getBanks();
+    this.getTypeCount();
   }
 
 
@@ -60,6 +67,31 @@ export class VerifyLenderComponent implements OnInit {
 
     private getRandomArbitrary(min:number , max:number) {
     return Math.random() * (max - min) + min;
+    }
+
+    getBanks() {
+      this.banks = BANKS.bank.map(item=>item.nombre)
+    }
+
+    getTypeCount() {
+      this.typeCounts = BANKS.tipos_de_cuenta.map(item=>item.nombre);
+    }
+
+
+    onSelectBank():void {
+
+      if(this.selectedBank){
+        this.lender.bank= this.selectedBank;
+      }
+
+    }
+
+    onSelectTypeCount():void {
+
+      if(this.selecteTypeCount){
+        this.lender.typeCount= this.selecteTypeCount;
+      }
+
     }
 
   //obtiene el user de localstorage
@@ -123,11 +155,6 @@ export class VerifyLenderComponent implements OnInit {
       //datos del formualario
       this.userUpdate.address = this.user.address;
       this.userUpdate.dIdentidad = this.user.dIdentidad;
-
-
-
-
-
 
 
       if(this.userUpdate){

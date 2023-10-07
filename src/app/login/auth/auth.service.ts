@@ -122,9 +122,6 @@ export class AuthService {
 
           });
 
-
-
-
         })
         .catch((e) => {
           this.manageError(e);
@@ -133,12 +130,6 @@ export class AuthService {
 
 
     }
-
-
-
-
-
-
 
   public userLoginAuth(payload: any): void {
     this.spinner.show();

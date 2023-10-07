@@ -16,13 +16,13 @@
                                         <div class="col col-md-6">
                                             <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                                 <label for="nombre" class="form-label mb-0">Nombre</label>
-                                                <input class="form-control " type="text"  name="name"  #name="ngModel" [(ngModel)]="user.name" required pattern="[a-zA-Z]+">
+                                                <input class="form-control " type="text"  name="name"  #name="ngModel" [(ngModel)]="user.name" required pattern="[a-zA-Z]+" disabled="true">
                                                 <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">Debe colocar un nombre válido</small>
                                             </div>
 
                                             <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                               <label for="dIdentidad" class="form-label mb-0 ">Número de Rut</label>
-                                              <input type="text"  #dIdentidad="ngModel" [(ngModel)]="user.dIdentidad" class="form-control" name="dIdentidad" id="dIdentidad" required>
+                                              <input type="text"  #dIdentidad="ngModel" [(ngModel)]="user.dIdentidad" class="form-control" name="dIdentidad" id="dIdentidad" required disabled="true">
                                               <small *ngIf="!dIdentidad.valid && dIdentidad.touched" class="invalid-feedback d-block">No puede quedar vacío</small>
                                             </div>
 
@@ -45,12 +45,12 @@
                                             
                                             <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                                 <label for="apellido" class="form-label mb-0">Apellido</label>
-                                                <input type="text" [(ngModel)]="user.lastName" class="form-control" name="lastName" #lastName="ngModel" id="apellido" required>
+                                                <input type="text" [(ngModel)]="user.lastName" class="form-control" name="lastName" #lastName="ngModel" id="apellido" required disabled="true">
                                                 <small *ngIf="!lastName.valid && lastName.touched" class="invalid-feedback d-block">Debe colocar un apellido válido</small>
                                             </div>
                                             <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                                 <label for="email" class="form-label mb-0">Dirección de correo electrónico</label>
-                                                <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                                <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" disabled="true">
                                                 <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">Debe colocar un correo válido</small>
                                             </div>
                                             <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">

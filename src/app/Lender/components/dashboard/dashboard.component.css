@@ -32,8 +32,11 @@
       display: flex;
       justify-content: space-between;
   }
-  .p-3px{
-    padding: 3px;
+  .p-2px{
+    padding: 2px;
+  }
+  .ml-26px{
+    margin-left: -26px;
   }
 
 /*EStilos ngx-star-rating*/

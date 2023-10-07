@@ -98,8 +98,7 @@ export class LenderService {
       .catch((e:any)=>{console.log(e);})
     }else{
       this.sweetUIService.alertConfirm('Alerta',lenderRS.message ,'error')
-      console.log(lenderRS)
-      this.utilService.navigateToPath('/verificar-prestatool')
+      this.utilService.navigateToPath('/verificar-prestatool');
     }
   }
 

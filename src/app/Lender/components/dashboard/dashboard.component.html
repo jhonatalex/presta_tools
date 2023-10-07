@@ -1,13 +1,12 @@
-
 <section id="seccion-dashboard">
-            <div class="container-fluid">
-                <div class="row">
-                    <nav class="navbar navbar-expand-lg blue-gradient">
-                        <div class="container">
-                          <a class="nav-link nav-color-white navbar-brand">Dashboard</a>
-                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                          </button>
+    <div class="container-fluid">
+        <div class="row">
+              <nav class="navbar navbar-expand-lg blue-gradient">
+                  <div class="container">
+                      <a class="nav-link nav-color-white navbar-brand">Dashboard</a>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
                           <div class="collapse navbar-collapse" id="navbarSupportedContent">
                               <form class="d-flex w-100">
                                 <button class="btn btn-link bg-white border-0 " type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -22,101 +21,88 @@
                               </li>
                             </ul>
                           </div>
-                        </div>
-                      </nav>
-                    <div class="col col-md-3 pt-5 border">
-                        <div class="d-flex justify-content-center">
-                            <img src="assets/img/userLogin.png" alt="icono" style="width: 30px; height: 30px;" class="fa">
-                            <p class="p-1 text-colr-black">{{lender.name + ' ' + lender.lastName}}</p><br><br>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <p>{{lender.email}}</p>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <p>valoración: <strong>{{lender.rate}}</strong>  Estrellas</p>
-                        </div>
-                        <div class="container ngx-star">
-                            <form [formGroup]="form1">
-                              <ngx-star-rating formControlName="rating1" class="ngx-star"></ngx-star-rating>
-                            </form>
-                        </div>
-
-                        <div class="form-group d-flex justify-content-center pt-5 pb-3">
-                            <a class="boton-registrar btn-blue-grad mt-2 p-2 border-0 col-md-4 nav-link active text-center"[routerLink]="['/agregar-producto']">Registrar Producto</a>
-                        </div>
-
-                        <div class="form-group d-flex justify-content-center pt-3 pb-3">
-                          <a  class="btn btn-lg btn-warning me-1 w-275" [routerLink]="['/actualizar-prestatool']">
-                            <i class="far fa-edit"></i> Actualizar Datos
-                          </a>
-                        </div>
-
-                        <div class="form-group d-flex justify-content-center pt-3 pb-3">
-                            <button class="form-control-sm btn nav-link btn-logout" (click)='signOut()'> Cerrar Sesión</button>
-                        </div>
-
-                    </div>
-
-                    <div class="col col-md-6 pt-5 border">
-
-                        <table class="table">
-                            <thead>
-                              <tr>
-                                <th scope="col">Código</th>
-                                <th scope="col">Producto</th>
-                                <th scope="col">Estado</th>
-                                <th scope="col">Valoración</th>
-                                <th>Acciones</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let tool of tools">
-                                <td class="py-4">{{tool.reference}}</td>
-                                <td class="py-4">{{tool.name}}</td>
-                                <td class="py-4">{{tool.status}}</td>
-                                <td class="py-4">{{tool.rate}} Estrellas
-                                    <div class="container ngx-star position-relative">
-                                        <form [formGroup]="form2">
-                                           <ngx-star-rating formControlName="rating2"></ngx-star-rating>
-                                        </form>
-                                    </div>
-                                </td>
-                                <td class="py-4">
-                                    <a  class="btn btn-sm btn-warning me-1 p-3px" [routerLink]="['/actualizar-producto/' + tool.id]">
-                                      <i class="far fa-edit" ></i> Editar
-                                    </a>
-                                    <button class="btn btn-sm btn-danger p-3px" (click)="deleteTool(tool.id)">
-                                      <i class="far fa-trash-alt"></i> Borrar
-                                    </button>
-                                </td>
-
-                              </tr>
-                            </tbody>
-                          </table>
-
-                    </div>
-
-
-                    <div class="col col-md-3 pt-5 border">
-                        <div class="row pb-3">
-                            <strong>Ganancias</strong>
-                        </div>
-                        <div class="between pb-3">
-                           <p class="d-inline-block">Saldo:</p>
-                           <p class="d-inline-block">{{lender.balanceWallet? lender.balanceWallet:"0.00"}}$</p>
-                        </div>
-
-                        <div class="container fluid border-top pb-3 d-flex justify-content-center">
-                            <a class="boton-registrar btn-blue-grad mt-2 p-2 border-0 col-md-4 nav-link active text-center" [routerLink] = "['/panel']">Retirar Dinero</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group mt-3 pt-1 d-flex justify-content-center">
-              <a [routerLink]="['']" class="btn-blue-grad d-flex justify-content-center align-items-center mb-3 ms-3">Ir a Home</a>
-          </div>
-
+                  </div>
+              </nav>
+              <div class="col col-md-3 pt-5 border">
+                  <div class="d-flex justify-content-center">
+                      <img src="assets/img/userLogin.png" alt="icono" style="width: 30px; height: 30px;" class="fa">
+                      <p class="p-1 text-colr-black">{{lender.name + ' ' + lender.lastName}}</p><br><br>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                      <p>{{lender.email}}</p>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                      <p>valoración: <strong>{{lender.rate}}</strong>  Estrellas</p>
+                  </div>
+                  <div class="container ngx-star">
+                      <form [formGroup]="form1">
+                        <ngx-star-rating formControlName="rating1" class="ngx-star"></ngx-star-rating>
+                      </form>
+                  </div>
+                  <div class="form-group d-flex justify-content-center pt-5 pb-3">
+                      <a class="boton-registrar btn-blue-grad mt-2 p-2 border-0 col-md-4 nav-link active text-center"[routerLink]="['/agregar-producto']">Registrar Producto</a>
+                  </div>
+                  <div class="form-group d-flex justify-content-center pt-3 pb-3">
+                    <a  class="btn btn-lg btn-warning me-1 w-275" [routerLink]="['/actualizar-prestatool']">
+                      <i class="far fa-edit"></i> Actualizar Datos
+                    </a>
+                  </div>
+                  <div class="form-group d-flex justify-content-center pt-3 pb-3">
+                      <button class="form-control-sm btn nav-link btn-logout" (click)='signOut()'> Cerrar Sesión</button>
+                  </div>
+              </div>
+              <div class="col col-md-6 pt-5 border">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                            <th scope="col">Código</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Valoración</th>
+                            <th>Acciones</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let tool of tools">
+                              <td class="py-4">{{tool.reference}}</td>
+                              <td class="py-4">{{tool.name}}</td>
+                              <td class="py-4">{{tool.status}}</td>
+                              <td class="py-4">{{tool.rate}} Estrellas
+                                 <div class="container ngx-star position-relative">
+                                      <form [formGroup]="form2">
+                                          <ngx-star-rating formControlName="rating2"></ngx-star-rating>
+                                      </form>
+                                  </div>
+                              </td>
+                              <td class="py-4">
+                                  <a  class="btn btn-sm btn-warning p-2px ml-26px" [routerLink]="['/actualizar-producto/' + tool.id]">
+                                    <i class="far fa-edit" ></i> Editar
+                                  </a>
+                                  <button class="btn btn-sm btn-danger p-2px" (click)="deleteTool(tool.id)">
+                                    <i class="far fa-trash-alt"></i> Borrar
+                                  </button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="col col-md-3 pt-5 border">
+                  <div class="row pb-3">
+                      <strong>Ganancias</strong>
+                  </div>
+                  <div class="between pb-3">
+                      <p class="d-inline-block">Saldo:</p>
+                      <p class="d-inline-block">{{lender.balanceWallet? lender.balanceWallet:"0.00"}}$</p>
+                  </div>
+                  <div class="container fluid border-top pb-3 d-flex justify-content-center">
+                      <a class="boton-registrar btn-blue-grad mt-2 p-2 border-0 col-md-4 nav-link active text-center" [routerLink] = "['/panel']">Retirar Dinero</a>
+                  </div>
+              </div>
+        </div>
+    </div>
+    <div class="form-group mt-3 pt-1 d-flex justify-content-center">
+        <a [routerLink]="['']" class="btn-blue-grad d-flex justify-content-center align-items-center mb-3 ms-3">Ir a Home</a>
+    </div>
 </section>
 
 
