@@ -20,7 +20,7 @@
                                   </div>
                                   <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
                                       <label for="dIdentidad" class="form-label mb-0">Número de Rut</label>
-                                      <input type="text"  #dIdentidad="ngModel" [(ngModel)]="user.dIdentidad" class="form-control" name="dIdentidad" id="dIdentidad" required disabled="true">
+                                      <input type="text"  #dIdentidad="ngModel" [(ngModel)]="user.dIdentidad" class="form-control" name="dIdentidad" id="dIdentidad" required>
                                       <small *ngIf="!dIdentidad.valid && dIdentidad.touched" class="invalid-feedback d-block">No puede quedar vacío</small>
                                   </div>
                                   <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
