@@ -7,6 +7,7 @@ import { UtilService } from 'src/app/shared/services/util.service';
 import { environment } from 'src/environments/environment.prod';
 import { Lender } from '../../models/lender.model';
 import { LenderService } from '../../providers/lender.service';
+import { Tool, ToolResponse } from 'src/app/tool/models/tool.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,26 +25,7 @@ export class DashboardComponent implements OnInit {
   public form1: FormGroup;
   public form2: FormGroup;
 
-  //array de pruebas=========================================================================
-  public tools:Array<any> = [{'id':'93',
-                              'name': 'Taladro Inalámbrico', 
-                              'status':'disponible',
-                              'rate':5,
-                              'reference':'00001'
-                              },
-                             {'id':'88',
-                              'name': 'Sierra Caladora',
-                              'status':'disponible',
-                              'rate':4,
-                              'reference':'00002'
-                              },
-                             {'id':'69',
-                              'name': 'Martillo Neumático',
-                              'status': 'alquilado',
-                              'rate':3,
-                              'reference':'00003'
-                              }];
-  //========================================================================================
+  public tools:ToolResponse[]=[];
   
     constructor(
       private authService: AuthService,
@@ -79,7 +61,7 @@ export class DashboardComponent implements OnInit {
   getLender(data:string){
     this.lenderService.getLenderByEmail(data).subscribe(Lender=>{
        this.lender = Lender;
-       
+       this.tools = this.lender.tools;
        console.log(this.lender)
        //asignamos valor de rate Lender a rating1
        this.form1 = this.fb.group({

@@ -65,8 +65,8 @@
                       <tbody>
                           <tr *ngFor="let tool of tools">
                               <td class="py-4">{{tool.reference}}</td>
-                              <td class="py-4">{{tool.name}}</td>
-                              <td class="py-4">{{tool.status}}</td>
+                              <td class="py-4 w-30">{{tool.name}}</td>
+                              <td class="py-4">{{tool.state}}</td>
                               <td class="py-4">{{tool.rate}} Estrellas
                                  <div class="container ngx-star position-relative">
                                       <form [formGroup]="form2">
