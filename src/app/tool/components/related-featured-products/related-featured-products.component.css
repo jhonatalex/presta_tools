@@ -163,8 +163,7 @@ height: 25vh;
 .cinta{
   position: absolute;
   transform: rotate(45deg);
-  top: 56px;
-  /* left: 29px; */
-  right: -65px;
-  width: 83%;
+  top: 42px;
+  right: -49px;
+  width: 75%;
 }
