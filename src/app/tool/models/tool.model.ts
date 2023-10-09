@@ -3,6 +3,7 @@ import { Lender } from "src/app/Lender/models/lender.model";
 import { Category } from "src/app/category/models/category.model";
 
 export class Tool {
+  id:number= 0;
   name: string = '';
   reference: string = '';
   newItem: boolean = true;

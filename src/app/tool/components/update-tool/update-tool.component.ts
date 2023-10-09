@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  inject} from '@angular/core';
 import { Storage, ref, uploadBytesResumable } from '@angular/fire/storage';
 import { NgForm } from '@angular/forms';
-import { Tool } from '../../models/tool.model';
+import { Tool, ToolResponse } from '../../models/tool.model';
 
 import { NgxSpinnerComponent, NgxSpinnerService } from 'ngx-spinner';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
@@ -37,7 +37,8 @@ export class UpdateToolComponent implements OnInit{
   public user: User = new User();
 
 
-  public tool!: Tool;
+  public toolUpdate!: Tool;
+  public tool:ToolResponse;
   categories: Category[] = [];
   selectedCategory: number | null = null;
   public defautlCategory:Category|null=null;
@@ -52,7 +53,8 @@ export class UpdateToolComponent implements OnInit{
                private categoryService: CategoryService,
                private utilService:UtilService,
                private router:ActivatedRoute
-     ) {this.tool = new Tool();}//instancia de usuario vacía para el formulario
+     ) {this.toolUpdate = new Tool();
+        this.tool = new ToolResponse();}
 
 
   ngOnInit(): void {
@@ -66,7 +68,6 @@ export class UpdateToolComponent implements OnInit{
       this.router.params.subscribe(params=>{
           const idTool= +params['id'];
               this.toolService.getDetailToolProviders(idTool).subscribe(Tool=>{
-                console.log(Tool);
                 this.tool = Tool;
               })   
       })
@@ -112,7 +113,6 @@ export class UpdateToolComponent implements OnInit{
     if (file) {
         this.selectedFileName = file.name;
         this.selectedFile1 = event.target.files[0];
-        console.log(event.target.files)
         // También puedes realizar otras acciones con el archivo aquí, como cargarlo o mostrar una vista previa.
     } else {
         this.selectedFileName = undefined;
@@ -143,9 +143,31 @@ export class UpdateToolComponent implements OnInit{
        const [url1, url2, url3] = await Promise.all(promises);
 
          //Asignar las URLs a las variables
-        this.tool.urlImage = url1;
-        this.tool.urlImage2 = url2;
-        this.tool.urlImage3 = url3;
+        this.toolUpdate.urlImage = url1;
+        this.toolUpdate.urlImage2 = url2;
+        this.toolUpdate.urlImage3 = url3;
+        this.toolUpdate.id = this.tool.id;      
+        this.toolUpdate.name = this.tool.name;        
+        this.toolUpdate.reference = this.tool.reference;     
+        this.toolUpdate.newItem = this.tool.newItem;              
+        this.toolUpdate.model = this.tool.model;                
+        this.toolUpdate.description = this.tool.description;        
+        this.toolUpdate.widgets = this.tool.widgets;        
+        this.toolUpdate.valueCommercial = this.tool.valueCommercial;     
+        this.toolUpdate.valueRent = this.tool.valueRent;        
+        this.toolUpdate.yearBuy = this.tool.yearBuy;                
+        this.toolUpdate.weigt = this.tool.weigt;                 
+        this.toolUpdate.mesuare = this.tool.mesuare;               
+        this.toolUpdate.numberPiece = this.tool.numberPiece;                   
+        this.toolUpdate.termsUse = this.tool.termsUse;                     
+        this.toolUpdate.breakDowns = this.tool.breakDowns;                     
+        this.toolUpdate.timeUse = this.tool.timeUse;      
+        this.toolUpdate.idCategory = this.tool.idCategory;                 
+        this.toolUpdate.idLenders = this.tool.idLenders;        
+        this.toolUpdate.dateUp = this.tool.dateUp;  
+        this.toolUpdate.rate = this.tool.rate;            
+        this.toolUpdate.brand = this.tool.brand;          
+        this.toolUpdate.state = this.tool.state;        
 
 
 
@@ -156,8 +178,7 @@ export class UpdateToolComponent implements OnInit{
 
 
         // Llamar al siguiente método para consumir el servicio
-        console.log(this.tool);
-        this.toolService.updateTool(this.tool);
+        this.toolService.updateTool(this.toolUpdate);
 
       } catch (error) {
         // Manejar cualquier error que ocurra durante la carga de imágenes
