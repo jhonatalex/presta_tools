@@ -24,11 +24,13 @@ export class Tool {
   timeUse: number = 0;
   idCategory: number = 0;
   idLenders: string = '';
-  dateUp: string = new Date().toISOString();
+  dateUp: string = new Date().toLocaleString();
   rate: number = 0;
   brand:string='';
   state:string='activo'
 }
+
+
 
 
 export class ToolResponse {
@@ -53,7 +55,7 @@ export class ToolResponse {
   timeUse: number = 0;
   idCategory: number = 0;
   idLenders: string = '';
-  dateUp: string = new Date().toISOString();
+  dateUp: string = new Date().toLocaleString();
   rate: number = 0;
   brand: string='';
   state:string='';

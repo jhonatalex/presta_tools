@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {  inject} from '@angular/core';
 import { Storage, ref, uploadBytesResumable } from '@angular/fire/storage';
 import { NgForm } from '@angular/forms';
-import { Tool } from '../../models/tool.model';
+import { Tool, } from '../../models/tool.model';
 
 import { NgxSpinnerComponent, NgxSpinnerService } from 'ngx-spinner';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
@@ -124,6 +124,7 @@ export class AddToolComponent implements OnInit {
 
         // Llamar al siguiente método para consumir el servicio
         console.log(this.tool);
+        this.tool.id= this.generarIdUnicoNumerico();
         this.toolService.saveTool(this.tool);
 
       } catch (error) {
