@@ -6,6 +6,7 @@ import { ResponseApi } from 'src/app/shared/models/responseApi.model';
 import { Venta } from '../../models/venta.models';
 import { DetailedPeerCertificate } from 'tls';
 import { DetalleVenta } from '../../models/details_venta';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-payment-gateway',
@@ -21,12 +22,15 @@ export class PaymentGatewayComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private paymentServices:PaymentServices,
-
+    private spinner: NgxSpinnerService,
 
     ) { }
 
 
   ngOnInit() {
+
+  this.spinner.show();
+
     this.route.queryParams.subscribe(params => {
       const token = params['token_ws'];
       console.log(token);

@@ -18,7 +18,7 @@ export class RelatedFeaturedProductsComponent implements OnInit {
 
   slideConfig = { slidesToShow:3,
                   slidesToScroll:1,
-                  autoplay: true,
+                  //autoplay: true,
                   autoplaySpeed: 2500,
                   infinite: true,
                   speed: 300,
