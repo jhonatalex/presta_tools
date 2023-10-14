@@ -113,6 +113,7 @@ export class AddToolComponent implements OnInit {
         this.tool.urlImage = url1;
         this.tool.urlImage2 = url2;
         this.tool.urlImage3 = url3;
+        
 
 
 

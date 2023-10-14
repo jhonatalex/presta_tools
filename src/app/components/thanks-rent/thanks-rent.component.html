@@ -47,27 +47,23 @@
                     <div class="row">
                         <div class="col">
                             <h5><strong>Detalle del pedido</strong></h5>
-                            <p><strong>Producto</strong></p>
+                            <p><strong>Producto:</strong></p>
                             <div class="producto">
-                                <img src="{{this.tool.urlImage}}" alt="imagen Producto" class="d-inline w-25 h-25">
+                                <img src="{{this.tool.urlImage}}" alt="imagen Producto" class="d-inline w-28 h-25">
                                 <p class="d-inline ms-2"><strong>{{this.tool.name}} {{this.tool.brand}}</strong></p>
-                                <p ><strong>Propietario: </strong></p>
-                                <p><strong>Subtotal:</strong></p>
+                                <p><strong class="mt-2">Subtotal:</strong></p>
                                 <p><strong>Valoración:</strong></p>
                                 <p><strong>Total:</strong></p>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="d-flex justify-content-end">
-                                <h5><strong>Total</strong></h5>
-                            </div>
-                            <div class="d-flex justify-content-end">
+                            <div class="d-flex justify-content-end p-relative120">
                                 <p class="mt-5"><strong>{{this.detalleVenta.price}}</strong></p>
                             </div>
-                            <div class="d-flex justify-content-end">
+                            <div class="d-flex justify-content-end p-relative">
                                 <p class="mt-90px"><strong>{{this.tool.rate}} estrellas</strong></p>
                             </div>
-                            <div class="d-flex justify-content-end">
+                            <div class="d-flex justify-content-end p-relative">
                                 <p><strong>{{this.detalleVenta.amount}} CLP</strong></p>
                             </div>
                         </div>
@@ -82,9 +78,12 @@
                     <div class="col">
                         <h5><strong>Datos de facturación</strong></h5>
                         <br>
-                        <p> <strong>Teléfono:</strong></p>
-                        <p><strong>Correo:</strong></p>
-                        <p><strong>Direccion:</strong></p>
+                        <p> <strong>Nombre:</strong> {{this.user.name + ' ' + this.user.lastName}}</p>
+                        <p> <strong>Número de RUT:</strong> {{this.user.dIdentidad}}</p>
+                        <p> <strong>Teléfono:</strong> {{this.user.telephone}}</p>
+                        <p><strong>Correo:</strong> {{this.user.email}}</p>
+                        <p><strong>Direccion:</strong> {{this.user.address}}</p>
+                        <p><strong>Región:</strong> {{this.user.region}}</p>
                     </div>
                   </div>
                 </div>
@@ -92,7 +91,7 @@
           </div>
         </div>
         <div class="form-group mt-3 pt-1 d-flex justify-content-center">
-            <a [routerLink]="['']" class="btn-blue-grad d-flex justify-content-center align-items-center mb-3 ms-3">Ir a Home</a>
+            <a [routerLink]="[' ']" class="btn-blue-grad d-flex justify-content-center align-items-center mb-3 ms-3">Ir a Home</a>
         </div>
     </div>
 </section>
