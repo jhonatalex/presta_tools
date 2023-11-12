@@ -458,9 +458,16 @@ padding-top: 10px;
     
   }
 
-  @media(width:1920px){
+  @media(max-width:1920px){
       .content-products{
-          height: 660px;
+         height: 660px;
+      }
+      .imagen-big{
+        width: 650px;
+        margin-left: -74px;
+      }
+      .marginSmall{
+        margin-left: -87px;
       }
   }
 
