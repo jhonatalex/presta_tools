@@ -1,6 +1,10 @@
 .fondo{
     background-color:#ebebebdb;
-  
+
+  }
+
+  .pb-100{
+    padding-bottom: 5%;
   }
 
   .radius{
@@ -13,7 +17,7 @@
 
 .posicionar{
     position: relative;
-    right: 117px;
+    right: -48px;
     top: 25px;
 }
 
@@ -23,4 +27,51 @@
 
 .higth300px{
     height: 300px;
+}
+
+.img-fluid-check{
+  width: 150px;
+  padding-bottom: 20px;
+}
+.card-facturacion{
+  height: 465px;
+  width: 115%;
+}
+.card-detalle-producto{
+  height: 465px;
+width: 115%;
+margin-left: -45px;
+}
+.width-100{
+
+  width:100%;
+
+}
+
+.p-50
+{
+  padding: 15px
+}
+
+
+
+
+@media(max-width:512px) {
+
+  .img-fluid-check{
+    width: 80px;
+
+  }
+  .titulo-gracias{
+    font-size: 22px !important;
+
+  }
+  .subtitulo-gracias{
+    font-size:18px !important;
+  }
+
+  .linea-vertical{
+    border-right: none;
+  }
+
 }

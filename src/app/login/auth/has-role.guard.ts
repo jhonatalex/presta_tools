@@ -27,7 +27,7 @@ export class HasRoleGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const allowedRoles = route.data?.['allowedRoles'];
 
-    const user = this.utilService.getFromLocalStorage(this.loginKey+'D3V');
+    const user = this.utilService.getFromLocalStorage(this.loginKey);
 
      if(user && allowedRoles.includes(user.typeUser)){
       return true

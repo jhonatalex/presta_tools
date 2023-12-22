@@ -7,7 +7,7 @@ export class User {
     telephone: string = '';
     address: string = '';
     dIdentidad: string = '';
-    date: string = new Date().toISOString();
+    date: string = new Date().toLocaleString();
     verify: boolean = false;
     region:string='';
     commune:string='';
@@ -16,3 +16,5 @@ export class User {
     venta:[]=[]
 
 }
+
+

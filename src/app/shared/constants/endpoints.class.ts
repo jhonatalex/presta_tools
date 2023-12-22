@@ -34,7 +34,9 @@ export const PathUser = {
   /**
    * PUT
    */
-  updateUser:'api/user/update'
+  updateUser:'api/user/update',
+
+  getUserById:'api/user/get/'
 
 };
 
@@ -49,6 +51,8 @@ export const PathLender = {
    * POST
    */
   saveLender: 'api/lender/insert',
+
+  getLenderById:'api/lender/get/',
 
 };
 export const PathCategory = {
@@ -83,7 +87,9 @@ export const PathTool = {
    * POST
    */
   saveTool: 'api/tool/insert',
+  updateTool:'api/tool/edit',
 
-  initPay:'api/Payment/iniciar-transaccion',
+  initPay:'api/Venta/iniciar-transaccion',
+  commitPay:'api/Venta/confirmar-transaccion',
 
 };

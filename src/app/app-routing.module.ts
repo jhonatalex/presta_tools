@@ -22,6 +22,10 @@ import { VerifyUserComponent } from './Lender/components/verify-user/verify-user
 import { HasRoleGuard } from './login/auth/has-role.guard';
 import { VerifyGuard } from './login/auth/verify.guard';
 import { PaymentGatewayComponent } from './payment/components/payment-gateway/payment-gateway.component';
+import { FailsTransactionComponent } from './components/fails-transaction/fails-transaction.component';
+import { VerifyLenderComponent } from './Lender/components/verify-lender/verify-lender.component';
+import { VerifyLenderGuard } from './login/auth/verify-lender.guard';
+import { DashboardComponent } from './Lender/components/dashboard/dashboard.component';
 
 const routes: Routes = [
 
@@ -42,6 +46,10 @@ const routes: Routes = [
   canActivate:[AuthGuard]
   },
 
+  {path: 'verificar-lender', component: VerifyLenderComponent,
+  canActivate:[AuthGuard]
+  },
+
 
 
   //Rutas USER LOGEADO Y VERIFICADO
@@ -49,11 +57,12 @@ const routes: Routes = [
     path: 'confirma-renta/:id', component: ConfirmationRentComponent,
     canActivate:[AuthGuard,VerifyGuard]
   },
-
   {
     path: 'agregar-producto', component: AddToolComponent,
-    canActivate:[AuthGuard,VerifyGuard],
+    canActivate:[AuthGuard,VerifyLenderGuard],
   },
+  {path: 'panel', component: DashboardComponent,
+  canActivate:[AuthGuard,VerifyLenderGuard]},
 
 
 
@@ -61,6 +70,11 @@ const routes: Routes = [
 
   {
     path: 'gracias', component: ThanksRentComponent,
+    canActivate:[VerifyGuard]
+  },
+
+  {
+    path: 'transaccion-fallida', component: FailsTransactionComponent,
     canActivate:[VerifyGuard]
   },
 

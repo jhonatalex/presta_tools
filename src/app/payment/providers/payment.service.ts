@@ -9,9 +9,11 @@ import { CallerService } from '../../shared/helpers/caller.service';
 import { ResponseApi } from 'src/app/shared/models/responseApi.model';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Observable } from 'rxjs/internal/Observable';
-import { catchError, finalize, from, map, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, finalize, from, map, of, tap } from 'rxjs';
 import { PayData } from '../models/payData.models';
 import { PayResponse } from '../models/payResponse.models';
+import { NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 
 //import { RegisterRS } from '../models/registerRS.model';
 
@@ -20,8 +22,14 @@ import { PayResponse } from '../models/payResponse.models';
 })
 export class PaymentServices {
 
+
+  miBehaviorSubject = new BehaviorSubject<ResponseApi|null>(null);
+  miBehaviorSubjectUrl = new BehaviorSubject<string|null>(null);
+  
+
   constructor(private callManSV: CallerManagerService,
               private spinner: NgxSpinnerService,
+              private router: Router,
               private sweetUIService:SweetUIService,
               private storage: AngularFireStorage,
               private utilService: UtilService) { }
@@ -49,19 +57,50 @@ export class PaymentServices {
 
 
 
-  private manageResponse(responseApi:ResponseApi){
+  public verifyTransaction(toke_ws:any): void {
+    this.spinner.show();
 
-    if(responseApi.success){
-      this.sweetUIService.alertConfirm('Mensaje',responseApi.message,'success')
-      .then(()=>{
+    const url = `${environment.baseUrl}${PathTool.commitPay}`;
 
-        this.utilService.navigateToPath('/')
+    this.callManSV.postData(url,toke_ws).then((response:any)=>{
 
-      })
-      .catch((e:any)=>{console.log(e);})
-    }else{
-      this.sweetUIService.alertConfirm('Alerta',responseApi.message ,'error')
-      console.log(responseApi.Error?.message)
+      console.log(response)
+       this.manageResponse(response);
+     })
+     .catch((error:any)=>{
+       this.manageError(error);
+     })
+     .finally(()=>this.spinner.hide())
+
+  }
+
+
+
+  private manageResponse(responseApi: ResponseApi) {
+
+
+    this.setData(responseApi);
+
+
+    if (responseApi.success) {
+
+          const navigationExtras: NavigationExtras = { state: { responseApi } // Pasamos el objeto responseApi como parte del estado de navegación
+
+          };
+
+
+          this.router.navigate(['/gracias'], navigationExtras )
+
+
+    } else {
+
+      const navigationExtras: NavigationExtras = {
+        state: { responseApi } // Pasamos el objeto responseApi como parte del estado de navegación
+      };
+
+          this.router.navigate(['/transaccion-fallida'], navigationExtras)
+
+      console.log(responseApi.Error?.message);
     }
   }
 
@@ -74,7 +113,26 @@ export class PaymentServices {
   }
 
 
+  setData(data:any){
+    this.miBehaviorSubject.next(data);
 
+  }
+
+  getData(){
+    return  this.miBehaviorSubject.asObservable();
+  }
+
+
+
+
+  //para redirecion en verify-user
+  setDataUrl(data:string){
+    this.miBehaviorSubjectUrl.next(data);
+  }
+  getDataUrl(){
+    return  this.miBehaviorSubjectUrl.asObservable();
+  }
+ 
 
 
 }

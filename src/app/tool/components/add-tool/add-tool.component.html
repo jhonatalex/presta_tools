@@ -8,31 +8,41 @@
   <h2>Registro de Producto</h2>
   <form #addToolForm ="ngForm" (ngSubmit)="onSubmit(addToolForm)">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-5">
 
         <div class="form-group mt-4 mxauto mt-4 mxauto">
           <label class="" for="name">Nombre:</label>
           <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" name="name"  #name="ngModel" [(ngModel)]="tool.name" required>
           <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">Debe colocar un nombre válido</small>
         </div>
-        <div class="form-group mt-4 mxauto">
-          <label class="" for="reference">Codigo:</label>
-          <input placeholder="Referencia" type="text" class="form-control" id="reference" name="reference"   #reference="ngModel" [(ngModel)]="tool.reference" required>
-          <small *ngIf="!reference.valid && reference.touched" class="invalid-feedback d-block">Debe colocar un valor válido</small>
+
+        <div class="row">
+          <div class="form-group mt-4 mxauto col">
+            <label class="" for="reference">Código:</label>
+            <input placeholder="Referencia" type="text" class="form-control" id="reference" name="reference"   #reference="ngModel" [(ngModel)]="tool.reference" required>
+            <small *ngIf="!reference.valid && reference.touched" class="invalid-feedback d-block">Debe colocar un valor válido</small>
+          </div>
+          <div class="form-group mt-4 mxauto col">
+            <label  class="" for="timeUse">Tiempo de Uso(meses):</label>
+            <input placeholder="Tiempo de uso" type="number" class="form-control" id="timeUse" name="timeUse" #timeUse="ngModel" [(ngModel)]="tool.timeUse" required>
+            <small *ngIf="!timeUse.valid && timeUse.touched" class="invalid-feedback d-block">Debe colocar un valor válido</small>
+          </div>
+
         </div>
 
-        <div class="form-group mt-4 mxauto">
-          <label class="" for="brand">Marca:</label>
-          <input placeholder="Marca" type="text" class="form-control" id="brand" name="brand" #brand="ngModel" [(ngModel)]="tool.brand" required>
-          <small *ngIf="!brand.valid && brand.touched" class="invalid-feedback d-block">Debe colocar un valor válido</small>
-        </div>
+        <div class="row">
+          <div class="form-group mt-4 mxauto col">
+            <label class="" for="brand">Marca:</label>
+            <input placeholder="Marca" type="text" class="form-control" id="brand" name="brand" #brand="ngModel" [(ngModel)]="tool.brand" required>
+            <small *ngIf="!brand.valid && brand.touched" class="invalid-feedback d-block">Debe colocar un valor válido</small>
+          </div>
 
-
-        <div class="form-group mt-4 mxauto">
-          <label class="" for="model">Modelo:</label>
-          <input placeholder="Modelo" type="text" class="form-control" id="model" name="model" #model="ngModel" [(ngModel)]="tool.model" required>
-          <small *ngIf="!model.valid && model.touched" class="invalid-feedback d-block">Debe colocar un valor válido</small>
-        </div>
+          <div class="form-group mt-4 mxauto col">
+            <label class="" for="model">Modelo:</label>
+            <input placeholder="Modelo" type="text" class="form-control" id="model" name="model" #model="ngModel" [(ngModel)]="tool.model" required>
+            <small *ngIf="!model.valid && model.touched" class="invalid-feedback d-block">Debe colocar un valor válido</small>
+          </div>
+       </div>
 
         <div class="form-group mt-4 mxauto">
           <label class="" for="description">Descripción:</label>
@@ -40,40 +50,39 @@
           <small *ngIf="!description.valid && description.touched" class="invalid-feedback d-block">Descripción no puede estar vacía</small>
         </div>
 
-        <div class="form-group mt-4 mxauto">
-          <label  class="" for="timeUse">Tiempo de Uso:</label>
-          <input placeholder="Tiempo de uso" type="number" class="form-control" id="timeUse" name="timeUse" #timeUse="ngModel" [(ngModel)]="tool.timeUse" required>
-          <small *ngIf="!timeUse.valid && timeUse.touched" class="invalid-feedback d-block">Debe colocar un valor válido</small>
-        </div>
+
 
         <div class="form-group mt-4 mxauto">
           <label class="" for="termsUse">Términos de Uso:</label>
           <textarea placeholder="Terminos de uso" class="form-control" id="termsUse" name="termsUse" #termsUse="ngModel" [(ngModel)]="tool.termsUse" required></textarea>
           <small *ngIf="!termsUse.valid && termsUse.touched" class="invalid-feedback d-block">Debe colocar un valor válido</small>
         </div>
+
         <div class="form-group mt-4 mxauto">
-          <label class="" for="breakDowns">Caracterisiticas Técnicos:</label>
+          <label class="" for="breakDowns">Características Técnicas:</label>
           <textarea placeholder="Detalles técnicos" class="form-control" id="breakDowns" name="breakDowns" #breakDowns="ngModel" [(ngModel)]="tool.breakDowns" required></textarea>
           <small *ngIf="!breakDowns.valid && breakDowns.touched" class="invalid-feedback d-block">Debe colocar un valor válido</small>
         </div>
 
+
+
       </div>
 
 
-      <div class="col-md-6">
+      <div class="col-md-7">
 
         <div class="row">
           <div class="col-md-4">
               <div class="form-group mt-4 ">
-                <label class="" for="valueRent">Valor de Renta:</label>
-                <input placeholder="Valor de renta" type="number" class="form-control" id="valueRent" name="valueRent" #name="ngModel" [(ngModel)]="tool.valueRent">
+                <label class="" for="valueRent">Valor Renta - $CLP</label>
+                <input placeholder="Valor de renta" type="number" class="form-control" id="valueRent" name="valueRent" #name="ngModel" [(ngModel)]="tool.valueRent"/>
               </div>
 
           </div>
 
           <div class="col-md-4">
             <div class="form-group mt-4 ">
-              <label class="" for="valueComercial">Valor Comercial:</label>
+              <label class="" for="valueComercial">Valor Comercial - $CLP</label>
               <input placeholder="Valor Comercial" type="number" class="form-control" id="valueComercial" name="valueComercial" #name="ngModel" [(ngModel)]="tool.valueCommercial">
                  </div>
           </div>
@@ -92,7 +101,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group mt-4 ">
-                  <label class="" for="weigt">Peso:</label>
+                  <label class="" for="weigt">Peso(Kg):</label>
                   <input placeholder="Peso" type="number" class="form-control" id="weigt" name="weigt" #name="ngModel" [(ngModel)]="tool.weigt">
                 </div>
 
@@ -100,7 +109,7 @@
 
             <div class="col-md-4">
               <div class="form-group mt-4 ">
-                <label class="" for="mesuare">Medida:</label>
+                <label class="" for="mesuare">Medida(cm):</label>
                 <input placeholder="Medida" type="number" class="form-control" id="mesuare" name="mesuare" #name="ngModel" [(ngModel)]="tool.mesuare">
               </div>
             </div>
@@ -133,10 +142,11 @@
 
         <div class="form-group mt-4 mxauto">
           <label for="categoria">Categoría</label>
-          <select  name="categoria" [(ngModel)]="selectedCategory" (ngModelChange)="onSelectCategory()">
-            <option selected="selected" value="">Seleccione una categoría</option>
+          <select  class="select-css" name="categoria" [(ngModel)]="selectedCategory" (ngModelChange)="onSelectCategory()">
+            <option [ngValue]="null" disabled selected>Seleccionar Categoria</option>
             <option *ngFor="let categoria of categories" [value]="categoria.idCat">{{ categoria.titleCat }}</option>
           </select>
+
         </div>
 
         <div class="form-group mt-4 mxauto">
@@ -165,11 +175,14 @@
           </div>
         </div>
 
+
+
+
       </div>
     </div>
     <!-- Agrega los demás campos aquí -->
-    <div class="row mt-3">
-      <button type="submit" class="btn-blue-grad" [disabled]="addToolForm.invalid">Enviar</button>
+    <div class="row mt-3 centered">
+      <button type="submit" class="btn-blue-grad w-75 mx-auto" [disabled]="addToolForm.invalid">Enviar</button>
       <small *ngIf="!addToolForm.valid && addToolForm.touched" class="invalid-feedback d-block">Debe completar el formuario</small>
     </div>
   </form>

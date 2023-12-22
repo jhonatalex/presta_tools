@@ -20,8 +20,8 @@ export class RegisterComponent implements OnInit {
 
   constructor( private resgisterService: RegisterService)
   {
-   // const uniqueId:number = uuidv4();
-    this.user = new User();//instancia de usuario vacía para el formulario
+
+    this.user = new User();
 
 
    }
@@ -32,7 +32,6 @@ export class RegisterComponent implements OnInit {
   onSubmit(form:NgForm):void{
     this.user.id = this.generarIdUnicoNumerico();
     this.resgisterService.register(this.user);
-
   }
 
 

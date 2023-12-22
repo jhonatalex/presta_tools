@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-      this.user = this.utilService.getFromLocalStorage(this.loginKey + 'D3V');
+      this.user = this.utilService.getFromLocalStorage(this.loginKey);
   }
 
   signOut(){

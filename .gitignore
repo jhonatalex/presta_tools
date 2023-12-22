@@ -12,8 +12,9 @@ npm-debug.log
 yarn-error.log
 
 
-#eviroment
+#eviroment Variables de Entorno
 /eviroments
+.env
 
 # IDEs and editors
 .idea/
@@ -44,3 +45,8 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json

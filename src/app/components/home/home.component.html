@@ -6,10 +6,9 @@
       <!--SECCIÓN NAVBAR-->
       <app-header></app-header>
 
-      <div class="container-fluid content-banner">
+      <div class="container-fluid ">
         <div class="row">
-          <div
-            class="col col-12 col-md-6 col-6-lg bg-dark d-flex justify-content-center align-items-center flex-column">
+          <div class="col col-sm-12 col-md-5 col-6-lg bg-dark d-flex ml-3 flex-column">
             <div class="ovalo-buttons col-md-9 mt-5">
               <a href="/#categorias" type="button" class="btn btn-ligth px-5">Categorías</a>
               <a href="/#preguntas-frecuentes" type="button" class="btn btn-ligth px-5">Conoce más</a>
@@ -22,14 +21,19 @@
             <p class="parrafo mt-2">Encuentra las herramientas que necesitas para tus proyectos, ahorra dinero evitando
               comprar equipos que solo usarás una vez y únete a una red de emprendedores que valoran la colaboración.
             </p>
-            <a class="boton-registrar btn-blue-grad mt-2 p-2 border-0 col-md-4 nav-link active text-center"
+
+            <div *ngIf="!user">
+              <a class="boton-registrar btn-blue-grad mt-2 p-2 border-0 col-md-4 nav-link active text-center"
               [routerLink]="['/registro']">Regístrate gratis</a>
+            </div>
+
+
             <p class="parrafo mt-2"><span class="subtitle">Comparte, Ahorra y Emprende</span><br> La Economía
-              Colaborativa ya esta aqui.</p>
+              Colaborativa ya esta aquí.</p>
 
           </div>
 
-          <div class="banner col col-12 col-md-6 col-lg-6 bg-dark">
+          <div class="banner  col-offset-1  col-sm-12 col-md-5 col-lg-6 bg-dark">
             <img src="assets/img/banner.png" alt="banner" class="img-fluid mb-5">
           </div>
         </div>
@@ -101,7 +105,7 @@
         </div>
         <div class="content-testimonio col-md-6 py-4">
           <h1 class="text-center text-color-white-theme">Testimonios</h1>
-          <p class="text-color-white-theme mb-0"><i>
+          <p class="text-color-white-theme mb-0 text-justify"><i>
               <img src="assets/img/comillaDoble.png" alt="comillas" style="width: 30px;">
               Descubrir PrestaTools ha sido una auténtica bendición para mí. Como emprendedor
               en busca de oportunidades para generar ingresos adicionales, esta plataforma ha

@@ -29,14 +29,14 @@ export class VerifyGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      var user: User = this.utilService.getFromLocalStorage(this.loginKey+'D3V');
+      var user: User = this.utilService.getFromLocalStorage(this.loginKey);
 
       if(user.verify){
         return true
       }else{
 
         this.sweetUIService
-        .alertConfirm("Hola", "Para Reservar Necesita estar verificado", 'warning')
+        .alertConfirm("Hola", "Para Reservar Necesitas estar verificado", 'warning')
         .then(() => {
           this.utilService.navigateToPath('/verificar-usuario');
         })

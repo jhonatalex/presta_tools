@@ -2,7 +2,7 @@
     <div class="row ">
         <div class="col col-sm-12 col-md-8 col-lg-8 d-flex align-items-center justify-content-center">
             <div class="global-container">
-                <div class="card resgister-form col-sm-12 col-md-4 col-lg-4 mx-auto my-4 px-0 py-0">
+                <div class="card login-form col-sm-12 col-md-4 col-lg-4 mx-auto my-4 px-0 py-0">
                     <div class="card-title">
                         <h6>Ingresa a tu cuenta</h6>
                     </div>
@@ -34,18 +34,24 @@
                                 <div class="d-flex flex-column">
                                    <p class="text-center mt-2">o continua con:</p>
                                 </div>
-                                <div class="mx-auto mb-0 py-0 col-md-10">
-                                    <div class="input-group p-2">
-                                        <span class="input-group-text"><img src="assets/img/facebook-logo.ico" alt="facebook" width="25px"></span>
-                                        <input type="button" class="color-blue-2 form-control fontSize" value="Iniciar sesión con Facebook">
-                                    </div>
-                                    <div class="input-group p-2 pb-3 border-0">
-                                        <span class="input-group-text"><img src="assets/img/google-Logo.ico" alt="google" width="25px"></span>
-                                        <input type="button" class="color-blue-1 form-control fontSize" value="Inicia sesión con Google">
-                                    </div>
-                                </div>
 
                             </form>
+
+                            <div class="mx-auto mb-0 py-0 col-md-10">
+
+                              <div class="input-group p-2 pb-3 border-0">
+                                <span class="input-group-text"><img src="assets/img/google-Logo.ico" alt="google" width="25px"></span>
+                                <input type="button"  (click)="googleLogin()" class="color-blue-1 form-control fontSize" value="Inicia sesión con Google">
+                              </div>
+
+                              <!--
+                              <div class="input-group p-2">
+                                  <span class="input-group-text"><img src="assets/img/facebook-logo.ico" alt="facebook" width="25px"></span>
+                                  <input type="button" class="color-blue-2 form-control fontSize" value="Iniciar sesión con Facebook">
+                              </div>-->
+
+
+                            </div>
 
                         </div>
 
@@ -57,7 +63,7 @@
 
 
 
-        <div class="col2 col-sm-12-col-md-4 col-lg-4 logo d-flex align-items-center justify-content-center">
+        <div class="col2 col-sm-12 col-md-4 col-lg-4 logo d-flex align-items-center justify-content-center blue-zone">
             <img src="assets/img/logo.png" alt="logo" class="img-fluid">
         </div>
     </div>

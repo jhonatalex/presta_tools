@@ -11,6 +11,13 @@ import { loginResponse } from '../models/login.model';
 import { LoginService } from '../providers/login.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { decodedTkn } from '../interfaces/jwt.interface';
+import { Auth, AuthCredential, UserCredential, signInWithCredential } from '@angular/fire/auth';
+import { signInWithPopup,signOut,GoogleAuthProvider } from '@angular/fire/auth';
+import { RegisterService } from 'src/app/register/providers/register.service';
+import { User } from 'src/app/register/models/user.model';
+import { use } from 'marked';
+import { RegisterRS } from 'src/app/register/models/registerRS.model';
+
 
 @Injectable({
   providedIn: 'root',
@@ -18,13 +25,22 @@ import { decodedTkn } from '../interfaces/jwt.interface';
 export class AuthService {
 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
-    environment.production? 'D3V' : 'D3V'
+    environment.production? '' : 'D3V'
   }`;
   private tokenKey = `${new Constants().getStorageKeys().decodedTokenKey}${
-    environment.production? 'D3V' : 'D3V'
+    environment.production? '' : 'D3V'
+  }`;
+  private lenderKey = `${new Constants().getStorageKeys().lenderSetKey}${
+    environment.production? '' : 'D3V'
   }`;
 
+  public user = new User();;
+
   constructor(
+
+    private auth: Auth,
+
+    private resgisterService: RegisterService,
     /**
      * Servicio de Proveedor de Data de Login
      */
@@ -42,6 +58,87 @@ export class AuthService {
      */
     private spinner: NgxSpinnerService
   ) {}
+
+
+    public sinInWithGoogle()
+    {
+
+      this.spinner.show();
+
+      signInWithPopup(this.auth, new GoogleAuthProvider())
+        .then( (res: any) => {
+
+          const userFirebase = res.user;
+
+            const inputString = userFirebase.displayName;
+            const palabras = inputString.split(' ');
+
+            let nombre: string;
+            let apellido: string;
+
+            if (palabras.length >= 1) {
+              nombre = palabras[0];
+
+              if (palabras.length > 1) {
+                // Si hay más de una palabra, el resto se considera el apellido
+                apellido = palabras.slice(1).join(' ');
+              } else {
+                // Si solo hay una palabra, no hay apellido
+                apellido = '';
+              }
+            } else {
+              nombre = '';
+              apellido = '';
+            }
+
+          this.user.id = this.generarIdUnicoNumerico();
+          this.user.password=this.generarIdUnicoNumerico().toString();
+          this.user.email= userFirebase.email;
+          this.user.name= nombre;
+          this.user.lastName= apellido;
+          this.user.typeUser='user'
+
+
+          //console.log(this.user);
+          //console.log(userFirebase);
+
+
+          //SET USER AND TOKEN A LOCAL SOTORAGE
+          this.utilService.setToLocalStorage(this.loginKey, this.user);
+
+          //REMPLAR POR EL JWT CUANDO SE VERIFIQUE
+          this.utilService.setToLocalStorage(this.tokenKey,this.user.id);
+
+
+          //TODO LOGIGA PARA SABER SE ES NUEVO O NO
+           this.resgisterService.getUserByEmail(this.user.email).subscribe(response=>{
+
+            if(response=='Usuario no encontrado'){
+              this.resgisterService.register(this.user)
+              this.utilService.navigateToPath('/');
+            }else{
+              this.manageAuthResponseFirebase(userFirebase);
+            }
+
+          });
+
+
+
+
+        })
+        .catch((e) => {
+          this.manageError(e);
+        })
+        .finally(() => this.spinner.hide());
+
+
+    }
+
+
+
+
+
+
 
   public userLoginAuth(payload: any): void {
     this.spinner.show();
@@ -101,20 +198,35 @@ export class AuthService {
 
  }
 
+ public generarIdUnicoNumerico(): number {
+  const timestamp = new Date().getTime();
+  const sixDigitId = parseInt(timestamp.toString().slice(-6));
+  return sixDigitId;
+}
+
+
+ private manageAuthResponseFirebase(userFirebase: any) {
+
+      //SET USER AND TOKEN A LOCAL SOTORAGE
+        this.sweetUIService
+        .alertConfirm("Bienvenido", 'Login Exitoso')
+        .then(() => {
+          this.utilService.navigateToPath('/');
+        })
+        .catch(console.warn);
+
+}
+
+
  /*
   /**
    * Cierra la sesion del usuario actual
    */
   public logout(): void {
-    /*
 
-
-    this.utSV.removeFromLocalStorage(this.tokenPermKEY);
-    this.utSV.removeFromSessionStorage(this.tokenUsrCntrsKey);
-    this.utSV.removeFromSessionStorage(this.tokenSelCntrsKey);
-    */
     this.utilService.removeFromLocalStorage(this.loginKey);
     this.utilService.removeFromLocalStorage(this.tokenKey);
+    this.utilService.removeFromLocalStorage(this.lenderKey);
   }
 
 
@@ -124,10 +236,6 @@ export class AuthService {
 
     return user? true : false;
   }
-
-
-
-
 
 
   /**
@@ -147,8 +255,6 @@ export class AuthService {
       })
       .catch(console.warn);
   }
-
-
 
 
 

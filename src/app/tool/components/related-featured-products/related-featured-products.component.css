@@ -11,23 +11,28 @@
     max-height: 100%;
       margin: 5%;
       padding: 2%;
-      
-    height: -webkit-fill-available;
-    
-    .card-img {
-      border-radius: 18px;
-      max-width: 100%;
-      height: 150px;
-      width: auto;
-      border: none;
-      /* width: 100%; 
-        height: 100%;*/
-    }
+
+   /* height: -webkit-fill-available;*/
+
+
   }
-  .vh40{
-height: 35vh;
+
+  .card-img {
+    border-radius: 18px 18px 0px 0px;
+    height: 100%;
+    width: 90%;
+    border: none;
+    /* width: 100%;
+      height: 100%;*/
   }
-/* 
+
+  .vh25{
+height: 25vh;
+  }
+  .vh30{
+    height: 30vh;
+  }
+/*
   .card {
     border-radius: 18px;
     width: 80%;
@@ -46,19 +51,19 @@ height: 35vh;
     max-height: 100%;
   max-width: 100%;
 }
-  
+
   .card-body{
     border-radius: 12px;
-    
+
   }
 
   .img-card-container{
-    
+
     background-color: white;
     width: 100%;
     height: 200px;
     padding: 1px;
-    border-radius: 18px 18px 0px 0px; 
+    border-radius: 18px 18px 0px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,10 +78,10 @@ height: 35vh;
   }
 
   .rounde{
-    
+
     border-radius: 18px;
   }
-  
+
 
   .fondo{
     background-color:#aca8a8db
@@ -86,10 +91,10 @@ height: 35vh;
   width: 100%;
   height: 100%;
 }
- 
+
 .heighthMax{
   max-height: 200px;
-} 
+}
 
 .card-body{
   display: flex;
@@ -100,19 +105,54 @@ height: 35vh;
   padding-bottom: 20px;
 }
 
-@media(min-width:768px) {
-  
+.width-50{
+  width: 85%;
+  height: 85%;
+  transform: rotate(-45deg);
+  border:solid red;
+  position: relative;
+  top:130px;
+}
 
-  .img-card {
-    width: 200px;
-    height: 200px;
-  }}
-@media(max-width:455px) {
-  
 
-  .img-card {
-    width: 200px;
-    height: 200px;
+
+
+/*responsive*/
+@media(width:1920px){
+  .card-product{
+    height: 50vh;
   }
+}
 
-  }
+
+.contenedor {
+  position: relative;
+  width: 100%;
+}
+
+.banner {
+      background-color: rgb(192, 42, 42);
+      color: white;
+      padding: 0px 8px;
+      border-radius: 10px;
+      font-size: 14px;
+      width: 55%;
+      transform-origin: 1 100%;
+      margin-bottom: 10px;
+}
+
+
+.banner::before {
+  top: -10px;
+  left: 0;
+}
+
+.banner::after {
+  top: 0;
+  left: -10px;
+}
+
+.rentado{
+  margin: 0px;
+}
+

@@ -3,7 +3,7 @@ import { User } from "./user.model";
 
 export class RegisterRS {
     token: string = '';
-    user: User | null = null;
+    data: any = null;
     success: boolean | null = null;
     Error: ErrorRes | null = null;
     message: string = '';

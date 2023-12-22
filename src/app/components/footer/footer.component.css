@@ -8,3 +8,9 @@ ul{
   margin: 0;
   padding: 0;
 }
+
+@media(max-width:512px) {
+  .ajuste-mobile{
+    margin-left: 12px;
+  }
+}

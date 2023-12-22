@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      if(this.utilService.getFromLocalStorage(this.loginKey+'D3V')){
+      if(this.utilService.getFromLocalStorage(this.loginKey)){
         return true
       }else{
 

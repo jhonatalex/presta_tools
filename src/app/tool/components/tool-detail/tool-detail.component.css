@@ -5,8 +5,9 @@
 .card {
     border-radius: 30px;
     border:none;
-    width: 640px;
-    height: 550px;
+    width: 478px;
+    height: 701px;
+    margin-right: -140px;
 }
 
 .margin-title{
@@ -36,7 +37,7 @@
     width: 500px;
     height: 700px;
     position: relative;
-    left: 47px;
+    left: 45px;
 }
 
 .margin{
@@ -72,10 +73,13 @@
       margin-top: 100px;
 }
 
-.content-procucts{
-      width: 90%;
-      height: 525px;
+.content-products{
+    width: 90%;
+    height: 570px;
+    border-radius: 18px;
+    padding: 5px;
 }
+
 
 .p-owner{
     padding: 22px;
@@ -92,12 +96,10 @@
     font-weight: bold;
 }
 
-.width-max{
-    max-width: 95%;
-}
+
 
 .widthMax{
-    max-width: 99%;
+    max-width: 100%;
 }
 
 
@@ -132,6 +134,7 @@
 
 .div-cards{
     margin-left: -80px;
+    width: 100%;
 }
 
 .div-logo-simple{
@@ -162,39 +165,43 @@
 }
 
 .marginSmall{
-    margin-left: -165px;
+    margin-left: -117px;
+    padding-top: 5px;
 }
 
 
 
 /*ESTILOS DIRECTIVA IMAGE-GALLERY*/
 .img-container{
-    width: 750px;
+    width: 720px;
     height: 640px;
     border-radius: 15px;
     margin-bottom: 60px;
 }
 
 .imagen-big{
-width: 100%;
-height: 109%;
-padding:22px;
-margin-left: -55px;
+width: 720px;
+height: 700px;
+padding:20px;
+margin-left: -112px;
+
 }
 
 .imagen-small{
     width: 150px;
     height: 140px;
-    padding: 22px;
+    padding: 10px;
 }
-
+.estilos-contenedor{
+    width: 100%;
+}
 .img-prev{
     margin-top: 10px;
 }
 
 .img-slide{
     display: inline-block;
-    width: 24%;
+    width: 185px;
     margin: 0 1px;
     cursor: pointer;
     opacity: 0.5;
@@ -202,6 +209,11 @@ margin-left: -55px;
 
 .active{
     opacity: 1;
+}
+
+
+.seccion-img-small{
+    margin-left: -87px;
 }
 
 .ui-box-component-pdp__visible--desktop {
@@ -282,3 +294,177 @@ padding-top: 10px;
  font-size: 2.2rem;
 
 }
+
+.text-small{
+    font-size: small;
+}
+
+.rating-top{
+    display: flex !important;
+    margin-right: 5px !important;
+}
+
+.ngx-star{
+    margin: 0px;
+    padding: 0px;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+
+.container-rating{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.stars{
+    width: 95%;
+}
+
+
+/*ESTILOS PARA RESPONSIVE*/
+@media (max-width:512px){
+        .marginSmall{
+            margin-left: 5px;
+        }
+        .div-star{
+            display: flex;
+            flex-direction: column;
+        }
+        .imagen-big{
+            width: 100%;
+            height: 50%;
+        
+        }
+        .seccion-imagen {
+            max-width: 114%;
+            margin-left: -57px;
+            position: relative;
+            top: 163px;
+            
+        }
+        .pt-2{
+            display: contents;
+        }
+
+        .seccion-img-small{
+           margin-left: 183px;
+           display: flex;
+           flex-direction: column;
+        }
+        .title-product{
+            font-size: 22px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .imagen-small{
+            width: 67px;
+            height: 84px;
+            padding: 7px;
+            margin-left: -31px;
+        }
+
+        .img-slide{
+            width: 10vh;
+        }
+
+        .seccion-producto{
+            max-width: 99%;
+            padding: 5px;
+        }
+
+        .div-producto{
+            max-width: 100%;
+            margin-left: 79px;
+            height: 50%;
+            position: relative;
+            top: -343px;
+            
+        }
+        .seccion-propietario{
+            padding-top: 1px !important;
+            position: relative;
+            top: -398px;
+           
+        }
+        .seccion-nombre-producto{
+            max-width: 100%;
+            margin-left: 50px;
+            padding: 5px;
+        }
+        .seccion-buscar-producto{
+            max-width: 50%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        .seccion-buscar-producto input{
+            position: relative;
+            left: 32px;
+            bottom: 35px;
+            width: 250px;
+        }
+        .contenedor-buscar{
+            position: relative;
+            top: 2px;
+            left: 25px;
+            width: 300px;
+        }
+        .contenedor-general{
+          max-width: 100%
+        }
+        .btn-blue-grad{
+            width: 200px;
+        }
+        .div-estadisticas{
+            position: relative;
+            right: 17px;
+            top: 15px;
+            width: 100px;
+            font-size: 12px;
+        }
+        .titulo-negrita{
+            font-size: 14px;
+        }
+        .content-products{
+            height: 100%; 
+           
+        }
+        .content-propietario{
+            height: 100%;
+        }
+        .img-container{
+            width: 66%;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            margin-left: 240px;
+            position: relative;
+            bottom: 347px;
+        }
+        .seccion-slider{
+            position: relative;
+            bottom: 398px;
+        }
+        .footer{
+            margin-top: -397px;
+        }
+        .mt-48{
+            margin-top: -48px;
+        }
+
+   
+    
+  }
+
+  @media(width:1920px){
+      .content-products{
+          height: 660px;
+      }
+  }
+
+
+
+
+  

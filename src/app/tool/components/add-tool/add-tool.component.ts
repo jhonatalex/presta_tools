@@ -35,6 +35,8 @@ export class AddToolComponent implements OnInit {
   selectedFile2: File | null = null;
   selectedFile3: File | null = null;
 
+  selectedFileName: string | undefined;
+
   public url_image_1:string='';
   public  url_image_2:string='';
   public  url_image_3:string='';
@@ -56,13 +58,7 @@ export class AddToolComponent implements OnInit {
   constructor( private toolService:ToolServiceNew,
                private categoryService: CategoryService,
                private utilService:UtilService
-     ) {
-
-      this.tool = new Tool();//instancia de usuario vacía para el formulario
-
-
-
-      }
+     ) {this.tool = new Tool();}//instancia de usuario vacía para el formulario
 
 
   ngOnInit(): void {
@@ -74,8 +70,19 @@ export class AddToolComponent implements OnInit {
 
 
   onFileSelected1(event: any) {
-    this.selectedFile1 = event.target.files[0];
-    console.log(event.target.files)
+
+
+    const file = event.target.files[0];
+    if (file) {
+        this.selectedFileName = file.name;
+        this.selectedFile1 = event.target.files[0];
+        console.log(event.target.files)
+        // También puedes realizar otras acciones con el archivo aquí, como cargarlo o mostrar una vista previa.
+    } else {
+        this.selectedFileName = undefined;
+    }
+
+
   }
 
   onFileSelected2(event: any) {

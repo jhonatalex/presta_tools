@@ -1,157 +1,200 @@
 <!--SECCION NAVBAR-->
 <app-header [flaglogo]="false"></app-header>
 
-<!--SECCION NOMBRE-MODELO BUSCAR TOOL-->
-<section id="detalle-herramienta" class="fondo py-5">
 
-    <div class="container col-md-10 widthMax pt-5">
-        <div class="row pt-5">
-           <div class="col-sm-10 col-md-6 col-lg-6">
-                <h1 class="margin-title text-size-1 "><strong>{{tool.name}}</strong></h1>
-                <div class="row">
-                    <div class="col margin-title">
-                </div>
-                  <div class="col"><small class="marginSmall">0 veces reservado|Propietario:</small></div>
-                </div>
-           </div>
-            <div class="col-md-6 contenedor-buscar mt-2">
+    <!--SECCION NOMBRE-MODELO BUSCAR TOOL-->
+    <section id="seccion-buscar" class="fondo py-5 col-sm-12 mt-48">
+
+      <div class="container col-md-10 pt-2">
+        <div class="row pt-5 estilos-contenedor">
+          <div class="col-md-6 col-sm-12">
+
+            <section class="seccion-nombre-producto">
+              <h1 class="margin-title text-size-1 "><strong class="title-product">{{tool.name}}</strong></h1>
+              <div class="row pt-2">
+                  <div class="col">
+                    <form [formGroup]="form2">
+                      <ngx-star-rating formControlName="rating2" class="rating-top"></ngx-star-rating>
+                    </form>
+                  </div>
+                  <div class="col">
+                    <p class="marginSmall">Propietario: {{lender?.name + " " + lender?.lastName}}</p>
+                  </div>
+              </div>
+            </section>
+                
+          </div>
+            <div class="col-md-6 col-sm-12 contenedor-buscar mt-2">
+
+              <section class="seccion-buscar-producto">
                 <button class="btn btn-light border-0"><i class="fa fa-search" aria-hidden="true"></i></button>
                 <input type="text" placeholder="Buscar Producto" class="input-buscar fondo">
+              </section>
+              
             </div>
         </div>
-    </div>
+      </div>
 
-    <div class="container  col-md-10 div-content-tool">
-        <div class="row py-2 div-cards">
-
-                <!---GALERIA IMAGENES HERRAMIENTA-->
-               <div class="container fluid col-md-6">
-                    <div class="img-container">
-                            <img src="{{tool.urlImage}}" alt="image" id="preview" class="img-fluid card shadow imagen-big">
-                        <div class="img-prev text-center card-body">
-                            <div class="img-slide active">
-                                <img src="{{tool.urlImage}}" alt="image1" class="img-fluid card shadow imagen-small" appImageGallery>
-                            </div>
-                            <div class="img-slide">
-                                <img src="{{tool.urlImage2}}" alt="image2" class="img-fluid card shadow imagen-small" appImageGallery>
-                            </div>
-                            <div class="img-slide">
-                                <img src="{{tool.urlImage3}}" alt="image3" class="img-fluid card shadow imagen-small" appImageGallery>
-                            </div>
-                        </div>
-                    </div>
-               </div>
+    </section> 
 
 
-            <!--DESCRIPCION HERRAMIENTA-->
-            <div class="card shadow col-md-6 div-card-small caracteristicas ">
-                <h2 class="mt-2 text-center"><strong>{{tool.name}}</strong></h2>
-                <hr class="bg-dark">
-                <p class="margin"><strong>Codigo: </strong>{{tool.reference}}</p>
-                <p><strong>Categoria: </strong>{{category?.titleCat}}</p>
-                <p class="feature"><strong>CARACTERÍSTICAS:</strong></p>
-                <h6 class="margin"><strong> Marca: </strong>{{tool.brand}}</h6>
-                <h6 class="margin"><strong> Modelo: </strong>{{tool.model}}</h6>
-                <h6 class="margin"><strong> Año: </strong>{{tool.yearBuy}}</h6>
-                <h6 class="margin">
-                  <strong> Acesorios: </strong>
-                  <input type="checkbox" [checked]="tool.widgets">
-                </h6>
+      <!--seccion galeria-->
+    <section id="seccion-galeria-imagen" class="fondo pt-4 pb-5 col-sm-12">
+        <div class="container  col-md-10">
+          <div class="row py-2 div-cards">
 
-                <p class="negrita">Rentado:</p>
-                <p class="text-justify"><strong>DESCRIPCIÓN:</strong> <br> {{tool.description}}</p>
-                <p class="negrita margin">¡Aún no se han encontrado</p>
-                <p class="negrita">valoraciones!</p>
-                <ngb-rating [max]="5" >{{tool.rate}}</ngb-rating>
-                <a [routerLink]="['/confirma-renta',this.id]" class="btn-blue-grad mb-2 px-5 py-2 border-0 col-md-8 mx-auto">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
-            </div>
 
-        </div>
-    </div>
-</section>
+                  <!--GALERIA IMAGENES HERRAMIENTA-->
+                <div class="container col-md-6 col-sm-12">
 
-<!--SECCIÓN INFORMACIÓN PROPIETARIO-->
-<section id="informacion-propietario" class="fondo py-5 seccion-propietario">
-     <div class="card shadow content-propietario mx-auto">
-        <div class="row">
+                  <section class="seccion-imagen">
+                    <div class="img-container col-sm-12">
+                      <img src="{{tool.urlImage}}" alt="image" id="preview" class="img-fluid card shadow imagen-big">
+                      <div class="img-prev text-center card-body">
 
-            <div class="col d-grid p-owner">
-                <strong class="titulo-negrita py-2">Información del Propietario</strong>
-                <p><strong class="margin">Nombre:   </strong> {{ lender?.name}}  {{lender?.lastName}} </p>
-                <p><strong class="margin">Region:   </strong>{{lender?.region}}   </p>
-                <p><strong class="margin">Comuna:   </strong>{{lender?.commune}} </p>
-                <p><strong class="py-2"></strong>{{lender?.rate}} </p>
-             </div>
-
-             <div class="col d-flex flex-column justify-content-center align-items-center pt-2">
-
-                <strong class="titulo-negrita py-2">Estadisticas Propietario</strong>
-                <ul aria-hidden="true" class="ui-thermometer" value="5">
-                  <li class="ui-thermometer__level ui-thermometer__level--1"></li>
-                  <li class="ui-thermometer__level ui-thermometer__level--2"></li>
-                  <li class="ui-thermometer__level ui-thermometer__level--3"></li>
-                  <li class="ui-thermometer__level ui-thermometer__level--4"></li>
-                  <li class="ui-thermometer__level ui-thermometer__level--5"></li>
-                </ul>
-
-                <div class="row item-servico ">
-                  <div class="col text-center ">
-                    <i class="  fa fa-line-chart fa-3x" aria-hidden="true"></i>
-                    <p class="">+100 arriendos en los últimos 90 días</p>
+                        <section class="seccion-img-small col-sm-12">
+                          <div class="img-slide active">
+                            <img src="{{tool.urlImage}}" alt="image1" class="img-fluid card shadow imagen-small" appImageGallery>
+                          </div>
+                          <div class="img-slide">
+                            <img src="{{tool.urlImage2}}" alt="image2" class="img-fluid card shadow imagen-small" appImageGallery>
+                          </div>
+                          <div class="img-slide">
+                            <img src="{{tool.urlImage3}}" alt="image3" class="img-fluid card shadow imagen-small" appImageGallery>
+                          </div>
+                        </section>
+                        
+                      </div>
                   </div>
-                  <div class="col text-center ">
-                    <i class="  fa fa-handshake-o fa-3x" aria-hidden="true"></i>
-                    <p>Brinda un buen servicio</p>
-                  </div>
-                  <div class="col text-center ">
-                    <i class=" fa fa-cubes fa-3x" aria-hidden="true"></i>
-                    <p>entrega su equipo en buen estado</p>
-                  </div>
+                  </section>
+                    
                 </div>
 
-             </div>
 
 
-             <div class="col d-flex flex-column justify-content-center align-items-center pt-2">
-                 <div class="div-logo-simple">
-                    <img src="assets/img/LogoSimple.png" alt="logoSimple" class="img-fluid logo-simple">
-                 </div>
-                 <div class="valoracion">
-                    <p class="negrita text-center margin">Propietario</p>
-                        <form [formGroup]="form">
-                          <!---
-                          <div class="cont">
-                            <div class="stars">
-                              <ngx-star-rating formControlName="rating1" [id]="'rating'"></ngx-star-rating>
-                            </div>
-                            <div>Rating: {{form.value.rating1}}</div>
-                            <p>form is valid: {{ form.valid ? 'true' : 'false' }}</p>
-                          </div>-->
+              <!--DESCRIPCION HERRAMIENTA-->
+              <div class="card shadow col-md-6 col-sm-12 div-producto">
 
-                          <div class="cont">
-                              <div class="stars">
-                                <ngx-star-rating formControlName="rating2" [id]="'rating2'" [disabled] ="true"></ngx-star-rating>
-                              </div>
-                              <div>Valoracion: <strong>{{form.value.rating2}}</strong>  Star</div>
-                            </div>
-                      </form>
-                 </div>
-            </div>
+                <section class="seccion-producto">
+                  <h2 class="mt-2 text-center"><strong>{{tool.name}}</strong></h2>
+                  <hr class="bg-dark">
+                  <p class="margin"><strong>Codigo: </strong>{{tool.reference}}</p>
+                  <p><strong>Categoria: </strong>{{category?.titleCat}}</p>
+                  <p class="feature mb-2"><strong>CARACTERÍSTICAS:</strong></p>
+                  <h6 class="margin"><strong> Marca: </strong>{{tool.brand}}</h6>
+                  <h6 class="margin"><strong> Modelo: </strong>{{tool.model}}</h6>
+                  <h6 class="margin"><strong> Año: </strong>{{tool.yearBuy}}</h6>
+                  <h6 class="margin">
+                    <strong> Acesorios: </strong>
+                    <input type="checkbox" [checked]="tool.widgets">
+                  </h6>
 
+                  <p class="text-justify my-2"><strong>DESCRIPCIÓN:</strong> <br> {{tool.description}}</p><br>
+                 
+
+                 <div class="container ngx-star">
+                  <form [formGroup]="form1">
+                    <ngx-star-rating formControlName="rating1" class="ngx-star"></ngx-star-rating>
+                  </form>
+                </div>
+
+                  <div class="container-rating">
+                    <p class="ms-2">valoración: <strong>{{tool.rate}}</strong>  Estrellas</p>
+                  </div>
+                
+                        
+                  <a [routerLink]="['/confirma-renta',this.id]" class="btn-blue-grad mb-2 px-5 py-2 border-0 col-md-8 mx-auto">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
+                </section>
+          
+              </div>
+
+          </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="productos-relacionados" class="fondo pb-5">
-     <!---SLIDER PRODUCTOS RELACIONADOS-->
-     <div class="card shadow content-procucts pt-100 mx-auto">
-        <strong class="px-2 pb-0 titulo-negrita">Productos destacados</strong>
-        <app-related-featured-products></app-related-featured-products>
-    </div>
-</section>
+        
+
+
+
+
+
+
+    <!--SECCIÓN INFORMACIÓN PROPIETARIO-->
+    <section id="informacion-propietario" class="fondo py-5 seccion-propietario col-sm-12">
+        <div class="card shadow content-propietario mx-auto ps-3">
+            <div class="row">
+
+                <div class="col d-grid p-owner">
+                    <strong class="titulo-negrita py-2">Información del Propietario</strong>
+                    <p><strong class="margin">Nombre:   </strong> {{ lender?.name}}  {{lender?.lastName}} </p>
+                    <p><strong class="margin">Region:   </strong>{{lender?.region}}   </p>
+                    <p><strong class="margin">Comuna:   </strong>{{lender?.commune}} </p>
+                </div>
+
+                <div class="col d-flex flex-column justify-content-center align-items-center pt-2 div-estadisticas">
+
+                    <strong class="titulo-negrita py-2">Estadisticas Propietario</strong>
+                    <ul aria-hidden="true" class="ui-thermometer" value="5">
+                      <li class="ui-thermometer__level ui-thermometer__level--1"></li>
+                      <li class="ui-thermometer__level ui-thermometer__level--2"></li>
+                      <li class="ui-thermometer__level ui-thermometer__level--3"></li>
+                      <li class="ui-thermometer__level ui-thermometer__level--4"></li>
+                      <li class="ui-thermometer__level ui-thermometer__level--5"></li>
+                    </ul>
+
+                    <div class="row item-servico ">
+                      <div class="col text-center ">
+                        <i class="  fa fa-line-chart fa-3x" aria-hidden="true"></i>
+                        <p class="text-small">+100 arriendos en los últimos 90 días</p>
+                      </div>
+                      <div class="col text-center ">
+                        <i class="  fa fa-handshake-o fa-3x" aria-hidden="true"></i>
+                        <p class="text-small">Brinda un buen servicio</p>
+                      </div>
+                      <div class="col text-center ">
+                        <i class=" fa fa-cubes fa-3x" aria-hidden="true"></i>
+                        <p class="text-small">entrega su equipo en buen estado</p>
+                      </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col d-flex flex-column justify-content-center align-items-center pt-2">
+                    <div class="div-logo-simple">
+                        <img src="assets/img/LogoSimple.png" alt="logoSimple" class="img-fluid logo-simple">
+                    </div>
+                    <div class="valoracion">
+                        <p class="negrita text-center margin">Propietario</p>
+                            <form [formGroup]="form2">
+                              <div class="cont div-star">
+                                  <div class="stars">
+                                    <ngx-star-rating formControlName="rating2" [disabled] ="true"></ngx-star-rating>
+                                  </div>
+                                  <div>
+                                    <p>valoración: <strong>{{lender?.rate}}</strong>  Estrellas</p>
+                                  </div>
+                                </div>
+                          </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="productos-relacionados" class="fondo seccion-slider pb-5 col-sm-12">
+        <!--SLIDER PRODUCTOS RELACIONADOS-->
+        <div class="card shadow content-products pt-100 mx-auto">
+            <strong class="ps-3 pt-2  pb-0 titulo-negrita">Productos destacados</strong>
+            <app-related-featured-products></app-related-featured-products>
+        </div>
+    </section>
+
 
 <!--SECCION FOOTER-->
-<app-footer></app-footer>
+<section class="footer"><app-footer></app-footer></section>
+
 
 
 
