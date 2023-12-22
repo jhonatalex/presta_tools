@@ -38,20 +38,26 @@
 .ovalo-buttons {
   background-color: black;
   border-radius: 20px;
-  width: 410px;
+  width: 407px;
 }
 
 
 .btn {
   color: white;
-  margin: 5px;
+  margin: 4px;
 }
 
 .btn:hover {
   background-color: #0050a9;
   border-radius: 20px;
 }
+.conoce-mas{
+  background-color: #0050a9;
+  border-radius: 20px;
+}
+ .btn-cat{
 
+ }
 .col {
   color: white;
 }
@@ -218,6 +224,7 @@
   max-width: 600px;
   width: 100%;
 }
+
 
 
 

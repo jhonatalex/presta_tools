@@ -26,6 +26,8 @@ import { FailsTransactionComponent } from './components/fails-transaction/fails-
 import { VerifyLenderComponent } from './Lender/components/verify-lender/verify-lender.component';
 import { VerifyLenderGuard } from './login/auth/verify-lender.guard';
 import { DashboardComponent } from './Lender/components/dashboard/dashboard.component';
+import { UpdateLenderComponent } from './Lender/components/update-lender/update-lender.component';
+import { UpdateToolComponent } from './tool/components/update-tool/update-tool.component';
 
 const routes: Routes = [
 
@@ -46,7 +48,7 @@ const routes: Routes = [
   canActivate:[AuthGuard]
   },
 
-  {path: 'verificar-lender', component: VerifyLenderComponent,
+  {path: 'verificar-prestatool', component: VerifyLenderComponent,
   canActivate:[AuthGuard]
   },
 
@@ -61,8 +63,16 @@ const routes: Routes = [
     path: 'agregar-producto', component: AddToolComponent,
     canActivate:[AuthGuard,VerifyLenderGuard],
   },
-  {path: 'panel', component: DashboardComponent,
-  canActivate:[AuthGuard,VerifyLenderGuard]},
+  {
+    path:'actualizar-producto/:id', component: UpdateToolComponent,
+    canActivate:[AuthGuard,VerifyLenderGuard]},
+  {
+    path: 'panel', component: DashboardComponent,
+    canActivate:[AuthGuard,VerifyLenderGuard]},
+  {
+    path:'actualizar-prestatool', component: UpdateLenderComponent,
+    canActivate:[AuthGuard,VerifyLenderGuard]},
+
 
 
 

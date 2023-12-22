@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
 
   signOut(){
-    this.authService.endSession();
+    this.authService.endSession2();
   }
 
 }

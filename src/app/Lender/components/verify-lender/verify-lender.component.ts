@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Lender } from '../../models/lender.model';
 import { LenderService } from '../../providers/lender.service';
 import { RegisterRS } from 'src/app/register/models/registerRS.model';
+import { BANKS } from 'src/app/shared/constants/bankList';
 
 @Component({
   selector: 'app-verify-lender',
@@ -31,8 +32,12 @@ export class VerifyLenderComponent implements OnInit {
   public lender:Lender;
   public selectedRegion: string | null = null;
   public selectedComuna: string | null = null;
+  public selectedBank: string | null = null;
+  public selecteTypeCount: string | null = null;
   public regiones: string[]=[];
   public comunas: string[]=[];
+  public banks: string[]=[];
+  public typeCounts: string[]=[];
   public urlRedireccion: any;
   constructor(
     private utilservice: UtilService,
@@ -48,6 +53,8 @@ export class VerifyLenderComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.getRegionesArray();
+    this.getBanks();
+    this.getTypeCount();
   }
 
 
@@ -62,6 +69,31 @@ export class VerifyLenderComponent implements OnInit {
     return Math.random() * (max - min) + min;
     }
 
+    getBanks() {
+      this.banks = BANKS.bank.map(item=>item.nombre)
+    }
+
+    getTypeCount() {
+      this.typeCounts = BANKS.tipos_de_cuenta.map(item=>item.nombre);
+    }
+
+
+    onSelectBank():void {
+
+      if(this.selectedBank){
+        this.lender.bank= this.selectedBank;
+      }
+
+    }
+
+    onSelectTypeCount():void {
+
+      if(this.selecteTypeCount){
+        this.lender.typeCount= this.selecteTypeCount;
+      }
+
+    }
+
   //obtiene el user de localstorage
   getUser():void {
     this.user = this.utilservice.getFromLocalStorage(this.loginKey);
@@ -74,7 +106,7 @@ export class VerifyLenderComponent implements OnInit {
   onSelectRegion():void {
 
     if(this.selectedRegion){
-      this.lender.region= this.selectedRegion;//asignaregion a lender
+      this.lender.region= this.selectedRegion;//asigna region a lender
       this.userUpdate.region =  this.selectedRegion;//asigna region a user
 
       const regionSeleccionada = REGIONES.regiones.find(r => r.region === this.selectedRegion);
@@ -125,18 +157,10 @@ export class VerifyLenderComponent implements OnInit {
       this.userUpdate.dIdentidad = this.user.dIdentidad;
 
 
-
-
-
-
-
       if(this.userUpdate){
         // actualizar user y guardar en Local Storage
         this.userUpdate.verify = true;//se verifica user antes de actualizar
         this.resgisterService.update(this.userUpdate).subscribe((response)=>{
-
-
-          console.log(response)
 
           if(response=='Usuario actualizado satisfactoriamente'){
 

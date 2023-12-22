@@ -1,118 +1,102 @@
 <!--SECCION NAVBAR-->
 <app-header [flaglogo]="false"></app-header>
 
-    <section id="seccion confirma renta py-5 fondo" class="seccion-confirmar">
-        <div class="container col-md-15">
-            <div class="row  maxWidth">
-                <div class="col-md-12 py-5 div-contenedor">
-                    <div class="card shadow borderRadius ms-4 p-2 div-titulo">
-                        <h3 class="text-center"><strong>Verificar PrestaTools</strong></h3>
-                    </div>
-                    <div class="card shadow borderRadius ms-4 p-2 mt-5 div-formulario">
-                        <h5 class="ms-4 mt-2 py-3"><strong>* Para ser un PrestaTools debe completar los campos vacíos</strong></h5>
-                            <form class="form-group" #confirmForm = "ngForm" (ngSubmit)="onSubmit(confirmForm)">
-                                <div class="row">
-                                        <div class="col">
-                                            <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                                <label for="nombre" class="form-label mb-0">Nombre</label>
-                                                <input class="form-control" type="text"  name="name"  #name="ngModel" [(ngModel)]="user.name" required pattern="[a-zA-Z]+">
-                                                <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">Debe colocar un nombre válido</small>
-                                            </div>
-                                            <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                                <label for="telefono" class="form-label mb-0">Teléfono</label>
-                                                <input type="text"  name="telephone" #telephone="ngModel" [(ngModel)]="user.telephone" required class="form-control" id="telefono">
-                                                <small *ngIf="!telephone.valid && telephone.touched" class="invalid-feedback d-block">Debe colocar un número de teléfono válido</small>
-                                            </div>
-                                            <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                                <label for="direccion" class="form-label mb-0">Dirección</label>
-                                                <input type="text"  #address="ngModel" [(ngModel)]="user.address" class="form-control" name="address" id="direccion" required>
-                                                <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">Debe colocar una dirección</small>
-                                            </div>
-                                            <div class="form-group mt-4 mxauto">
-                                              <label for="region" class="form-label ms-5 me-5">Región</label>
-                                              <select class="select-css"  name="region" #region="ngModel" [(ngModel)]="selectedRegion" (ngModelChange)="onSelectRegion()" required>
-                                                <option [ngValue]="null" disabled selected>Seleccione una Región</option>
-                                                <option class="form-control" *ngFor="let region of regiones" [value]="region">{{region}}</option>
-                                              </select>
-                                            </div>
-
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                                <label for="apellido" class="form-label mb-0">Apellido</label>
-                                                <input type="text" [(ngModel)]="user.lastName" class="form-control" name="lastName" #lastName="ngModel" id="apellido" required>
-                                                <small *ngIf="!lastName.valid && lastName.touched" class="invalid-feedback d-block">Debe colocar un apellido válido</small>
-                                            </div>
-                                            <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                                <label for="email" class="form-label mb-0">Dirección de correo electrónico</label>
-                                                <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                                                <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">Debe colocar un correo válido</small>
-                                            </div>
-                                            <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                                <label for="dIdentidad" class="form-label mb-0">Número de Rut</label>
-                                                <input type="text"  #dIdentidad="ngModel" [(ngModel)]="user.dIdentidad" class="form-control" name="dIdentidad" id="dIdentidad" required>
-                                                <small *ngIf="!dIdentidad.valid && dIdentidad.touched" class="invalid-feedback d-block">No puede quedar vacío</small>
-                                            </div>
-
-                                            <div class="form-group mt-4 mx-auto">
-                                              <label for="comuna" class="form-label margin-32px">Comuna</label>
-                                              <select class="select-css" name="comuna" [(ngModel)]="selectedComuna" (ngModelChange)="onSelectComuna()" required>
-                                                <option [ngValue]="null" disabled selected>Seleccione una Comuna</option>
-                                                <option class="form-control" *ngFor="let comuna of comunas" value={{comuna}}>{{comuna}}</option>
-                                              </select>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row container">
-
-                                            <div class="col">
-                                              <div class="form-group mt-4 mx-auto">
-                                                <label for="comuna" class="form-label margin-32px">Banco</label>
-                                                <select class="select-css" name="comuna" [(ngModel)]="selectedComuna" (ngModelChange)="onSelectComuna()" required>
-                                                  <option [ngValue]="null" disabled selected>Seleccione una Banco</option>
-                                                  <option class="form-control" *ngFor="let comuna of comunas" value={{comuna}}>{{comuna}}</option>
-                                                </select>
-                                              </div>
-                                            </div>
-
-                                            <div class="col">
-                                                <div class="form-group d-flex flex-column mt-4  mx-auto">
-                                                  <label for="numberBank" class="form-label mb-0">Tipo de Cuenta</label>
-                                                  <input type="text"  #numberBank="ngModel" [(ngModel)]="lender.numberBank" class="form-control" name="numberBank" id="numberBank" required>
-                                                  <small *ngIf="!numberBank.valid && numberBank.touched" class="invalid-feedback d-block">Coloque su número de Cuenta Bancaria</small>
-                                              </div>
-                                            </div>
-                                            <div class="col">
-                                              <div class="form-group d-flex flex-column mt-4  mx-auto">
-                                                <label for="numberBank" class="form-label mb-0">Numero de Cuenta</label>
-                                                <input type="text"  #numberBank="ngModel" [(ngModel)]="lender.numberBank" class="form-control" name="numberBank" id="numberBank" required>
-                                                <small *ngIf="!numberBank.valid && numberBank.touched" class="invalid-feedback d-block">Coloque su número de Cuenta Bancaria</small>
-                                              </div>
-                                            </div>
-
-                                        </div>
-
-
-
-                                        <div class="mt-3 text-center py-3">
-                                          <button type="submit" class="btn-blue-grad w-75" [disabled] = "confirmForm.invalid">Enviar</button>
-                                        </div>
-
-                        </div>
-
-                    </form>
+<section id="seccion confirma renta py-5 fondo" class="seccion-confirmar">
+    <div class="container col-md-15">
+        <div class="row  maxWidth">
+            <div class="col-md-12 py-5 div-contenedor">
+                <div class="card shadow borderRadius ms-4 p-2 div-titulo">
+                    <h3 class="text-center"><strong>Verificar PrestaTool</strong></h3>
+                </div>
+                <div class="card shadow borderRadius ms-4 p-2 mt-5 div-formulario">
+                    <h5 class="ms-4 mt-2 py-3"><strong>* Para ser un PrestaTool debe completar los campos vacíos</strong></h5>
+                      <form class="form-group" #verifyLenderForm = "ngForm" (ngSubmit)="onSubmit(verifyLenderForm)">
+                          <div class="row">
+                              <div class="col">
+                                  <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                      <label for="nombre" class="form-label mb-0">Nombre</label>
+                                      <input class="form-control" type="text"  name="name"  #name="ngModel" [(ngModel)]="user.name" required pattern="[a-zA-Z]+" disabled="true">
+                                      <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">Debe colocar un nombre válido</small>
+                                  </div>
+                                  <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                      <label for="dIdentidad" class="form-label mb-0">Número de Rut</label>
+                                      <input type="text"  #dIdentidad="ngModel" [(ngModel)]="user.dIdentidad" class="form-control" name="dIdentidad" id="dIdentidad" required>
+                                      <small *ngIf="!dIdentidad.valid && dIdentidad.touched" class="invalid-feedback d-block">No puede quedar vacío</small>
+                                  </div>
+                                  <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                      <label for="direccion" class="form-label mb-0">Dirección (calle y número de casa)</label>
+                                      <input type="text"  #address="ngModel" [(ngModel)]="user.address" class="form-control" name="address" id="direccion" required>
+                                      <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">Debe colocar una dirección</small>
+                                  </div>
+                                  <div class="form-group mt-4">
+                                      <label for="region" class="form-label ms-5 me-5">Región</label>
+                                      <select class="select-css"  name="region" #region="ngModel" [(ngModel)]="selectedRegion" (ngModelChange)="onSelectRegion()" required>
+                                        <option [ngValue]="null" disabled selected>Seleccione una Región</option>
+                                        <option class="form-control" *ngFor="let region of regiones" [value]="region">{{region}}</option>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="col">
+                                  <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                      <label for="apellido" class="form-label mb-0">Apellido</label>
+                                      <input type="text" [(ngModel)]="user.lastName" class="form-control" name="lastName" #lastName="ngModel" id="apellido" required disabled="true">
+                                      <small *ngIf="!lastName.valid && lastName.touched" class="invalid-feedback d-block">Debe colocar un apellido válido</small>
+                                  </div>
+                                  <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                      <label for="email" class="form-label mb-0">Dirección de correo electrónico</label>
+                                      <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" disabled="true">
+                                      <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">Debe colocar un correo válido</small>
+                                  </div>
+                                  <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
+                                      <label for="telefono" class="form-label mb-0">Teléfono</label>
+                                      <input type="text"  name="telephone" #telephone="ngModel" [(ngModel)]="user.telephone" required class="form-control" id="telefono">
+                                      <small *ngIf="!telephone.valid && telephone.touched" class="invalid-feedback d-block">Debe colocar un número de teléfono válido</small>
+                                  </div>
+                                  <div class="form-group mt-4 mx-auto">
+                                      <label for="comuna" class="form-label margin-32px">Comuna</label>
+                                      <select class="select-css" name="comuna" [(ngModel)]="selectedComuna" (ngModelChange)="onSelectComuna()" required>
+                                        <option [ngValue]="null" disabled selected>Seleccione una Comuna</option>
+                                        <option class="form-control" *ngFor="let comuna of comunas" value={{comuna}}>{{comuna}}</option>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="row container">
+                                  <div class="col">
+                                    <div class="form-group mt-4 mx-auto">
+                                      <label for="comuna" class="form-label margin-32px">Banco</label>
+                                      <select class="select-css margin-40" name="banco" #bank="ngModel" [(ngModel)]="selectedBank" (ngModelChange)="onSelectBank()" required>
+                                        <option [ngValue]="null" disabled selected>Seleccione una Banco</option>
+                                        <option class="form-control" *ngFor="let bank of banks" value={{bank}}>{{bank}}</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="form-group  mt-4  ml-78px  typeCount">
+                                      <label for="typeCount" class="form-label  ">Tipo de Cuenta</label>
+                                      <select class="select-css " name="tipo" #typeCount="ngModel" [(ngModel)]="selecteTypeCount" (ngModelChange)="onSelectTypeCount()" required>
+                                        <option [ngValue]="null" disabled selected>Seleccione</option>
+                                        <option class="form-control" *ngFor="let type of typeCounts" value={{type}}>{{type}}</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                      <div class="form-group d-flex flex-column mt-4  mx-auto numberCount">
+                                          <label for="numberBank" class="form-label mb-0">Numero de Cuenta</label>
+                                          <input type="text"  #numberBank="ngModel" [(ngModel)]="lender.numberBank" class="form-control" name="numberBank" id="numberBank" required>
+                                          <small *ngIf="!numberBank.valid && numberBank.touched" class="invalid-feedback d-block">Coloque su número de Cuenta Bancaria</small>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="mt-3 text-center py-3">
+                                  <button type="submit" class="btn-blue-grad w-75" [disabled] = "verifyLenderForm.invalid">Enviar</button>
+                              </div>
+                          </div>
+                      </form>
                 </div>
             </div>
-
         </div>
-
     </div>
 </section>
-
-
-
-
 <!--SECCION FOOTER-->
 <app-footer></app-footer>
 

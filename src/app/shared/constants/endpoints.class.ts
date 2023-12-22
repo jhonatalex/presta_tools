@@ -53,6 +53,7 @@ export const PathLender = {
   saveLender: 'api/lender/insert',
 
   getLenderById:'api/lender/get/',
+  updateLender:'api/lender/update',
 
 };
 export const PathCategory = {
@@ -88,6 +89,7 @@ export const PathTool = {
    */
   saveTool: 'api/tool/insert',
   updateTool:'api/tool/edit',
+  deleteToolById:'api/tool/delete/',
 
   initPay:'api/Venta/iniciar-transaccion',
   commitPay:'api/Venta/confirmar-transaccion',

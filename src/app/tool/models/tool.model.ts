@@ -3,6 +3,7 @@ import { Lender } from "src/app/Lender/models/lender.model";
 import { Category } from "src/app/category/models/category.model";
 
 export class Tool {
+  id:number= 0;
   name: string = '';
   reference: string = '';
   newItem: boolean = true;
@@ -24,10 +25,13 @@ export class Tool {
   idCategory: number = 0;
   idLenders: string = '';
   dateUp: string = new Date().toISOString();
+  dateUntilRent:string = new Date().toISOString();
   rate: number = 0;
   brand:string='';
   state:string='activo'
 }
+
+
 
 
 export class ToolResponse {
@@ -53,8 +57,10 @@ export class ToolResponse {
   idCategory: number = 0;
   idLenders: string = '';
   dateUp: string = new Date().toISOString();
+  dateUntilRent:string = new Date().toISOString();
   rate: number = 0;
   brand: string='';
+  state:string='';
   objetoCategoria: Category | null = null;
   objetoLender: Lender | null = null;
 

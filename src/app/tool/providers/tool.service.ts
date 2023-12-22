@@ -49,11 +49,9 @@ export class ToolServiceNew {
 
     this.spinner.show();
 
-
     const url = `${environment.baseUrl}${PathTool.updateTool}`;
     this.callManSV.putData(url, payload)
     .then((response:any)=>{
-     // console.log(response);
       this.manageResponseUpdate(response);
     })
     .catch((error:any)=>{
@@ -160,7 +158,7 @@ export class ToolServiceNew {
       this.sweetUIService.alertConfirm('¡Hola!',responseApi.message,'success')
       .then(()=>{
 
-       // this.utilService.navigateToPath('/')
+        this.utilService.navigateToPath('/panel')
 
       })
       .catch((e:any)=>{console.log(e);})

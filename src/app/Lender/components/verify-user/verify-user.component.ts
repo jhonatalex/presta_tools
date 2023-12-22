@@ -27,7 +27,7 @@ export class VerifyUserComponent implements OnInit {
   public regiones: string[]=[];
   public comunas: string[]=[];
   public ConfirmPassword:string='';
-  public urlRedireccion: any;
+  public urlRedireccion: string| null;
   
 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
@@ -44,18 +44,12 @@ export class VerifyUserComponent implements OnInit {
 
    this.user  = new User;
    this.userUpdate = new User;
+   this.urlRedireccion = '';
   }
-
-  
-
-
-
 
   ngOnInit(): void {
     this.getUser();
     this.getRegionesArray();
-
-
     //recibe url para redireccion
     this.paymentServices.getDataUrl().subscribe({
       next: data =>{
@@ -114,8 +108,6 @@ export class VerifyUserComponent implements OnInit {
 
 //enviar formulario a la API
   onSubmit(form:any){
-
-
     //crear usuario para actualizar y verificar
     this.userUpdate.id = this.user.id;
     this.userUpdate.name = this.user.name;
@@ -129,19 +121,25 @@ export class VerifyUserComponent implements OnInit {
     this.userUpdate.address = this.user.address;
     this.userUpdate.dIdentidad = this.user.dIdentidad;
 
-
      if(this.userUpdate){
-
-      console.log(this.userUpdate);
          //update User way udapte user use services register
-        this.resgisterService.update(this.userUpdate);
-        //SET USER A LOCAL SOTORAGE
-        this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);
-        //REDIRECCION ENVIAR A LA URL de DONDE VINO
-         this.utilservice.navigateToPath('/'+ this.urlRedireccion);
+        this.resgisterService.update(this.userUpdate).subscribe(response=>{
+          if(response == 'Usuario actualizado satisfactoriamente'){
+            //SET USER A LOCAL SOTORAGE
+            this.utilservice.setToLocalStorage(this.loginKey, this.userUpdate);
+            //REDIRECCION ENVIAR A LA URL de DONDE VINO
+            this.utilservice.navigateToPath('/'+ this.urlRedireccion);
+          }else{
+            this.sweetUIService
+            .alertConfirm("Atención", '¡No se pudo verificar; fallo de conexión!', 'error')
+            this.utilservice.navigateToPath('/verificar-usuario');
+          }
+        })
+        
      }else{
       this.sweetUIService
       .alertConfirm("Atención", '¡No se pudo verificar; vuelva a intentarlo!', 'error')
+      this.utilservice.navigateToPath('/verificar-usuario');
      }
     
   }

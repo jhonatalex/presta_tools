@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/register/models/user.model';
 import { Constants } from 'src/app/shared/constants/settings.class';
@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment.prod';
 @Injectable({
   providedIn: 'root'
 })
-export class VerifyLenderGuard implements CanActivate {
+export class VerifyLenderGuard  {
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
     environment.production ? '' : 'D3V'
   }`;
@@ -31,9 +31,9 @@ export class VerifyLenderGuard implements CanActivate {
       }else{
 
         this.sweetUIService
-        .alertConfirm("Hola", "Para entrar aquí, Necesitas estar verificado y ser un PrestaTools", 'warning')
+        .alertConfirm("Hola", "Para alquilar; Necesitas ser un PrestaTool verificado", 'warning')
         .then(() => {
-          this.utilService.navigateToPath('/verificar-lender');
+          this.utilService.navigateToPath('/verificar-prestatool');
         })
         .catch(console.warn);
 

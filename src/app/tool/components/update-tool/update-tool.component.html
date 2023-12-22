@@ -5,14 +5,14 @@
 
 <div id="add-tool" class="container-fluid fondo pt-5 pb-100">
 <div class="container bg-white card shadow " style="padding:5%">
-  <h2>Registro de Producto</h2>
-  <form #addToolForm ="ngForm" (ngSubmit)="onSubmit(addToolForm)">
+  <h2>Actualización de Producto</h2>
+  <form #updateToolForm ="ngForm" (ngSubmit)="onSubmit(updateToolForm)">
     <div class="row">
       <div class="col-md-5">
 
         <div class="form-group mt-4 mxauto mt-4 mxauto">
           <label class="" for="name">Nombre:</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" name="name"  #name="ngModel" [(ngModel)]="tool.name" required>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Nombre"  #name="ngModel" [(ngModel)]="tool.name" required>
           <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">Debe colocar un nombre válido</small>
         </div>
 
@@ -182,10 +182,11 @@
     </div>
     <!-- Agrega los demás campos aquí -->
     <div class="row mt-3 centered">
-      <button type="submit" class="btn-blue-grad w-75 mx-auto" [disabled]="addToolForm.invalid">Enviar</button>
-      <small *ngIf="!addToolForm.valid && addToolForm.touched" class="invalid-feedback d-block">Debe completar el formuario</small>
+      <button type="submit" class="btn-blue-grad w-75 mx-auto" [disabled]="updateToolForm.invalid">Enviar</button>
+      <small *ngIf="!updateToolForm.valid && updateToolForm.touched" class="invalid-feedback d-block">Debe completar el formuario</small>
     </div>
   </form>
 </div>
 </div>
 <app-footer></app-footer>
+

@@ -122,9 +122,6 @@ export class AuthService {
 
           });
 
-
-
-
         })
         .catch((e) => {
           this.manageError(e);
@@ -133,12 +130,6 @@ export class AuthService {
 
 
     }
-
-
-
-
-
-
 
   public userLoginAuth(payload: any): void {
     this.spinner.show();
@@ -209,7 +200,7 @@ export class AuthService {
 
       //SET USER AND TOKEN A LOCAL SOTORAGE
         this.sweetUIService
-        .alertConfirm("Bienvenido", 'Login Exitoso')
+        .alertConfirm("Bienvenido",  userFirebase.displayName +' Login Exitoso')
         .then(() => {
           this.utilService.navigateToPath('/');
         })
@@ -243,10 +234,8 @@ export class AuthService {
    * ( Redirecciona al Login )
    */
 
-  public endSession(
-    message: string = 'Su sesión se ha cerrado',
-    title: string = 'Atención'
-  ) {
+  public endSession(message: string = 'Su sesión se ha cerrado', title: string = 'Atención'){
+
     this.logout();
     this.sweetUIService
       .alertConfirm(title, message, 'warning')
@@ -256,6 +245,31 @@ export class AuthService {
       .catch(console.warn);
   }
 
+  public endSession2(message: string = 'Su sesión se ha cerrado', title: string = 'Atención'){
+    this.sweetUIService
+    .alertCancelConfirm(
+      'Atención',
+      '¿Seguro que desea cerrar sesión?',
+      'question',
+      'Aceptar',
+      'Cancelar'
+    )
+    .then((r) => {
+          if (r.value) {
+              this.spinner.show();
+              this.logout()
+              this.sweetUIService
+                .alertConfirm(title, message, 'warning')
+                .then(() => {
+              this.utilService.navigateToPath('/acceso');
+              })
+              .catch(console.warn);
+              this.spinner.hide();
+          }
+
+    });
+
+  }
 
 
 

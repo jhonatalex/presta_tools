@@ -4,6 +4,7 @@
     color: white;
     padding: 10px;
     text-decoration: none;
+    font-size: 18px;
   }
   .card-product {
     border-radius: 18px;
@@ -133,14 +134,16 @@ height: 25vh;
 .banner {
       background-color: rgb(192, 42, 42);
       color: white;
-      padding: 0px 8px;
+      padding: 10px 8px;
       border-radius: 10px;
       font-size: 14px;
-      width: 55%;
       transform-origin: 1 100%;
-      margin-bottom: 10px;
-}
+      margin-bottom: 18px;
 
+}
+#fechaRentado{
+  font-size: 16px;
+}
 
 .banner::before {
   top: -10px;
@@ -154,5 +157,13 @@ height: 25vh;
 
 .rentado{
   margin: 0px;
+  padding: 10px;
 }
 
+.cinta{
+  position: absolute;
+  transform: rotate(45deg);
+  top: 42px;
+  right: -49px;
+  width: 75%;
+}

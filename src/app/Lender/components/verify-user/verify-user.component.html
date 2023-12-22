@@ -87,3 +87,113 @@
                                 [disabled]=confirmForm.invalid>Enviar</button>
                         </div>
                     </form>
+=========
+    <section id="seccion confirma renta py-5 fondo" class="seccion-confirmar">
+        <div class="container">
+            <div class="row  maxWidth">
+                <div class="container py-5 div-contenedor">
+                    <div class="card shadow borderRadius ms-4 p-2 div-titulo">
+                        <h3 class="text-center"><strong>Verificar Usuario</strong></h3>
+                    </div>
+                    <div class="card shadow borderRadius ms-4 p-2 mt-5 div-formulario">
+                        <h5 class="ms-4 mt-2 py-3"><strong>* Para verificar el usuario debe completar los campos vacíos</strong></h5>
+
+                            <form class="form-group" #confirmForm = "ngForm" (ngSubmit)="onSubmit(confirmForm)">
+                                <div class="row">
+                                        <div class="col ">
+                                            <div class="form-group d-flex flex-column mt-4  ">
+                                                <label for="nombre" class="form-label mb-0">Nombre</label>
+                                                <input class="form-control " type="text"  name="name"  #name="ngModel" [(ngModel)]="user.name" required pattern="[a-zA-Z]+">
+                                                <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">Debe colocar un nombre válido</small>
+                                            </div>
+
+                                            <div class="form-group d-flex flex-column mt-4  ">
+                                              <label for="dIdentidad" class="form-label mb-0 ">Número de Rut</label>
+                                              <input type="text"  #dIdentidad="ngModel" [(ngModel)]="user.dIdentidad" class="form-control" name="dIdentidad" id="dIdentidad" required>
+                                              <small *ngIf="!dIdentidad.valid && dIdentidad.touched" class="invalid-feedback d-block">No puede quedar vacío</small>
+                                            </div>
+
+                                            <div class="form-group d-flex flex-column mt-4  o">
+                                                <label for="telefono" class="form-label mb-0">Teléfono</label>
+                                                <input type="text"  name="telephone" #telephone="ngModel" [(ngModel)]="user.telephone" required class="form-control" id="telefono">
+                                                <small *ngIf="!telephone.valid && telephone.touched" class="invalid-feedback d-block">Debe colocar un número de teléfono válido</small>
+                                            </div>
+
+
+                                            <div class="form-group  d-flex  mt-4 ">
+                                              <label for="region" class=" label-region">Región</label>
+                                              <select class="select-css" name="region" #region="ngModel" [(ngModel)]="selectedRegion" (ngModelChange)="onSelectRegion()" required>
+                                                  <option [ngValue]="null" disabled selected>Seleccionar Región</option>
+                                                  <option class="form-control" *ngFor="let region of regiones" [value]="region">{{region}}</option>
+                                              </select>
+                                          </div>
+
+                                        </div>
+                                        <div class="col ">
+                                            <div class="form-group d-flex flex-column mt-4 ">
+                                                <label for="apellido" class="form-label mb-0">Apellido</label>
+                                                <input type="text" [(ngModel)]="user.lastName" class="form-control" name="lastName" #lastName="ngModel" id="apellido" required>
+                                                <small *ngIf="!lastName.valid && lastName.touched" class="invalid-feedback d-block">Debe colocar un apellido válido</small>
+                                            </div>
+                                            <div class="form-group d-flex flex-column mt-4 ">
+                                                <label for="email" class="form-label mb-0">Dirección de correo electrónico</label>
+                                                <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                                <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">Debe colocar un correo válido</small>
+                                            </div>
+                                            <div class="form-group d-flex flex-column mt-4 ">
+                                              <label for="direccion" class="form-label  mb-0">Dirección / Nombre calle y numero casa </label>
+                                              <input type="text"  #address="ngModel" [(ngModel)]="user.address" class="form-control" name="address" id="direccion" required>
+                                              <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">Debe colocar una dirección</small>
+                                            </div>
+
+                                            <div class="form-group  d-flex  mt-4">
+                                              <label for="comuna" class="label-comuna">Comuna</label>
+                                              <select  class="select-css" name="comuna" [(ngModel)]="selectedComuna" (ngModelChange)="onSelectComuna()" required>
+                                                  <option [ngValue]="null" disabled selected>Seleccionar Comuna</option>
+                                                  <option class="form-control" *ngFor="let comuna of comunas" [value]="comuna">{{comuna}}</option>
+                                              </select>
+                                            </div>
+                                        </div>
+
+                                        
+                                    <div class="row">
+                                        <div class="col"><div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
+                                            <label for="direccion" class="form-label mb-0">Dirección</label>
+                                            <input type="text"  #address="ngModel" [(ngModel)]="user.address" class="form-control-sm border" name="address" id="direccion" required>
+                                            <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">Debe colocar una dirección</small>
+                                        </div></div>
+                                        <div class="col"><div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
+                                            <label for="dIdentidad" class="form-label mb-0">Número de Rut</label>
+                                            <input type="text"  #dIdentidad="ngModel" [(ngModel)]="user.dIdentidad" class="form-control-sm border" name="dIdentidad" id="direccion" required>
+                                            <small *ngIf="!dIdentidad.valid && dIdentidad.touched" class="invalid-feedback d-block">No puede quedar vaío</small>
+                                        </div></div>
+                                    </div>
+                                                                        
+
+                                        
+    
+    
+                                        <div class="mt-3 text-center py-3">
+                                          <button type="submit" class="btn-blue-grad w-75" [disabled] = confirmForm.invalid>Enviar</button>
+                                        </div>
+                                </div>
+                                <div class="form-group mt-3 text-center py-3 d-flex justify-content-center">
+                                    <button type="submit" class="form-control btn-blue-grad w-75 h-75 text-color-white" [disabled] = "confirmForm.invalid">Enviar</button>
+                                  </div>
+
+                            </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<!--SECCION FOOTER-->
+<app-footer></app-footer>

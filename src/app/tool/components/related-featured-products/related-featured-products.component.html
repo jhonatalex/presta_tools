@@ -20,9 +20,13 @@
                           </div>
 
                           <div class="container d-flex justify-content-center" *ngIf="tool.state == 'rentado'">
+
+                            <div >
+                              <img  class="cinta" src="assets/img/rentado2.png" alt="cinta Rentado">
+                            </div>
+
                             <div class="banner">
-                              <h3 class="rentado">Rentado</h3>
-                              <div class="fecha">Hasta: <span id="fechaRentado">{{tool.dateUp}}</span></div>
+                              <div class="fecha">Hasta: <span id="fechaRentado">{{ tool.dateUp | date: 'dd/MM/yyyy' }}</span></div>
                             </div>
                           </div>
                           <div class="container d-flex justify-content-center" *ngIf="tool.state != 'rentado'">

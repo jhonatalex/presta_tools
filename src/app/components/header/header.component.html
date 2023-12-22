@@ -15,7 +15,7 @@
       <div class="collapse navbar-collapse  mt-5 mb-0 text-center" id="navbarTogglerDemo01">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/">Inicio</a>
+            <a class="nav-link active" aria-current="page" routerLink="''">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="presta_tools/#productos-destacados">Productos</a>
@@ -35,7 +35,7 @@
                   <div class="col mt-5px"><a class="name-user p-0">{{user.name}} {{user.lastName}}</a></div>
                   <div class="col mt-neg-5"><small class="name-user p-0" style="font-size: small;">{{user.email}}</small></div>
                 </div>
-                <button class="btn btn-link nav-link btn-logout  ms-4" (click)='signOut()'>Cerrar Sesión</button>
+                <button class="btn btn-link nav-link btn-logout  ms-3" (click)='signOut()'>Cerrar Sesión</button>
           </div>
 
           <div *ngIf="!user" class="d-flex float-right nav-item">
@@ -45,22 +45,13 @@
         </div>
 
       </div>
-      
+
     </div>
-    <ngx-spinner
-    bdColor="rgba(51,51,51,0.8)"
-    size="large"
-    type="ball-spin-reverse-rotate"
-  >
-    <div style="color: #64d6e2" class="la-ball-clip-rotate-multiple la-3x">
-      <div></div>
-      <div></div>
-  </div>
-  </ngx-spinner>
+
 </nav>
 </section>
 
 
 
 
-  
+

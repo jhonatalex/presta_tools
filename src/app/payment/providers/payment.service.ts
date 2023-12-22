@@ -78,9 +78,7 @@ export class PaymentServices {
 
   private manageResponse(responseApi: ResponseApi) {
 
-
     this.setData(responseApi);
-
 
     if (responseApi.success) {
 
@@ -88,14 +86,12 @@ export class PaymentServices {
 
           };
 
-
           this.router.navigate(['/gracias'], navigationExtras )
 
 
     } else {
 
-      const navigationExtras: NavigationExtras = {
-        state: { responseApi } // Pasamos el objeto responseApi como parte del estado de navegación
+      const navigationExtras: NavigationExtras = {state: { responseApi } // Pasamos el objeto responseApi como parte del estado de navegación
       };
 
           this.router.navigate(['/transaccion-fallida'], navigationExtras)

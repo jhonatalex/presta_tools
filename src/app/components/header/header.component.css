@@ -47,7 +47,7 @@
 }
 
 .nav-item {
-  padding-left: 15px;
+  padding-left: 7px;
 }
 
 .logoSmall {
@@ -75,7 +75,7 @@
   margin-top: 5px;
 }
 
-
+/*responsive*/
 @media(max-width:992px) {
   .ovalo-buttons {
     display: none;
@@ -94,7 +94,7 @@
 
 }
 
-
+/*Responsive*/
 @media(max-width:512px) {
   .ovalo-buttons {
     display: none;

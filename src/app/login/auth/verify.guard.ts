@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Constants } from 'src/app/shared/constants/settings.class';
 import { environment } from 'src/environments/environment.prod';
@@ -11,7 +11,7 @@ import { User } from 'src/app/register/models/user.model';
 @Injectable({
   providedIn: 'root'
 })
-export class VerifyGuard implements CanActivate {
+export class VerifyGuard  {
 
   private loginKey = `${new Constants().getStorageKeys().loginTokenKey}${
     environment.production ? '' : 'D3V'
@@ -36,7 +36,7 @@ export class VerifyGuard implements CanActivate {
       }else{
 
         this.sweetUIService
-        .alertConfirm("Hola", "Para Reservar Necesitas estar verificado", 'warning')
+        .alertConfirm("Hola", "Para Reservar; Necesitas ser un usuario verificado", 'warning')
         .then(() => {
           this.utilService.navigateToPath('/verificar-usuario');
         })
