@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 /*Paleta de colores*/
 
 .color-primary-dark {
@@ -10,6 +15,9 @@
 
 .text-color-white-theme {
   color: #e0e0e0;
+}
+.bg-black{
+  background-color: black;
 }
 
 .color-blue-1 {

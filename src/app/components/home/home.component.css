@@ -38,7 +38,6 @@
 .ovalo-buttons {
   background-color: black;
   border-radius: 20px;
-  width: 407px;
 }
 
 
@@ -51,13 +50,7 @@
   background-color: #0050a9;
   border-radius: 20px;
 }
-.conoce-mas{
-  background-color: #0050a9;
-  border-radius: 20px;
-}
- .btn-cat{
 
- }
 .col {
   color: white;
 }
@@ -205,11 +198,7 @@
 
 
 
-.banner img{
-  margin-left: 100px;
-}
-
-.ml-3{
+.ml-3 {
   margin-left: 3rem;
 }
 
@@ -247,7 +236,7 @@
     padding-top: 20px;
   }
 
-  .parrafo1 h1{
+  .parrafo1 h1 {
     font-size: 24px;
   }
 
@@ -256,9 +245,10 @@
   }
 
 
-  .banner img{
+  .banner img {
     margin-left: 0px;
   }
+
   .content-image {
     display: flex;
     justify-content: center;
@@ -297,11 +287,9 @@
     flex-direction: column-reverse;
   }
 
-  .ml-3{
+  .ml-3 {
     margin-left: 0px;
   }
 
 
 }
-
-

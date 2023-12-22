@@ -6,35 +6,31 @@
       <!--SECCIÓN NAVBAR-->
       <app-header></app-header>
 
-      <div class="container-fluid ">
+      <div class="p-4">
         <div class="row">
-          <div class="col col-sm-12 col-md-5 col-6-lg bg-dark d-flex ml-3 flex-column">
-            <div class="ovalo-buttons col-md-9 mt-5  d-flex">
-              <a href="/#categorias" type="button" class="btn btn-ligth btn-cat px-5">Categorías</a>
-              <a href="/#preguntas-frecuentes" type="button" class="btn btn-ligth conoce-mas px-5">Conoce más</a>
+          <div class="text-white d-flex flex-column col-sm-12 col-md-6 col-lg-7 bg-dark">
+            <div
+              class="rounded-pill bg-black  flex-column flex-md-row col-md-9  d-flex w-100 justify-content-evenly align-items-center">
+              <a href="/#categorias" type="button" class="btn btn-ligth col-5 p-2">Categorías</a>
+              <a href="/#preguntas-frecuentes" type="button" class="btn btn-ligth conoce-mas col-5 p-2">Conoce más</a>
             </div>
             <div class="parrafo1">
               <h1 class="mt-2">Todas las herramientas</h1>
               <h1 class="blue-h1 mt-2">en un solo lugar</h1>
             </div>
-
             <p class="parrafo mt-2">Encuentra las herramientas que necesitas para tus proyectos, ahorra dinero evitando
               comprar equipos que solo usarás una vez y únete a una red de emprendedores que valoran la colaboración.
             </p>
-
             <div *ngIf="!user">
               <a class="boton-registrar btn-blue-grad mt-2 p-2 border-0 col-md-4 nav-link active text-center"
-              [routerLink]="['/registro']">Regístrate gratis</a>
+                [routerLink]="['/registro']">Regístrate gratis</a>
             </div>
-
-
             <p class="parrafo mt-2"><span class="subtitle">Comparte, Ahorra y Emprende</span><br> La Economía
               Colaborativa ya esta aquí.</p>
-
           </div>
 
-          <div class="banner  col-offset-1  col-sm-12 col-md-5 col-lg-6 bg-dark">
-            <img src="assets/img/banner.png" alt="banner" class="img-fluid mb-5">
+          <div class="col-offset-1 col-sm-12 col-md-6 col-lg-5">
+            <img src="assets/img/banner.png" alt="banner" class="col-12">
           </div>
         </div>
       </div>
@@ -44,7 +40,7 @@
 
 
 <!--SECCION PRODUCTOS-DESTACADOS-->
-<section id="productos-destacados" class="fondo py-5">
+<section id="productos-destacados" class="fondo">
   <div class="container-fluid text-center col-md-6 mb-3">
     <h1 class="py-2"> <strong> Productos destacados</strong></h1>
     <h5 class="text">Conecta con una comunidad de usuarios dispuestos a compartir</h5>
@@ -74,14 +70,14 @@
 
   <!--SECCION PREGUNTAS FRECUENTES-->
   <section id="preguntas-frecuentes" class="fondo pb-3">
-    <div class="py-5 widthMax">
-      <div class="row mt-2 bg-primary m-0">
+    <div class=" widthMax">
+      <div class="row mt-2 bg-primary">
         <div class="col-md-6 content-image-preguntas">
           <div class="image-container">
             <!--         <img class="img-preguntas img-fluid"src="assets/img/frecuentes.jpg" alt="preguntas"> -->
           </div>
         </div>
-        <div class="col-md-6 color-primary-dark py-5 content-preguntas" style="padding:60px;">
+        <div class="col-md-6 color-primary-dark p-4">
           <h4 class="text-color-white-theme mt-50">Guia práctica de como generar ingresos</h4>
           <h1 class="text-color-white-theme">Preguntas frecuentes</h1>
           <p class="text-color-white-theme text-justify"> PrestaTools te permite alquilar herramientas y una amplia
@@ -99,11 +95,11 @@
   <!--SECCIÓN TESTIMONIOS-->
   <section id="testimonios" class="fondo px-3">
     <div class="container-fluid widthMax">
-      <div class="row py-5 mb-50">
-        <div class="content-image col-md-6 py-4">
+      <div class="row mb-50 align-items-center">
+        <div class="content-image col-md-6 p-4">
           <img src="assets/img/alquiler-de-herramientas.jpg" alt="testimonio" class="img-testimonio">
         </div>
-        <div class="content-testimonio col-md-6 py-4">
+        <div class="content-testimonio col-md-6 p-4">
           <h1 class="text-center text-color-white-theme">Testimonios</h1>
           <p class="text-color-white-theme mb-0 text-justify"><i>
               <img src="assets/img/comillaDoble.png" alt="comillas" style="width: 30px;">

@@ -38,7 +38,7 @@
                 <button class="btn btn-link nav-link btn-logout  ms-3" (click)='signOut()'>Cerrar Sesión</button>
           </div>
 
-          <div *ngIf="!user" class="d-flex float-right nav-item">
+          <div *ngIf="!user" class="d-flex float-right nav-item justify-content-evenly">
             <a class="nav-link active" [routerLink]="['/acceso']">Iniciar Sesión</a>
             <a class="nav-link active" [routerLink]="['/registro']">Regístrate gratis</a>
           </div>
