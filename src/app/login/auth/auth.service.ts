@@ -155,7 +155,7 @@ export class AuthService {
 
       const tokenString = loginData.token;
       const jwtHelper = new JwtHelperService();
-      //const decodedToken: decodedTkn = jwtHelper.decodeToken(tokenString);
+      const decodedToken = jwtHelper.decodeToken(tokenString);
       const expirationDate = jwtHelper.getTokenExpirationDate(tokenString);
       const isExpired = jwtHelper.isTokenExpired(tokenString);
 
@@ -164,7 +164,9 @@ export class AuthService {
 
               //SET USER AND TOKEN A LOCAL SOTORAGE
               this.utilService.setToLocalStorage(this.loginKey, loginData.data);
+              this.utilService.setToLocalStorage('PayloadToken', decodedToken);
               this.utilService.setToLocalStorage(this.tokenKey,tokenString);
+
                 this.sweetUIService
                 .alertConfirm("Bienvenido", loginData.message, 'success')
                 .then(() => {

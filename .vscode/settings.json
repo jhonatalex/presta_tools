@@ -2,5 +2,6 @@
   "liveSassCompile.settings.autoprefix": [
 
   ],
-  "liveServer.settings.AdvanceCustomBrowserCmdLine": ""
+  "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }

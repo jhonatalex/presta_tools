@@ -1,4 +1,10 @@
 /*Paleta de colores*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
 
 .color-primary-dark {
   background-color: #2a292a;
