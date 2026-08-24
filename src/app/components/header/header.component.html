@@ -1,55 +1,70 @@
-<!--SECCIÓN NAVBAR-->
-<section class="nav-bar">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid mt-2">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="logo" *ngIf="flaglogo"><!--CONDICION PARA EL TAMAÑO DEL LOGO NORMAL-->
-        <img src="assets/img/logo.png" alt="logo" class="img-logo ms-2">
-      </div>
-      <div class="logo" *ngIf="!flaglogo"><!---CONDICION PARA EL TAMAÑO DEL LOGO PEQUEÑO-->
-        <img src="assets/img/logo.png" alt="logo" class="img-logo logoSmall">
-      </div>
+<!-- SECCIÓN NAVBAR MODERNA -->
+<header class="main-header-wrapper">
+  <nav class="navbar navbar-expand-lg navbar-dark modern-navbar">
+    <div class="container-fluid px-lg-4">
+      
+      <!-- LOGO -->
+      <a class="navbar-brand d-flex align-items-center" routerLink="/">
+        <img src="assets/img/logo.png" alt="PrestaTools Logo" class="brand-logo" [class.brand-logo-compact]="!flaglogo">
+      </a>
 
-      <div class="collapse navbar-collapse  mt-5 mb-0 text-center" id="navbarTogglerDemo01">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <!-- TOGGLER MOBILE -->
+      <button class="navbar-toggler modern-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerMain" aria-controls="navbarTogglerMain" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars text-white fs-4"></i>
+      </button>
+
+      <!-- MENU COLLAPSE -->
+      <div class="collapse navbar-collapse" id="navbarTogglerMain">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 nav-center-links">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="''">Inicio</a>
+            <a class="nav-link modern-nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="presta_tools/#productos-destacados">Productos</a>
+            <a class="nav-link modern-nav-link" href="#productos-destacados">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" [routerLink]="['/agregar-producto']">Alquila Tu Producto</a>
+            <a class="nav-link modern-nav-link" href="#categorias">Categorías</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" [routerLink]="['/contacto']">Contacto</a>
+            <a class="nav-link modern-nav-link highlight-link" [routerLink]="['/agregar-producto']">
+              <i class="fa fa-plus-circle me-1"></i> Alquila Tu Producto
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link modern-nav-link" [routerLink]="['/contacto']">Contacto</a>
           </li>
         </ul>
-        <div>
 
-          <div *ngIf="user" class="d-flex float-right nav-item">
-                <img src="assets/img/userLogin.png" alt="icono" style="width: 30px; height: 30px;" class="fa">
-                <div class="col text-center mx-2">
-                  <div class="col mt-5px"><a class="name-user p-0">{{user.name}} {{user.lastName}}</a></div>
-                  <div class="col mt-neg-5"><small class="name-user p-0" style="font-size: small;">{{user.email}}</small></div>
-                </div>
-                <button class="btn btn-link nav-link btn-logout  ms-3" (click)='signOut()'>Cerrar Sesión</button>
+        <!-- AUTH ACTIONS -->
+        <div class="d-flex align-items-center nav-auth-actions">
+          
+          <!-- LOGGED IN USER -->
+          <div *ngIf="user" class="user-profile-badge d-flex align-items-center">
+            <div class="user-avatar-circle me-2">
+              <i class="fa fa-user"></i>
+            </div>
+            <div class="user-info-text text-start me-3 d-none d-sm-block">
+              <span class="user-full-name d-block">{{user.name}} {{user.lastName}}</span>
+              <span class="user-role-badge badge bg-primary text-capitalize">{{user.typeUser || 'Usuario'}}</span>
+            </div>
+            <button class="btn btn-sm btn-outline-danger btn-logout-modern" (click)="signOut()" title="Cerrar Sesión">
+              <i class="fa fa-sign-out"></i> <span class="d-none d-md-inline ms-1">Salir</span>
+            </button>
           </div>
 
-          <div *ngIf="!user" class="d-flex float-right nav-item">
-            <a class="nav-link active" [routerLink]="['/acceso']">Iniciar Sesión</a>
-            <a class="nav-link active" [routerLink]="['/registro']">Regístrate gratis</a>
+          <!-- GUEST ACTIONS (NOT LOGGED IN) -->
+          <div *ngIf="!user" class="guest-auth-buttons d-flex align-items-center gap-2">
+            <a class="btn-ghost-nav" [routerLink]="['/acceso']">Iniciar Sesión</a>
+            <a class="btn-primary-grad" [routerLink]="['/registro']">Regístrate gratis</a>
           </div>
+
         </div>
 
       </div>
 
     </div>
-
-</nav>
-</section>
+  </nav>
+</header>
 
 
 

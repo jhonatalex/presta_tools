@@ -3,7 +3,7 @@ import { AuthService } from 'src/app/login/auth/auth.service';
 import { User } from 'src/app/register/models/user.model';
 import { Constants } from 'src/app/shared/constants/settings.class';
 import { UtilService } from 'src/app/shared/services/util.service';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',

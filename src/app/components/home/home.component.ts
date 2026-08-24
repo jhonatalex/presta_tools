@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/category/models/category.model';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { Constants } from 'src/app/shared/constants/settings.class';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { User } from 'src/app/register/models/user.model';
 import { ActivatedRoute } from '@angular/router';
 import { PaymentServices } from 'src/app/payment/providers/payment.service';

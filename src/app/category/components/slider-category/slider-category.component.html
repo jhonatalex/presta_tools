@@ -1,25 +1,28 @@
-<div class="container fluid px-5 ">
-    <!---SECCION SLIDER CATEGORIAS-->
-    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" responsive="breakpoints"
-        (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-        (beforeChange)="beforeChange($event)">
+<div class="container-fluid px-3 px-md-5">
+  <ngx-slick-carousel class="carousel category-carousel-wrapper" #slickModal="slick-carousel" [config]="slideConfig" responsive="breakpoints"
+      (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+      (beforeChange)="beforeChange($event)">
 
-        <div ngxSlickItem *ngFor="let category of categories" class="h-100 m-1">
-
-           <div class="card-category card shadow bg-white vh70">
-                <div class="d-flex flex-column align-items-center">
-                    <a [routerLink]="['/categoria/', category.idCat]"><img src="{{category.urlImagen}}" alt="imagenCategory" class="card-img vh30"/></a>
-                </div>
-            
-                <div class="d-flex flex-column justify-content-between align-items-center text-center vh20">
-                    <div class="m-1">
-                        <h6 class="pt-2"><b>{{category.titleCat}}</b></h6>
-                        <p class="text-justify">{{category.descripCat}}</p>
-                    </div>
-                </div>
-            </div>  
-
+      <div ngxSlickItem *ngFor="let category of categories" class="p-2">
+        
+        <!-- MODERN CATEGORY CARD -->
+        <div class="presta-category-card">
+          <div class="category-image-wrap">
+            <img [src]="category.urlImagen || 'assets/img/tool-placeholder.png'" [alt]="category.titleCat" class="category-img" loading="lazy">
+            <div class="category-gradient-overlay"></div>
+          </div>
+          
+          <div class="category-card-body">
+            <h5 class="category-title">{{category.titleCat}}</h5>
+            <p class="category-description">{{category.descripCat}}</p>
+            <a [routerLink]="['/categoria/', category.idCat]" class="btn-explore-category">
+              <span>Ver Herramientas</span>
+              <i class="fa fa-chevron-right ms-1"></i>
+            </a>
+          </div>
         </div>
 
-    </ngx-slick-carousel>
+      </div>
+
+  </ngx-slick-carousel>
 </div>

@@ -77,20 +77,19 @@ const routes: Routes = [
 
 
   //Rutas VERIFICADO
-
   {
     path: 'gracias', component: ThanksRentComponent,
-    canActivate:[VerifyGuard]
+    canActivate:[AuthGuard, VerifyGuard]
   },
 
   {
     path: 'transaccion-fallida', component: FailsTransactionComponent,
-    canActivate:[VerifyGuard]
+    canActivate:[AuthGuard, VerifyGuard]
   },
 
   {
     path: 'confirmar-transaccion', component: PaymentGatewayComponent,
-    canActivate:[VerifyGuard]
+    canActivate:[AuthGuard, VerifyGuard]
   },
 
 

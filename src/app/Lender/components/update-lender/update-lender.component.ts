@@ -5,7 +5,7 @@ import { User } from 'src/app/register/models/user.model';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { LenderService } from '../../providers/lender.service';
 import { Constants } from 'src/app/shared/constants/settings.class';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { SweetUIService } from 'src/app/shared/services/gui.service';
 import { BANKS } from 'src/app/shared/constants/bankList';
 

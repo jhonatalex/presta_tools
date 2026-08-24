@@ -11,7 +11,7 @@ import { Category } from 'src/app/category/models/category.model';
 import { CategoryService } from 'src/app/category/providers/category.service';
 import { ToolServiceNew } from '../../providers/tool.service';
 import { UtilService } from 'src/app/shared/services/util.service';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { Constants } from 'src/app/shared/constants/settings.class';
 import { User } from 'src/app/register/models/user.model';
 import { ActivatedRoute } from '@angular/router';
@@ -131,62 +131,58 @@ export class UpdateToolComponent implements OnInit{
   //metodo para actualizar en la api
   async onSubmit(form:NgForm):Promise<void>{
 
-    if (this.selectedFile1 && this.selectedFile2 && this.selectedFile3) {
-      const promises = [
-        this. toolService.uploadFile(this.selectedFile1),
-        this. toolService.uploadFile(this.selectedFile2),
-        this. toolService.uploadFile(this.selectedFile3)
-      ];
+    try {
+      let url1 = this.tool.urlImage;
+      let url2 = this.tool.urlImage2;
+      let url3 = this.tool.urlImage3;
 
-      try {
-        // Esperar a que se completen todas las promesas de carga de imágenes
-       const [url1, url2, url3] = await Promise.all(promises);
-
-         //Asignar las URLs a las variables
-        this.toolUpdate.urlImage = url1;
-        this.toolUpdate.urlImage2 = url2;
-        this.toolUpdate.urlImage3 = url3;
-        this.toolUpdate.id = this.tool.id;      
-        this.toolUpdate.name = this.tool.name;        
-        this.toolUpdate.reference = this.tool.reference;     
-        this.toolUpdate.newItem = this.tool.newItem;              
-        this.toolUpdate.model = this.tool.model;                
-        this.toolUpdate.description = this.tool.description;        
-        this.toolUpdate.widgets = this.tool.widgets;        
-        this.toolUpdate.valueCommercial = this.tool.valueCommercial;     
-        this.toolUpdate.valueRent = this.tool.valueRent;        
-        this.toolUpdate.yearBuy = this.tool.yearBuy;                
-        this.toolUpdate.weigt = this.tool.weigt;                 
-        this.toolUpdate.mesuare = this.tool.mesuare;               
-        this.toolUpdate.numberPiece = this.tool.numberPiece;                   
-        this.toolUpdate.termsUse = this.tool.termsUse;                     
-        this.toolUpdate.breakDowns = this.tool.breakDowns;                     
-        this.toolUpdate.timeUse = this.tool.timeUse;      
-        this.toolUpdate.idCategory = this.tool.idCategory;                 
-        this.toolUpdate.idLenders = this.tool.idLenders;        
-        this.toolUpdate.dateUp = this.tool.dateUp;  
-        this.toolUpdate.rate = this.tool.rate;            
-        this.toolUpdate.brand = this.tool.brand;          
-        this.toolUpdate.state = this.tool.state;        
-
-
-
-        if( this.user!=null){
-          this.user = this.utilService.getFromLocalStorage(this.loginKey);
-          this.tool.idLenders=this.user.email;
-        }
-
-
-        // Llamar al siguiente método para consumir el servicio
-        this.toolService.updateTool(this.toolUpdate);
-
-      } catch (error) {
-        // Manejar cualquier error que ocurra durante la carga de imágenes
-        console.error("Error al cargar las imágenes:", error);
-        // Puedes agregar alguna lógica de manejo de errores adicional si es necesario
+      if (this.selectedFile1) {
+        url1 = await this.toolService.uploadFile(this.selectedFile1);
       }
-    }
+      if (this.selectedFile2) {
+        url2 = await this.toolService.uploadFile(this.selectedFile2);
+      }
+      if (this.selectedFile3) {
+        url3 = await this.toolService.uploadFile(this.selectedFile3);
+      }
 
+      this.toolUpdate.urlImage = url1;
+      this.toolUpdate.urlImage2 = url2;
+      this.toolUpdate.urlImage3 = url3;
+      this.toolUpdate.id = this.tool.id;      
+      this.toolUpdate.name = this.tool.name;        
+      this.toolUpdate.reference = this.tool.reference;     
+      this.toolUpdate.newItem = this.tool.newItem;              
+      this.toolUpdate.model = this.tool.model;                
+      this.toolUpdate.description = this.tool.description;        
+      this.toolUpdate.widgets = this.tool.widgets;        
+      this.toolUpdate.valueCommercial = this.tool.valueCommercial;     
+      this.toolUpdate.valueRent = this.tool.valueRent;        
+      this.toolUpdate.yearBuy = this.tool.yearBuy;                
+      this.toolUpdate.weigt = this.tool.weigt;                 
+      this.toolUpdate.mesuare = this.tool.mesuare;               
+      this.toolUpdate.numberPiece = this.tool.numberPiece;                   
+      this.toolUpdate.termsUse = this.tool.termsUse;                     
+      this.toolUpdate.breakDowns = this.tool.breakDowns;                     
+      this.toolUpdate.timeUse = this.tool.timeUse;      
+      this.toolUpdate.idCategory = this.tool.idCategory;                 
+      this.toolUpdate.idLenders = this.tool.idLenders;        
+      this.toolUpdate.dateUp = this.tool.dateUp;  
+      this.toolUpdate.rate = this.tool.rate;            
+      this.toolUpdate.brand = this.tool.brand;          
+      this.toolUpdate.state = this.tool.state;        
+
+      const loggedUser = this.utilService.getFromLocalStorage(this.loginKey);
+      if (loggedUser && loggedUser.email) {
+        this.toolUpdate.idLenders = loggedUser.email;
+      }
+
+      // Llamar al siguiente método para consumir el servicio
+      this.toolService.updateTool(this.toolUpdate);
+
+    } catch (error) {
+      console.error("Error al actualizar la herramienta:", error);
+    }
 
   }
 

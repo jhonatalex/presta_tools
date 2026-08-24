@@ -190,10 +190,11 @@ export class ToolServiceNew {
 
 
   private manageError(e: any) {
-    let errDesc = e['error']['Error']['message'];
-    const tmpErrMsg = e.message ? e.message : JSON.stringify(e);
-    errDesc = errDesc ? errDesc : tmpErrMsg;
-    this.sweetUIService.alertConfirm('Error', `${errDesc}`, 'error');
+    let errDesc = e?.error?.Error?.message || e?.error?.message || e?.message || (typeof e === 'string' ? e : JSON.stringify(e));
+    if (e?.status === 0 || (typeof errDesc === 'string' && (errDesc.includes('Http failure response') || errDesc.includes('Unknown Error')))) {
+      errDesc = `No fue posible conectar con el servidor backend (${environment.baseUrl}). Por favor, verifica que la API esté activa.`;
+    }
+    this.sweetUIService.alertConfirm('Error de Conexión', `${errDesc}`, 'error');
   }
 
 

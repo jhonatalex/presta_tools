@@ -7,7 +7,7 @@ import { REGIONES } from 'src/app/shared/constants/regiones.class';
 import { Constants } from 'src/app/shared/constants/settings.class';
 import { SweetUIService } from 'src/app/shared/services/gui.service';
 import { UtilService } from 'src/app/shared/services/util.service';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { Lender } from '../../models/lender.model';
 import { LenderService } from '../../providers/lender.service';
 import { RegisterRS } from 'src/app/register/models/registerRS.model';

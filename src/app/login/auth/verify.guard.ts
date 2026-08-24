@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Constants } from 'src/app/shared/constants/settings.class';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { SweetUIService } from 'src/app/shared/services/gui.service';
@@ -29,20 +29,24 @@ export class VerifyGuard  {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      var user: User = this.utilService.getFromLocalStorage(this.loginKey);
+      const user: User | null = this.utilService.getFromLocalStorage(this.loginKey);
 
-      if(user.verify){
-        return true
-      }else{
+      if (user && user.verify) {
+        return true;
+      } else {
 
         this.sweetUIService
-        .alertConfirm("Hola", "Para Reservar; Necesitas ser un usuario verificado", 'warning')
+        .alertConfirm("Hola", "Para continuar; Necesitas ser un usuario verificado", 'warning')
         .then(() => {
-          this.utilService.navigateToPath('/verificar-usuario');
+          if (!user) {
+            this.utilService.navigateToPath('/acceso');
+          } else {
+            this.utilService.navigateToPath('/verificar-usuario');
+          }
         })
         .catch(console.warn);
 
-        return false
+        return false;
 
       }
 

@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 import { CallerService } from '../../shared/helpers/caller.service';
 import { CategoryRS } from '../models/categoryRS.model';
 import { ListCategoryComponent } from '../components/list-category/list-category.component';
-import { Observable, catchError, finalize, from, map, tap } from 'rxjs';
+import { Observable, catchError, finalize, from, map, of, tap } from 'rxjs';
 import { Category, CategoryApi } from '../models/category.model';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { ResponseApi } from 'src/app/shared/models/responseApi.model';
@@ -30,13 +30,13 @@ public getListCategoryProviders(): Observable<Category[]> {
   const url = `${environment.baseUrl}${PathCategory.getListCategory}`;
 
   return from(this.callManSV.getData(url)).pipe(
-    map((response: any) => response.data),
+    map((response: any) => response?.data || []),
     tap((categories: Category[]) => {
       //console.log(categories);
     }),
     catchError((error: any) => {
       this.manageError(error);
-      throw error;
+      return of([] as Category[]);
     }),
     finalize(() => {
       this.spinner.hide();
@@ -206,10 +206,11 @@ public getListCategoryProviders(): Observable<Category[]> {
 
 
   private manageError(e: any) {
-    let errDesc = e['error']['Error']['message'];
-    const tmpErrMsg = e.message ? e.message : JSON.stringify(e);
-    errDesc = errDesc ? errDesc : tmpErrMsg;
-    this.sweetUIService.alertConfirm('Error', `${errDesc}`, 'error');
+    let errDesc = e?.error?.Error?.message || e?.error?.message || e?.message || (typeof e === 'string' ? e : JSON.stringify(e));
+    if (e?.status === 0 || (typeof errDesc === 'string' && (errDesc.includes('Http failure response') || errDesc.includes('Unknown Error')))) {
+      errDesc = `No fue posible conectar con el servidor backend (${environment.baseUrl}). Por favor, verifica que la API esté activa.`;
+    }
+    this.sweetUIService.alertConfirm('Error de Conexión', `${errDesc}`, 'error');
   }
 
 }

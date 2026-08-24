@@ -5,7 +5,7 @@ import { User } from 'src/app/register/models/user.model';
 import { Constants } from 'src/app/shared/constants/settings.class';
 import { SweetUIService } from 'src/app/shared/services/gui.service';
 import { UtilService } from 'src/app/shared/services/util.service';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -24,20 +24,24 @@ export class VerifyLenderGuard  {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      var user: User = this.utilService.getFromLocalStorage(this.loginKey);
+      const user: User | null = this.utilService.getFromLocalStorage(this.loginKey);
 
-      if(user.verify && user.typeUser == 'lender' || user.typeUser == 'Manager'){
-        return true
-      }else{
+      if (user && user.verify && (user.typeUser === 'lender' || user.typeUser === 'Manager')) {
+        return true;
+      } else {
 
         this.sweetUIService
         .alertConfirm("Hola", "Para alquilar; Necesitas ser un PrestaTool verificado", 'warning')
         .then(() => {
-          this.utilService.navigateToPath('/verificar-prestatool');
+          if (!user) {
+            this.utilService.navigateToPath('/acceso');
+          } else {
+            this.utilService.navigateToPath('/verificar-prestatool');
+          }
         })
         .catch(console.warn);
 
-        return false
+        return false;
 
       }
 

@@ -5,7 +5,7 @@ import { User } from 'src/app/register/models/user.model';
 import { Constants } from 'src/app/shared/constants/settings.class';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { Tool, ToolResponse } from 'src/app/tool/models/tool.model';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { ToolServiceNew } from '../../providers/tool.service';
 import { PayData } from 'src/app/payment/models/payData.models';
 import { PaymentServices } from 'src/app/payment/providers/payment.service';

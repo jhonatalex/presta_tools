@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { PaymentServices } from '../../providers/payment.service';
 import { ResponseApi } from 'src/app/shared/models/responseApi.model';
 import { Venta } from '../../models/venta.models';
-import { DetailedPeerCertificate } from 'tls';
 import { DetalleVenta } from '../../models/details_venta';
 import { NgxSpinnerService } from 'ngx-spinner';
 

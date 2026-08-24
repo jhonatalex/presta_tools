@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Constants } from 'src/app/shared/constants/settings.class';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { SweetUIService } from 'src/app/shared/services/gui.service';

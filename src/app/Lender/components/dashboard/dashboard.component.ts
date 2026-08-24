@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/login/auth/auth.service';
 import { User } from 'src/app/register/models/user.model';
 import { Constants } from 'src/app/shared/constants/settings.class';
 import { UtilService } from 'src/app/shared/services/util.service';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { Lender } from '../../models/lender.model';
 import { LenderService } from '../../providers/lender.service';
 import { Tool, ToolResponse } from 'src/app/tool/models/tool.model';
@@ -49,9 +49,11 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     //obtener user al iniciar compente
     this.user = this.utilService.getFromLocalStorage(this.loginKey);
-    this.email = this.user.email;
-    //obtener lender por email
-    this.getLender(this.email);
+    if (this.user && this.user.email) {
+      this.email = this.user.email;
+      //obtener lender por email
+      this.getLender(this.email);
+    }
   }
   //cerrar sesión
   signOut(){

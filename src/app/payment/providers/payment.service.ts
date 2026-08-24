@@ -102,9 +102,7 @@ export class PaymentServices {
 
 
   private manageError(e: any) {
-    let errDesc = e['error']['Error']['message'];
-    const tmpErrMsg = e.message ? e.message : JSON.stringify(e);
-    errDesc = errDesc ? errDesc : tmpErrMsg;
+    let errDesc = e?.error?.Error?.message || e?.error?.message || e?.message || (typeof e === 'string' ? e : JSON.stringify(e));
     this.sweetUIService.alertConfirm('Error', `${errDesc}`, 'error');
   }
 

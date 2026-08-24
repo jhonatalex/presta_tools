@@ -1,63 +1,63 @@
-<div class="container fluid px-5">
-    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" responsive="breakpoints"
-        (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-        (beforeChange)="beforeChange($event)">
+<div class="container-fluid px-3 px-md-5">
+  <ngx-slick-carousel class="carousel product-carousel-wrapper" #slickModal="slick-carousel" [config]="slideConfig" responsive="breakpoints"
+      (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+      (beforeChange)="beforeChange($event)">
 
+    <div ngxSlickItem *ngFor="let tool of tools" class="p-2">
+      
+      <!-- MODERN PRODUCT CARD -->
+      <div class="presta-product-card">
+        
+        <!-- STATUS BADGE -->
+        <div class="card-status-badge" [class.badge-reserved]="tool.state === 'rentado'">
+          <span class="badge-dot-indicator"></span>
+          {{ tool.state === 'rentado' ? 'Reservado' : 'Disponible' }}
+        </div>
 
-          <div  ngxSlickItem *ngFor="let tool of tools" class=" h-100 m-1"> <!-- col-12 col-sm-6 col-md-4 col-lg-3 -->
+        <!-- IMAGE WRAPPER -->
+        <div class="card-image-box">
+          <img [src]="tool.urlImage || 'assets/img/tool-placeholder.png'" [alt]="tool.name" class="card-product-img" loading="lazy">
+        </div>
 
-                      <div class="card-product card bg-white">
-
-                        <figure class="card d-flex justify-content-center align-items-center vh30 border-0">
-
-                          <img src={{tool.urlImage}} alt="Imagen dinámica" class="card-img img-fluid">
-                        </figure>
-
-                        <div class="d-flex flex-column justify-content-between align-items-center text-center vh25">
-                          <div class="m-1">
-                            <h6><b>{{tool.name}} {{tool.model}}</b></h6>
-                            <p>Precio Alquiler: {{tool.valueRent}} CLP</p>
-                          </div>
-
-                          <div class="container d-flex justify-content-center" *ngIf="tool.state == 'rentado'">
-
-                            <div >
-                              <img  class="cinta" src="assets/img/rentado2.png" alt="cinta Rentado">
-                            </div>
-
-                            <div class="banner">
-                              <div class="fecha">Hasta: <span id="fechaRentado">{{ tool.dateUp | date: 'dd/MM/yyyy' }}</span></div>
-                            </div>
-                          </div>
-                          <div class="container d-flex justify-content-center" *ngIf="tool.state != 'rentado'">
-                            <a [routerLink]="['/producto/',tool.id]" class="btn-blue-grad d-flex justify-content-center align-items-center mb-3">
-                              Reservar <i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
-                          </div>
-
-
-                        </div>
-                      </div>
-
+        <!-- CONTENT -->
+        <div class="card-product-body">
+          
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <span class="category-meta-text">{{ tool.brand || 'Herramienta' }}</span>
+            <span class="rating-badge">
+              <i class="fa fa-star text-warning"></i> {{ tool.rate || 5.0 }}
+            </span>
           </div>
 
+          <h5 class="card-tool-name" [title]="tool.name + ' ' + (tool.model || '')">
+            {{tool.name}} {{tool.model}}
+          </h5>
 
+          <!-- PRICING -->
+          <div class="card-price-row mt-2 mb-3">
+            <span class="price-val">${{ (tool.valueRent || 0) | number }}</span>
+            <span class="price-period">CLP / día</span>
+          </div>
 
-        <!-- <div ngxSlickItem *ngFor="let tool of tools" class="slide d-flex justify-content-center align-items-center">
-
-            <div class="card shadow div-card d-flex justify-content-center align-items-center">
-                <div class="img-card rounded">
-                    <img src={{tool.urlImage}} alt="imagen" class="max-wh-100 rounded" />
-                </div>
-                <div class="card-body text-center heighthMax">
-                    <div class="card border-0" style="width: 250px; height: 80px;">
-                        <strong>{{tool.name}} {{tool.model}}</strong>
-                        <p>Precio Alquiler: {{tool.valueRent}} CLP</p>
-                    </div>
-                    <a [routerLink]="['/producto/',tool.id]" class="btn-blue-grad d-block">
-                        Reservar
-                        <i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
-                </div>
+          <!-- ACTION BUTTON -->
+          <div class="mt-auto">
+            <div *ngIf="tool.state === 'rentado'" class="reserved-date-box text-center">
+              <i class="fa fa-calendar-times-o me-1"></i> Disponible tras: <strong>{{ tool.dateUp | date: 'dd/MM/yyyy' }}</strong>
             </div>
-        </div> -->
-    </ngx-slick-carousel>
+
+            <div *ngIf="tool.state !== 'rentado'">
+              <a [routerLink]="['/producto/', tool.id]" class="btn-product-reserve">
+                <span>Reservar</span>
+                <i class="fa fa-arrow-right icon-arrow-slide"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </ngx-slick-carousel>
 </div>
