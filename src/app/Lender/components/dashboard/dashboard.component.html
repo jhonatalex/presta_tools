@@ -1,111 +1,202 @@
-<section id="seccion-dashboard">
-    <div class="container-fluid">
-        <div class="row">
-              <nav class="navbar navbar-expand-lg blue-gradient">
-                  <div class="container">
-                      <a class="nav-link nav-color-white navbar-brand">Dashboard</a>
-                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
-                          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                              <form class="d-flex w-100">
-                                <button class="btn btn-link bg-white border-0 " type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                <input class="form-control me-2 ps-5" type="search" placeholder="Buscar Productos" aria-label="Search">
-                              </form>
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 float-end">
-                              <li class="nav-item">
-                                <a class="nav-link nav-color-white" href="">Documentación</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link nav-color-white" href="">Soporte</a>
-                              </li>
-                            </ul>
-                          </div>
-                  </div>
-              </nav>
-              <div class="col col-md-3 pt-5 border">
-                  <div class="d-flex justify-content-center">
-                      <img src="assets/img/userLogin.png" alt="icono" style="width: 30px; height: 30px;" class="fa">
-                      <p class="p-1 text-colr-black">{{lender.name + ' ' + lender.lastName}}</p><br><br>
-                  </div>
-                  <div class="d-flex justify-content-center">
-                      <p>{{lender.email}}</p>
-                  </div>
-                  <div class="d-flex justify-content-center">
-                      <p>valoración: <strong>{{lender.rate}}</strong>  Estrellas</p>
-                  </div>
-                  <div class="container ngx-star">
-                      <form [formGroup]="form1">
-                        <ngx-star-rating formControlName="rating1" class="ngx-star"></ngx-star-rating>
-                      </form>
-                  </div>
-                  <div class="form-group d-flex justify-content-center pt-5 pb-3">
-                      <a class="boton-registrar btn-blue-grad mt-2 p-2 border-0 col-md-4 nav-link active text-center"[routerLink]="['/agregar-producto']">Registrar Producto</a>
-                  </div>
-                  <div class="form-group d-flex justify-content-center pt-3 pb-3">
-                    <a  class="btn btn-lg btn-warning me-1 w-275" [routerLink]="['/actualizar-prestatool']">
-                      <i class="far fa-edit"></i> Actualizar Datos
-                    </a>
-                  </div>
-                  <div class="form-group d-flex justify-content-center pt-3 pb-3">
-                      <button class="form-control-sm btn nav-link btn-logout" (click)='signOut()'> Cerrar Sesión</button>
-                  </div>
-              </div>
-              <div class="col col-md-6 pt-5 border">
-                  <table class="table">
-                      <thead>
-                          <tr>
-                            <th scope="col">Código</th>
-                            <th scope="col">Producto</th>
-                            <th scope="col">Estado</th>
-                            <th scope="col">Valoración</th>
-                            <th>Acciones</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr *ngFor="let tool of tools">
-                              <td class="py-4">{{tool.reference}}</td>
-                              <td class="py-4 w-30">{{tool.name}}</td>
-                              <td class="py-4">{{tool.state}}</td>
-                              <td class="py-4">{{tool.rate}} Estrellas
-                                 <div class="container ngx-star position-relative">
-                                      <form [formGroup]="form2">
-                                          <ngx-star-rating formControlName="rating2"></ngx-star-rating>
-                                      </form>
-                                  </div>
-                              </td>
-                              <td class="py-4">
-                                  <a  class="btn btn-sm btn-warning p-2px ml-26px" [routerLink]="['/actualizar-producto/' + tool.id]">
-                                    <i class="far fa-edit" ></i> Editar
-                                  </a>
-                                  <button class="btn btn-sm btn-danger p-2px" (click)="deleteTool(tool.id)">
-                                    <i class="far fa-trash-alt"></i> Borrar
-                                  </button>
-                              </td>
-                          </tr>
-                      </tbody>
-                  </table>
-              </div>
-              <div class="col col-md-3 pt-5 border">
-                  <div class="row pb-3">
-                      <strong>Ganancias</strong>
-                  </div>
-                  <div class="between pb-3">
-                      <p class="d-inline-block">Saldo:</p>
-                      <p class="d-inline-block">{{lender.balanceWallet? lender.balanceWallet:"0.00"}}$</p>
-                  </div>
-                  <div class="container fluid border-top pb-3 d-flex justify-content-center">
-                      <a class="boton-registrar btn-blue-grad mt-2 p-2 border-0 col-md-4 nav-link active text-center" [routerLink] = "['/panel']">Retirar Dinero</a>
-                  </div>
-              </div>
+<!-- HEADER NAVBAR -->
+<app-header [flaglogo]="false"></app-header>
+
+<div class="dashboard-page-wrapper py-5">
+  <div class="container">
+
+    <!-- WELCOME BAR -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-5">
+      <div>
+        <span class="badge-panel-lender">Panel de Prestamista</span>
+        <h1 class="dashboard-title mt-2 mb-1">
+          ¡Hola, {{ lender.name || user.name || 'Prestamista' }}! 👋
+        </h1>
+        <p class="text-slate-500 mb-0">Gestiona tus herramientas publicadas, arriendos activos y ganancias.</p>
+      </div>
+
+      <div class="d-flex gap-2">
+        <a [routerLink]="['/agregar-producto']" class="btn-primary-grad px-4 py-3">
+          <i class="fa fa-plus me-2"></i>Publicar Herramienta
+        </a>
+      </div>
+    </div>
+
+    <!-- STATS KPI WIDGETS -->
+    <div class="row g-3 mb-5">
+      <div class="col-6 col-lg-3">
+        <div class="kpi-card p-4">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="kpi-label">Herramientas</span>
+            <div class="kpi-icon-box bg-blue-subtle">
+              <i class="fa fa-wrench text-sky-500"></i>
+            </div>
+          </div>
+          <div class="kpi-value">{{ tools ? tools.length : 0 }}</div>
+          <span class="kpi-subtext">Publicadas activas</span>
         </div>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <div class="kpi-card p-4">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="kpi-label">Saldo en Billetera</span>
+            <div class="kpi-icon-box bg-emerald-subtle">
+              <i class="fa fa-money text-emerald-500"></i>
+            </div>
+          </div>
+          <div class="kpi-value">${{ (lender.balanceWallet || 0) | number }} CLP</div>
+          <span class="kpi-subtext text-success"><i class="fa fa-check-circle me-1"></i>Disponible para retiro</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <div class="kpi-card p-4">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="kpi-label">Valoración</span>
+            <div class="kpi-icon-box bg-amber-subtle">
+              <i class="fa fa-star text-amber-500"></i>
+            </div>
+          </div>
+          <div class="kpi-value">{{ lender.rate || 5.0 }} ★</div>
+          <span class="kpi-subtext">Basado en opiniones</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <div class="kpi-card p-4">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="kpi-label">Cuenta</span>
+            <div class="kpi-icon-box bg-purple-subtle">
+              <i class="fa fa-shield text-purple-500"></i>
+            </div>
+          </div>
+          <div class="kpi-value">Verificado</div>
+          <span class="kpi-subtext">Identidad validada</span>
+        </div>
+      </div>
     </div>
-    <div class="form-group mt-3 pt-1 d-flex justify-content-center">
-        <a [routerLink]="['']" class="btn-blue-grad d-flex justify-content-center align-items-center mb-3 ms-3">Ir a Home</a>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <div class="row g-4">
+
+      <!-- TABLA DE HERRAMIENTAS -->
+      <div class="col-lg-8">
+        <div class="dashboard-card p-4">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="card-heading-title mb-0">Mis Herramientas Publicadas</h4>
+            <span class="badge-counter">{{ tools ? tools.length : 0 }} equipos</span>
+          </div>
+
+          <div class="table-responsive" *ngIf="tools && tools.length > 0">
+            <table class="table modern-table align-middle">
+              <thead>
+                <tr>
+                  <th>Herramienta</th>
+                  <th>Precio / Día</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let tool of tools">
+                  <td>
+                    <div class="d-flex align-items-center gap-3">
+                      <img [src]="tool.urlImage || 'assets/img/alquiler-de-herramientas-02.webp'" [alt]="tool.name" class="table-tool-thumb">
+                      <div>
+                        <div class="fw-bold text-slate-900">{{ tool.name }}</div>
+                        <small class="text-slate-500">{{ tool.brand }} {{ tool.model }}</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="fw-bold">${{ (tool.valueRent || 0) | number }} CLP</span>
+                  </td>
+                  <td>
+                    <span class="status-pill" [class.status-rented]="tool.state === 'rentado'">
+                      {{ tool.state === 'rentado' ? 'Rentado' : 'Disponible' }}
+                    </span>
+                  </td>
+                  <td>
+                    <div class="d-flex gap-2">
+                      <a [routerLink]="['/actualizar-producto', tool.id]" class="btn-action-icon btn-edit-icon" title="Editar">
+                        <i class="fa fa-pencil"></i>
+                      </a>
+                      <button (click)="deleteTool(tool.id)" class="btn-action-icon btn-delete-icon" title="Eliminar">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Empty state si no hay herramientas -->
+          <div class="text-center py-5" *ngIf="!tools || tools.length === 0">
+            <div class="empty-icon-circle mx-auto mb-3">
+              <i class="fa fa-wrench"></i>
+            </div>
+            <h5 class="fw-bold text-slate-800">Aún no has publicado herramientas</h5>
+            <p class="text-slate-500 mb-4">Comienza a rentabilizar tus equipos publicándolos hoy mismo.</p>
+            <a [routerLink]="['/agregar-producto']" class="btn-primary-grad px-4 py-2">
+              Publicar mi primera herramienta
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SIDEBAR ACCIONES & PERFIL -->
+      <div class="col-lg-4">
+        
+        <!-- CARD PERFIL -->
+        <div class="dashboard-card p-4 mb-4">
+          <div class="text-center pb-3 border-bottom">
+            <div class="lender-profile-avatar mx-auto mb-3">
+              <i class="fa fa-user"></i>
+            </div>
+            <h5 class="fw-bold text-slate-900 mb-1">{{ lender.name }} {{ lender.lastName }}</h5>
+            <p class="text-slate-500 fs-7 mb-0">{{ lender.email || user.email }}</p>
+          </div>
+
+          <div class="py-3">
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-slate-500 fs-7">Comuna:</span>
+              <span class="fw-semibold fs-7">{{ lender.commune || 'Santiago' }}</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span class="text-slate-500 fs-7">Teléfono:</span>
+              <span class="fw-semibold fs-7">{{ lender.telephone || user.telephone || 'No registrado' }}</span>
+            </div>
+          </div>
+
+          <a [routerLink]="['/actualizar-prestatool']" class="btn-outline-slate w-100 py-2 mt-2">
+            <i class="fa fa-edit me-1"></i> Editar Información
+          </a>
+        </div>
+
+        <!-- CARD BILLETERA / RETIRO -->
+        <div class="dashboard-card p-4">
+          <h5 class="card-heading-title mb-3">Retiro de Fondos</h5>
+          <p class="text-slate-500 fs-7">Transfiere tus ganancias acumuladas a tu cuenta bancaria registrada.</p>
+          
+          <button class="btn-primary-grad w-100 py-3 mt-2" [disabled]="!lender.balanceWallet || lender.balanceWallet === '0'">
+            <i class="fa fa-bank me-2"></i>Solicitar Transferencia
+          </button>
+
+          <div class="text-center mt-4">
+            <button (click)="signOut()" class="btn-logout-link">
+              <i class="fa fa-sign-out me-1"></i> Cerrar Sesión
+            </button>
+          </div>
+        </div>
+
+      </div>
+
     </div>
-</section>
 
+  </div>
+</div>
 
-
-
-
+<!-- FOOTER -->
+<app-footer></app-footer>

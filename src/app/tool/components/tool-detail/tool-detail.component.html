@@ -1,203 +1,252 @@
-<!--SECCION NAVBAR-->
+<!-- HEADER -->
 <app-header [flaglogo]="false"></app-header>
 
+<div class="tool-detail-page">
 
-    <!--SECCION NOMBRE-MODELO BUSCAR TOOL-->
-    <section id="seccion-buscar" class="fondo py-5 col-sm-12 mt-48">
+  <!-- BREADCRUMB -->
+  <div class="detail-breadcrumb-bar py-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a routerLink="/" class="breadcrumb-link"><i class="fa fa-home me-1"></i>Inicio</a></li>
+          <li class="breadcrumb-item"><a routerLink="/" class="breadcrumb-link">{{ category?.titleCat || 'Herramientas' }}</a></li>
+          <li class="breadcrumb-item active text-truncate" aria-current="page">{{ tool.name }}</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
 
-      <div class="container col-md-10 pt-2">
-        <div class="row pt-5 estilos-contenedor">
-          <div class="col-md-6 col-sm-12">
+  <!-- MAIN PRODUCT SECTION -->
+  <section class="tool-main-section py-4 py-lg-5">
+    <div class="container">
+      <div class="row g-4 g-lg-5">
 
-            <section class="seccion-nombre-producto">
-              <h1 class="margin-title text-size-1 "><strong class="title-product">{{tool.name}}</strong></h1>
-              <div class="row pt-2">
-                  <div class="col">
-                    <form [formGroup]="form2">
-                      <ngx-star-rating formControlName="rating2" class="rating-top"></ngx-star-rating>
-                    </form>
-                  </div>
-                  <div class="col">
-                    <p class="marginSmall">Propietario: {{lender?.name + " " + lender?.lastName}}</p>
-                  </div>
-              </div>
-            </section>
-                
-          </div>
-            <div class="col-md-6 col-sm-12 contenedor-buscar mt-2">
-
-              <section class="seccion-buscar-producto">
-                <button class="btn btn-light border-0"><i class="fa fa-search" aria-hidden="true"></i></button>
-                <input type="text" placeholder="Buscar Producto" class="input-buscar fondo">
-              </section>
-              
+        <!-- COLUMNA IZQUIERDA: GALERÍA DE IMÁGENES -->
+        <div class="col-lg-6">
+          <div class="tool-gallery-card">
+            
+            <!-- Badge flotante de estado -->
+            <div class="gallery-status-badge" [class.badge-reserved]="tool.state === 'rentado'">
+              <span class="badge-dot"></span>
+              <span>{{ tool.state === 'rentado' ? 'Reservado' : 'Disponible para arriendo' }}</span>
             </div>
+
+            <!-- Imagen Principal -->
+            <div class="main-image-container">
+              <img
+                [src]="selectedImg || tool.urlImage || 'assets/img/alquiler-de-herramientas-02.webp'"
+                [alt]="tool.name"
+                class="tool-main-img"
+                id="preview">
+            </div>
+
+            <!-- Miniaturas -->
+            <div class="thumbnails-row mt-3 d-flex gap-2 justify-content-center" *ngIf="tool.urlImage2 || tool.urlImage3">
+              <div
+                class="thumb-box"
+                [class.thumb-active]="!selectedImg || selectedImg === tool.urlImage"
+                (click)="selectedImg = tool.urlImage">
+                <img [src]="tool.urlImage" alt="Vista 1" class="thumb-img">
+              </div>
+              <div
+                *ngIf="tool.urlImage2"
+                class="thumb-box"
+                [class.thumb-active]="selectedImg === tool.urlImage2"
+                (click)="selectedImg = tool.urlImage2">
+                <img [src]="tool.urlImage2" alt="Vista 2" class="thumb-img">
+              </div>
+              <div
+                *ngIf="tool.urlImage3"
+                class="thumb-box"
+                [class.thumb-active]="selectedImg === tool.urlImage3"
+                (click)="selectedImg = tool.urlImage3">
+                <img [src]="tool.urlImage3" alt="Vista 3" class="thumb-img">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: INFORMACIÓN & RESERVA -->
+        <div class="col-lg-6">
+          <div class="tool-info-card">
+
+            <!-- Marca y Categoría -->
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="tool-brand-pill">{{ tool.brand || 'Herramienta Profesional' }}</span>
+              <span class="tool-category-badge" *ngIf="category?.titleCat">
+                <i class="fa fa-tag me-1"></i>{{ category?.titleCat }}
+              </span>
+            </div>
+
+            <!-- Nombre de la Herramienta -->
+            <h1 class="tool-detail-title mt-1">{{ tool.name }}</h1>
+            <p class="tool-model-code text-slate-500" *ngIf="tool.model || tool.reference">
+              <span *ngIf="tool.model">Modelo: <strong>{{ tool.model }}</strong></span>
+              <span *ngIf="tool.reference" class="ms-3">Ref: <code>{{ tool.reference }}</code></span>
+            </p>
+
+            <!-- Valoración -->
+            <div class="d-flex align-items-center gap-2 mb-4">
+              <div class="stars-rating-badge">
+                <i class="fa fa-star text-warning"></i>
+                <span class="fw-bold ms-1">{{ tool.rate || 5.0 }}</span>
+              </div>
+              <span class="text-slate-400">·</span>
+              <span class="text-slate-600 fs-7">Valoración de arrendatarios</span>
+            </div>
+
+            <!-- CARD DE PRECIO Y RESERVA -->
+            <div class="tool-pricing-box p-4 mb-4">
+              <div class="d-flex justify-content-between align-items-baseline mb-3">
+                <div>
+                  <span class="price-currency">$</span>
+                  <span class="price-amount">{{ (tool.valueRent || 12500) | number }}</span>
+                  <span class="price-period">CLP / día</span>
+                </div>
+                <span class="text-success fs-7 fw-semibold"><i class="fa fa-check-circle me-1"></i>Mejor tarifa garantizada</span>
+              </div>
+
+              <!-- CTA RESERVA -->
+              <div *ngIf="tool.state !== 'rentado'">
+                <a [routerLink]="['/confirma-renta', this.id]" class="btn-reserve-main">
+                  <span>Solicitar Reserva</span>
+                  <i class="fa fa-calendar-check-o ms-2"></i>
+                </a>
+              </div>
+
+              <div *ngIf="tool.state === 'rentado'" class="alert-rented-box p-3 text-center">
+                <i class="fa fa-clock-o text-warning me-2"></i>
+                <span>Herramienta en uso. Disponible a partir del <strong>{{ tool.dateUp | date: 'dd/MM/yyyy' }}</strong></span>
+              </div>
+
+              <!-- Beneficios Rápidos -->
+              <div class="quick-perks-grid mt-3 pt-3 border-top">
+                <div class="perk-item">
+                  <i class="fa fa-shield text-sky-500"></i>
+                  <span>Garantía de equipo</span>
+                </div>
+                <div class="perk-item">
+                  <i class="fa fa-lock text-sky-500"></i>
+                  <span>Pago 100% protegido</span>
+                </div>
+                <div class="perk-item">
+                  <i class="fa fa-handshake-o text-sky-500"></i>
+                  <span>Trato directo con prestamista</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ESPECIFICACIONES TÉCNICAS -->
+            <div class="specs-section mb-4">
+              <h5 class="section-subheading mb-3">Especificaciones Técnicas</h5>
+              <div class="specs-grid">
+                <div class="spec-card">
+                  <span class="spec-label">Marca</span>
+                  <span class="spec-value">{{ tool.brand || 'No especificada' }}</span>
+                </div>
+                <div class="spec-card">
+                  <span class="spec-label">Modelo</span>
+                  <span class="spec-value">{{ tool.model || 'Estándar' }}</span>
+                </div>
+                <div class="spec-card">
+                  <span class="spec-label">Año</span>
+                  <span class="spec-value">{{ tool.yearBuy || '2024' }}</span>
+                </div>
+                <div class="spec-card">
+                  <span class="spec-label">Accesorios</span>
+                  <span class="spec-value">{{ tool.widgets ? 'Incluidos' : 'No incluidos' }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- DESCRIPCIÓN -->
+            <div class="description-section mb-4">
+              <h5 class="section-subheading mb-2">Descripción del Equipo</h5>
+              <p class="tool-desc-text">
+                {{ tool.description || 'Herramienta profesional en excelentes condiciones de funcionamiento, lista para ser retirada y utilizada en tus proyectos.' }}
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN INFORMACIÓN DEL PRESTAMISTA -->
+  <section class="lender-section py-4 py-lg-5">
+    <div class="container">
+      <div class="lender-card p-4 p-md-5">
+        <div class="row align-items-center g-4">
+          
+          <!-- Avatar y Nombre -->
+          <div class="col-lg-4 text-center text-lg-start">
+            <div class="d-flex flex-column flex-lg-row align-items-center gap-3">
+              <div class="lender-avatar-circle">
+                <i class="fa fa-user"></i>
+              </div>
+              <div>
+                <span class="badge-verified"><i class="fa fa-check"></i> Prestamista Verificado</span>
+                <h3 class="lender-name mt-2 mb-1">{{ lender?.name || 'Humberto' }} {{ lender?.lastName || 'Barazarte' }}</h3>
+                <p class="text-slate-500 fs-7 mb-0">
+                  <i class="fa fa-map-marker text-danger me-1"></i>{{ lender?.commune || 'Santiago Centro' }}, {{ lender?.region || 'Región Metropolitana' }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Estadísticas de Confianza -->
+          <div class="col-lg-5">
+            <div class="row g-3 text-center">
+              <div class="col-4">
+                <div class="lender-stat-box">
+                  <div class="lender-stat-num">+100</div>
+                  <div class="lender-stat-lbl">Arriendos</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="lender-stat-box">
+                  <div class="lender-stat-num">100%</div>
+                  <div class="lender-stat-lbl">A tiempo</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="lender-stat-box">
+                  <div class="lender-stat-num">5.0 ★</div>
+                  <div class="lender-stat-lbl">Reputación</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contacto Prestamista -->
+          <div class="col-lg-3 text-center text-lg-end">
+            <a [routerLink]="['/contacto']" class="btn-lender-inquire">
+              <i class="fa fa-comment-o me-2"></i>Consultar dudas
+            </a>
+          </div>
+
         </div>
       </div>
+    </div>
+  </section>
 
-    </section> 
-
-
-      <!--seccion galeria-->
-    <section id="seccion-galeria-imagen" class="fondo pt-4 pb-5 col-sm-12">
-        <div class="container  col-md-10">
-          <div class="row py-2 div-cards">
-
-
-                  <!--GALERIA IMAGENES HERRAMIENTA-->
-                <div class="container col-md-6 col-sm-12">
-
-                  <section class="seccion-imagen">
-                    <div class="img-container col-sm-12">
-                      <img src="{{tool.urlImage}}" alt="image" id="preview" class="img-fluid card shadow imagen-big">
-                      <div class="img-prev text-center card-body">
-
-                        <section class="seccion-img-small col-sm-12">
-                          <div class="img-slide active">
-                            <img src="{{tool.urlImage}}" alt="image1" class="img-fluid card shadow imagen-small" appImageGallery>
-                          </div>
-                          <div class="img-slide">
-                            <img src="{{tool.urlImage2}}" alt="image2" class="img-fluid card shadow imagen-small" appImageGallery>
-                          </div>
-                          <div class="img-slide">
-                            <img src="{{tool.urlImage3}}" alt="image3" class="img-fluid card shadow imagen-small" appImageGallery>
-                          </div>
-                        </section>
-                        
-                      </div>
-                  </div>
-                  </section>
-                    
-                </div>
-
-
-
-              <!--DESCRIPCION HERRAMIENTA-->
-              <div class="card shadow col-md-6 col-sm-12 div-producto">
-
-                <section class="seccion-producto">
-                  <h2 class="mt-2 text-center"><strong>{{tool.name}}</strong></h2>
-                  <hr class="bg-dark">
-                  <p class="margin"><strong>Codigo: </strong>{{tool.reference}}</p>
-                  <p><strong>Categoria: </strong>{{category?.titleCat}}</p>
-                  <p class="feature mb-2"><strong>CARACTERÍSTICAS:</strong></p>
-                  <h6 class="margin"><strong> Marca: </strong>{{tool.brand}}</h6>
-                  <h6 class="margin"><strong> Modelo: </strong>{{tool.model}}</h6>
-                  <h6 class="margin"><strong> Año: </strong>{{tool.yearBuy}}</h6>
-                  <h6 class="margin">
-                    <strong> Acesorios: </strong>
-                    <input type="checkbox" [checked]="tool.widgets">
-                  </h6>
-
-                  <p class="text-justify my-2"><strong>DESCRIPCIÓN:</strong> <br> {{tool.description}}</p><br>
-                 
-
-                 <div class="container ngx-star">
-                  <form [formGroup]="form1">
-                    <ngx-star-rating formControlName="rating1" class="ngx-star"></ngx-star-rating>
-                  </form>
-                </div>
-
-                  <div class="container-rating">
-                    <p class="ms-2">valoración: <strong>{{tool.rate}}</strong>  Estrellas</p>
-                  </div>
-                
-                        
-                  <a [routerLink]="['/confirma-renta',this.id]" class="btn-blue-grad mb-2 px-5 py-2 border-0 col-md-8 mx-auto">Reservar<i class="fa fa-shopping-cart ms-2" aria-hidden="true"></i></a>
-                </section>
-          
-              </div>
-
-          </div>
+  <!-- PRODUCTOS RELACIONADOS -->
+  <section class="related-tools-section py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <span class="section-badge">Explora más</span>
+          <h2 class="section-title mt-1">Otras herramientas destacadas</h2>
         </div>
-    </section>
+      </div>
+      <app-related-featured-products></app-related-featured-products>
+    </div>
+  </section>
 
-        
+  <!-- FOOTER -->
+  <app-footer></app-footer>
 
-
-
-
-
-
-    <!--SECCIÓN INFORMACIÓN PROPIETARIO-->
-    <section id="informacion-propietario" class="fondo py-5 seccion-propietario col-sm-12">
-        <div class="card shadow content-propietario mx-auto ps-3">
-            <div class="row">
-
-                <div class="col d-grid p-owner">
-                    <strong class="titulo-negrita py-2">Información del Propietario</strong>
-                    <p><strong class="margin">Nombre:   </strong> {{ lender?.name}}  {{lender?.lastName}} </p>
-                    <p><strong class="margin">Region:   </strong>{{lender?.region}}   </p>
-                    <p><strong class="margin">Comuna:   </strong>{{lender?.commune}} </p>
-                </div>
-
-                <div class="col d-flex flex-column justify-content-center align-items-center pt-2 div-estadisticas">
-
-                    <strong class="titulo-negrita py-2">Estadisticas Propietario</strong>
-                    <ul aria-hidden="true" class="ui-thermometer" value="5">
-                      <li class="ui-thermometer__level ui-thermometer__level--1"></li>
-                      <li class="ui-thermometer__level ui-thermometer__level--2"></li>
-                      <li class="ui-thermometer__level ui-thermometer__level--3"></li>
-                      <li class="ui-thermometer__level ui-thermometer__level--4"></li>
-                      <li class="ui-thermometer__level ui-thermometer__level--5"></li>
-                    </ul>
-
-                    <div class="row item-servico ">
-                      <div class="col text-center ">
-                        <i class="  fa fa-line-chart fa-3x" aria-hidden="true"></i>
-                        <p class="text-small">+100 arriendos en los últimos 90 días</p>
-                      </div>
-                      <div class="col text-center ">
-                        <i class="  fa fa-handshake-o fa-3x" aria-hidden="true"></i>
-                        <p class="text-small">Brinda un buen servicio</p>
-                      </div>
-                      <div class="col text-center ">
-                        <i class=" fa fa-cubes fa-3x" aria-hidden="true"></i>
-                        <p class="text-small">entrega su equipo en buen estado</p>
-                      </div>
-                    </div>
-
-                </div>
-
-
-                <div class="col d-flex flex-column justify-content-center align-items-center pt-2">
-                    <div class="div-logo-simple">
-                        <img src="assets/img/LogoSimple.png" alt="logoSimple" class="img-fluid logo-simple">
-                    </div>
-                    <div class="valoracion">
-                        <p class="negrita text-center margin">Propietario</p>
-                            <form [formGroup]="form2">
-                              <div class="cont div-star">
-                                  <div class="stars">
-                                    <ngx-star-rating formControlName="rating2" [disabled] ="true"></ngx-star-rating>
-                                  </div>
-                                  <div>
-                                    <p>valoración: <strong>{{lender?.rate}}</strong>  Estrellas</p>
-                                  </div>
-                                </div>
-                          </form>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="productos-relacionados" class="fondo seccion-slider pb-5 col-sm-12">
-        <!--SLIDER PRODUCTOS RELACIONADOS-->
-        <div class="card shadow content-products pt-100 mx-auto">
-            <strong class="ps-3 pt-2  pb-0 titulo-negrita">Productos destacados</strong>
-            <app-related-featured-products></app-related-featured-products>
-        </div>
-    </section>
-
-
-<!--SECCION FOOTER-->
-<section class="footer"><app-footer></app-footer></section>
-
-
-
-
-
-
-
+</div>

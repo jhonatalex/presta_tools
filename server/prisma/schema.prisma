@@ -1,0 +1,116 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  password     String
+  name         String
+  lastName     String
+  rut          String?   @unique
+  telephone    String
+  role         String    @default("user") // "user" | "lender" | "admin" | "Manager"
+  typeUser     String    @default("user")
+  isVerified   Boolean   @default(false)
+  verify       Boolean   @default(false)
+  avatarUrl    String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  // Relaciones
+  publishedTools Tool[]   @relation("OwnerTools")
+  rentalsMade    Rental[] @relation("RenterRentals")
+  lenderProfile  Lender?
+
+  @@map("users")
+}
+
+model Lender {
+  id           String   @id @default(uuid())
+  userId       String   @unique
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  companyName  String?
+  taxId        String?  // RUT Empresa
+  address      String?
+  city         String?
+  verified     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("lenders")
+}
+
+model Category {
+  idCat        String   @id @default(uuid())
+  titleCat     String   @unique
+  descripCat   String?
+  urlImagen    String?
+  createdAt    DateTime @default(now())
+
+  tools        Tool[]
+
+  @@map("categories")
+}
+
+model Tool {
+  id           String    @id @default(uuid())
+  name         String
+  brand        String
+  model        String?
+  description  String
+  valueRent    Float     // Precio diario en CLP
+  state        String    @default("disponible") // "disponible" | "rentado" | "mantenimiento"
+  city         String    @default("Santiago")
+  commune      String    @default("Santiago Centro")
+  address      String?
+  urlImage     String    // Imagen principal
+  images       String?   // JSON array de imágenes secundarias
+  rate         Float     @default(5.0)
+  dateUp       DateTime? // Fecha hasta la que está rentado (si state == 'rentado')
+
+  // Relaciones
+  ownerId      String
+  owner        User      @relation("OwnerTools", fields: [ownerId], references: [id], onDelete: Cascade)
+  
+  idCat        String
+  category     Category  @relation(fields: [idCat], references: [idCat])
+  
+  rentals      Rental[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@map("tools")
+}
+
+model Rental {
+  id           String    @id @default(uuid())
+  startDate    DateTime
+  endDate      DateTime
+  totalDays    Int
+  dailyPrice   Float
+  totalAmount  Float
+  state        String    @default("pendiente") // "pendiente" | "aprobado" | "rechazado" | "rentado" | "completado" | "cancelado"
+  notes        String?
+  
+  // Transacción simulada
+  transactionToken String?
+  paymentStatus    String @default("pendiente") // "pendiente" | "pagado" | "fallido"
+
+  // Relaciones
+  toolId       String
+  tool         Tool      @relation(fields: [toolId], references: [id])
+  
+  renterId     String
+  renter       User      @relation("RenterRentals", fields: [renterId], references: [id])
+
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@map("rentals")
+}

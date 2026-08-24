@@ -22,6 +22,7 @@ export class ToolDetailComponent implements OnInit {
 
   public tool: ToolResponse;
   public id: number;
+  public selectedImg: string = '';
   public rating = new FormControl();
   public toolCat: any;
   public category: Category|null =null;

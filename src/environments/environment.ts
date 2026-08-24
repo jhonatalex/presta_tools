@@ -16,7 +16,7 @@ export const environment = {
     measurementId: 'G-H2VVQGELFY',
   },
   production: false,
-  baseUrl: new Constants().getProdApiURL(),
+  baseUrl: new Constants().getTestApiURL(),
 };
 
 /*

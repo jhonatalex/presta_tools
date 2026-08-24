@@ -1,118 +1,206 @@
-<!--SECCION NAVBAR-->
+<!-- HEADER -->
 <app-header [flaglogo]="false"></app-header>
 
+<div class="checkout-page-wrapper">
 
-<section id="seccion-confirma renta py-5 fondo">
-    <div class="container col-md-12">
+  <!-- STEP BAR -->
+  <div class="checkout-steps-bar py-3">
+    <div class="container">
+      <div class="d-flex justify-content-center align-items-center gap-4">
+        <div class="step-item step-completed">
+          <span class="step-num"><i class="fa fa-check"></i></span>
+          <span class="step-text">Herramienta</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step-item step-active">
+          <span class="step-num">2</span>
+          <span class="step-text">Datos y Fechas</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step-item">
+          <span class="step-num">3</span>
+          <span class="step-text">Pago Seguro</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <section class="checkout-main-section py-5">
+    <div class="container">
+      
+      <form #confirmForm="ngForm" (ngSubmit)="onSubmit(confirmForm)">
+        <div class="row g-4 g-lg-5">
 
-      <form class="form-group" #confirmForm="ngForm" (ngSubmit)="onSubmit(confirmForm)">
-
-        <div class="row  maxWidth">
-            <div class="col-md-7 py-5">
-                <div class="card shadow borderRadius ms-4 p-2 div-titulo">
-                    <h3 class="text-center"><strong>Confirmación de renta</strong></h3>
+          <!-- COLUMNA IZQUIERDA: FORMULARIO DE FACTURACIÓN Y FECHAS -->
+          <div class="col-lg-7">
+            
+            <!-- TARJETA FECHAS DE ARRIENDO -->
+            <div class="checkout-card p-4 p-md-4 mb-4">
+              <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="card-icon-badge">
+                  <i class="fa fa-calendar"></i>
                 </div>
-                <div class="card shadow borderRadius ms-4 p-2 mt-5 pt-5 div-formulario">
-                    <h5 class="ms-4 mt-2"><strong>Datos de Facturación</strong></h5>
-
-                            <div class="row">
-                                    <div class="col">
-                                        <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                            <label for="nombre" class="form-label mb-0">Nombre</label>
-                                            <input type="text" #name="ngModel" [(ngModel)]="user.name" class="form-control-sm border" name="nombre" id="nombre" required>
-                                            <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">Nombre no puede quedar vacío</small>
-                                        </div>
-                                        <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                            <label for="telefono" class="form-label mb-0">Teléfono</label>
-                                            <input type="text" #telephone="ngModel" [(ngModel)]="user.telephone" class="form-control-sm border" name="telefono" id="telefono" required>
-                                            <small *ngIf="!telephone.valid && telephone.touched" class="invalid-feedback d-block">telefono no puede quedar vacío</small>
-                                        </div>
-                                        <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                            <label for="region" class="form-label mb-0">Región</label>
-                                            <input type="text" #region="ngModel" [(ngModel)]="user.region" class="form-control-sm border" name="region" id="region" required>
-                                            <small *ngIf="!region.valid && region.touched" class="invalid-feedback d-block">región no puede quedar vacía</small>
-                                        </div>
-                                        <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
-                                          <label for="starDate">Fecha inicial de arriendo</label>
-                                          <input id="starDate" class="form-control w-92" type="date" [min]="minStrStart"  [value]="minStrStart" (change)="setInitialDate($event)" required/>
-                                        </div>
-
-
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                            <label for="apellido" class="form-label mb-0">Apellido</label>
-                                            <input type="text" #lastName=ngModel [(ngModel)]="user.lastName" class="form-control-sm border" name="apellido" id="apellido" required>
-                                            <small *ngIf="!lastName.valid && lastName.touched" class="invalid-feedback d-block">apellido no puede quedar vacío</small>
-                                        </div>
-                                        <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                            <label for="email" class="form-label mb-0">Correo electrónico</label>
-                                            <input type="email" #email="ngModel"  [(ngModel)]="user.email" class="form-control-sm border" name="email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                                            <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">email inválido</small>
-                                        </div>
-                                        <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                            <label for="comuna" class="form-label mb-0">Comuna</label>
-                                            <input type="text" #commune="ngModel"  [(ngModel)]="user.commune" class="form-control-sm border" name="comuna" id="comuna" required>
-                                            <small *ngIf="!commune.valid && commune.touched" class="invalid-feedback d-block">ingrese comuna</small>
-                                        </div>
-                                        <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4">
-                                          <label for="starDate">Fecha Final de arriendo</label>
-                                          <input id="endDate" class="form-control w-92" type="date" [min]="minStrEnd" required (change)="setEndDate($event)" required/>
-                                          <small *ngIf="!this.endDate" class="invalid-feedback d-block">selecione una fecha</small>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="form-group d-flex flex-column mt-4 col-md-11 ms-4 pt-2 pb-5">
-                                        <label for="direccion" class="form-label mb-0">Dirección</label>
-                                        <input type="direccion"  #address="ngModel" [(ngModel)]="user.address" class="form-control-sm border width-90" name="direccion" id="direccion" required>
-                                        <small *ngIf="!address.valid && address.touched" class="invalid-feedback d-block">escriba su dirección</small>
-                                    </div>
-
-                            </div>
+                <div>
+                  <h4 class="card-heading-title mb-1">Período de Arriendo</h4>
+                  <p class="text-slate-500 fs-7 mb-0">Selecciona las fechas de inicio y devolución</p>
                 </div>
+              </div>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="field-label">Fecha de inicio</label>
+                  <div class="input-wrapper">
+                    <input
+                      id="starDate"
+                      class="modern-input"
+                      type="date"
+                      [min]="minStrStart"
+                      [value]="minStrStart"
+                      (change)="setInitialDate($event)"
+                      required>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="field-label">Fecha de devolución</label>
+                  <div class="input-wrapper">
+                    <input
+                      id="endDate"
+                      class="modern-input"
+                      type="date"
+                      [min]="minStrEnd"
+                      (change)="setEndDate($event)"
+                      required>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Contador de Días -->
+              <div class="days-calculated-badge mt-3" *ngIf="days > 0">
+                <i class="fa fa-clock-o me-2"></i>
+                <span>Duración seleccionada: <strong>{{ days }} día(s)</strong> de arriendo</span>
+              </div>
             </div>
 
-            <div class="col-md-5 py-5">
-                <div class="card shadow borderRadius ms-4 me-4 p-2 h-100">
-                    <h5 class="text-center pt-3"><strong>Tu orden</strong></h5>
-                        <div class="text-center mt-2">
-                            <h6>Producto: {{tool.name}} {{tool.brand}}</h6>
-                        </div>
-                        <div class="text-center">
-                            <img src="{{tool.urlImage}}" alt="image tool" class="img-card">
-                        </div>
-                        <div class="text-center py-3">
-                            <h6><strong> Propietario:</strong> {{nameLender + ' ' + lastNameLender}}</h6>
-                        </div>
-                        <div class="d-flex justify-content-between px-5 mt-3">
-                            <h6><strong>Dias:</strong></h6>
-                            <h6>{{this.days}}</h6>
-                        </div>
-                        <div class="d-flex justify-content-between px-5 mt-4">
-                          <h6><strong>Costo:</strong></h6>
-                          <h6>{{tool.valueRent}} CLP</h6>
-                      </div>
-                        <div class="d-flex justify-content-between px-5 mt-4 margin-botom">
-                            <h6><strong>Total:</strong></h6>
-                            <h6>{{this.total}} CLP</h6>
-                        </div>
-                   <input type="submit" class="btn-blue-grad mt-1  px-5 border-0  mx-auto w-50" value="Realizar Pago" [disabled]="confirmForm.invalid">
-                     <!--<button class="btn-blue-grad mt-1  px-5 border-0  mx-auto w-50" (click)="iniciarTransaccion()">Pagar</button>-->
-                    <img class=""  src="assets/img/webpay.png" alt="webpay" >
-                  </div>
+            <!-- TARJETA DATOS DE FACTURACIÓN Y ENTREGA -->
+            <div class="checkout-card p-4 p-md-4">
+              <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="card-icon-badge">
+                  <i class="fa fa-id-card-o"></i>
+                </div>
+                <div>
+                  <h4 class="card-heading-title mb-1">Datos de Facturación y Contacto</h4>
+                  <p class="text-slate-500 fs-7 mb-0">Información para coordinar la entrega y el comprobante</p>
+                </div>
               </div>
-          </div>
-      </form>
 
-      <form  [action]="url" method="post"  id="returForm" target="_self">
-        <input type="hidden" name="token_ws" [value]="token" />
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="field-label">Nombre</label>
+                  <input type="text" #name="ngModel" [(ngModel)]="user.name" class="modern-input" name="nombre" id="nombre" placeholder="Juan" required>
+                  <small *ngIf="!name.valid && name.touched" class="field-error">Ingresa tu nombre</small>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="field-label">Apellido</label>
+                  <input type="text" #lastName="ngModel" [(ngModel)]="user.lastName" class="modern-input" name="apellido" id="apellido" placeholder="Pérez" required>
+                  <small *ngIf="!lastName.valid && lastName.touched" class="field-error">Ingresa tu apellido</small>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="field-label">Teléfono</label>
+                  <input type="text" #telephone="ngModel" [(ngModel)]="user.telephone" class="modern-input" name="telefono" id="telefono" placeholder="+56 9 1234 5678" required>
+                  <small *ngIf="!telephone.valid && telephone.touched" class="field-error">Ingresa tu teléfono</small>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="field-label">Correo electrónico</label>
+                  <input type="email" #email="ngModel" [(ngModel)]="user.email" class="modern-input" name="email" id="email" placeholder="tu@correo.com" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                  <small *ngIf="!email.valid && email.touched" class="field-error">Correo electrónico inválido</small>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="field-label">Región</label>
+                  <input type="text" #region="ngModel" [(ngModel)]="user.region" class="modern-input" name="region" id="region" placeholder="Región Metropolitana" required>
+                  <small *ngIf="!region.valid && region.touched" class="field-error">Ingresa tu región</small>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="field-label">Comuna</label>
+                  <input type="text" #commune="ngModel" [(ngModel)]="user.commune" class="modern-input" name="comuna" id="comuna" placeholder="Santiago Centro" required>
+                  <small *ngIf="!commune.valid && commune.touched" class="field-error">Ingresa tu comuna</small>
+                </div>
+
+                <div class="col-12">
+                  <label class="field-label">Dirección de despacho / retiro</label>
+                  <input type="text" #address="ngModel" [(ngModel)]="user.address" class="modern-input" name="direccion" id="direccion" placeholder="Calle, Número, Depto" required>
+                  <small *ngIf="!address.valid && address.touched" class="field-error">Ingresa tu dirección</small>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- COLUMNA DERECHA: RESUMEN DE LA ORDEN STICKY -->
+          <div class="col-lg-5">
+            <div class="order-summary-card p-4 sticky-top-summary">
+              <h4 class="card-heading-title mb-3">Resumen de tu Arriendo</h4>
+
+              <!-- Preview del Producto -->
+              <div class="product-mini-preview d-flex gap-3 align-items-center p-3 mb-4">
+                <img [src]="tool.urlImage || 'assets/img/alquiler-de-herramientas-02.webp'" [alt]="tool.name" class="mini-tool-thumb">
+                <div>
+                  <span class="mini-brand-badge">{{ tool.brand || 'Herramienta' }}</span>
+                  <h6 class="mini-tool-title mt-1 mb-0">{{ tool.name }}</h6>
+                  <small class="text-slate-500">Propietario: {{ nameLender || 'Humberto' }} {{ lastNameLender || 'Barazarte' }}</small>
+                </div>
+              </div>
+
+              <!-- Desglose de Precios -->
+              <div class="pricing-breakdown-list mb-4">
+                <div class="d-flex justify-content-between py-2 border-bottom">
+                  <span class="text-slate-600">Precio por día:</span>
+                  <span class="fw-semibold">${{ (tool.valueRent || 0) | number }} CLP</span>
+                </div>
+                <div class="d-flex justify-content-between py-2 border-bottom">
+                  <span class="text-slate-600">Días de arriendo:</span>
+                  <span class="fw-semibold">{{ days || 1 }} día(s)</span>
+                </div>
+                <div class="d-flex justify-content-between py-2 border-bottom">
+                  <span class="text-slate-600">Comisión por servicio:</span>
+                  <span class="text-success fw-semibold">Gratis</span>
+                </div>
+                <div class="d-flex justify-content-between py-3">
+                  <span class="fs-5 fw-bold text-slate-900">Total a Pagar:</span>
+                  <span class="fs-4 fw-extrabold text-primary-blue">${{ (total || tool.valueRent || 0) | number }} CLP</span>
+                </div>
+              </div>
+
+              <!-- BOTÓN PROCEDER AL PAGO -->
+              <button
+                type="submit"
+                class="btn-checkout-pay"
+                [disabled]="confirmForm.invalid || days <= 0">
+                <span>Pagar con Webpay Plus</span>
+                <i class="fa fa-lock ms-2"></i>
+              </button>
+
+              <div class="trust-notice-box mt-3 text-center">
+                <i class="fa fa-shield text-success me-1"></i>
+                <small class="text-slate-500">Transacción encriptada y protegida por Transbank Webpay</small>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
       </form>
 
     </div>
-</section>
+  </section>
 
+  <!-- FOOTER -->
+  <app-footer></app-footer>
 
-<!--SECCION FOOTER-->
-<app-footer></app-footer>
+</div>

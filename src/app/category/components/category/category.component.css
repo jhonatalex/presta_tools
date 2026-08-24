@@ -1,194 +1,89 @@
-.container {
-    background-color: white;
-    border-radius: 25px;
+/* ==========================================================================
+   Category Component — UI/UX Pro Max Styles
+   ========================================================================== */
+
+.category-page-wrapper {
+  background: #f8fafc;
+  min-height: 100vh;
 }
 
-.fondo {
-    background-color: #ebebebdb;
+/* HERO SECTION */
+.category-hero-section {
+  background: radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
+              radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 45%),
+              #0b1120;
+  padding: 60px 20px 70px;
+  position: relative;
 }
 
-
-.content-imagen {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    color: white;
+.category-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(14, 165, 233, 0.12);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  color: #38bdf8;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
 }
 
-.cinta {
-    padding: 10px;
-    background-color: #20242874;
-    background: rgb(33, 37, 41);
-    background: linear-gradient(90deg, #20242800 40%, #202428 100%);
-
-    text-align: end;
+.category-hero-title {
+  color: #ffffff;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
 }
 
-.capa-fondo {
-    background: rgb(33, 37, 41);
-    background: linear-gradient(55deg, rgba(33, 37, 41, 0.80) 30%, rgba(7, 148, 179, 0) 70%);
+.category-hero-desc {
+  color: #94a3b8;
+  font-size: 16px;
+  max-width: 600px;
+  line-height: 1.6;
 }
 
-.widthMax {
-    width: 100%
+/* RESULTS BAR */
+.results-counter-text {
+  color: #475569;
+  font-size: 14.5px;
 }
 
-.content-grilla {
-    padding: 30px;
-    width: 92%;
+.btn-back-catalog {
+  color: #0284c7;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s ease;
 }
 
-.titulo-herramienta {
-    font-size: xxx-large;
-    font-weight: bold;
-    padding: 5px;
-
-    text-align: end;
+.btn-back-catalog:hover {
+  color: #0369a1;
+  text-decoration: underline;
 }
 
-.text-shadow {
-    text-shadow: 2px 2px #000000;
+/* EMPTY STATE */
+.empty-category-box {
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 20px;
+  padding: 50px 20px;
 }
 
-.content-products {
-    
-    width: 93%;
-    height: 545px;
-    border-radius: 18px;
-    padding: 5px;
+.empty-category-icon {
+  font-size: 48px;
+  color: #94a3b8;
 }
 
-.caja-textos {
-    width: 250px;
-    height: 80px;
+/* PAGINATION */
+.category-pagination-box ::ng-deep .ngx-pagination {
+  display: inline-flex;
+  gap: 6px;
 }
 
-/*Copiado de related-featured-products.component.css*/
-.btn-blue-grad {
-    border-radius: 8px;
-    background-image: linear-gradient(to right, #0794b3 0%, #0050a9 100%);
-    color: white;
-    padding: 10px;
-    text-decoration: none;
-}
-
-
-#paginacion-productos.card {
-    border-radius: 18px;
-    width: 80%;
-    height: 80%;
-    /*
-    background-color: inherit;*/
-    margin: 5px;
-}
-
-.div-card {
-    padding: 20px;
-    background-color: white;
-    margin-bottom: 25px;
-}
-
-.w-col {
-    width: 25% !important;
-}
-
-.max-wh-100 {
-
-    max-height: 100%;
-    max-width: 100%;
-}
-
-.card-body {
-    border-radius: 12px;
-
-}
-
-.img-card-container {
-
-    background-color: white;
-    width: 100%;
-    height: 200px;
-    padding: 1px;
-    border-radius: 18px 18px 0px 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.img-card {
-    width: 170px;
-    height: 170px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.rounde {
-
-    border-radius: 18px;
-}
-
-
-.heighthMax {
-    max-height: 200px;
-}
-
-.card-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.slick-list {
-    padding-bottom: 20px;
-}
-
-
-/*Estilos responsive*/
-@media(width:1920px){
-    .content-products{
-        height: 621px;
-        width: 69%;
-    }
-}
-
-@media(max-width:1024px) {
-
-
-    .img-card {
-        width: 200px;
-        height: 200px;
-    }
-
-    .w-col {
-        width: 33% !important;
-    }
-}
-
-@media(max-width:768px) {
-
-
-    .img-card {
-        width: 200px;
-        height: 200px;
-    }
-
-    .w-col {
-        width: 50% !important;
-    }
-}
-
-@media(max-width:455px) {
-
-
-    .img-card {
-        width: 200px;
-        height: 200px;
-    }
-
-    .w-col {
-        width: 100% !important;
-    }
+.category-pagination-box ::ng-deep .ngx-pagination .current {
+  background: #0284c7;
+  border-radius: 8px;
 }

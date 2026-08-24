@@ -1,6 +1,6 @@
 export class Constants {
   public baseApiURL = {
-    test: 'https://prestatools.somee.com/',
+    test: 'http://localhost:3000/',
     prod: 'https://prestatools.somee.com/',
   };
   private headersOptions = {

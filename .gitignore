@@ -50,3 +50,9 @@ Thumbs.db
 .firebase
 *-debug.log
 .runtimeconfig.json
+
+# Server Backend
+server/node_modules/
+server/dist/
+server/dev.db*
+server/.env
