@@ -1,148 +1,150 @@
 
-<!--SECCION NAVBAR-->
+<!-- HEADER NAVBAR -->
 <app-header [flaglogo]="false"></app-header>
 
-    <div class="fondo">
-<!--SECCION DE BUSQUEDA-->
-<section id="busqueda" class=" container-fluid p-5 imagen-preguntas">
+<div class="faq-page-wrapper">
 
-    <h3 class="text-center mt-5">PREGUNTAS FRECUENTES</h3>
+  <!-- HERO BUSCADOR FAQ -->
+  <section class="faq-hero-section">
+    <div class="container text-center">
+      
+      <!-- Trust Badge -->
+      <div class="faq-hero-badge mb-3">
+        <span class="badge-dot"></span>
+        <span>Centro de Ayuda & Preguntas Frecuentes</span>
+      </div>
 
-    <div class="row d-flex justify-content-center align-items-center">
-        <div class="col-md-6">
-            <h1>¿Cómo podemos</h1>
-            <h1>ayudarte?</h1>
+      <!-- Main Title -->
+      <h1 class="faq-hero-title">
+        ¿Cómo podemos <span class="gradient-text">ayudarte?</span>
+      </h1>
+      <p class="faq-hero-subtitle mx-auto mt-3">
+        Encuentra respuestas rápidas y claras sobre cómo alquilar, publicar herramientas, pagos y garantías en PrestaTools.
+      </p>
+
+      <!-- MODERN FLOATING SEARCH BAR -->
+      <div class="faq-search-wrapper mx-auto mt-4">
+        <div class="faq-search-box">
+          <i class="fa fa-search search-icon"></i>
+          <input
+            type="text"
+            class="faq-search-input"
+            placeholder="Escribe tu pregunta o palabra clave (ej. garantía, pagos, publicar)..."
+            [(ngModel)]="searchTerm">
+          <button *ngIf="searchTerm" class="btn-clear-search" (click)="searchTerm = ''" title="Limpiar búsqueda">
+            <i class="fa fa-times"></i>
+          </button>
         </div>
-        <div class="col-md-6 contenedor-buscar ">
-            <button class="btn btn-light border-0 col-2"><i class="fa fa-search" aria-hidden="true"></i></button>
-            <input type="text" placeholder="Buscar Por..." class="input-buscar fondo col-9">
-        </div>
+      </div>
+
     </div>
-</section>
+  </section>
 
-<!--SECCIÓN DE PREGUNTAS-->
-<section class="container-fluid fondo p-5">
-
-    <div class="card shadow text-center p-5">
-        <h3>Además puedes buscar por los siguientes tópicos</h3>
-        <div class=" d-flex flex-row flex-wrap mt-5 mb-0 text-center" id="navbarTogglerDemo01">
-            
-                    <a class="nav-link resaltado col-6 col-md-3 col-lg-2">Todos</a>
-               
-                    <a class="nav-link  col-6 col-md-3 col-lg-2">PrestaTools</a>
-               
-                    <a class="nav-link  col-6 col-md-3 col-lg-2">Herramientas</a>
-               
-                    <a class="nav-link  col-6 col-md-3 col-lg-2">Usuarios</a>
-               
+  <!-- SECCIÓN CATEGORÍAS & TÓPICOS -->
+  <section class="faq-categories-section py-4">
+    <div class="container">
+      <div class="faq-topics-card text-center p-4">
+        <h5 class="topics-heading mb-3">Filtrar por tópico</h5>
+        
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+          <button
+            *ngFor="let cat of categories"
+            class="topic-pill-btn"
+            [class.active]="selectedCategory === cat.id"
+            (click)="setCategory(cat.id)">
+            <i class="fa" [ngClass]="cat.icon"></i>
+            <span>{{cat.label}}</span>
+          </button>
         </div>
+      </div>
     </div>
-</section>
-<section class="card shadow mx-5 mb-5 p-md-5">
-    <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                ¿Cuáles son los beneficios de utilizar PrestaTools en lugar de comprar las herramientas o artículos directamente?
-            
-            </button>
-          </h2>
-          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                ¿Cómo puedo registrar mi herramienta para alquilarla en PrestaTools?
-            </button>
-          </h2>
-          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                ¿Qué sucede si mi herramienta se daña o se pierde durante el período de alquiler?
-            </button>
-          </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingFour">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                ¿Cómo se establecen los precios de alquiler en PrestaTools?
-            </button>
-          </h2>
-          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingFive">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                ¿Cuáles son los requisitos para registrarse como usuario y como propietario de herramientas?
-             </button>
-          </h2>
-          <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingSix">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
-                ¿Puedo alquilar herramientas en ciudades o países diferentes al mío?
-            </button>
-          </h2>
-          <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <strong>Lamentablemente, en este momento solo ofrecemos nuestro servicio de alquiler de herramientas en Chile.</strong> Actualmente estamos trabajando para expandir nuestros servicios a otras ciudades y países, pero aún no estamos listos para ofrecer nuestros servicios fuera de este país. Sin embargo, si se encuentra en Chile, puede utilizar nuestro sitio web para alquilar herramientas en su ciudad. ¡Esperamos poder atender a clientes internacionales en el futuro!
+  </section>
+
+  <!-- SECCIÓN ACCORDION DE PREGUNTAS -->
+  <section class="faq-content-section py-4 pb-5">
+    <div class="container">
+      
+      <!-- Counter Bar -->
+      <div class="d-flex justify-content-between align-items-center mb-4 px-2">
+        <span class="faq-results-counter">
+          Mostrando <strong>{{filteredFaqs.length}}</strong> preguntas frecuentes
+          <span *ngIf="searchTerm"> para "<em>{{searchTerm}}</em>"</span>
+        </span>
+        <button *ngIf="searchTerm || selectedCategory !== 'todos'" class="btn-reset-filters" (click)="searchTerm = ''; selectedCategory = 'todos'">
+          <i class="fa fa-refresh me-1"></i> Ver todas
+        </button>
+      </div>
+
+      <!-- FAQ ACCORDION LIST -->
+      <div class="faq-list d-flex flex-column gap-3" *ngIf="filteredFaqs.length > 0">
+        
+        <div
+          *ngFor="let faq of filteredFaqs"
+          class="modern-faq-card"
+          [class.card-open]="faq.isOpen">
+          
+          <!-- QUESTION HEADER -->
+          <div class="faq-card-header" (click)="toggleFaq(faq)">
+            <div class="d-flex align-items-center gap-3">
+              <div class="faq-icon-circle">
+                <i class="fa" [ngClass]="faq.icon"></i>
               </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingSeven">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                ¿Cuándo recibiré el pago por el alquiler de mi herramienta?
-            </button>
-          </h2>
-          <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              <div>
+                <span class="faq-category-chip">{{faq.categoryLabel}}</span>
+                <h4 class="faq-question-text mb-0">{{faq.question}}</h4>
+              </div>
+            </div>
+            
+            <div class="faq-toggle-arrow" [class.arrow-rotated]="faq.isOpen">
+              <i class="fa fa-chevron-down"></i>
             </div>
           </div>
+
+          <!-- ANSWER BODY -->
+          <div class="faq-card-body" *ngIf="faq.isOpen">
+            <div class="faq-answer-content">
+              <p class="mb-0">{{faq.answer}}</p>
+            </div>
+          </div>
+
         </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingEight">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                ¿Qué sucede si el usuario que alquila mi herramienta no la devuelve a tiempo?
-            </button>
-          </h2>
-          <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+
+      </div>
+
+      <!-- EMPTY STATE IF 0 RESULTS -->
+      <div class="faq-empty-state text-center py-5" *ngIf="filteredFaqs.length === 0">
+        <div class="empty-state-icon mb-3">
+          <i class="fa fa-search-minus"></i>
+        </div>
+        <h4 class="fw-bold text-slate-800">No encontramos resultados para "{{searchTerm}}"</h4>
+        <p class="text-slate-500 mb-4">Intenta con otros términos o ponte en contacto directo con nuestro equipo de soporte.</p>
+        <button class="btn-primary-grad" (click)="searchTerm = ''; selectedCategory = 'todos'">
+          Restablecer búsqueda
+        </button>
+      </div>
+
+      <!-- SOPORTE ADICIONAL BANNER -->
+      <div class="faq-help-banner mt-5 p-4 p-md-5">
+        <div class="row align-items-center">
+          <div class="col-lg-8 text-lg-start text-center mb-3 mb-lg-0">
+            <h3 class="text-white fw-bold mb-2">¿Aún tienes dudas sin resolver?</h3>
+            <p class="text-slate-300 mb-0">
+              Nuestro equipo de soporte al cliente está disponible para asistirte con cualquier consulta sobre tu cuenta, alquileres o publicaciones.
+            </p>
+          </div>
+          <div class="col-lg-4 text-lg-end text-center">
+            <div class="d-flex flex-wrap gap-2 justify-content-lg-end justify-content-center">
+              <a [routerLink]="['/contacto']" class="btn-primary-grad px-4 py-3">
+                <i class="fa fa-envelope me-1"></i> Contáctanos
+              </a>
             </div>
           </div>
         </div>
       </div>
-      <P class="m-5 text-justify">
 
-          Recuerda que estamos aquí para brindarte asistencia adicional. No dudes en contactarnos si tienes más preguntas o necesitas ayuda con el uso de nuestra plataforma. ¡Disfruta de la experiencia colaborativa en PrestaTools!
-        </P>
-</section>
+    </div>
+  </section>
 
-<app-footer></app-footer>
+  <!-- FOOTER -->
+  <app-footer></app-footer>
 </div>
