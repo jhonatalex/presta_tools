@@ -1,75 +1,135 @@
+<!-- CONTACT PAGE MODERNO -->
 <app-header [flaglogo]="false"></app-header>
-<div id="add-tool" class="container-fluid fondo py-5 ">
-  <div class="container bg-white card shadow " style="padding:5%">
-    <div class="d-flex flex-wrap align-items-center justify-content-center">
 
-      <div class="col-12 col-md-6">
-        <h2>Comunícate con nosotros</h2>
-        <p>Si tienes alguna pregunta, sugerencia o necesitas más información sobre nuestros servicios, no dudes en
-          contactarnos. Estamos aquí para ayudarte.
+<div class="contact-page-wrapper">
 
-          Por favor, completa el siguiente formulario y nos pondremos en contacto contigo lo antes posible:</p>
-      </div>
-      <div class="content-image col-12 col-md-6 text-center">
-        <img src="../../assets/img/logo.png" alt="" class="max-100">
+  <!-- HERO SECTION CONTACTO -->
+  <section class="contact-hero-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <span class="section-tag">Soporte y Contacto</span>
+          <h1 class="contact-title mt-2">
+            Comunícate con <span class="gradient-text">nosotros</span>
+          </h1>
+          <p class="contact-subtitle mt-3">
+            ¿Tienes una pregunta, sugerencia o necesitas más información? Estamos aquí para ayudarte. Completa el formulario y te responderemos a la brevedad.
+          </p>
+
+          <!-- DATOS DE CONTACTO -->
+          <div class="contact-info-cards mt-5">
+            <div class="contact-info-card">
+              <div class="contact-info-icon">
+                <i class="fa fa-map-marker"></i>
+              </div>
+              <div>
+                <div class="contact-info-label">Dirección</div>
+                <div class="contact-info-value">Independencia #2, Santiago, Chile</div>
+              </div>
+            </div>
+            <div class="contact-info-card mt-3">
+              <div class="contact-info-icon">
+                <i class="fa fa-envelope"></i>
+              </div>
+              <div>
+                <div class="contact-info-label">Correo electrónico</div>
+                <div class="contact-info-value">contacto@prestatools.cl</div>
+              </div>
+            </div>
+            <div class="contact-info-card mt-3">
+              <div class="contact-info-icon">
+                <i class="fa fa-phone"></i>
+              </div>
+              <div>
+                <div class="contact-info-label">Teléfono</div>
+                <div class="contact-info-value">+56 9 4162 3264</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- REDES SOCIALES -->
+          <div class="social-section mt-5">
+            <p class="social-label">Síguenos en redes sociales</p>
+            <div class="d-flex gap-2">
+              <a href="#" class="social-circle-btn" title="Facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="social-circle-btn" title="Instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="social-circle-btn" title="YouTube"><i class="fa fa-youtube-play"></i></a>
+              <a href="#" class="social-circle-btn" title="Twitter/X"><i class="fa fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORMULARIO -->
+        <div class="col-lg-6">
+          <div class="contact-form-card">
+            <div class="form-card-header">
+              <div class="form-card-icon">
+                <i class="fa fa-paper-plane"></i>
+              </div>
+              <div>
+                <h3 class="form-card-title">Queremos saber de ti</h3>
+                <p class="form-card-subtitle">Escríbenos y te respondemos en menos de 24 h</p>
+              </div>
+            </div>
+
+            <form class="mt-4">
+              <!-- NOMBRE -->
+              <div class="contact-field-group">
+                <label class="contact-field-label">Nombre y Apellido</label>
+                <div class="contact-input-wrap">
+                  <i class="fa fa-user contact-input-icon"></i>
+                  <input type="text" class="contact-input" id="names" name="names" placeholder="Juan Pérez">
+                </div>
+              </div>
+
+              <!-- EMAIL -->
+              <div class="contact-field-group mt-3">
+                <label class="contact-field-label">Correo electrónico</label>
+                <div class="contact-input-wrap">
+                  <i class="fa fa-envelope contact-input-icon"></i>
+                  <input type="email" class="contact-input" id="email" name="email" placeholder="tu@correo.com">
+                </div>
+              </div>
+
+              <!-- TELÉFONO -->
+              <div class="contact-field-group mt-3">
+                <label class="contact-field-label">Número de teléfono</label>
+                <div class="contact-input-wrap">
+                  <i class="fa fa-phone contact-input-icon"></i>
+                  <input type="tel" class="contact-input" id="phonenumber" name="phonenumber" placeholder="+56 9 1234 5678">
+                </div>
+              </div>
+
+              <!-- ASUNTO -->
+              <div class="contact-field-group mt-3">
+                <label class="contact-field-label">Asunto</label>
+                <div class="contact-input-wrap">
+                  <i class="fa fa-tag contact-input-icon"></i>
+                  <input type="text" class="contact-input" id="asunto" name="asunto" placeholder="¿En qué podemos ayudarte?">
+                </div>
+              </div>
+
+              <!-- MENSAJE -->
+              <div class="contact-field-group mt-3">
+                <label class="contact-field-label">Mensaje</label>
+                <div class="contact-input-wrap">
+                  <textarea class="contact-input contact-textarea" id="message" name="message" placeholder="Escribe tu mensaje aquí..."></textarea>
+                </div>
+              </div>
+
+              <!-- SUBMIT -->
+              <button type="submit" class="btn-contact-send mt-4">
+                <span>Enviar mensaje</span>
+                <i class="fa fa-paper-plane ms-2"></i>
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row bg-contact  p-4">
-      <div class="col-md-6 d d-flex flex-column justify-content-center align-items-center">
-        <div class="content-image ">
-          <img src="assets/img/alquiler-de-herramientas-02.webp" alt="" class="w-100">
-        </div>
-        <div class="my-4  text-center">
-          <h5 class="pb-1">Visita nuestras redes Sociales</h5>
-          <!-- Facebook -->
-          <a type="" class=""><i class="fab fa-facebook-official rsss-icons fa-2x"></i></a>
-          <!-- Youtube -->
-          <a type="" class=""><i class="fab fa-youtube rsss-icons fa-2x"></i></a>
-          <!-- Twitter -->
-          <a type="" class=""><i class="fab fa-twitter-square rsss-icons fa-2x"></i></a>
-          <!-- Google -->
-          <a type="" class=""><i class="fab fa-google-plus-square rsss-icons fa-2x"></i></a>
-          <!-- LinkedIn -->
-        </div>
-        <p>¡Gracias por tu interés en nuestro sitio web! Esperamos poder atender tus consultas y brindarte la mejor
-          experiencia posible.
-          <br>
-          <br>
-          Saludos cordiales,
-          <br>
-          El equipo de PrestaTools
-        </p>
-      </div>
-      <div class="col-md-6 ">
-        <h3 class="text-center">Queremos saber de ti.</h3>
-        <p>Escribenos a través del siguiente formulario</p>
-        <div class="form-group mt-4 mx-auto mt-4">
-          <input type="text" class="form-control" id="names" name="names" placeholder="Nombre y Apellido" name="names">
-        </div>
+  </section>
 
-        <div class="form-group mt-4 mx-auto">
-          <input placeholder="Correo electrónico" type="email" class="form-control" id="email" name="email">
-        </div>
-
-        <div class="form-group mt-4 mx-auto">
-          <input placeholder="Número de teléfono" type="tel" class="form-control" id="phonenumber" name="phonenumber">
-        </div>
-        <div class="form-group mt-4 mx-auto">
-          <input type="text" class="form-control" id="asunto" name="asunto" placeholder="Asunto" name="asunto">
-        </div>
-        <div class="form-group mt-4 mx-auto">
-          <textarea placeholder="Mensaje" class="form-control" id="message" name="message"></textarea>
-        </div>
-        <div class="form-group mt-4 mx-auto">
-          <button type="submit" class="form-control btn-blue-grad">Enviar</button>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
 </div>
 
-
-<!--SECCION FOOTER-->
+<!-- FOOTER -->
 <app-footer></app-footer>

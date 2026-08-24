@@ -1,64 +1,183 @@
-<div class="fondo container-register">
-    <div class="row w-104">
-        <div class="col col-sm-12 col-md-8 col-lg-8  d-flex align-items-center justify-content-center">
-            <div class="global-container">
-                <div class="card resgister-form col-sm-12 col-md-4 col-lg-4 mx-auto my-5 px-0 py-0">
-                    <div class="card-title">
-                        <h6>Registro de usuario</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <img src="assets/img/logo-user-register.png" alt="logo-user" class="img-card my-0 py-0">
-                        </div>
-                        <h5 class="text-center pt-2">Crea tu cuenta</h5>
-                        <div class="card-text text-center mt-4">
-                            <form class="form-group" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
-                                <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                    <input type="text" class="form-control-sm border d-inline" placeholder="Nombre" name="name"  #name="ngModel" [(ngModel)]="user.name" required pattern="[a-zA-Z]+">
-                                    <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">El nombre no es válido</small>
-                                </div>
-                                <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                    <input type="text" class="form-control-sm border"  placeholder="Apellido" name="lastName" #lastName="ngModel" [(ngModel)]="user.lastName" required pattern="[a-zA-Z]+">
-                                    <small *ngIf="!lastName.valid && lastName.touched" class="invalid-feedback d-block">El apellido no es válido</small>
-                                </div>
-                                <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                    <input type="text" class="form-control-sm border" placeholder="Telefono" name="telephone" #telephone="ngModel" [(ngModel)]="user.telephone" required>
-                                    <small *ngIf="!telephone.valid && telephone.touched" class="invalid-feedback d-block">El número de teléfono no es válido</small>
-                                </div>
-                                <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                    <input type="email" class="form-control-sm border" placeholder="Email" name="email" #email="ngModel" [(ngModel)]="user.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                                    <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">El email no es válido</small>
-                                </div>
-                                <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                    <input type="password" class="form-control-sm border" placeholder="Contraseña" name="password" #password="ngModel" [(ngModel)]="user.password" required pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$">
-                                    <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">Su contraseña no es válida; mínimo 6 caracteres al menos 1 número, al menos 1 letra mayúscula</small>
-                                </div>
-                                <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                    <input type="password" class="form-control-sm border" name="ConfirmPassword" [(ngModel)]="ConfirmPassword" placeholder="Repetir Contraseña" required>
-                                    <small *ngIf="user.password != ConfirmPassword" class="invalid-feedback d-block">Confirme su contraseña</small>
-                                </div>
-                                <div class="form-group mt-3 pt-1">
-                                    <input type="submit" class="btn-blue-grad mb-4 px-5 border-0" [disabled]="registerForm.invalid" value="Enviar">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="d-block">
-                            <small class="ms-5 ps-4">Ya tienes una cuenta?</small> 
-                            <small> <a [routerLink]="['/acceso']" class="link-entrar ms-5 mb-2">Entrar</a></small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- REGISTER PAGE MODERNO -->
+<div class="auth-page-wrapper">
+  <div class="auth-split-layout">
 
+    <!-- PANEL IZQUIERDO: BRAND -->
+    <div class="auth-brand-panel d-none d-lg-flex">
+      <div class="brand-panel-overlay"></div>
+      <div class="brand-panel-content">
+        <img src="assets/img/logo.png" alt="PrestaTools Logo" class="brand-panel-logo">
+        <h2 class="brand-panel-tagline">Únete a la <span class="text-sky-300">comunidad</span></h2>
+        <p class="brand-panel-desc">Regístrate gratis y empieza a alquilar o a publicar tus herramientas en minutos. Sin cuotas mensuales, sin complicaciones.</p>
+        <div class="feature-list mt-5">
+          <div class="feature-row">
+            <div class="feature-check"><i class="fa fa-check"></i></div>
+            <span>Registro gratuito, sin tarjeta de crédito</span>
+          </div>
+          <div class="feature-row mt-3">
+            <div class="feature-check"><i class="fa fa-check"></i></div>
+            <span>Acceso a +500 herramientas disponibles</span>
+          </div>
+          <div class="feature-row mt-3">
+            <div class="feature-check"><i class="fa fa-check"></i></div>
+            <span>Publica tus equipos y genera ingresos</span>
+          </div>
+          <div class="feature-row mt-3">
+            <div class="feature-check"><i class="fa fa-check"></i></div>
+            <span>Pagos seguros y usuarios verificados</span>
+          </div>
         </div>
-        <div class="col2 col-sm-12-col-md-4 col-lg-4 logo d-flex align-items-center justify-content-center">
-            <img src="assets/img/logo.png" alt="logo" class="img-fluid">
-        </div>
+      </div>
     </div>
+
+    <!-- PANEL DERECHO: FORMULARIO -->
+    <div class="auth-form-panel d-flex align-items-center justify-content-center">
+      <div class="auth-form-container">
+
+        <!-- LOGO MOBILE -->
+        <div class="d-flex justify-content-center d-lg-none mb-4">
+          <img src="assets/img/logo.png" alt="PrestaTools" class="mobile-brand-logo">
+        </div>
+
+        <!-- ENCABEZADO -->
+        <div class="form-header mb-4">
+          <div class="form-icon-avatar">
+            <i class="fa fa-user-plus"></i>
+          </div>
+          <h1 class="form-title mt-3">Crea tu cuenta</h1>
+          <p class="form-subtitle">Completa el formulario para registrarte gratis</p>
+        </div>
+
+        <!-- FORMULARIO -->
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="modern-form">
+
+          <!-- NOMBRE Y APELLIDO (2 columnas) -->
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="field-group">
+                <label class="field-label">Nombre</label>
+                <div class="input-wrapper">
+                  <i class="fa fa-user input-icon"></i>
+                  <input
+                    type="text"
+                    class="modern-input"
+                    placeholder="Juan"
+                    name="name"
+                    #name="ngModel"
+                    [(ngModel)]="user.name"
+                    required
+                    pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+">
+                </div>
+                <small *ngIf="!name.valid && name.touched" class="field-error">Nombre inválido</small>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="field-group">
+                <label class="field-label">Apellido</label>
+                <div class="input-wrapper">
+                  <i class="fa fa-user input-icon"></i>
+                  <input
+                    type="text"
+                    class="modern-input"
+                    placeholder="Pérez"
+                    name="lastName"
+                    #lastName="ngModel"
+                    [(ngModel)]="user.lastName"
+                    required
+                    pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+">
+                </div>
+                <small *ngIf="!lastName.valid && lastName.touched" class="field-error">Apellido inválido</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- TELÉFONO -->
+          <div class="field-group mt-3">
+            <label class="field-label">Teléfono</label>
+            <div class="input-wrapper">
+              <i class="fa fa-phone input-icon"></i>
+              <input
+                type="text"
+                class="modern-input"
+                placeholder="+56 9 1234 5678"
+                name="telephone"
+                #telephone="ngModel"
+                [(ngModel)]="user.telephone"
+                required>
+            </div>
+            <small *ngIf="!telephone.valid && telephone.touched" class="field-error">Teléfono inválido</small>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="field-group mt-3">
+            <label class="field-label">Correo electrónico</label>
+            <div class="input-wrapper">
+              <i class="fa fa-envelope input-icon"></i>
+              <input
+                type="email"
+                class="modern-input"
+                placeholder="tu@correo.com"
+                name="email"
+                #email="ngModel"
+                [(ngModel)]="user.email"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            </div>
+            <small *ngIf="!email.valid && email.touched" class="field-error">Email inválido</small>
+          </div>
+
+          <!-- CONTRASEÑA -->
+          <div class="field-group mt-3">
+            <label class="field-label">Contraseña</label>
+            <div class="input-wrapper">
+              <i class="fa fa-lock input-icon"></i>
+              <input
+                type="password"
+                class="modern-input"
+                placeholder="Min. 6 caracteres, 1 Mayúscula, 1 número"
+                name="password"
+                #password="ngModel"
+                [(ngModel)]="user.password"
+                required
+                pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$">
+            </div>
+            <small *ngIf="!password.valid && password.touched" class="field-error">Mín. 6 caracteres, 1 mayúscula y 1 número</small>
+          </div>
+
+          <!-- CONFIRMAR CONTRASEÑA -->
+          <div class="field-group mt-3">
+            <label class="field-label">Confirmar contraseña</label>
+            <div class="input-wrapper">
+              <i class="fa fa-lock input-icon"></i>
+              <input
+                type="password"
+                class="modern-input"
+                placeholder="Repite tu contraseña"
+                name="ConfirmPassword"
+                [(ngModel)]="ConfirmPassword"
+                required>
+            </div>
+            <small *ngIf="user.password != ConfirmPassword && ConfirmPassword" class="field-error">Las contraseñas no coinciden</small>
+          </div>
+
+          <!-- SUBMIT -->
+          <button
+            type="submit"
+            class="btn-auth-primary mt-4"
+            [disabled]="registerForm.invalid || user.password != ConfirmPassword">
+            <span>Crear mi cuenta</span>
+            <i class="fa fa-arrow-right ms-2"></i>
+          </button>
+
+          <!-- LOGIN LINK -->
+          <p class="register-prompt mt-4">
+            ¿Ya tienes cuenta?
+            <a [routerLink]="['/acceso']" class="auth-link ms-1">Iniciar sesión</a>
+          </p>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
 </div>
-
-
-
-
-
-

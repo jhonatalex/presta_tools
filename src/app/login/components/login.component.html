@@ -1,86 +1,128 @@
-<div class="fondo container-login">
-    <div class="row ">
-        <div class="col col-sm-12 col-md-8 col-lg-8 d-flex align-items-center justify-content-center">
-            <div class="global-container">
-                <div class="card login-form col-sm-12 col-md-4 col-lg-4 mx-auto my-4 px-0 py-0">
-                    <div class="card-title">
-                        <h6>Ingresa a tu cuenta</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <img src="assets/img/logo-user-register.png" alt="logo-user" class="img-card my-0 py-0">
-                        </div>
-                        <h5 class="text-center pt-2">Ingresar a tu cuenta</h5>
-                        <div class="card-text mt-4">
-                            <form class="form-group" #loginForm="ngForm" >
-                                <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                    <label for="email" class="form-label mb-0">Email</label>
-                                    <input type="email" class="form-control-sm border" name="email"  (input)="setUserEmail($event)"  id="email"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                                    <!--<small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">El email no es válido</small>-->
-                                </div>
-                                <div class="form-group d-flex flex-column mt-4 col-md-10 mx-auto">
-                                    <label for="password" class="form-label mb-0">Contraseña</label>
-                                    <input type="password" class="form-control-sm border"  name="password" (input)="setUserPassword($event)"   id="password"  placeholder="********"   required pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$">
-                                   <!---<small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">Su contraseña no es válida; mínimo 6 caracteres al menos 1 número, al menos 1 letra mayúscula</small>-->
-                                </div>
-                                <div class="form-group d-flex flex-column mt-4">
-                                    <small class="text-center"> <a [routerLink]="['/recupera-clave']" class="link">Olvidó su contraseña?</a></small>
-                                    <input type="submit" (click)="userLogin()"  class="btn-blue-grad mt-1 px-5 border-0  mx-auto" [disabled]="loginForm.invalid" value="Login">
-                                </div>
-                                <div class="d-block text-center">
-                                    <small>No tiene una Cuenta?</small>
-                                    <small> <a [routerLink]="['/registro']" class="link ms-5">Registrarme</a></small>
-                                </div>
-                                <div class="d-flex flex-column">
-                                   <p class="text-center mt-2">o continua con:</p>
-                                </div>
+<!-- LOGIN PAGE MODERNO -->
+<div class="auth-page-wrapper">
+  <div class="auth-split-layout">
 
-                            </form>
-
-                            <div class="mx-auto mb-0 py-0 col-md-10">
-
-                              <div class="input-group p-2 pb-3 border-0">
-                                <span class="input-group-text"><img src="assets/img/google-Logo.ico" alt="google" width="25px"></span>
-                                <input type="button"  (click)="googleLogin()" class="color-blue-1 form-control fontSize" value="Inicia sesión con Google">
-                              </div>
-
-                              <!--
-                              <div class="input-group p-2">
-                                  <span class="input-group-text"><img src="assets/img/facebook-logo.ico" alt="facebook" width="25px"></span>
-                                  <input type="button" class="color-blue-2 form-control fontSize" value="Iniciar sesión con Facebook">
-                              </div>-->
-
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
+    <!-- PANEL IZQUIERDO: BRAND -->
+    <div class="auth-brand-panel d-none d-lg-flex">
+      <div class="brand-panel-overlay"></div>
+      <div class="brand-panel-content">
+        <img src="assets/img/logo.png" alt="PrestaTools Logo" class="brand-panel-logo">
+        <h2 class="brand-panel-tagline">Alquila. Presta. <span class="text-sky-300">Ahorra.</span></h2>
+        <p class="brand-panel-desc">La plataforma colaborativa de herramientas más grande de Chile. Accede a cientos de equipos profesionales a un clic de distancia.</p>
+        <div class="brand-stats mt-4 d-flex gap-4">
+          <div class="stat-item text-center">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Herramientas</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item text-center">
+            <div class="stat-number">1.2K</div>
+            <div class="stat-label">Usuarios</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item text-center">
+            <div class="stat-number">80%</div>
+            <div class="stat-label">de Ahorro</div>
+          </div>
         </div>
-
-
-
-        <div class="col2 col-sm-12 col-md-4 col-lg-4 logo d-flex align-items-center justify-content-center blue-zone">
-            <img src="assets/img/logo.png" alt="logo" class="img-fluid">
-        </div>
+      </div>
     </div>
+
+    <!-- PANEL DERECHO: FORMULARIO -->
+    <div class="auth-form-panel d-flex align-items-center justify-content-center">
+      <div class="auth-form-container">
+
+        <!-- LOGO MOBILE -->
+        <div class="d-flex justify-content-center d-lg-none mb-4">
+          <img src="assets/img/logo.png" alt="PrestaTools" class="mobile-brand-logo">
+        </div>
+
+        <!-- ENCABEZADO -->
+        <div class="form-header mb-5">
+          <div class="form-icon-avatar">
+            <i class="fa fa-sign-in"></i>
+          </div>
+          <h1 class="form-title mt-3">Bienvenido de vuelta</h1>
+          <p class="form-subtitle">Ingresa tus datos para continuar</p>
+        </div>
+
+        <!-- FORMULARIO -->
+        <form #loginForm="ngForm" class="modern-form">
+
+          <!-- EMAIL -->
+          <div class="field-group">
+            <label for="email" class="field-label">Correo electrónico</label>
+            <div class="input-wrapper">
+              <i class="fa fa-envelope input-icon"></i>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="modern-input"
+                placeholder="tu@correo.com"
+                (input)="setUserEmail($event)"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            </div>
+          </div>
+
+          <!-- CONTRASEÑA -->
+          <div class="field-group mt-4">
+            <div class="d-flex justify-content-between align-items-center">
+              <label for="password" class="field-label">Contraseña</label>
+              <a [routerLink]="['/recupera-clave']" class="forgot-link">¿Olvidaste tu contraseña?</a>
+            </div>
+            <div class="input-wrapper">
+              <i class="fa fa-lock input-icon"></i>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="modern-input"
+                placeholder="••••••••"
+                (input)="setUserPassword($event)"
+                required
+                pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$">
+            </div>
+          </div>
+
+          <!-- SUBMIT -->
+          <button
+            type="submit"
+            class="btn-auth-primary mt-5"
+            (click)="userLogin()"
+            [disabled]="loginForm.invalid">
+            <span>Iniciar Sesión</span>
+            <i class="fa fa-arrow-right ms-2"></i>
+          </button>
+
+          <!-- DIVIDER -->
+          <div class="auth-divider my-4">
+            <span>o continúa con</span>
+          </div>
+
+          <!-- GOOGLE LOGIN -->
+          <button type="button" class="btn-social-google" (click)="googleLogin()">
+            <img src="assets/img/google-Logo.ico" alt="Google" width="20">
+            <span>Iniciar sesión con Google</span>
+          </button>
+
+          <!-- REGISTRO LINK -->
+          <p class="register-prompt mt-4">
+            ¿No tienes cuenta?
+            <a [routerLink]="['/registro']" class="auth-link ms-1">Regístrate gratis</a>
+          </p>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
 </div>
-                        <ngx-spinner
-                            bdColor="rgba(51,51,51,0.8)"
-                            size="large"
-                            type="ball-spin-reverse-rotate"
-                          >
-                            <div style="color: #64d6e2" class="la-ball-clip-rotate-multiple la-3x">
-                              <div></div>
-                              <div></div>
-                          </div>
-                          </ngx-spinner>
 
-
-
-
-
-
+<ngx-spinner bdColor="rgba(11, 17, 32, 0.85)" size="large" type="ball-spin-reverse-rotate">
+  <div style="color: #38bdf8" class="la-ball-clip-rotate-multiple la-3x">
+    <div></div>
+    <div></div>
+  </div>
+</ngx-spinner>
